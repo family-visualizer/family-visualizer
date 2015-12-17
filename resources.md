@@ -1,6 +1,7 @@
 ###API/AUTH
  - Passport: https://github.com/jaredhanson/passport-familysearch
  - API Docs: https://familysearch.org/developers/docs/api/resources
+ - Getting Started: https://github.com/FamilySearch/familysearch-javascript-sdk
 
 ###D3
  - http://alignedleft.com/tutorials/d3

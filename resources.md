@@ -4,6 +4,12 @@
  - Getting Started: https://github.com/FamilySearch/familysearch-javascript-sdk
  - Family Search sandbox login:  Username: tuf000142014 Password: 1234pass
 
+##Data Structure
+-Ascendency (Ahnentafel): http://freepages.genealogy.rootsweb.ancestry.com/~jcat2/ahnentafel.html
+-Descendency (d'Aboville System): http://higdonfamily.org/research-tips-for-advanced/numbering-systems-for-genea/descending-numbering-system/daboville-system-1940.html
+
+
+
 ###D3
  - http://alignedleft.com/tutorials/d3
 

@@ -1,0 +1,24 @@
+<menu></menu>
+
+<h3>Find friends</h3>
+
+Get all friends: <button ng-click="getFriends()">go!</button>
+
+<ul>
+    <li ng-repeat="friend in friends">{{ friend.name }}, age {{ friend.age }} (id: {{ friend._id }})</li>
+</ul>
+
+<br>
+<br>
+
+Get one friend: <input placeholder="enter an id" type="text" ng-model="id"> <button ng-click="getFriendById(id)">get friend!</button>
+
+<ul>
+    <li>{{ friend.name || friend }}</li>
+</ul>
+
+
+<h3>Add a new friend</h3>
+Name: <input ng-model="name" type="text">
+Age: <input ng-model="age" type="text">
+<button ng-click="postNewFriend()">add!</button> {{ flash }}

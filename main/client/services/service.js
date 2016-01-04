@@ -1,7 +1,4 @@
-var app = angular.module('app');
-
-
-app.service('friendService', ['$q', '$http', friendService]);
+angular.module('app').service('friendService', ['$q', '$http', friendService]);
 
 
 function friendService($q, $http) {

@@ -1,6 +1,4 @@
-var app = angular.module('app');
-
-app.config(['$stateProvider', '$urlRouterProvider', routing]);
+angular.module('app').config(['$stateProvider', '$urlRouterProvider', routing]);
 
 function routing($stateProvider, $urlRouterProvider) {
 

@@ -3,11 +3,11 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 
 // Heroku sets the port, but we also need a port for development
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 3000;
 
 
 // Including the configured express and mongoose objects
-var mongoose = require('./public/scripts/config/mongoose');
+var mongoose = require('./server/config/mongoose');
 
 // EXPRESS CONFIGURATION FILE
 
@@ -32,7 +32,7 @@ var express = require('express'),
         }));
 
     // HERE WE CONFIGURE THE ROUTES
-    require('./public/scripts/features/friends/friend.server.routes')(app);
+    require('./server/features/friends/friend.server.routes')(app);
 
 
 // Let's run this!

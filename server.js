@@ -7,7 +7,7 @@ var port = process.env.PORT || 3000;
 
 
 // Including the configured express and mongoose objects
-var mongoose = require('./server/config/mongoose');
+var mongoose = require('./distserver/config/mongoose');
 
 
 var express = require('express')
@@ -59,7 +59,7 @@ app.get('/auth/familysearch/callback',
 	passport.authenticate('familysearch', { failureRedirect: '/' }),
 	function (req, res) {
 		res.redirect('http://localhost:3000/');
-		
+
 	});
 
 app.get('/logout', function (req, res) {

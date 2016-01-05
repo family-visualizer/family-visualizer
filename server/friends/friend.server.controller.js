@@ -1,3 +1,5 @@
+'use strict';
+
 var Friend = require('./friend.server.model');
 
 // /api/friends (GET)

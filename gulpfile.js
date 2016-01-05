@@ -38,8 +38,11 @@ gulp.task('html', function() {
 });
 
 gulp.task('javascriptServer', function() {
-	gulp.src('./main/server/**/**/*.js')
-		.pipe(babel())
+	gulp.src('./main/server/features/**/*.js')
+		.pipe(babel({
+			presets: ['es2015']
+			// , plugins: ['transform-es2015-modules-commonjs']
+		}))
 		.pipe(gulp.dest('./server/'))
 });
 

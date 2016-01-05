@@ -1,3 +1,5 @@
+'use strict';
+
 var Ctrl = require('./friend.server.controller');
 
 module.exports = function (app) {

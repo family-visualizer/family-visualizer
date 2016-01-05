@@ -17,7 +17,7 @@ gulp.task('stylus', function() {
 		.pipe(stylus())
 		.pipe(uglifyCss())
 		.pipe(concat('styles.css'))
-		.pipe(gulp.dest('./public/styles/'))
+		.pipe(gulp.dest('./public/dist/styles/'))
 });
 
 gulp.task('javascriptClient', function() {
@@ -28,13 +28,13 @@ gulp.task('javascriptClient', function() {
 		.pipe(ngAnnotate())
 		.pipe(concat('client.min.js'))
 		// .pipe(uglify())
-		.pipe(gulp.dest('./public/scripts/'))
+		.pipe(gulp.dest('./public/dist/scripts/'))
 });
 
 gulp.task('html', function() {
 	gulp.src('./main/client/features/**/*.html')
 		.pipe(htmlmin({collapseWhitespace: true}))
-		.pipe(gulp.dest('./public/html/'))
+		.pipe(gulp.dest('./public/dist/html/'))
 });
 
 gulp.task('javascriptServer', function() {

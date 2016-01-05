@@ -8,19 +8,19 @@ function routing($stateProvider, $urlRouterProvider) {
 
     $stateProvider
         .state('login', {
-            url: '/',
-			templateUrl: './dist/html/loginView/login.html'
+              url: '/'
+			, templateUrl: './dist/html/loginView/login.html'
         })
 		.state('about', {
-            url: '/about',
-			templateUrl: './dist/html/aboutView/about.html'
+              url: '/about'
+			, templateUrl: './dist/html/aboutView/about.html'
 		})
         .state('learnMore', {
-            url: '/learnMore',
-            templateUrl: './dist/html/learnMoreView/learnMore.html'
+              url: '/learnmore'
+            , templateUrl: './dist/html/learnMoreView/learnMore.html'
         })
         .state('userHome', {
-            url: '/userHome',
-            templateUrl: './dist/html/learnMore/learnMore.html'
+              url: '/userhome'
+            , templateUrl: './dist/html/userHomeView/userHome.html'
         });
 }

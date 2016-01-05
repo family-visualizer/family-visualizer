@@ -46,6 +46,6 @@ module.exports = passport => {
                 }
             });
 			return done(null, profile);
-		}));
+		}));//heckka comment
 };
 

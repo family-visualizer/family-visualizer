@@ -7,14 +7,20 @@ function routing($stateProvider, $urlRouterProvider) {
 
 
     $stateProvider
-        .state('chart1', {
+        .state('login', {
             url: '/',
-			templateUrl: './dist/html/chart1/chart1.html',
-			controller: 'chart1Controller'
+			templateUrl: './dist/html/loginView/login.html'
         })
-		.state('test', {
-            url: '/test',
-			templateUrl: './dist/html/chart1/chart1.html',
-			controller: 'chart1Controller'
-		});
+		.state('about', {
+            url: '/about',
+			templateUrl: './dist/html/aboutView/about.html'
+		})
+        .state('learnMore', {
+            url: '/learnMore',
+            templateUrl: './dist/html/learnMoreView/learnMore.html'
+        })
+        .state('userHome', {
+            url: '/userHome',
+            templateUrl: './dist/html/learnMore/learnMore.html'
+        });
 }

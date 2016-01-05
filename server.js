@@ -17,13 +17,17 @@ var express = require('express')
 	, port = 3000
 	, passport = require("passport")
 	, db = mongoose();
-
-
+	
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
 
 app.use(passport.initialize())
+	
+require('./distserver/config/passport.js')(passport);
+require('./distserver/features/users/users.server.routes.js')(app);
+
+
 
 passport.serializeUser(function (user, done) {
 	done(null, user);
@@ -34,21 +38,6 @@ passport.deserializeUser(function (obj, done) {
 });
 
 
-var FamilySearchStrategy = require('passport-familysearch').Strategy;
-
-passport.use(new FamilySearchStrategy({
-	authorizationURL: 'https://sandbox.familysearch.org/cis-web/oauth2/v3/authorization',
-    tokenURL: 'https://sandbox.familysearch.org/cis-web/oauth2/v3/token',
-    devKey: "a02j000000BpvVCAAZ",
-    callbackURL: "http://localhost:3000/auth/familysearch/callback",
-	environment: 'sandbox'
-},
-	function (accessToken, refreshToken, profile, done) {
-		console.log("access token:", accessToken);
-		console.log("profile", profile);
-		return done(null, profile);
-	}
-	));
 
 
 app.get('/auth/familysearch',
@@ -61,6 +50,12 @@ app.get('/auth/familysearch/callback',
 		res.redirect('http://localhost:3000/');
 
 	});
+
+app.get("/getAuthedUser", function (req, res) {
+            res.status(200).json(req.user);
+			console.log("here is the profile", req.profile);
+			console.log("here is the access token", req.accessToken);
+        });
 
 app.get('/logout', function (req, res) {
 	req.logout();

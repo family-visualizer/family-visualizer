@@ -9,12 +9,12 @@ function routing($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('chart1', {
             url: '/',
-			templateUrl: './html/chart1/chart1.html',
+			templateUrl: './dist/html/chart1/chart1.html',
 			controller: 'chart1Controller'
         })
 		.state('test', {
             url: '/test',
-			templateUrl: './html/chart1/chart1.html',
+			templateUrl: './dist/html/chart1/chart1.html',
 			controller: 'chart1Controller'
 		});
 }

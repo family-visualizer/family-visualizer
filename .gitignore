@@ -1,3 +1,5 @@
 node_modules
 .DS_Store
-/public/scripts/client.min.js
+public/dist
+public/scripts/client.min.js
+server

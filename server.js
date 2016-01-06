@@ -8,9 +8,11 @@ var port = process.env.PORT || 3000;
 
 // Including the configured express and mongoose objects
 var mongoose = require('./distserver/config/mongoose');
+var keys = require('./distserver/config/keys.js')
 
 
 var express = require('express')
+	, session = require('express-session')
 	, app = express()
 	, bodyParser = require('body-parser')
 	, cors = require('cors')
@@ -20,22 +22,29 @@ var express = require('express')
 	
 app.use(bodyParser.json());
 app.use(cors());
+    app.use(session({
+        saveUninitialized: true,
+        resave: true,
+        secret: keys.sessionSecret
+    }));
 app.use(express.static(__dirname + '/public'));
 
-app.use(passport.initialize())
+app.use(passport.initialize());
+app.use(passport.session());	
 	
 require('./distserver/config/passport.js')(passport);
 require('./distserver/features/users/users.server.routes.js')(app);
+require('./distserver/features/auth/auth.server.routes.js')(app);
 
 
 
-passport.serializeUser(function (user, done) {
-	done(null, user);
-});
+// passport.serializeUser(function (user, done) {
+// 	done(null, user);
+// });
 
-passport.deserializeUser(function (obj, done) {
-	done(null, obj);
-});
+// passport.deserializeUser(function (obj, done) {
+// 	done(null, obj);
+// });
 
 
 
@@ -47,7 +56,7 @@ app.get('/auth/familysearch',
 app.get('/auth/familysearch/callback',
 	passport.authenticate('familysearch', { failureRedirect: '/' }),
 	function (req, res) {
-		res.redirect('http://localhost:3000/');
+		res.redirect('http://localhost:3000/#/userhome');
 
 	});
 
@@ -65,7 +74,7 @@ app.get('/logout', function (req, res) {
 
 
 
-app.use(express.static('./public/'));
+
 
 // Let's listen for incoming calls!
 app.listen(port, function () {

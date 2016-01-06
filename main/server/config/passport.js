@@ -3,6 +3,8 @@ import keys from "./keys.js";
 import User from "../features/users/users.server.model.js";
 // var keys = require('./distserver/')
 
+
+
 module.exports = passport => {
 
 	console.log("User", User);
@@ -29,10 +31,11 @@ module.exports = passport => {
 			var query = { 'personId': profile.personId };
 
             User.findOne(query, function (error, user) {
-
                 if (user) {
-                    done(null, user);
 					console.log("if is running");
+					user.accessToken = accessToken;
+					user.save();
+                    done(null, user);
                 }
                 else {
 					console.log("else is running");
@@ -45,7 +48,6 @@ module.exports = passport => {
                     done(null, user);
                 }
             });
-			return done(null, profile);
 		}));//heckka comment
 };
 

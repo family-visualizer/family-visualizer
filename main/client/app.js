@@ -22,5 +22,6 @@ function routing($stateProvider, $urlRouterProvider) {
         .state('userHome', {
               url: '/userhome'
             , templateUrl: './dist/html/userHomeView/userHome.html'
+			, controller: 'userHomeCtrl'
         });
 }

@@ -4,4 +4,5 @@ module.exports = {
 		, devKey: "a02j000000BpvVCAAZ"
 		, callbackURL: "http://localhost:3000/auth/familysearch/callback"
 		, environment: 'sandbox'
+		, sessionSecret: 'jfioenanclld'
 	};

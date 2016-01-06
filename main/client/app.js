@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router']).config(['$stateProvider', '$urlRouterProvider', routing]);
+angular.module('app', ['ui.router', 'ngDialog']).config(['$stateProvider', '$urlRouterProvider', routing]);
 
 function routing($stateProvider, $urlRouterProvider) {
 

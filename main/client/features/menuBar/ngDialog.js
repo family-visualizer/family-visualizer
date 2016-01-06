@@ -18,7 +18,7 @@
         define(['angular'], factory);
     } else {
         // Global Variables
-        factory(root.angular);
+        factory(window.angular);
     }
 }(this, function (angular) {
     'use strict';

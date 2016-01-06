@@ -2,7 +2,7 @@ angular.module('app').directive('loginDir', function () {
 
 	return {
 		restrict: "E",
-		templateUrl: "./dist/html/login/login.html",
+		templateUrl: "./dist/html/loginModal/login.html",
 		controller: "loginCtrl"
 	}
 

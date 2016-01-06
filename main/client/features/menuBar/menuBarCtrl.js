@@ -1,4 +1,4 @@
-angular.module('app').controller('MenuBarCtrl', function($scope) {
+angular.module('app').controller('menuBarCtrl', function($scope) {
 	
 	
 	

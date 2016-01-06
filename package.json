@@ -23,6 +23,7 @@
     "gulp-uglify": "^1.5.1",
     "gulp-uglifycss": "^1.0.5",
     "mongoose": "^4.3.4",
+    "ng-dialog": "^0.5.6",
     "passport": "^0.3.2",
     "passport-familysearch": "^1.0.0"
   },

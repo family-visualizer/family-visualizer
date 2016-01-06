@@ -9,13 +9,13 @@ function routing($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('login', {
               url: '/'
-			, templateUrl: './dist/html/loginView/login.html'
+			, templateUrl: './dist/html/loginView/loginView.html'
         })
 		.state('about', {
               url: '/about'
 			, templateUrl: './dist/html/aboutView/about.html'
 		})
-        .state('learnMore', {
+        .state('learnMore', {   
               url: '/learnmore'
             , templateUrl: './dist/html/learnMoreView/learnMore.html'
         })

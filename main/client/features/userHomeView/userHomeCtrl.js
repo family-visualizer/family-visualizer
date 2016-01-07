@@ -10,17 +10,30 @@ angular.module('app').controller('userHomeCtrl', function ($scope, authService, 
 			var getAncestry = function () {
 				familyService.getAncestry($scope.authedUser.personId, $scope.authedUser.accessToken).then(function (data) {
 					$scope.ancestry = data;
-					console.log(data);
+					// console.log(data);
 				});
 			};
 
 			getAncestry();
+			getAncestryAndChildren();
 
 		});
 	};
-
 	getAuthedUser();
 
+
+	//Get children
+	
+	var getAncestryAndChildren = function () {
+		console.log('service call', familyService.getAncestryAndChildren($scope.authedUser.personId, $scope.authedUser.accessToken));
+		familyService.getAncestryAndChildren($scope.authedUser.personId, $scope.authedUser.accessToken).then(function (data) {
+			$scope.ancestryAndChildren = data;
+			$scope.ancestry = familyService.returnAncestry();
+			console.log(data);
+		});
+	};
+
+	
 
 
 

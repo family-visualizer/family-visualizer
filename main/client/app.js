@@ -22,5 +22,13 @@ function routing($stateProvider, $urlRouterProvider) {
         .state('userHome', {
               url: '/userhome'
             , templateUrl: './dist/html/userHomeView/userHome.html'
+        })
+        .state('gallery', {
+              url: '/gallery'
+            , templateUrl: './dist/html/userHomeView/gallery.html'
+        })
+        .state('settings', {
+              url: '/userhome'
+            , templateUrl: './dist/html/userHomeView/settings.html'
         });
 }

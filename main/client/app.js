@@ -32,3 +32,4 @@ function routing($stateProvider, $urlRouterProvider) {
 			, templateUrl: './dist/html/userHomeView/settings.html'
 		});
 }
+

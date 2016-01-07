@@ -5,8 +5,7 @@ angular.module('app').directive('loginViewInfoDir', function () {
 		, templateUrl: "./dist/html/mainPageInfo/mainPageInfo.html"
 		, controller: "mainPageInfoCtrl"
 		, scope: {
-			  icon: '='	
-			, text: '='
+			  infoBox: '='
 		}
 	}
 

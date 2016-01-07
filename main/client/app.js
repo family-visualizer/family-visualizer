@@ -10,6 +10,7 @@ function routing($stateProvider, $urlRouterProvider) {
 		.state('login', {
 			url: '/'
 			, templateUrl: './dist/html/loginView/loginView.html'
+			, controller: 'loginViewCtrl'
 		})
 		.state('about', {
 			url: '/about'

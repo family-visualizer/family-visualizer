@@ -1,10 +1,10 @@
-angular.module('app').directive('linearChart', function($parse, $window) {
+angular.module('app').directive('linearChart', ($parse, $window) => {
 
     return {
-        restrict: 'EA',
-        templateUrl: './dist/html/home-chart/home-chart-temp.html',
-        controller: 'homeChartCtrl',
-        link: function(scope, elem, attrs) {
+          restrict: 'EA'
+		, templateUrl: './dist/html/home-chart/home-chart-temp.html'
+        , controller: 'homeChartCtrl'
+        , link (scope, elem, attrs) {
             var dataset = [];
 
             // Setup data
@@ -31,7 +31,7 @@ angular.module('app').directive('linearChart', function($parse, $window) {
                 .range([padding, canvas_width - padding * 2]); // output range
 
             var yScale = d3.scale.linear() // yScale is height of graphic
-                .domain([0, d3.max(dataset, function(d) {
+                .domain([0, d3.max(dataset, d => {
                     return d[1]; // input domain
                 })])
                 .range([canvas_height - padding, padding]); // remember y starts on top going down so we flip
@@ -73,16 +73,16 @@ angular.module('app').directive('linearChart', function($parse, $window) {
                 .data(dataset)
                 .enter()
                 .append("circle") // Add circle svg
-                .attr("cx", function(d) {
+                .attr("cx", d => {
                     return xScale(d[0]); // Circle's X
                 })
-                .attr("cy", function(d) { // Circle's Y
+                .attr("cy", d => { // Circle's Y
                     return yScale(d[1]);
                 })
-                .attr("r", function() {
+                .attr("r", () => {
                     return randomizeRadius()
                 }) // radius
-                .attr("fill", function() {
+                .attr("fill", () => {
                     return colorPicker()
                 });
 
@@ -113,10 +113,10 @@ angular.module('app').directive('linearChart', function($parse, $window) {
                 }
 
                 // Update scale domains
-                xScale.domain([0, d3.max(dataset, function(d) {
+                xScale.domain([0, d3.max(dataset, d => {
                     return d[0];
                 })]);
-                yScale.domain([0, d3.max(dataset, function(d) {
+                yScale.domain([0, d3.max(dataset, d => {
                     return d[1];
                 })]);
 
@@ -125,29 +125,29 @@ angular.module('app').directive('linearChart', function($parse, $window) {
                     .data(dataset) // Update with new data
                     .transition() // Transition from old to new
                     .duration(1000) // Length of animation
-                    .each("start", function() { // Start animation
+                    .each("start", () => { // Start animation
                         d3.select(this) // 'this' means the current element
                             .attr("fill", "gray") // Change color
                             .attr("r", 5);  // Change size
                     })
-                    .delay(function(d, i) {
+                    .delay( (d, i) => {
                         return i / dataset.length * 500; // Dynamic delay (i.e. each item delays a little longer)
                     })
                     //.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
-                    .attr("cx", function(d) {
+                    .attr("cx", d => {
                         return xScale(d[0]); // Circle's X
                     })
-                    .attr("cy", function(d) {
+                    .attr("cy", d => {
                         return yScale(d[1]); // Circle's Y
                     })
-                    .each("end", function() { // End animation
+                    .each("end", () => { // End animation
                         d3.select(this) // 'this' means the current element
                             .transition()
                             .duration(500)
-                            .attr("fill", function() {
+                            .attr("fill", () => {
                                 return colorPicker();
                             }) // Change color
-                            .attr("r", function() {
+                            .attr("r", () => {
                                 return randomizeRadius()
                             }); // Change radius
                     });

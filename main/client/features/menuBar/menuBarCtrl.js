@@ -1,4 +1,4 @@
-angular.module('app').controller('menuBarCtrl', function( $scope, ngDialog ) {
+angular.module('app').controller('menuBarCtrl', function( $scope, ngDialog, $state ) {
 	
 	$scope.openLoginModal = function() {
       ngDialog.open({

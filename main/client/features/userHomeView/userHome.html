@@ -3,8 +3,8 @@
 
 <h3>FAMILY!!!</h3>
 
-<div>{{ancestry}}</div>
+<div ng-repeat="person in ancestry">{{person.name}}</div>
 
 <h3>CHILDREN!!!</h3>
 
-<div>{{ancestryAndChildren}}</div>
+<div ng-repeat="person in ancestryAndChildren">{{person.name}}</div>

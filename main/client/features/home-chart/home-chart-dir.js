@@ -5,24 +5,14 @@ angular.module('app').directive('linearChart', function($parse, $window) {
         templateUrl: './dist/html/home-chart/home-chart-temp.html',
         controller: 'homeChartCtrl',
         link: function(scope, elem, attrs) {
-            var dataset = [
-                // [1000, 0],
-                // [0, 10],
-                // [100, 60],
-                // [151, 131],
-                // [35, 100],
-                // [59, 151],
-                // [300, 100],
-                // [300, 300]
-            ];
+            var dataset = [];
 
             // Setup data
-
             var numDataPoints = 20; // Number of dummy data points
             var maxRange = Math.random() * 1000; // Max range of new values
             for (var i = 0; i < numDataPoints; i++) {
-                var newNumber1 = Math.floor(Math.random() * maxRange); // New random integer
-                var newNumber2 = Math.floor(Math.random() * maxRange); // New random integer
+                var newNumber1 = (Math.floor(Math.random() * maxRange) + 25); // New random integer
+                var newNumber2 = (Math.floor(Math.random() * maxRange) + 50); // New random integer
                 dataset.push([newNumber1, newNumber2]); // Add new number to array
             }
 
@@ -34,7 +24,7 @@ angular.module('app').directive('linearChart', function($parse, $window) {
             console.log("this is dataset", dataset);
             // Create scale functions
             var xScale = d3.scale.linear() // xScale is width of graphic
-                .domain([0, d3.max(dataset, function(d) {
+                .domain([0, d3.max(dataset, d => {
                     return d[0]; // input domain
 
                 })])
@@ -47,35 +37,35 @@ angular.module('app').directive('linearChart', function($parse, $window) {
                 .range([canvas_height - padding, padding]); // remember y starts on top going down so we flip
 
             // Define X axis
-            var xAxis = d3.svg.axis()
+            const xAxis = d3.svg.axis()
                 .scale(xScale)
                 .orient("bottom")
                 .ticks(0);
 
             // Define Y axis
-            var yAxis = d3.svg.axis()
+            const yAxis = d3.svg.axis()
                 .scale(yScale)
                 .orient("left")
                 .ticks(0);
 
             // Create SVG element
-            var svg = d3.select("h3") // This is where we put our vis
+            const svg = d3.select("h3") // This is where we put our vis
                 .append("svg")
                 .attr("width", canvas_width)
                 .attr("height", canvas_height)
 
             //randomize radius size
-            function randomizeRadius() {
+            function randomizeRadius () {
                 return Math.round(Math.random() * 25 + 5);
             }
-
-            function colorPicker() {
+			//pick either blue or orange
+            function colorPicker () {
                 var randomizer = Math.floor(Math.random() * 2);
                 console.log("this is randomizer", randomizer);
                 if (randomizer === 0) {
-                    return 'rgba(248, 158, 49, .5)';
+                    return 'rgba(248, 158, 49, .8)';
                 } else {
-                    return 'rgba(0, 114, 188, 1)'
+                    return 'rgba(0, 114, 188, .95)'
                 }
             }
             // Create Circles
@@ -108,16 +98,17 @@ angular.module('app').directive('linearChart', function($parse, $window) {
                 .attr("transform", "translate(" + padding + ",0)")
                 .call(yAxis);
 
-            // On click, update with new data
-            setInterval(function() {
+            // On interval, update with new data
+            setInterval( () => {
+				console.log("this is svg", svg);
                 d3.select("h4")
                 console.log("you clicked me!");
                 var numValues = dataset.length; // Get original dataset's length
                 var maxRange = Math.random() * 1000; // Get max range of new values
                 dataset = []; // Initialize empty array
-                for (var i = 0; i < numValues; i++) {
-                    var newNumber1 = Math.floor(Math.random() * maxRange); // Random int for x
-                    var newNumber2 = Math.floor(Math.random() * maxRange); // Random int for y
+                for (let i = 0; i < numValues; i++) {
+                    let newNumber1 = (Math.floor(Math.random() * maxRange) + 25); // Random int for x
+                    let newNumber2 = (Math.floor(Math.random() * maxRange) + 50); // Random int for y
                     dataset.push([newNumber1, newNumber2]); // Add new numbers to array
                 }
 
@@ -169,11 +160,10 @@ angular.module('app').directive('linearChart', function($parse, $window) {
 
                 // Update Y Axis
                 svg.select(".y.axis")
-                    .transition()
+                	.transition()
                     .duration(100)
                     .call(yAxis);
             }, 3000);
-
         }
     }
 

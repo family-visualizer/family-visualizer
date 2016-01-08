@@ -42,8 +42,6 @@ function familyService($q, $http) {
 
 					if (person.ascendancyNumber > 1 && person.ascendancyNumber < 512 && person.ascendancyNumber % 2 === 0) {
 
-						console.log("searchin this person's children", person.ascendancyNumber);
-
 						var parent =
 							{
 								personId: person.id

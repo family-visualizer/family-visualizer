@@ -17,7 +17,6 @@ angular.module('app').controller('userHomeCtrl', function ($scope, authService, 
 			$scope.ancestry = familyService.returnAncestry();
 			$scope.familyLength = $scope.ancestry.length;
 			$scope.childrenLength = $scope.ancestryAndChildren.length;
-			console.log("ancestryAndChildren", $scope.ancestryAndChildren);
 		});	
 	};	
 });

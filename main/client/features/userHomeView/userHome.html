@@ -2,9 +2,21 @@
 <p> user home test </p>
 
 <h3>FAMILY!!!</h3>
+<h2>{{familyLength}}</h2>
 
 <div ng-repeat="person in ancestry">{{person.name}}</div>
 
 <h3>CHILDREN!!!</h3>
+<h2>{{childrenLength}}</h2>
 
-<div ng-repeat="person in ancestryAndChildren">{{person.name}}</div>
+<div ng-repeat="person in ancestryAndChildren track by $index">
+	
+	<div ng-repeat="child in person.children">
+		
+		{{child.name}}
+	</div>
+	
+	</div>
+	
+	
+	

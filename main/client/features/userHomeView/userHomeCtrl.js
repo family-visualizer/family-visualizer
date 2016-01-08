@@ -9,7 +9,6 @@ angular.module('app').controller('userHomeCtrl', function ($scope, authService, 
 	};
 	getAuthedUser();
 
-
 	//Get ancestry and children
 	
 	var getAncestryAndChildren = function () {
@@ -19,16 +18,6 @@ angular.module('app').controller('userHomeCtrl', function ($scope, authService, 
 			$scope.familyLength = $scope.ancestry.length;
 			$scope.childrenLength = $scope.ancestryAndChildren.length;
 			console.log("ancestryAndChildren", $scope.ancestryAndChildren);
-		});
-	};
-
-	
+		});	
+	};	
 });
-
-
-
-//we are displaying children's names
-//we are not displaying parents' names
-
-//the people at the top of the tree aren't listed as children
-//

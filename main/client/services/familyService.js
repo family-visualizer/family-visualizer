@@ -14,6 +14,7 @@ function familyService($q, $http) {
 		return self.ancestryAndChildren;
 	};
 
+	//Here we make the API call for direct ancestors and save their information.
 	this.getAncestryAndChildren = (personId, accessToken) => {
 		var defer = $q.defer();
 		if (!this.ancestry) {
@@ -35,15 +36,27 @@ function familyService($q, $http) {
 				});
 				self.ancestry = ancestry;
 
+
+				//Here we make each direct ancestor into a 'parent' and then make the API call to fill in their children.
 				self.ancestry.forEach(function (person) {
 
 					if (person.ascendancyNumber > 1 && person.ascendancyNumber < 512 && person.ascendancyNumber % 2 === 0) {
+
 						console.log("searchin this person's children", person.ascendancyNumber);
 
 						var parent =
 							{
-								parentAscendancyNumber: person.ascendancyNumber
-								, ame: person.name
+								personId: person.id
+								, name: person.name
+								, gender: person.gender
+								, lifespan: person.lifespan
+								, birthDate: person.birthDate
+								, birthPlace: person.birthPlace
+								, deathDate: person.deathDate
+								, deathPlace: person.deathPlace
+								, marriagePlace: person.marriagePlace
+								, marriageDate: person.marriageDate
+								, ascendancyNumber: person.ascendancyNumber
 								, children: []
 							};
 
@@ -67,50 +80,22 @@ function familyService($q, $http) {
 											, marriageDate: child.display.marriageDate
 											, descendancyNumber: child.display.descendancyNumber
 										}
-
 										);
-
 								}
-
-
 							});
 							ancestryAndChildren.push(parent);
 							self.ancestryAndChildren = ancestryAndChildren;
 							defer.resolve(self.ancestryAndChildren);
-
-
-							ancestryAndChildren.forEach(function (human) {
-								
-								human.children.forEach(function (child) {
-									if (child.name === person.name) {
-								console.log("checking to see if they are in bottom", person);
-								console.log('ANCESTRY & CHILDREN!!!!!!', ancestryAndChildren);
-								ancestryAndChildren.push(person);
-									}	
-								});
-								
-							
-							}); 
-								
-
 						}
-
-
 							);
 					}
-
-
-
-
-
 				});
 			});
 		}
-
 		return defer.promise;
 	};
 
-	//Gets ancestry
+	//Helper function that makes the API call for direct ancestors
 	function makeAncestryCall(personId, accessToken, defer) {
 		var req = {
 			method: 'GET'
@@ -124,7 +109,7 @@ function familyService($q, $http) {
 		return $http(req);
 	}
 
-	//Gets children for ancestors
+	//Helper function that makes the API call for children of direct ancestors
 	function makeAncestryAndChildrenCall(accessToken, defer, person) {
 		var req = {
 			method: 'GET'

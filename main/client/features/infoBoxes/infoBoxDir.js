@@ -7,9 +7,6 @@ angular.module('app').directive('infoBoxDir', function () {
 		, scope: {
 			  infoBox: '='
 		}
-		, link( scope, elem, attrs ) {
-			console.log(scope.infoBox)
-		}
 	}
 
 });

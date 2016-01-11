@@ -1,4 +1,4 @@
-angular.module('app').directive('linearChart', ($parse, $window) => {
+angular.module('app').directive('linearChart', () => {
 
     return {
           restrict: 'EA'
@@ -6,6 +6,9 @@ angular.module('app').directive('linearChart', ($parse, $window) => {
         , controller: 'homeChartCtrl'
         , link (scope, elem, attrs) {
             var dataset = [];
+
+			console.log("this is scope.salesData", scope.salesData);
+			console.log("this is test", scope.test);
 
             // Setup data
             var numDataPoints = 20; // Number of dummy data points
@@ -101,7 +104,7 @@ angular.module('app').directive('linearChart', ($parse, $window) => {
             // On interval, update with new data
             setInterval( () => {
 				console.log("this is svg", svg);
-                d3.select("h4")
+                d3.select("h6")
                 console.log("you clicked me!");
                 var numValues = dataset.length; // Get original dataset's length
                 var maxRange = Math.random() * 1000; // Get max range of new values
@@ -144,7 +147,7 @@ angular.module('app').directive('linearChart', ($parse, $window) => {
                         d3.select(this) // 'this' means the current element
                             .transition()
                             .duration(500)
-                            .attr("fill", () => {
+                            .attr(" ", () => {
                                 return colorPicker();
                             }) // Change color
                             .attr("r", () => {

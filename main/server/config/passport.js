@@ -1,6 +1,13 @@
 import { Strategy as FamilySearchStrategy } from 'passport-familysearch';
+import keys from "./keys.js";
+import User from "../features/users/users.server.model.js";
+// var keys = require('./distserver/')
+
+
 
 module.exports = passport => {
+
+	console.log("User", User);
 
 	passport.serializeUser((user, done) => {
 		done(null, user);
@@ -11,20 +18,36 @@ module.exports = passport => {
 	});
 
 	passport.use(new FamilySearchStrategy({
-		  authorizationURL: 'https://sandbox.familysearch.org/cis-web/oauth2/v3/authorization'
-		, tokenURL: 'https://sandbox.familysearch.org/cis-web/oauth2/v3/token'
-		, devKey: "a02j000000BpvVCAAZ"
-		, callbackURL: "http://localhost:3000/auth/familysearch/callback"
-		, environment: 'sandbox'
+		authorizationURL: keys.authorizationURL
+		, tokenURL: keys.tokenURL
+		, devKey: keys.devKey
+		, callbackURL: keys.callbackURL
+		, environment: keys.environment
 	},
 		(accessToken, refreshToken, profile, done) => {
 			
-			// import users and stuff here
+			profile = JSON.parse(profile._raw).users[0];
 			
-			
-			console.log("access token:", accessToken);
-			console.log("profile", profile);
-			return done(null, profile);
-		}));
+			var query = { 'personId': profile.personId };
+
+            User.findOne(query, function (error, user) {
+                if (user) {
+					console.log("if is running");
+					user.accessToken = accessToken;
+					user.save();
+                    done(null, user);
+                }
+                else {
+					console.log("else is running");
+                    user = new User;
+                   	user.displayName = profile.displayName;
+					user.personId = profile.personId;
+					user.email = profile.email;
+					user.accessToken = accessToken;
+                    user.save();
+                    done(null, user);
+                }
+            });
+		}));//heckka comment
 };
 

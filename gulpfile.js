@@ -37,14 +37,23 @@ gulp.task('html', function() {
 		.pipe(gulp.dest('./public/dist/html/'))
 });
 
-gulp.task('javascriptServer', function() {
-	gulp.src('./main/server/**/*.js')
+gulp.task('javascriptServerFeatures', function() {
+	gulp.src('./main/server/features/**/*.js')
 		.pipe(babel({
 			presets: ['es2015']
 			// , plugins: ['transform-es2015-modules-commonjs']
 		}))
-		.pipe(gulp.dest('./distserver/'))
+		.pipe(gulp.dest('./distserver/features/'))
+});
+
+gulp.task('javascriptServerConfig', function() {
+	gulp.src('./main/server/config/**/*.js')
+		.pipe(babel({
+			presets: ['es2015']
+			// , plugins: ['transform-es2015-modules-commonjs']
+		}))
+		.pipe(gulp.dest('./distserver/config'))
 });
 
 
-gulp.task('default', ['stylus', 'javascriptClient', 'javascriptServer', 'html']);
+gulp.task('default', ['stylus', 'javascriptClient', 'javascriptServerConfig', 'html', 'javascriptServerFeatures']);

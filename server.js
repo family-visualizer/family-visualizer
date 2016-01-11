@@ -8,47 +8,45 @@ var port = process.env.PORT || 3000;
 
 // Including the configured express and mongoose objects
 var mongoose = require('./distserver/config/mongoose');
+var keys = require('./distserver/config/keys.js')
 
 
 var express = require('express')
+	, session = require('express-session')
 	, app = express()
 	, bodyParser = require('body-parser')
 	, cors = require('cors')
 	, port = 3000
 	, passport = require("passport")
 	, db = mongoose();
-
-
+	
 app.use(bodyParser.json());
 app.use(cors());
+    app.use(session({
+        saveUninitialized: true,
+        resave: true,
+        secret: keys.sessionSecret
+    }));
 app.use(express.static(__dirname + '/public'));
 
-app.use(passport.initialize())
-
-passport.serializeUser(function (user, done) {
-	done(null, user);
-});
-
-passport.deserializeUser(function (obj, done) {
-	done(null, obj);
-});
+app.use(passport.initialize());
+app.use(passport.session());	
+	
+require('./distserver/config/passport.js')(passport);
+require('./distserver/features/users/users.server.routes.js')(app);
+require('./distserver/features/auth/auth.server.routes.js')(app);
 
 
-var FamilySearchStrategy = require('passport-familysearch').Strategy;
 
-passport.use(new FamilySearchStrategy({
-	authorizationURL: 'https://sandbox.familysearch.org/cis-web/oauth2/v3/authorization',
-    tokenURL: 'https://sandbox.familysearch.org/cis-web/oauth2/v3/token',
-    devKey: "a02j000000BpvVCAAZ",
-    callbackURL: "http://localhost:3000/auth/familysearch/callback",
-	environment: 'sandbox'
-},
-	function (accessToken, refreshToken, profile, done) {
-		console.log("access token:", accessToken);
-		console.log("profile", profile);
-		return done(null, profile);
-	}
-	));
+// passport.serializeUser(function (user, done) {
+// 	done(null, user);
+// });
+
+// passport.deserializeUser(function (obj, done) {
+// 	done(null, obj);
+// });
+
+
 
 
 app.get('/auth/familysearch',
@@ -62,6 +60,12 @@ app.get('/auth/familysearch/callback',
 
 	});
 
+app.get("/getAuthedUser", function (req, res) {
+            res.status(200).json(req.user);
+			console.log("here is the profile", req.profile);
+			console.log("here is the access token", req.accessToken);
+        });
+
 app.get('/logout', function (req, res) {
 	req.logout();
 	res.redirect('/');
@@ -70,7 +74,7 @@ app.get('/logout', function (req, res) {
 
 
 
-app.use(express.static('./public/'));
+
 
 // Let's listen for incoming calls!
 app.listen(port, function () {

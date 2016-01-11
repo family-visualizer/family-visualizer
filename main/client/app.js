@@ -16,14 +16,15 @@ function routing($stateProvider, $urlRouterProvider) {
 			url: '/about'
 			, templateUrl: './dist/html/aboutView/about.html'
 		})
-		.state('learnMore', {
-			url: '/learnmore'
-			, templateUrl: './dist/html/learnMoreView/learnMore.html'
-		})
-		.state('userHome', {
-			url: '/userhome'
-			, templateUrl: './dist/html/userHomeView/userHome.html'
-		})
+        .state('learnMore', {   
+              url: '/learnmore'
+            , templateUrl: './dist/html/learnMoreView/learnMore.html'
+        })
+        .state('userHome', {
+              url: '/userhome'
+            , templateUrl: './dist/html/userHomeView/userHome.html'
+			, controller: 'userHomeCtrl'
+        })
 		.state('gallery', {
 			url: '/gallery'
 			, templateUrl: './dist/html/userHomeView/gallery.html'

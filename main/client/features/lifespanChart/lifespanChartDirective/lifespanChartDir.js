@@ -58,24 +58,21 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				.attr('margin', 50);
 				
 
-			svg.selectAll("circle")
-				.data(scope.dataset)
-				.enter()
-				.append("circle")
-				.attr({
-					r: 0
-					, cx: function (data) {
-						return xscale(data[0]);
-					}
-					, cy: function (data) {
-						return yscale(data[1]);
-					}
-					// , fill:
-					// function (data) {
-					// 	// return "rgb(" + data[0] + ",0," + data[1] + ")";
-					// 	return 'rgb(150, 250, 100)';
-					// }
-				});
+			// svg.selectAll("circle")
+			// 	.data(scope.dataset)
+			// 	.enter()
+			// 	.append("circle")
+			// 	.attr({
+			// 		r: 0
+			// 		, cx: function (data) {
+			// 			return xscale(data[0]);
+			// 		}
+			// 		, cy: function (data) {
+			// 			return yscale(data[1]);
+			// 		}
+			// 		, fill: none;
+					
+			// 	});
 				
 			
 			svg.selectAll("circle")
@@ -86,11 +83,11 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				.duration(2000)
 				.attr({
 					
-					fill: function (data, sliderValue) {
-						if (data[0] === sliderValue) {
-							return 'green';
-						}
-					},
+					// fill: function (data, sliderValue) {
+					// 	if (data[0] === sliderValue) {
+					// 		return 'green';
+					// 	}
+					// },
 					
 					r: function (data) {
 						return rscale(data[2]);

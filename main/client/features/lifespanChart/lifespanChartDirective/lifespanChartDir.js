@@ -65,37 +65,38 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 			function brushed(data) {
 				
 				var value = brush.extent()[0];
-
-				if (d3.event.sourceEvent) { // not a programmatic event
-					handle.select('text');
-					value = xscale.invert(d3.mouse(this)[0]);
-					brush.extent([value, value]);
-				}
-
-				
-				
-				handle.attr("transform", "translate(" + xscale(value) + ",0)");
-				handle.select('text').text(Math.floor(value));
-				
 				sliderValue = Math.floor(value);
-				
-				// if (data[0] === sliderValue) {
+				console.log(sliderValue);	
+					
+				// if (sliderValue === scope.dataset[0]) {
 				// 	svg.selectAll("circle")
 				// 		.transition()
 				// 		// .delay(function (data) {
 				// 		// 	return data[0];
 				// 		// })
 				// 		// .duration(2000)
-				// 		.attr({
-				// 			fill: "red",
-				// 			r: function (data) {
-				// 				return rscale(data[2]);
-				// 			}
-				// 		});
-				// }	
-				console.log(sliderValue);
+				// 		.attr(
+				// 				{
+				// 					fill: "red", 
+				// 					r: function (data) {
+				// 						return rscale(data[2]);
+				// 					}
+				// 				}
+				// 			);						
+				// }
 				
-							
+				
+				
+				if (d3.event.sourceEvent) { // not a programmatic event
+					handle.select('text');
+					value = xscale.invert(d3.mouse(this)[0]);
+					brush.extent([value, value]);
+				}
+				
+				handle.attr("transform", "translate(" + xscale(value) + ",0)");
+				handle.select('text').text(Math.floor(value));
+				
+									
 			}
 			
 			

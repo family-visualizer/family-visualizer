@@ -1,10 +1,14 @@
-angular.module('app').controller('homeChartCtrl', function($scope, $interval) {
+angular.module('app').controller('homeChartCtrl', function($scope, $rootScope) {
 
-	$scope.salesData=[
-		[5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
-                [410, 12], [475, 44], [25, 67], [85, 21], [220, 88]
-    ];
 
-	$scope.test = "hey there";
+	$rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
+		console.log("event", event);
+		console.log("toState", toState);
+		console.log("toParams", toParams);
+		console.log("fromState", fromState);
+		console.log("fromParams", fromParams);
+		console.log("$scope.interval", $scope.myInterval);
+		clearInterval($scope.myInterval);
+	})
 
  })

@@ -31,7 +31,11 @@ function routing($stateProvider, $urlRouterProvider) {
 		})
 		.state('settings', {
 			url: '/settings'
-			, templateUrl: './dist/html/userHomeView/settings.html'
+			, templateUrl: './dist/html/settingsView/settings.html'
+		})
+		.state('zoomChart', {
+			url: '/zoomchart'
+			, templateUrl: './dist/html/familyZoomChart/familyZoomChartView.html'
 		});
 }
 

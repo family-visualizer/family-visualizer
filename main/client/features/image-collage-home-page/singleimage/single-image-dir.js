@@ -3,11 +3,11 @@ angular.module('app').directive('backImg', function() {
 	  console.log("this is attrs.backImg");
     var url = attrs.backImg;
     element.css({
-      'background-image': 'url('+ url + ')',
-      'background-size': 'cover',
-      'width': '400px',
-      'height': '300px',
-      'display': 'inline-block'
+        'background-image': 'url('+ url + ')'
+      , 'background-size': 'cover'
+      , 'width': '400px'
+      , 'height': '300px'
+      , 'display': 'inline-block'
     });
   };
 });

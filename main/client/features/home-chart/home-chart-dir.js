@@ -6,10 +6,7 @@ angular.module('app').directive('linearChart', () => {
         , controller: 'homeChartCtrl'
         , link (scope, elem, attrs) {
             var dataset = [];
-			scope.luke = "hey lukey dog";
 
-			console.log("scope.luke", scope.luke);
-			console.log("$scope.test", scope.test);
             // Setup data
             var numDataPoints = 20; // Number of dummy data points
             var maxRange = Math.random() * 1000; // Max range of new values
@@ -146,7 +143,7 @@ angular.module('app').directive('linearChart', () => {
                         d3.select(this) // 'this' means the current element
                             .transition()
                             .duration(500)
-                            .attr(" ", () => {
+                            .attr("fill", () => {
                                 return colorPicker();
                             }) // Change color
                             .attr("r", () => {

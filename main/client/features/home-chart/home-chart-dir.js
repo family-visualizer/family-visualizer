@@ -1,4 +1,4 @@
-angular.module('app').directive('linearChart', ($parse, $window) => {
+angular.module('app').directive('linearChart', () => {
 
     return {
           restrict: 'EA'
@@ -17,11 +17,11 @@ angular.module('app').directive('linearChart', ($parse, $window) => {
             }
 
             // Setup settings for graphic
-            var canvas_width = 1000;
-            var canvas_height = 350;
+            var canvas_width = 600;
+            var canvas_height = 250;
             var padding = 30; // for chart edges
 
-            console.log("this is dataset", dataset);
+
             // Create scale functions
             var xScale = d3.scale.linear() // xScale is width of graphic
                 .domain([0, d3.max(dataset, d => {
@@ -61,7 +61,6 @@ angular.module('app').directive('linearChart', ($parse, $window) => {
 			//pick either blue or orange
             function colorPicker () {
                 var randomizer = Math.floor(Math.random() * 2);
-                console.log("this is randomizer", randomizer);
                 if (randomizer === 0) {
                     return 'rgba(248, 158, 49, .8)';
                 } else {
@@ -99,10 +98,9 @@ angular.module('app').directive('linearChart', ($parse, $window) => {
                 .call(yAxis);
 
             // On interval, update with new data
-            setInterval( () => {
-				console.log("this is svg", svg);
-                d3.select("h4")
-                console.log("you clicked me!");
+
+            scope.myInterval = setInterval( () => {
+                d3.select("h6")
                 var numValues = dataset.length; // Get original dataset's length
                 var maxRange = Math.random() * 1000; // Get max range of new values
                 dataset = []; // Initialize empty array

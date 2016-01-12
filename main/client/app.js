@@ -17,7 +17,7 @@ function routing($stateProvider, $urlRouterProvider) {
 			, templateUrl: './dist/html/aboutView/about.html'
 		})
 
-        .state('learnMore', {   
+        .state('learnMore', {
               url: '/learnmore'
             , templateUrl: './dist/html/learnMoreView/learnMore.html'
         })
@@ -34,7 +34,11 @@ function routing($stateProvider, $urlRouterProvider) {
 		.state('settings', {
 			url: '/settings'
 			, templateUrl: './dist/html/userHomeView/settings.html'
+		})
+		.state('lifespan', {
+			url: '/lifespan'
+			, templateUrl: './dist/html/lifespanChart/lifespanChartView.html'
 		});
+		
 
 }
-

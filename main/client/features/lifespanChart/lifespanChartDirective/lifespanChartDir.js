@@ -9,7 +9,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 	
 			var height = 500;
 			var width = 800;
-			var padding = 20;
+			var padding = 50;
 			var svg = d3.select(".chart")
 				.append("svg")
 				.attr({
@@ -23,7 +23,9 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				d3.max(scope.dataset, function (data) {
 					return data[0];
 				})])
-				.range([padding, width-padding]);
+				.range([padding, width-padding])
+				.clamp(true);
+				// .ticks();
 
 			var yscale = d3.scale.linear()
 				.domain([d3.min(scope.dataset, function(data) {
@@ -31,7 +33,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				d3.max(scope.dataset, function (data) {
 					return data[1];
 				})])
-				.range([height - padding, padding]);
+				.range([(height - 100) - padding, padding]);
 
 			var rscale = d3.scale.linear()
 				.domain([d3.min(scope.dataset, function(data) {
@@ -44,16 +46,65 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 			var xAxis = d3.svg.axis().scale(xscale);
 
 
-
+			var startingValue = d3.min(scope.dataset, function(data) {
+						return data[0];});
 			
+			
+			// var value = brush.extent()[0];
+			
+			var sliderValue = startingValue;
+						
+						
+			// defines brush
+			var brush = d3.svg.brush()
+				.x(xscale)
+				.extent([startingValue, startingValue])
+				.on("brush", brushed);
+				
+					
+			function brushed(data) {
+				
+				var value = brush.extent()[0];
+				sliderValue = Math.floor(value);
+				console.log(sliderValue);	
+					
+				// if (sliderValue === scope.dataset[0]) {
+				// 	svg.selectAll("circle")
+				// 		.transition()
+				// 		// .delay(function (data) {
+				// 		// 	return data[0];
+				// 		// })
+				// 		// .duration(2000)
+				// 		.attr(
+				// 				{
+				// 					fill: "red", 
+				// 					r: function (data) {
+				// 						return rscale(data[2]);
+				// 					}
+				// 				}
+				// 			);						
+				// }
 				
 				
 				
+				if (d3.event.sourceEvent) { // not a programmatic event
+					handle.select('text');
+					value = xscale.invert(d3.mouse(this)[0]);
+					brush.extent([value, value]);
+				}
+				
+				handle.attr("transform", "translate(" + xscale(value) + ",0)");
+				handle.select('text').text(Math.floor(value));
+				
+									
+			}
+			
+			
 			svg.append("rect")
 				.attr('width', "100%")
-				.attr('height', "100%")
-				.attr('fill', 'rgb(100,0,222)')
-				.attr('margin', 50);
+				.attr('height', height - 100)
+				.attr('fill', 'rgb(100,0,222)');
+				// .attr('margin', 50);
 				
 
 			svg.selectAll("circle")
@@ -71,69 +122,44 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 					, fill: 'green'
 					
 				});
-				
-			var sliderValue = 5;
 			
-			svg.selectAll("circle")
-				.transition()
-				// .delay(function (data) {
-				// 	return data[0];
-				// })
-				.duration(2000)
-				.attr({
-					fill: function (data) {
-						if (data[0] === sliderValue) {
-							return 'red';
-						} else {
-							return 'green';
-						}
-					},
+			
+			// svg.selectAll("circle")
+			// 	.transition()
+			// 	// .delay(function (data) {
+			// 	// 	return data[0];
+			// 	// })
+			// 	.duration(2000)
+			// 	.attr({
+			// 		fill: function (data) {
+			// 			if (data[0] === sliderValue) {
+			// 				return 'red';
+			// 			} else {
+			// 				return 'green';
+			// 			}
+			// 		},
 					
-					r: function (data) {
-						return rscale(data[2]);
-					}
-				});
-				
+			// 		r: function (data) {
+			// 			return rscale(data[2]);
+			// 		}
+			// 	});
+					
 			
-			var margin = { top: 50, right: 50, bottom: 50, left: 50 },
-				// width = 960 - margin.left - margin.right,
-				// height = 500 - margin.bottom - margin.top,
-				startingValue = 1983;
-
-			// sets scale for slider
-			var x = d3.scale.linear()
-				.domain([1900, 2014])
-				.range([0, width])
-				.clamp(true);
-
-			// defines brush
-			var brush = d3.svg.brush()
-				.x(x)
-				.extent([startingValue, startingValue])
-				.on("brush", brushed);
-
-			// var svg = d3.select(".chart").append("svg")
-			// 	.attr("width", width + margin.left + margin.right)
-			// 	.attr("height", height + margin.top + margin.bottom)
-			// 	.append("g")
-			// // classic transform to position g
-			// 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 			svg.append("g")
 				.attr("class", "x axis")
-			// put in middle of screen
-				.attr("transform", "translate(0," + height / 2 + ")")
-			// inroduce axis
+				// put in middle of screen
+				.attr("transform", "translate(0," + (height - 50) + ")")
+				// inroduce axis
 				.call(d3.svg.axis()
-					.scale(x)
+					.scale(xscale)
 					.orient("bottom")
-					.tickFormat(function (d) { return d; })
-					.tickSize(0)
-					.tickPadding(12)
-					.tickValues([1900, 2014]))
-				.select(".domain")
-				.select(function () { console.log(this); return this.parentNode.appendChild(this.cloneNode(true)); })
-				.attr("class", "halo");
+					.tickFormat(function(d) { return d; })
+					.tickSize(10)
+					.tickPadding(12))
+					// .tickValues([1900, 2014]))
+					.select(".domain")
+					.select(function() {console.log(this); return this.parentNode.appendChild(this.cloneNode(true)); })
+					.attr("class", "halo");
 
 			var slider = svg.append("g")
 				.attr("class", "slider")
@@ -143,38 +169,31 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				.remove();
 
 			slider.select(".background")
-				.attr("height", height);
+				.attr("transform", "translate(0," + (height - 50) + ")")
+				.attr("height", 25);
 
 			var handle = slider.append("g")
-				.attr("class", "handle")
+				.attr("class", "handle");
 
 			handle.append("path")
-				.attr("transform", "translate(0," + height / 2 + ")")
-				.attr("d", "M 0 -20 V 20")
+				.attr("transform", "translate(0," + (height - 50) + ")")
+				.attr("d", "M 0 -10 V 10");
 
 			handle.append('text')
-				.text(startingValue)
-				.attr("transform", "translate(" + (-18) + " ," + (height / 2 - 25) + ")");
+			.text(startingValue)
+			.attr("transform", "translate(" + 0 + " ," + (height - 75) + ")");
 
 			slider
-				.call(brush.event)
-
-			function brushed() {
-				var value = brush.extent()[0];
-
-				if (d3.event.sourceEvent) { // not a programmatic event
-					handle.select('text');
-					value = x.invert(d3.mouse(this)[0]);
-					brush.extent([value, value]);
-				}
-
-				handle.attr("transform", "translate(" + x(value) + ",0)");
-				handle.select('text').text(Math.floor(value))
-			}
-
-
-
-
+				.call(brush.event);
+					
+					
+				
+			
+				
+				
+				
+				
+			
 
 		}
 	};

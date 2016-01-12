@@ -37,5 +37,9 @@ function routing($stateProvider, $urlRouterProvider) {
 			url: '/zoomchart'
 			, templateUrl: './dist/html/familyZoomChart/familyZoomChartView.html'
 		});
+		.state('lifespan', {
+			url: '/lifespan'
+			, templateUrl: './dist/html/lifespanChart/lifespanChartView.html'
+		});
 }
 

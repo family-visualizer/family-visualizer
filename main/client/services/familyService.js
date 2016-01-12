@@ -1,6 +1,6 @@
-angular.module('app').service('familyService', ['$q', '$http', familyService]);
+angular.module('app').service('familyService', ['$q', '$http', 'familyDataUtilsService', familyService]);
 
-function familyService($q, $http) {
+function familyService($q, $http, familyDataUtilsService) {
 
 	var ancestry = [];
 	var ancestryAndChildren = [];
@@ -8,10 +8,6 @@ function familyService($q, $http) {
 
 	this.returnAncestry = function () {
 		return self.ancestry;
-	};
-
-	this.returnAncestryAndChildren = function () {
-		return self.ancestryAndChildren;
 	};
 
 	//Here we make the API call for direct ancestors and save their information.
@@ -36,15 +32,17 @@ function familyService($q, $http) {
 				});
 				self.ancestry = ancestry;
 
-
+				var totalParentResultsReceived = 0;
+				var allTheDads = _.filter(self.ancestry, (person) => person.ascendancyNumber > 1 && person.ascendancyNumber < 512 && person.ascendancyNumber % 2 === 0)
+				var totalExpectedCalls = allTheDads.length;
+				
+				console.log("Total expected children calls: " + totalExpectedCalls);
+				
 				//Here we make each direct ancestor into a 'parent' and then make the API call to fill in their children.
-				self.ancestry.forEach(function (person) {
-
-					if (person.ascendancyNumber > 1 && person.ascendancyNumber < 512 && person.ascendancyNumber % 2 === 0) {
-
+				allTheDads.forEach(function (person, personIndex) {
 						var parent =
 							{
-								personId: person.id
+								personId: person.personId
 								, name: person.name
 								, gender: person.gender
 								, lifespan: person.lifespan
@@ -60,7 +58,7 @@ function familyService($q, $http) {
 
 						makeAncestryAndChildrenCall.call(this, accessToken, defer, person).then((response) => {
 
-							response.data.persons.forEach(function (child) {
+							response.data.persons.forEach(function (child, childIndex) {
 
 								if (child.display.descendancyNumber !== "1" && !/[S]/.test(child.display.descendancyNumber)) {
 
@@ -77,19 +75,36 @@ function familyService($q, $http) {
 											, marriagePlace: child.display.marriagePlace
 											, marriageDate: child.display.marriageDate
 											, descendancyNumber: child.display.descendancyNumber
-										}
-										);
+										});
 								}
+								
+								
 							});
 							ancestryAndChildren.push(parent);
 							self.ancestryAndChildren = ancestryAndChildren;
-							defer.resolve(self.ancestryAndChildren);
-						}
-							);
-					}
+							totalParentResultsReceived++;
+							console.log("Child query received : " + totalParentResultsReceived);
+							if(totalParentResultsReceived === totalExpectedCalls){
+								console.log("All children received, returning");
+								var flattened = familyDataUtilsService.flattenTree(self.ancestryAndChildren);
+								self.ancestry = flattened;
+								defer.resolve(flattened);
+							}
+							// console.log('anc and children', ancestryAndChildren);
+
+						});
+					
 				});
+					// return self.ancestryAndChildren;
 			});
-		}
+			
+		} else {
+			return self.ancestry;
+		} 
+		
+		//TODO else resovle ancestry
+
+		console.log('self.Ancestry in Service', self.ancestryAndChildren);
 		return defer.promise;
 	};
 

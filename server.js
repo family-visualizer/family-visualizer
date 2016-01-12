@@ -8,7 +8,7 @@ var port = process.env.PORT || 3000;
 
 // Including the configured express and mongoose objects
 var mongoose = require('./distserver/config/mongoose');
-var keys = require('./distserver/config/keys.js')
+var keys = require('./distserver/config/keys.js');
 
 
 var express = require('express')

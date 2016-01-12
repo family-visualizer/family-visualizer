@@ -61,7 +61,6 @@ angular.module('app').directive('linearChart', () => {
 			//pick either blue or orange
             function colorPicker () {
                 var randomizer = Math.floor(Math.random() * 2);
-
                 if (randomizer === 0) {
                     return 'rgba(248, 158, 49, .8)';
                 } else {
@@ -99,9 +98,9 @@ angular.module('app').directive('linearChart', () => {
                 .call(yAxis);
 
             // On interval, update with new data
+
             scope.myInterval = setInterval( () => {
                 d3.select("h6")
-                console.log("set intervalXX ran");
                 var numValues = dataset.length; // Get original dataset's length
                 var maxRange = Math.random() * 1000; // Get max range of new values
                 dataset = []; // Initialize empty array

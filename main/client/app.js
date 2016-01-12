@@ -34,6 +34,11 @@ function routing($stateProvider, $urlRouterProvider) {
 		.state('settings', {
 			url: '/settings'
 			, templateUrl: './dist/html/userHomeView/settings.html'
+		})
+		.state('lifespan', {
+			url: '/lifespan'
+			, templateUrl: './dist/html/lifespanChart/lifespanChartView.html'
 		});
+		
 
 }

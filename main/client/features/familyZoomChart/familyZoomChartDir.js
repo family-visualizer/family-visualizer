@@ -86,6 +86,6 @@ angular.module('app')
 			});
 
 			d3.select(self.frameElement).style("height", diameter + "px");
-		};
+		}
 	};
 });

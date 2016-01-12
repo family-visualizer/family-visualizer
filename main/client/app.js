@@ -27,7 +27,7 @@ function routing($stateProvider, $urlRouterProvider) {
         })
 		.state('gallery', {
 			url: '/gallery'
-			, templateUrl: './dist/html/userHomeView/gallery.html'
+			, templateUrl: './dist/html/galleryView/gallery.html'
 		})
 		.state('settings', {
 			url: '/settings'

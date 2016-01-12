@@ -20,8 +20,8 @@ angular.module('app').directive('linearChart', () => {
             }
 
             // Setup settings for graphic
-            var canvas_width = 1000;
-            var canvas_height = 350;
+            var canvas_width = 600;
+            var canvas_height = 250;
             var padding = 30; // for chart edges
 
 

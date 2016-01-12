@@ -9,14 +9,16 @@ angular.module('app').controller('userHomeCtrl', function ($scope, authService, 
 	};
 	getAuthedUser();
 
+	$scope.combinedFamily = [];
+	
 	//Get ancestry and children
 	
 	var getAncestryAndChildren = function () {
 		familyService.getAncestryAndChildren($scope.authedUser.personId, $scope.authedUser.accessToken).then(function (data) {
-			$scope.ancestryAndChildren = data;
-			$scope.ancestry = familyService.returnAncestry();
-			$scope.familyLength = $scope.ancestry.length;
-			$scope.childrenLength = $scope.ancestryAndChildren.length;
-		});	
-	};	
+			$scope.family= data;	
+		});
+	};
+
 });
+
+//test

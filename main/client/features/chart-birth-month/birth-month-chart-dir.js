@@ -5,105 +5,106 @@ angular.module('app').directive('birthMonth', () => {
         templateUrl: './dist/html/chart-birth-month/birth-month-chart-template.html',
         controller: 'birthMonthCtrl',
         link(scope, elem, attrs) {
-            // var generationArray =
-			// [
-			// 	{
-			// 		generation: 1,
-			// 		data:
-			// 		{
-			// 			{
-			// 				amonth: "January",
-			// 				births: 6
-			// 			},
-			// 			{
-			// 				amonth: "February",
-			// 				births: 8
-			// 			},
-			// 			{
-			// 				amonth: "March",
-			// 				births: 3
-			// 			}
-			// 		}
-			// 	},
-			// 	{
-			// 		generation: 2,
-			// 		data:
-			// 		{
-			// 			{
-			// 				amonth: "January",
-			// 				births: 14
-			// 			},
-			// 			{
-			// 				amonth: "February",
-			// 				births: 0
-			// 			},
-			// 			{
-			// 				amonth: "March",
-			// 				births: 8
-			// 			}
-			// 		}
-			// 	},
-			// 	{
-			// 		generation: 3,
-			// 		data:
-			// 		{
-			// 			{
-			// 				amonth: "January",
-			// 				births: 12
-			// 			},
-			// 			{
-			// 				amonth: "February",
-			// 				births: 12
-			// 			},
-			// 			{
-			// 				amonth: "March",
-			// 				births: 8
-			// 			}
-			// 		}
-			// 	}
-			//
-			// ];
 
-			// passInGenerations(generationArray);
-
-			// function passInGenerations(generationArray) {
-			// 	for(var i = 0; i < generationArray.length; i++) {
-			// 		console.log("this is generationArray[i]", generationArray[i]);
-			// 		// console.log("this is generationArray[i][data]", generationArray[i][data]);
-			// 		// console.log("this is generationArray[i][generation]", generationArray[i][generation])
-			// 		generateDonut(generationArray[i].data, generationArray[i].generation);
-			// 	}
-			// }
-			var test = [
+            var generationArray =
+			[
 				{
-					month: "January",
-					birthss: 6
+					generation: 1,
+					data:
+					[
+						{
+							age: "January",
+							population: 6
+						},
+						{
+							age: "February",
+							population: 8
+						},
+						{
+							age: "March",
+							population: 3
+						}
+					]
 				},
 				{
-					month: "February",
-					births: 8
+					generation: 2,
+					data:
+					[
+						{
+							age: "January",
+							population: 14
+						},
+						{
+							age: "February",
+							population: 0
+						},
+						{
+							age: "March",
+							population: 8
+						}
+					]
 				},
 				{
-					month: "March",
-					births: 4
+					generation: 3,
+					data:
+					[
+						{
+							age: "January",
+							population: 12
+						},
+						{
+							age: "February",
+							population: 12
+						},
+						{
+							age: "March",
+							population: 8
+						}
+					]
 				}
-			]
 
-			generateDonut(test, 3);
+			];
+
+			passInGenerations(generationArray);
+
+			function passInGenerations(generationArray) {
+				for(var i = 0; i < generationArray.length; i++) {
+					console.log("this is generationArray[i]", generationArray[i]);
+					// console.log("this is generationArray[i][data]", generationArray[i][data]);
+					// console.log("this is generationArray[i][generation]", generationArray[i][generation])
+					generateDonut(generationArray[i].data, generationArray[i].generation);
+				}
+			}
+			// var test = [
+			// 	{
+			// 		age: "January",
+			// 		population: 6
+			// 	},
+			// 	{
+			// 		age: "February",
+			// 		population: 8
+			// 	},
+			// 	{
+			// 		age: "March",
+			// 		population: 4
+			// 	}
+			// ]
+
+			// generateDonut(test, 3);
 
             function generateDonut(data, genMultiplier) {
 				console.log("this is data", data);
 				console.log("this is genMultiplier", genMultiplier);
-                var width = 960,
-                    height = 500,
-                    radius = Math.min(width, height) / 2;
+                var width = 300,
+                    height = 150,
+                    radius = (Math.min(width, height) / 2) * genMultiplier;
 
                 var color = d3.scale.ordinal()
                     .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
                 var arc = d3.svg.arc()
-                    .outerRadius(radius - 10)
-                    .innerRadius(radius - 70);
+                    .outerRadius(80 - 10)
+                    .innerRadius(80 - 70);
 
                 var pie = d3.layout.pie()
                     .sort(null)
@@ -115,7 +116,7 @@ angular.module('app').directive('birthMonth', () => {
                     .attr("width", width)
                     .attr("height", height)
                     .append("g")
-                    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+                    .attr("transform", "translate(" + 30 + "," + 90 + ")");
 
 
                 console.log("this is daXXXta", data);

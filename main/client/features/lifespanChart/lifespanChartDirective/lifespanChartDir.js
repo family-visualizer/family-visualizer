@@ -36,8 +36,9 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 			
 
 			svg.append("rect")
-				.attr('width', "100%")
+				.attr('width', width - 100)
 				.attr('height', height - 100)
+				.attr("transform", "translate(200,0)")
 				.attr('fill', 'rgb(100,0,222)');
 				
 
@@ -127,6 +128,19 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				.call(d3.svg.axis()
 				.scale(xscale)
 				.orient("bottom")
+				.tickFormat(function(d) { return d; })
+				.tickSize(5)
+				.tickPadding(10))
+			
+			
+			svg.append("g")
+				.attr("class", "lifespan")
+				// put in middle of screen
+				.attr("transform", "translate(100,0)")
+				// inroduce axis
+				.call(d3.svg.axis()
+				.scale(yscale)
+				.orient("left")
 				.tickFormat(function(d) { return d; })
 				.tickSize(5)
 				.tickPadding(10))

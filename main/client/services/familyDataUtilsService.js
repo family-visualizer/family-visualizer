@@ -9,6 +9,7 @@ function familyDataUtilsService($q) {
 		familyTree.forEach(function (person) {
 			console.log('pushing PARENT', person.name);
 			flattenedFamily.push(person);
+			if (person.children) {
 			person.children.forEach(function (child) {
 				console.log('pushing child', child.name);
 
@@ -53,6 +54,7 @@ function familyDataUtilsService($q) {
 
 				flattenedFamily.push(child);
 			});
+			}
 		});
 
 		console.log('flattened family', flattenedFamily);
@@ -79,6 +81,7 @@ function familyDataUtilsService($q) {
 				
 				//If the person in flattenedFamily(flattenedfamily has duplicates) has an ascendancy# then give that number to the person in uniqueFlattened
 				if (person.ascendancyNumber) {
+					console.log('ascendancyNumber found,', person.name, ":", person.ascendancyNumber);
 					existing.ascendancyNumber = person.ascendancyNumber;
 				}
 				

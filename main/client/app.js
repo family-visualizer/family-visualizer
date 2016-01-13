@@ -38,7 +38,10 @@ function routing($stateProvider, $urlRouterProvider) {
 		.state('lifespan', {
 			url: '/lifespan'
 			, templateUrl: './dist/html/lifespanChart/lifespanChartView.html'
+		})
+		.state('birthMonth', {
+			url: '/birthmonth'
+			, templateUrl: './dist/html/birthMonthView/birthMonthView.html'
 		});
-		
 
 }

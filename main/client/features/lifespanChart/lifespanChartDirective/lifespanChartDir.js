@@ -19,30 +19,18 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 				
 			var xscale = d3.scale.linear()
-				.domain([d3.min(scope.dataset, function(data) {
-					return data[0];}) - 1, 
-				d3.max(scope.dataset, function (data) {
-					return data[0];
-				}) + 1])
+				.domain([scope.minYear - 1, scope.maxYear + 1])
 				.range([padding, width-padding])
 				.clamp(true);
 				// .ticks();
 
 			var yscale = d3.scale.linear()
-				.domain([d3.min(scope.dataset, function(data) {
-					return data[1];}), 
-				d3.max(scope.dataset, function (data) {
-					return data[1];
-				})])
+				.domain([scope.minPersonNumber,scope.maxPersonNumber])
 				.range([(height - 100) - padding, padding]);
 
 			var rscale = d3.scale.linear()
-				.domain([d3.min(scope.dataset, function(data) {
-					return data[2];}), 
-				d3.max(scope.dataset, function (data) {
-					return data[2];
-				})])
-				.range([10, 50]);
+				.domain([scope.minLifespan, scope.maxLifespan])
+				.range([.5, 20]);
 
 			
 
@@ -53,16 +41,20 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				
 
 			svg.selectAll("circle")
-				.data(scope.dataset)
+				.data(scope.cleanData)
 				.enter()
 				.append("circle")
 				.attr({
 					r: 0
 					, cx: function (data) {
-						return xscale(data[0]);
+						return xscale(data.lifespanArray[0]);
 					}
 					, cy: function (data) {
-						return yscale(data[1]);
+						if (data.ascendancyNumber) {
+							return yscale(data.ascendancyNumber);
+						} else {
+						return yscale(data.descendancyNumber);
+						}
 					}
 					, fill: 'green'
 					
@@ -72,8 +64,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				/////////
 				
 		
-				var startingValue = d3.min(scope.dataset, function(data) {
-					return data[0];}) - 1;
+				var startingValue = scope.minYear - 1;
 
 	
 
@@ -146,44 +137,55 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				handle.select('text').text(Math.floor(value));
 				
 				sliderValue = (Math.floor(value));
+				console.log("slider value", sliderValue);
 				
 				function changeGraph (data) {
 
 						svg.selectAll("circle")
 						.filter(function (data) {
-							return data[0] <= sliderValue;
+							return data.lifespanArray[0] <= sliderValue;
 						})
 						.attr({
-							r: function (data) {
-								return rscale(data[2]);
-							}
-							, cx: function (data) {
-								return xscale(data[0]);
-							}
-							, cy: function (data) {
-								return yscale(data[1]);
-							}
-							, fill: 'red'
-							
-						});	
+								r: function (data) {
+									return rscale(data.lifespanTotal);
+								}
+								, cx: function (data) {
+									return xscale(data.lifespanArray[0]);
+								}
+								, cy: function (data) {
+									if (data.ascendancyNumber) {
+										return yscale(data.ascendancyNumber);
+									} else {
+									return yscale(data.descendancyNumber);
+									}
+								}
+								, fill: 'red'
+								, stroke: "black"
+					
+				});	
 						
 						svg.selectAll("circle")
 						.filter(function (data) {
-							return data[0] > sliderValue;
+							return data.lifespanArray[0] > sliderValue;
 						})
 						.attr({
-							r: 0
-							, cx: function (data) {
-								return xscale(data[0]);
-							}
-							, cy: function (data) {
-								return yscale(data[1]);
-							}
-							
-						});	
+								r: 0
+								, cx: function (data) {
+									return xscale(data.lifespanArray[0]);
+								}
+								, cy: function (data) {
+									if (data.ascendancyNumber) {
+										return yscale(data.ascendancyNumber);
+									} else {
+										return yscale(data.descendancyNumber);
+									}
+								}
+								, fill: 'red'
+					
+				});
 				}	
 				
-				changeGraph(scope.dataset);
+				changeGraph(scope.cleanData);
 				
 				}
 		}

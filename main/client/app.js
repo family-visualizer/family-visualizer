@@ -16,7 +16,6 @@ function routing($stateProvider, $urlRouterProvider) {
 			url: '/about'
 			, templateUrl: './dist/html/aboutView/about.html'
 		})
-
         .state('learnMore', {   
               url: '/learnmore'
             , templateUrl: './dist/html/learnMoreView/learnMore.html'
@@ -26,19 +25,22 @@ function routing($stateProvider, $urlRouterProvider) {
             , templateUrl: './dist/html/userHomeView/userHome.html'
 			, controller: 'userHomeCtrl'
         })
-
 		.state('gallery', {
 			url: '/gallery'
-			, templateUrl: './dist/html/userHomeView/gallery.html'
+			, templateUrl: './dist/html/galleryView/gallery.html'
 		})
 		.state('settings', {
 			url: '/settings'
-			, templateUrl: './dist/html/userHomeView/settings.html'
+			, templateUrl: './dist/html/settingsView/settings.html'
+		})
+		.state('zoomChart', {
+			url: '/zoomchart'
+			, templateUrl: './dist/html/familyZoomChart/familyZoomChartView.html'
 		})
 		.state('lifespan', {
 			url: '/lifespan'
 			, templateUrl: './dist/html/lifespanChart/lifespanChartView.html'
 		});
-
 }
+
 

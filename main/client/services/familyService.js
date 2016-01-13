@@ -60,7 +60,9 @@ function familyService($q, $http, familyDataUtilsService) {
 
 							response.data.persons.forEach(function (child, childIndex) {
 
-								if (child.display.descendancyNumber !== "1" && !/[S]/.test(child.display.descendancyNumber)) {
+								if (child.display.descendancyNumber !== "1") {
+									
+									// && !/[S]/.test(child.display.descendancyNumber)
 
 									parent.children.push(
 										{

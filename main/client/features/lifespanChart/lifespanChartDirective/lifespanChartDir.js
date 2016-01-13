@@ -6,7 +6,8 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
         , controller: 'lifespanChartCtrl'
         , link(scope, elem, attrs) {
 
-	
+		console.log("clean data", scope.cleanData);
+		
 			var height = 500;
 			var width = 800;
 			var padding = 50;
@@ -30,7 +31,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 			var rscale = d3.scale.linear()
 				.domain([scope.minLifespan, scope.maxLifespan])
-				.range([.5, 20]);
+				.range([2, 20]);
 
 			
 
@@ -56,13 +57,53 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 						return yscale(data.descendancyNumber);
 						}
 					}
-					, fill: 'green'
 					
 				});		
 
 				
 				/////////
 				
+		
+		
+			function animateIn(data) {
+				console.log('function running');
+						svg.selectAll("circle")
+						.data(scope.cleanData)
+						.transition()
+						.delay(200)
+						.duration(function (data) {
+							return rscale(data.lifespanTotal * 200);
+						})
+						.attr({
+								r: function (data) {
+									return rscale(data.lifespanTotal);
+								}
+								, cx: function (data) {
+									return xscale(data.lifespanArray[0]);
+								}
+								, cy: function (data) {
+									if (data.ascendancyNumber) {
+										return yscale(data.ascendancyNumber);
+									} else {
+									return yscale(data.descendancyNumber);
+									}
+								}
+								, class: function (data) {
+									return data.ascendancyNumber;
+								}
+								, fill: function (data) {
+									if (data.ascendancyNumber % 2 === 0) {
+										return "blue";
+									} else {
+										return "pink";
+									}
+								}
+								, stroke: "black"
+				});	
+				
+			}		
+			
+			animateIn();
 		
 				var startingValue = scope.minYear - 1;
 
@@ -120,9 +161,13 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 			slider
 				.call(brush.event);
+				// .transition()
+				// .duration(500);
 
 
 				var sliderValue = startingValue;
+
+
 
 			function brushed() {
 				var value = brush.extent()[0];
@@ -168,6 +213,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 						.filter(function (data) {
 							return data.lifespanArray[0] > sliderValue;
 						})
+						// .transition()
 						.attr({
 								r: 0
 								, cx: function (data) {

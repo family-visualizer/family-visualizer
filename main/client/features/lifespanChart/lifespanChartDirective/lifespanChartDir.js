@@ -16,20 +16,21 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 					height: height
 					, width: width
 				});
+
 				
 			var xscale = d3.scale.linear()
 				.domain([d3.min(scope.dataset, function(data) {
-					return data[0];}), 
+					return data[0];}) - 1, 
 				d3.max(scope.dataset, function (data) {
 					return data[0];
-				})])
+				}) + 1])
 				.range([padding, width-padding])
 				.clamp(true);
 				// .ticks();
 
 			var yscale = d3.scale.linear()
 				.domain([d3.min(scope.dataset, function(data) {
-					return data[0];}), 
+					return data[1];}), 
 				d3.max(scope.dataset, function (data) {
 					return data[1];
 				})])
@@ -37,13 +38,13 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 			var rscale = d3.scale.linear()
 				.domain([d3.min(scope.dataset, function(data) {
-					return data[0];}), 
+					return data[2];}), 
 				d3.max(scope.dataset, function (data) {
 					return data[2];
 				})])
 				.range([10, 50]);
 
-	
+			
 
 			svg.append("rect")
 				.attr('width', "100%")
@@ -72,7 +73,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				
 		
 				var startingValue = d3.min(scope.dataset, function(data) {
-					return data[0];});
+					return data[0];}) - 1;
 
 	
 
@@ -145,24 +146,15 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				handle.select('text').text(Math.floor(value));
 				
 				sliderValue = (Math.floor(value));
-				console.log("sliderValue", sliderValue);
 				
 				function changeGraph (data) {
-					console.log("function runniing");
-					
-					console.log("data", data);
-					
+
 						svg.selectAll("circle")
-						// .data(data)
-						// .enter()
-						// .append("circle")
 						.filter(function (data) {
-							console.log('filter');
 							return data[0] <= sliderValue;
 						})
 						.attr({
 							r: function (data) {
-								console.log('radius');
 								return rscale(data[2]);
 							}
 							, cx: function (data) {
@@ -176,11 +168,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 						});	
 						
 						svg.selectAll("circle")
-						// .data(data)
-						// .enter()
-						// .append("circle")
 						.filter(function (data) {
-							console.log('filter');
 							return data[0] > sliderValue;
 						})
 						.attr({
@@ -193,84 +181,11 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 							}
 							
 						});	
-						
-					
-					// data.forEach(function (datapoint) {
-					// 	if (sliderValue >= datapoint[0]) {
-					// 	console.log("matching");
-					// 	console.log(datapoint[0]);
-						
-					// 	svg.selectAll("circle")
-					// 	.data(data)
-					// 	.enter()
-					// 	.append("circle")
-					// 	.attr({
-					// 		r: function (data) {
-					// 			console.log('radius');
-					// 			return rscale(datapoint[2]);
-					// 		}
-					// 		, cx: function (data) {
-					// 			return xscale(datapoint[0]);
-					// 		}
-					// 		, cy: function (data) {
-					// 			return yscale(datapoint[1]);
-					// 		}
-					// 		, fill: 'red'
-							
-					// 	});	
-					
-					// }
-						
-						
-					// }
-					
-					// );
-					
-								// data.forEach(function (datapoint) {
-								// 	if (sliderValue >= datapoint[0]) {
-								// 		console.log("match");
-								// 	d3.selectAll("circle")
-								// 	.each(function (data) {
-								// 		this.attr({
-								// 			r: function (data) {
-								// 			console.log('radius');
-								// 			return rscale(datapoint[2]);
-								// 		}
-								// 		, cx: function (data) {
-								// 			return xscale(datapoint[0]);
-								// 		}
-								// 		, cy: function (data) {
-								// 			return yscale(datapoint[1]);
-								// 		}
-								// 		, fill: 'red'
-								// 		});
-										
-								// 	});
-						
-								// }
-									
-									
-								// });
-					
-					
-				
-		
 				}	
 				
 				changeGraph(scope.dataset);
 				
 				}
-				
-				
-				
-				
-				// scope.$watch('sliderValue', function (data) {
-				// 	console.log("watch working");
-				// 	changeGraph(scope.dataset);					
-				// });
-
-
-
 		}
 	};
 	});

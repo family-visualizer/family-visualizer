@@ -9,7 +9,7 @@ function familyDataUtilsService($q) {
 		familyTree.forEach(function (person) {
 			console.log('pushing PARENT', person.name);
 			flattenedFamily.push(person);
-			if (person.childre) {
+			if (person.children) {
 			person.children.forEach(function (child) {
 				console.log('pushing child', child.name);
 

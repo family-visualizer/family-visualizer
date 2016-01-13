@@ -4364,7 +4364,8 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 	$scope.lifespanYears = [];
 	$scope.lifespanTotalsArray = [];
 	$scope.personNumbers = [];
-
+	$scope.testNumbers = [];
+	$scope.testPeople = [];
 
 	$scope.getLifespans = function () {
 		$scope.testFamily.forEach(function (person) {
@@ -4377,15 +4378,18 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 				person.lifespanTotal = Number(person.lifespanArray[1]) - Number(person.lifespanArray[0]);
 				$scope.lifespanTotalsArray.push(person.lifespanTotal);
 				$scope.lifespanYears.push(person.lifespanArray[0]);
-				// $scope.lifespanYears.push(person.lifespanArray[1]);
+				
+				$scope.testPeople.push(person);
 
-				if (person.ascendancyNumber) {
+				if (person.ascendancyNumber !== undefined) {
+					
 					person.ascendancyNumber = person.ascendancyNumber.split("-S");
-					person.ascendancyNumber = Number(person.ascendancyNumber);
+					person.ascendancyNumber = Number(person.ascendancyNumber[0]);
 					$scope.personNumbers.push(person.ascendancyNumber);
 				} else {
+					$scope.testNumbers.push(person.ascendancyNumber);
 					person.descendancyNumber = person.descendancyNumber.split("-S");
-					person.descendancyNumber = Number(person.descendancyNumber);
+					person.descendancyNumber = Number(person.descendancyNumber[0]);
 					$scope.personNumbers.push(person.descendancyNumber);
 				}
 
@@ -4417,11 +4421,12 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 
 
 	$scope.getLifespans($scope.testFamily);
-
 	
+	console.log("test people", $scope.testPeople);
+	console.log("test numbers", $scope.testNumbers);	
 	// console.log("sortedlifespans", $scope.sortedLifespanYears);
-	// console.log("unsorted numbers", $scope.personNumbers);
-	// console.log("sorted numbers", $scope.sortedPersonNumbers);
+	console.log("unsorted numbers", $scope.personNumbers);
+	console.log("sorted numbers", $scope.sortedPersonNumbers);
 	// console.log("min persn", $scope.minPersonNumber);
 	// console.log("max persn", $scope.maxPersonNumber);
 });

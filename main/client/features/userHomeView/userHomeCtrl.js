@@ -15,7 +15,7 @@ angular.module('app').controller('userHomeCtrl', function ($scope, authService, 
 	
 	var getAncestryAndChildren = function () {
 		familyService.getAncestryAndChildren($scope.authedUser.personId, $scope.authedUser.accessToken).then(function (data) {
-			$scope.family= data;	
+			$scope.family = data;	
 			console.log(data);
 		});
 	};

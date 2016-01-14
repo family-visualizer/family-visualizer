@@ -3,7 +3,7 @@ angular.module('app')
 	
 	return {
           restrict: 'EA'
-		, templateUrl: './dist/html/familyZoomChart/fgit stamilyZoomChartTmp.html'
+		, templateUrl: './dist/html/familyZoomChart/familyZoomChartTmp.html'
         , controller: 'familyZoomChartCtrl'
         , link (scope, elem, attrs) {
 			

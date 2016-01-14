@@ -79,8 +79,14 @@ function addGenerationNumberToRelative (bigDataArray) {
 
 console.log("this is addGenerationNumberToRelative", addGenerationNumberToRelative(data));
 
+var dataset = {
+	january: [0, 1, 2, 3, 4, 5, 6, 7]
+};
 
+console.log("this is dataset.January", dataset.january);
+console.log("this is dataset.january[1]", dataset.january[1]);
 
+dataset[bigDataArray.birthMonth][generation] ++
 
 // var data = [
 //   {

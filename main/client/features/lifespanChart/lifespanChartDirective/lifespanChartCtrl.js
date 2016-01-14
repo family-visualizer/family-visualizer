@@ -20,6 +20,57 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 	$scope.cleanData = [];
 
 
+	$scope.gender = "Both";
+	
+	// $scope.filterData = function () {
+	// 	if ($scope.gender === "female") {
+	// 		$scope.filteredData = _.find($scope.cleanData, function (person) {
+	// 				return person.gender === "Female";
+	// 			});
+	// 	} else if ($scope.gender === "male") {
+	// 		$scope.filteredData = _.find($scope.cleanData, function (person) {
+	// 				return person.gender === "Male";
+	// 			});
+	// 	}		
+	// };
+	
+	// $scope.filterData = function () {
+	// 			svg.selectAll("circle")
+	// 				.filter(function (data) {
+	// 					if ($scope.gender !== "Both") {
+	// 						return data.gender <= $scope.gender;
+	// 					} else {
+	// 						return data;
+	// 					}
+	// 				})
+	// 				.attr({
+	// 					r: function (data) {
+	// 						return rscale(data.lifespanTotal);
+	// 					}
+	// 					, cx: function (data) {
+	// 						return xscale(data.lifespanArray[0]);
+	// 					}
+	// 					, cy: function (data) {
+	// 						if (data.ascendancyNumber) {
+	// 							return yscale(data.ascendancyNumber);
+	// 						} else {
+	// 							return yscale(data.descendancyNumber);
+	// 						}
+	// 					}
+	// 					, fill: function (data) {
+	// 						if (data.ascendancyNumber % 2 === 0) {
+	// 							return "rgb(51, 51, 255)";
+	// 						} else {
+	// 							return "rgb(255, 0, 102)";
+	// 						}
+
+	// 					}
+	// 					, stroke: "black"
+	// 					, opacity: .5
+
+	// 				});
+	// 		};
+
 	$scope.testFamily = [
 		{
 			"personId": "KWZK-SJF",

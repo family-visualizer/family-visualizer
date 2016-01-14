@@ -6,10 +6,14 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
         , controller: 'lifespanChartCtrl'
         , link(scope, elem, attrs) {
 
+
+
+			console.log("gender", scope.gender);
+
 			console.log("clean data", scope.cleanData);
 
-			var height = 500;
-			var width = 800;
+			var height = 400;
+			var width = 650;
 			var padding = 50;
 			var svg = d3.select(".chart")
 				.append("svg")
@@ -23,7 +27,6 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				.domain([scope.minYear - 1, scope.maxYear + 1])
 				.range([padding + 25, width - padding - 25])
 				.clamp(true);
-			// .ticks();
 
 			var yscale = d3.scale.linear()
 				.domain([scope.minPersonNumber, scope.maxPersonNumber])
@@ -31,17 +34,11 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 			var rscale = d3.scale.linear()
 				.domain([scope.minLifespan, scope.maxLifespan])
-				.range([.5, 25]);
+				.range([.5, 35]);
 
 
-			// var tip = d3.tip()
-			// 	.attr('class', 'd3-tip')
-			// 	.offset([-10, 0])
-			// 	.html(function (d) {
-			// 		return "<strong>Frequency:</strong> <span style='color:red'>" + d.name + "</span>";
-			// 	});
 
-			// var delayScale = 	
+
 
 			svg.append("rect")
 				.attr('width', width - 100)
@@ -72,7 +69,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				.on("mouseover", function (d) {
 
 					// move to front
-					this.parentNode.appendChild(this);
+					// this.parentNode.appendChild(this);
 
 					//Position the tooltip <div> and set its content
 					var x = d3.event.pageX;
@@ -83,31 +80,20 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 						.style("top", y + "px")
 						.style("opacity", 1)
 						.text(d.name + ", age " + d.lifespanTotal);
-					//Note: No need for an anonymous function here,
-					//e.g. function(d) {…}, because the data value
-					//'d' we want here belongs to the <g> element
-					//on which mouseover was triggered, not the
-					//tooltip div (which has no data bound to it).
-
 				})
-				.on("mouseout", function () {
-
-					
+				.on("mouseout", function (d) {	
 					//Hide the tooltip
 					d3.select("#lifespanTooltip")
 						.style("opacity", 0);
 					// move back to origin
-					var nextSibling = d3.select("#circle-" + (d + 1)).node();
-					this.parentNode.insertBefore(this, nextSibling);	
-
+					// var nextSibling = d3.select("#circle-" + (d + 1)).node();
+					// this.parentNode.insertBefore(this, nextSibling);
 				});
 
-			// svg.call(tip);
-				
-			/////////
-				
-		
-		
+
+
+
+
 			function animateIn(data) {
 				console.log('function running');
 				svg.selectAll("circle")
@@ -119,6 +105,13 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 					})
 					.duration(function (data) {
 						return rscale(data.lifespanTotal * 500);
+					})
+					.filter(function (data) {
+						if (scope.gender !== "Both") {
+							return data.gender === scope.gender;
+						} else {
+							return data;
+						}
 					})
 					.attr({
 						r: function (data) {
@@ -166,7 +159,6 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 						}
 
 					});
-
 			}
 
 			// animateIn();
@@ -195,8 +187,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 					.tickPadding(5))
 
 				.select(".domain");
-			// .select(function() {console.log(this); return this.parentNode.appendChild(this.cloneNode(true)); })
-			// 	.attr("class", "xAxisHalo");
+			
 			
 			svg.append("g")
 				.attr("class", "axisLine lifespanYAxis")
@@ -207,8 +198,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 					.tickFormat(function (d) { return d; })
 					.tickPadding(10))
 				.select(".domain");
-			// .select(function() {console.log(this); return this.parentNode.appendChild(this.cloneNode(true)); })
-			// 	.attr("class", "yAxisHalo");
+		
 
 			var slider = svg.append("g")
 				.attr("class", "slider")
@@ -224,11 +214,6 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 			var handle = slider.append("g")
 				.attr("class", "handle");
 
-
-			// handle.append('circle')
-			// 	.attr("transform", "translate(0," + (height - 50) + ")")
-			// 	.attr()
-				
 				
 			handle.append("path")
 				.attr("transform", "translate(0," + (height - 50) + ")")
@@ -241,17 +226,99 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 			slider
 				.call(brush.event);
-			// .transition()
-			// .duration(500);
 
 
+			var sliderValue = startingValue;
+
+
+			function clearGraph(data) {
+				svg.selectAll("circle")
+					.attr({
+						r: 0
+						, cx: function (data) {
+							return xscale(data.lifespanArray[0]);
+						}
+						, cy: function (data) {
+							if (data.ascendancyNumber) {
+								return yscale(data.ascendancyNumber);
+							} else {
+								return yscale(data.descendancyNumber);
+							}
+						}
+			});
+			}
+
+			function changeGraph(data) {
+
+				svg.selectAll("circle")
+					.filter(function (data) {
+						if (scope.gender !== "Both") {
+							return data.gender === scope.gender;
+						} else {
+							return data;
+						}
+					})
+					.filter(function (data) {
+						return data.lifespanArray[0] <= sliderValue;
+					})
+					.attr({
+						r: function (data) {
+							return rscale(data.lifespanTotal);
+						}
+						, cx: function (data) {
+							return xscale(data.lifespanArray[0]);
+						}
+						, cy: function (data) {
+							if (data.ascendancyNumber) {
+								return yscale(data.ascendancyNumber);
+							} else {
+								return yscale(data.descendancyNumber);
+							}
+						}
+						, fill: function (data) {
+							
+							if (data.gender === "Female") {
+								return "rgb(255, 0, 102)";
+							} else {
+								return "rgb(51, 51, 255)";
+							}
+						}
+						, stroke: "black"
+						, opacity: .5
+
+					});
 			
 
+				svg.selectAll("circle")
+					.filter(function (data) {
+						return data.lifespanArray[0] > sliderValue;
+					})
+					.filter(function (data) {
+						if (scope.gender !== "Both") {
+							return data.gender === scope.gender;
+						} else {
+							return data;
+						}
+					})
+					.attr({
+						r: 0
+						, cx: function (data) {
+							return xscale(data.lifespanArray[0]);
+						}
+						, cy: function (data) {
+							if (data.ascendancyNumber) {
+								return yscale(data.ascendancyNumber);
+							} else {
+								return yscale(data.descendancyNumber);
+							}
+						}
+					});
+			}
 
 
 			function brushed() {
 
-				var sliderValue = startingValue;
+
 				var value = brush.extent()[0];
 
 				if (d3.event.sourceEvent) { // not a programmatic event
@@ -266,64 +333,51 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				sliderValue = (Math.floor(value));
 				console.log("slider value", sliderValue);
 
-				function changeGraph(data) {
-
-					svg.selectAll("circle")
-						.filter(function (data) {
-							return data.lifespanArray[0] <= sliderValue;
-						})
-						.attr({
-							r: function (data) {
-								return rscale(data.lifespanTotal);
-							}
-							, cx: function (data) {
-								return xscale(data.lifespanArray[0]);
-							}
-							, cy: function (data) {
-								if (data.ascendancyNumber) {
-									return yscale(data.ascendancyNumber);
-								} else {
-									return yscale(data.descendancyNumber);
-								}
-							}
-							, fill: function (data) {
-								if (data.ascendancyNumber % 2 === 0) {
-									return "rgb(51, 51, 255)";
-								} else {
-									return "rgb(255, 0, 102)";
-								}
-
-							}
-							, stroke: "black"
-							, opacity: .5
-
-						});
-					// .on('mouseover', tip.show)
-					// .on('mouseout', tip.hide);
-
-					svg.selectAll("circle")
-						.filter(function (data) {
-							return data.lifespanArray[0] > sliderValue;
-						})
-					// .transition()
-						.attr({
-							r: 0
-							, cx: function (data) {
-								return xscale(data.lifespanArray[0]);
-							}
-							, cy: function (data) {
-								if (data.ascendancyNumber) {
-									return yscale(data.ascendancyNumber);
-								} else {
-									return yscale(data.descendancyNumber);
-								}
-							}
-						});
-				}
-
 				changeGraph(scope.cleanData);
 
 			}
+			
+			
+			// Creating radio buttons
+
+			var radioButtons = ["Male", "Female", "Both"],
+				radioValue = "Both";  // Choose the rectangle as default
+
+			// Create the shape selectors
+			var form = d3.select(".lifespanForm").append("form");
+
+			form.selectAll("label")
+				.data(radioButtons)
+				.enter()
+				.append("label")
+				.text(function (d) { return d; })
+				.insert("input")
+				.attr({
+					type: "radio",
+					class: "shape",
+					name: "gender",
+					value: function (d, i) { 
+						return scope.gender = d; }
+				})
+				.property("checked", function (d, i) { return d === radioValue; })
+				.on("click", function (d, i) {
+					scope.gender = d;
+					console.log("scope.gender", scope.gender);
+					clearGraph();	
+					changeGraph();
+					});
+			
+			// //Render graph based on 'data'
+			// scope.render = function (data) {
+
+			// };
+        
+			// //Watch 'data' and run scope.render(newVal) whenever it changes
+			// //Use true for 'objectEquality' property so comparisons are done on equality and not reference
+			// scope.$watch('data', function () {
+				
+			// 	scope.render(scope.data);
+			// }, true);
 		}
 	};
 });

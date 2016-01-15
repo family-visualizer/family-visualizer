@@ -20,8 +20,8 @@ angular.module('app').directive('lifespanChart', () => {
 			// console.log("clean data", scope.cleanData);
 
 			var height = 400;
-			var width = 625;
-			var padding = 50;
+			var width = 645;
+			
 			var svg = d3.select(".chart")
 				.append("svg")
 				.attr({
@@ -29,20 +29,23 @@ angular.module('app').directive('lifespanChart', () => {
 					, width: width
 				});
 
+			
+			var rscale = d3.scale.linear()
+				.domain([family.minLifespan, family.maxLifespan])
+				.range([5, 30]);
+
+			var padding = rscale(family.maxLifespan) + 10;	
 
 			var xscale = d3.scale.linear()
 				.domain([family.minYear - 1, family.maxYear + 1])
-				.range([padding + 25, width - padding - 25])
+				.range([padding + 40, width - padding])
 				.clamp(true);
 
 			var yscale = d3.scale.linear()
 				.domain([family.minPersonNumber, family.maxPersonNumber])
 				.range([(height - 100) - padding, padding]);
 
-			var rscale = d3.scale.linear()
-				.domain([family.minLifespan, family.maxLifespan])
-				.range([5, 30]);
-
+			
 
 			getStats(family.cleanData, family.maxYear);
 			
@@ -218,9 +221,10 @@ angular.module('app').directive('lifespanChart', () => {
 				.on("brush", brushed);
 
 			svg.append("g")
-			// classic transform to position g
 				.attr("transform", "translate(0," + height + ")");
 
+				
+			//X Axis	
 			svg.append("g")
 				.attr("class", "axisLine lifespanXAxis")
 				.attr("transform", "translate(0," + (height - 100) + ")")
@@ -228,20 +232,34 @@ angular.module('app').directive('lifespanChart', () => {
 					.scale(xscale)
 					.orient("bottom")
 					.tickFormat(function (d) { return d; })
-					.tickPadding(5))
-
+					.tickPadding(10))
 				.select(".domain");
 			
-			
+			 svg.append("text")
+				.attr("transform", "translate("+ width / 2 + "," + (height - 45) + ")")
+				.style("text-anchor", "middle")
+				.text("Birth Year");
+		
+		
+			//Y Axis
 			svg.append("g")
 				.attr("class", "axisLine lifespanYAxis")
-				.attr("transform", "translate(40,0)")
+				.attr("transform", "translate(45,0)")
 				.call(d3.svg.axis()
 					.scale(yscale)
 					.orient("left")
 					.tickFormat(d3.format("d"))
 					.tickPadding(10))
 				.select(".domain");
+		
+			 svg.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 0)
+				.attr("x", -((height -75) / 2))
+				.attr("dy", "1em")
+				.style("text-anchor", "middle")
+				.text("Generation");
+
 		
 
 			var slider = svg.append("g")
@@ -252,22 +270,41 @@ angular.module('app').directive('lifespanChart', () => {
 				.remove();
 
 			slider.select(".background")
-				.attr("transform", "translate(0," + (height - 50) + ")")
-				.attr("height", 10);
+				.attr("transform", "translate(0," + (height - 30) + ")");
+				// .attr("height", 10);
 
 			var handle = slider.append("g")
 				.attr("class", "handle");
 
+			
 				
 			handle.append("path")
-				.attr("transform", "translate(0," + (height - 50) + ")")
-				.attr("d", "M 0 -10 V 10");
-
+				.attr("transform", "translate(0," + (height - 30) + ")")
+				.attr("d", "M 0 -15 V 15");
+				
+				
 
 			handle.append('text')
 				.text(startingValue)
-				.attr("transform", "translate(" + (-10) + " ," + (height - 25) + ")");
+				.attr("class", "yearScroll")
+				.attr("transform", "translate(" + (-30) + " ," + (height - 10) + ")");
 
+			handle.append("text")
+				.attr("text-anchor", "start")
+				.attr("font-family", "FontAwesome")
+				.attr("font-size", "20px")
+				.attr("class", "handle")
+				.text(function (d) {return '\uf060';})
+				.attr("transform", "translate(" + (-50) + " ," + (height - 10) + ")");
+				
+			handle.append("text")
+				.attr("text-anchor", "end")
+				.attr("font-family", "FontAwesome")
+				.attr("font-size", "20px")
+				.attr("class", "handle")
+				.text(function (d) {return '\uf061';})
+				.attr("transform", "translate(" + (35) + " ," + (height - 10) + ")");
+				
 			slider
 				.call(brush.event);
 

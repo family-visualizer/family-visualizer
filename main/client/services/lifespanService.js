@@ -94,17 +94,20 @@ function lifespanService($q, $http) {
 					lifespanYears.push(person.lifespanArray[0]);
 					
 					
-					//Generations (clean ascendancy #s)
-					if (person.ascendancyNumber) {
+					// //Generations (clean ascendancy #s)
+					// if (person.ascendancyNumber) {
 
-						person.ascendancyNumber = person.ascendancyNumber.toString().split("-S");
-						person.ascendancyNumber = Number(person.ascendancyNumber[0]);
-						personNumbers.push(person.ascendancyNumber);
-					} else {
-						person.descendancyNumber = person.descendancyNumber.toString().split("-S");
-						person.descendancyNumber = Number(person.descendancyNumber[0]);
-						personNumbers.push(person.descendancyNumber);
-					}
+					// 	person.ascendancyNumber = person.ascendancyNumber.toString().split("-S");
+					// 	person.ascendancyNumber = Number(person.ascendancyNumber[0]);
+					// 	personNumbers.push(person.ascendancyNumber);
+					// } else {
+					// 	person.descendancyNumber = person.descendancyNumber.toString().split("-S");
+					// 	person.descendancyNumber = Number(person.descendancyNumber[0]);
+					// 	personNumbers.push(person.descendancyNumber);
+					// }
+					
+					personNumbers.push(person.generation);
+					
 					cleanData.push(person);
 
 				}

@@ -20,7 +20,7 @@ angular.module('app').directive('lifespanChart', () => {
 			// console.log("clean data", scope.cleanData);
 
 			var height = 400;
-			var width = 650;
+			var width = 625;
 			var padding = 50;
 			var svg = d3.select(".chart")
 				.append("svg")
@@ -94,11 +94,12 @@ angular.module('app').directive('lifespanChart', () => {
 						return xscale(data.lifespanArray[0]);
 					}
 					, cy: function (data) {
-						if (data.ascendancyNumber) {
-							return yscale(data.ascendancyNumber);
-						} else {
-							return yscale(data.descendancyNumber);
-						}
+						return yscale(data.generation);
+						// if (data.ascendancyNumber) {
+						// 	return yscale(data.ascendancyNumber);
+						// } else {
+						// 	return yscale(data.descendancyNumber);
+						// }
 					},
 					class: 'personCircle'
 
@@ -158,11 +159,14 @@ angular.module('app').directive('lifespanChart', () => {
 							return xscale(data.lifespanArray[0]);
 						}
 						, cy: function (data) {
-							if (data.ascendancyNumber) {
-								return yscale(data.ascendancyNumber);
-							} else {
-								return yscale(data.descendancyNumber);
-							}
+							
+							return yscale(data.generation);
+							
+							// if (data.ascendancyNumber) {
+							// 	return yscale(data.ascendancyNumber);
+							// } else {
+							// 	return yscale(data.descendancyNumber);
+							// }
 						}
 						, class: function (data) {
 							return data.ascendancyNumber;
@@ -188,11 +192,14 @@ angular.module('app').directive('lifespanChart', () => {
 							return xscale(data.lifespanArray[0]);
 						}
 						, cy: function (data) {
-							if (data.ascendancyNumber) {
-								return yscale(data.ascendancyNumber);
-							} else {
-								return yscale(data.descendancyNumber);
-							}
+							
+							return yscale(data.generation);
+							
+							// if (data.ascendancyNumber) {
+							// 	return yscale(data.ascendancyNumber);
+							// } else {
+							// 	return yscale(data.descendancyNumber);
+							// }
 						}
 
 					});
@@ -232,7 +239,7 @@ angular.module('app').directive('lifespanChart', () => {
 				.call(d3.svg.axis()
 					.scale(yscale)
 					.orient("left")
-					.tickFormat(function (d) { return d; })
+					.tickFormat(d3.format("d"))
 					.tickPadding(10))
 				.select(".domain");
 		
@@ -276,11 +283,13 @@ angular.module('app').directive('lifespanChart', () => {
 							return xscale(data.lifespanArray[0]);
 						}
 						, cy: function (data) {
-							if (data.ascendancyNumber) {
-								return yscale(data.ascendancyNumber);
-							} else {
-								return yscale(data.descendancyNumber);
-							}
+							
+							return yscale(data.generation);
+							// if (data.ascendancyNumber) {
+							// 	return yscale(data.ascendancyNumber);
+							// } else {
+							// 	return yscale(data.descendancyNumber);
+							// }
 						}
 			});
 			}
@@ -307,18 +316,19 @@ angular.module('app').directive('lifespanChart', () => {
 							return xscale(data.lifespanArray[0]);
 						}
 						, cy: function (data) {
-							if (data.ascendancyNumber) {
-								return yscale(data.ascendancyNumber);
-							} else {
-								return yscale(data.descendancyNumber);
-							}
+							return yscale(data.generation);
+							// if (data.ascendancyNumber) {
+							// 	return yscale(data.ascendancyNumber);
+							// } else {
+							// 	return yscale(data.descendancyNumber);
+							// }
 						}
 						, fill: function (data) {
 							
 							if (data.gender === "Female") {
-								return "rgb(255, 0, 102)";
+								return "#ed1e79";
 							} else {
-								return "rgb(51, 51, 255)";
+								return "#00aeef";
 							}
 						}
 						, stroke: "black"
@@ -344,11 +354,12 @@ angular.module('app').directive('lifespanChart', () => {
 							return xscale(data.lifespanArray[0]);
 						}
 						, cy: function (data) {
-							if (data.ascendancyNumber) {
-								return yscale(data.ascendancyNumber);
-							} else {
-								return yscale(data.descendancyNumber);
-							}
+							return yscale(data.generation);
+							// if (data.ascendancyNumber) {
+							// 	return yscale(data.ascendancyNumber);
+							// } else {
+							// 	return yscale(data.descendancyNumber);
+							// }
 						}
 					});
 			}

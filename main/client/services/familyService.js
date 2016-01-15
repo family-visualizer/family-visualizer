@@ -9,8 +9,8 @@ function familyService($q, $http, familyDataUtilsService) {
 		return self.ancestry;
 	};
 
-	
 
+	
 	//Here we make the API call for direct ancestors and save their information.
 	this.getAncestryAndChildren = (personId, accessToken) => {
 		var defer = $q.defer();

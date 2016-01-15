@@ -1,4 +1,4 @@
-angular.module('app').controller('lifespanChartCtrl', function ($scope, familyService, authService) {
+angular.module('app').controller('lifespanChartCtrl', function ($scope, familyService, authService, lifespanService) {
 
 	//x, y, radius
 
@@ -17,59 +17,20 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 		[220, 88, 250]
 	];
 
-	$scope.cleanData = [];
+	// $scope.cleanData = [];
 
+	$scope.getStats = function (family, sliderValue) {
+		$scope.stats = lifespanService.getStats(family, sliderValue);
+		console.log("stats:", $scope.stats);	
+	};
+	
 
+	
 	$scope.gender = "Both";
 	
-	// $scope.filterData = function () {
-	// 	if ($scope.gender === "female") {
-	// 		$scope.filteredData = _.find($scope.cleanData, function (person) {
-	// 				return person.gender === "Female";
-	// 			});
-	// 	} else if ($scope.gender === "male") {
-	// 		$scope.filteredData = _.find($scope.cleanData, function (person) {
-	// 				return person.gender === "Male";
-	// 			});
-	// 	}		
-	// };
-	
-	// $scope.filterData = function () {
-	// 			svg.selectAll("circle")
-	// 				.filter(function (data) {
-	// 					if ($scope.gender !== "Both") {
-	// 						return data.gender <= $scope.gender;
-	// 					} else {
-	// 						return data;
-	// 					}
-	// 				})
-	// 				.attr({
-	// 					r: function (data) {
-	// 						return rscale(data.lifespanTotal);
-	// 					}
-	// 					, cx: function (data) {
-	// 						return xscale(data.lifespanArray[0]);
-	// 					}
-	// 					, cy: function (data) {
-	// 						if (data.ascendancyNumber) {
-	// 							return yscale(data.ascendancyNumber);
-	// 						} else {
-	// 							return yscale(data.descendancyNumber);
-	// 						}
-	// 					}
-	// 					, fill: function (data) {
-	// 						if (data.ascendancyNumber % 2 === 0) {
-	// 							return "rgb(51, 51, 255)";
-	// 						} else {
-	// 							return "rgb(255, 0, 102)";
-	// 						}
-
-	// 					}
-	// 					, stroke: "black"
-	// 					, opacity: .5
-
-	// 				});
-	// 		};
+	$scope.cleanData = function (familyData) {
+		return lifespanService.getCleanData(familyData);	
+	};
 
 	$scope.testFamily = [
 		{
@@ -83,7 +44,7 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 			"deathPlace": "Hillsboro, Fleming, Kentucky, United States",
 			"marriagePlace": "Fleming, Kentucky, United States",
 			"marriageDate": "14 December 1848",
-			"ascendancyNumber": "321",
+			// "ascendancyNumber": "321",
 			"descendancyNumber": "320-S"
 		},
 		{
@@ -4412,82 +4373,89 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 	
 	
 
-	$scope.lifespanYears = [];
-	$scope.lifespanTotalsArray = [];
-	$scope.personNumbers = [];
+// 	$scope.lifespanYears = [];
+// 	$scope.lifespanTotalsArray = [];
+// 	$scope.personNumbers = [];
 
-	$scope.getLifespans = function () {
-		$scope.testFamily.forEach(function (person) {
-			person.lifespanArray = person.lifespan.split("-");
-			person.lifespanArray[0] = Number(person.lifespanArray[0]);
-			person.lifespanArray[1] = Number(person.lifespanArray[1]);
+// 	$scope.test = [$scope.testFamily[0]];	
 
-			if (Number.isInteger(person.lifespanArray[0]) && Number.isInteger(person.lifespanArray[1])) {
-				// $scope.cleanData.push(person);
-				person.lifespanTotal = Number(person.lifespanArray[1]) - Number(person.lifespanArray[0]);
-				$scope.lifespanTotalsArray.push(person.lifespanTotal);
-				$scope.lifespanYears.push(person.lifespanArray[0]);
+// 	$scope.getLifespans = function () {
+// 		console.log("test", $scope.test);
+// 		$scope.testFamily.forEach(function (person) {
+// 			person.lifespanArray = person.lifespan.split("-");
+// 			person.lifespanArray[0] = Number(person.lifespanArray[0]);
+// 			person.lifespanArray[1] = Number(person.lifespanArray[1]);
 
+// 			if (Number.isInteger(person.lifespanArray[0]) && Number.isInteger(person.lifespanArray[1])) {
+// 				// $scope.cleanData.push(person);
+// 				person.lifespanTotal = Number(person.lifespanArray[1]) - Number(person.lifespanArray[0]);
+// 				$scope.lifespanTotalsArray.push(person.lifespanTotal);
+// 				$scope.lifespanYears.push(person.lifespanArray[0]);
 
+// console.log("asc #", person.ascendancyNumber);
 
-				if (person.ascendancyNumber !== undefined) {
-
-					person.ascendancyNumber = person.ascendancyNumber.split("-S");
-					person.ascendancyNumber = Number(person.ascendancyNumber[0]);
-					$scope.personNumbers.push(person.ascendancyNumber);
-				} else {
-					
-					person.descendancyNumber = person.descendancyNumber.split("-S");
-					person.descendancyNumber = Number(person.descendancyNumber[0]);
-					$scope.personNumbers.push(person.descendancyNumber);
-				}
-				$scope.cleanData.push(person);
-			}
+// 				if (!person.ascendancyNumber) {
+// 					console.log("undefined person", person);
+// 				} 
+// 				if (person.ascendancyNumber) {
+// 					console.log("if");
+// 					person.ascendancyNumber = person.ascendancyNumber.toString().split("-S");
+// 					person.ascendancyNumber = Number(person.ascendancyNumber[0]);
+// 					$scope.personNumbers.push(person.ascendancyNumber);
+// 				} else {
+// 					console.log("else");
+// 					console.log("dsc", person.descendancyNumber);
+// 					person.descendancyNumber = person.descendancyNumber.toString().split("-S");
+// 					person.descendancyNumber = Number(person.descendancyNumber[0]);
+// 					$scope.personNumbers.push(person.descendancyNumber);
+// 				}
+// 				$scope.cleanData.push(person);
+// 			}
 
 			
-		});
+// 		});
 
 
-		function compare(a, b) {
-			if (a.lifespanArray[0] < b.lifespanArray[0])
-				return -1;
-			else if (a.lifespanArray[0] > b.lifespanArray[0])
-				return 1;
-			else
-				return 0;
-		}
+// 		function compare(a, b) {
+// 			if (a.lifespanArray[0] < b.lifespanArray[0])
+// 				return -1;
+// 			else if (a.lifespanArray[0] > b.lifespanArray[0])
+// 				return 1;
+// 			else
+// 				return 0;
+// 		}
 
-		$scope.cleanData.sort(compare);
-
-
-
-		function compareNumbers(a, b) {
-			return a - b;
-		}
+// 		$scope.cleanData.sort(compare);
 
 
-		$scope.sortedLifespanYears = $scope.lifespanYears.sort(compareNumbers);
-		$scope.maxYear = $scope.sortedLifespanYears[$scope.sortedLifespanYears.length - 1];
-		$scope.minYear = $scope.sortedLifespanYears[0];
 
-		$scope.lifespanTotalsArray = $scope.lifespanTotalsArray.sort(compareNumbers);
-		$scope.maxLifespan = $scope.lifespanTotalsArray[$scope.lifespanTotalsArray.length - 1];
-		$scope.minLifespan = $scope.lifespanTotalsArray[0];
+// 		function compareNumbers(a, b) {
+// 			return a - b;
+// 		}
+
+
+// 		$scope.sortedLifespanYears = $scope.lifespanYears.sort(compareNumbers);
+// 		$scope.maxYear = $scope.sortedLifespanYears[$scope.sortedLifespanYears.length - 1];
+// 		$scope.minYear = $scope.sortedLifespanYears[0];
+
+// 		$scope.lifespanTotalsArray = $scope.lifespanTotalsArray.sort(compareNumbers);
+// 		$scope.maxLifespan = $scope.lifespanTotalsArray[$scope.lifespanTotalsArray.length - 1];
+// 		$scope.minLifespan = $scope.lifespanTotalsArray[0];
 
 
 
 		
-		$scope.sortedPersonNumbers = $scope.personNumbers.sort(compareNumbers);
+// 		$scope.sortedPersonNumbers = $scope.personNumbers.sort(compareNumbers);
 
-		$scope.maxPersonNumber = $scope.sortedPersonNumbers[$scope.sortedPersonNumbers.length - 1];
-		$scope.minPersonNumber = $scope.sortedPersonNumbers[0];
+// 		$scope.maxPersonNumber = $scope.sortedPersonNumbers[$scope.sortedPersonNumbers.length - 1];
+// 		$scope.minPersonNumber = $scope.sortedPersonNumbers[0];
 
-	};
+// 	};
 
 
-	$scope.getLifespans($scope.testFamily);
+// 	$scope.getLifespans($scope.testFamily);
 	
-	console.log("clean data", $scope.cleanData);
+// 	console.log("clean data", $scope.cleanData);
 	
 	// console.log("test people", $scope.testPeople);
 	// console.log("test numbers", $scope.testNumbers);	
@@ -4497,5 +4465,3 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 	// console.log("min persn", $scope.minPersonNumber);
 	// console.log("max persn", $scope.maxPersonNumber);
 });
-
-

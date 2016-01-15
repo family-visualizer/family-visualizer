@@ -1,16 +1,23 @@
-angular.module('app').directive('lifespanChart', ($parse, $window) => {
-
+angular.module('app').directive('lifespanChart', () => {
+// $parse, $window
     return {
 		restrict: 'EA'
         , templateUrl: './dist/html/lifespanChart/lifespanChartDirective/lifespanChartTemp.html'
         , controller: 'lifespanChartCtrl'
         , link(scope, elem, attrs) {
+			var family;
+			
+			function updateFamily (familyObject) {
+				console.log("updateFamily is running!");
+				family = scope.cleanData(familyObject);
+				return family;	
+			};
+			
+			updateFamily(scope.testFamily);
 
+			console.log("family", family);
 
-
-			console.log("gender", scope.gender);
-
-			console.log("clean data", scope.cleanData);
+			// console.log("clean data", scope.cleanData);
 
 			var height = 400;
 			var width = 650;
@@ -24,19 +31,54 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 
 			var xscale = d3.scale.linear()
-				.domain([scope.minYear - 1, scope.maxYear + 1])
+				.domain([family.minYear - 1, family.maxYear + 1])
 				.range([padding + 25, width - padding - 25])
 				.clamp(true);
 
 			var yscale = d3.scale.linear()
-				.domain([scope.minPersonNumber, scope.maxPersonNumber])
+				.domain([family.minPersonNumber, family.maxPersonNumber])
 				.range([(height - 100) - padding, padding]);
 
 			var rscale = d3.scale.linear()
-				.domain([scope.minLifespan, scope.maxLifespan])
-				.range([.5, 35]);
+				.domain([family.minLifespan, family.maxLifespan])
+				.range([5, 30]);
 
 
+			getStats(family.cleanData, family.maxYear);
+			
+			var stats =
+				 [{
+					name: "Average Lifespan",
+					value: scope.stats.avgLifespan
+				},
+				{
+					name: "Longest Lifespan",
+					value: scope.stats.maxLifespan
+				},
+				{
+					name: "Shortest Lifespan",
+					value: scope.stats.minLifespan
+				}];
+		
+			
+			var statsElements = d3.select(".lifespanStats")
+				.selectAll("div")
+				.data(stats)
+				.enter()
+				.append("div")
+				.attr("class", "statName")
+				.text(function (d) {return d.name;});
+				
+			// d3.select(".lifespanStats")
+			// 	.selectAll("p")
+			// 	.data(stats)
+			// 	.enter()
+				
+				statsElements.append("div")
+				.attr("class", "stat")
+				.text(function (d) {return d.value;});
+
+	
 
 
 
@@ -48,7 +90,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 
 			svg.selectAll("circle")
-				.data(scope.cleanData)
+				.data(family.cleanData)
 				.enter()
 				.append("circle")
 				.attr({
@@ -97,11 +139,11 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 			function animateIn(data) {
 				console.log('function running');
 				svg.selectAll("circle")
-					.data(scope.cleanData)
+					.data(family.cleanData)
 					.transition("draw")
 					.delay(function (data) {
-						console.log("delay:", (data.lifespanArray[0] / scope.maxYear) * 1000);
-						return rscale((data.lifespanArray[0] / scope.maxYear) * 1000);
+						console.log("delay:", (data.lifespanArray[0] / family.maxYear) * 1000);
+						return rscale((data.lifespanArray[0] / family.maxYear) * 1000);
 					})
 					.duration(function (data) {
 						return rscale(data.lifespanTotal * 500);
@@ -163,7 +205,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 			// animateIn();
 
-			var startingValue = scope.minYear - 1;
+			var startingValue = family.minYear - 1;
 
 	
 
@@ -217,7 +259,7 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 				
 			handle.append("path")
 				.attr("transform", "translate(0," + (height - 50) + ")")
-				.attr("d", "M 0 -10 V 10")
+				.attr("d", "M 0 -10 V 10");
 
 
 			handle.append('text')
@@ -249,7 +291,8 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 			}
 
 			function changeGraph(data) {
-
+				
+				
 				svg.selectAll("circle")
 					.filter(function (data) {
 						if (scope.gender !== "Both") {
@@ -316,13 +359,26 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 			}
 
 
+			// function updateStats () {
+			// 	svg.selectAll("stat")
+			// 		.filter(function (data) {
+			// 			return data.lifespanArray[0] <= sliderValue;
+			// 		})
+			// 		.attr({
+			// 			display: "flex"
+			// 		});
+			// }
+			
+
 			function brushed() {
 
 
 				var value = brush.extent()[0];
 
 				if (d3.event.sourceEvent) { // not a programmatic event
+					console.log("is this running?");
 					handle.select('text');
+					d3.select('stat');
 					value = xscale.invert(d3.mouse(this)[0]);
 					brush.extent([value, value]);
 				}
@@ -332,19 +388,66 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 
 				sliderValue = (Math.floor(value));
 				console.log("slider value", sliderValue);
+				
+				
+				getStats(family.cleanData, sliderValue);
+				buildStats(scope.stats);
+				changeGraph(family.cleanData);
+				// updateStats(family);
 
-				changeGraph(scope.cleanData);
+			}
+			
+			function getStats (family, sliderValue) {
+				scope.getStats(family, sliderValue);
+				
+				console.log("scope.stats", scope.stats);
+	
+			}
+			
+			function buildStats (stats) {
+				console.log("building stats", stats);
+				
+				var statsStructure = 
+				[{
+					name: "Average Lifespan",
+					value: stats.avgLifespan
+				},
+				{
+					name: "Longest Lifespan",
+					value: stats.maxLifespan
+				},
+				{
+					name: "Shortest Lifespan",
+					value: stats.minLifespan
+				}];
+						
+		console.log("stat struct", statsStructure);
 
+		
+
+				d3.select(".lifespanStats")
+				.selectAll("p")
+				.data(statsStructure)
+				// .append("p")
+				.attr("class", "stat")
+				.text(function (d) {
+					console.log("title test", d.name);
+					return d.name;})
+				// .append("p")
+				.text(function (d) {
+					console.log("stat test", d.value);
+					return d.value;})
+				.attr("class", "stat");
 			}
 			
 			
 			// Creating radio buttons
 
 			var radioButtons = ["Male", "Female", "Both"],
-				radioValue = "Both";  // Choose the rectangle as default
+				radioValue = "Both";
 
 			// Create the shape selectors
-			var form = d3.select(".lifespanForm").append("form");
+			var form = d3.select(".lifespanForm").append("form").attr("class", "radioButtonForm");
 
 			form.selectAll("label")
 				.data(radioButtons)
@@ -367,17 +470,13 @@ angular.module('app').directive('lifespanChart', ($parse, $window) => {
 					changeGraph();
 					});
 			
-			// //Render graph based on 'data'
-			// scope.render = function (data) {
-
-			// };
-        
-			// //Watch 'data' and run scope.render(newVal) whenever it changes
-			// //Use true for 'objectEquality' property so comparisons are done on equality and not reference
-			// scope.$watch('data', function () {
-				
-			// 	scope.render(scope.data);
-			// }, true);
+			
+			
+			
+			
+			
+			
+			
 		}
 	};
 });

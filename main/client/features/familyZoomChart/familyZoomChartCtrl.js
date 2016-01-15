@@ -1,82 +1,6 @@
 angular.module('app')
 .controller('familyZoomChartCtrl', function( $scope ) {
 
-	$scope.testFamily2 = {
-		"name": "flare"
-		, "children": [{
-			"name": "Zachary Baker"
-			, "size": 3000
-			, "children": [{
-				"name": "Robert Baker"
-				, "size": 3000
-			},
-			{
-				"name": "Bonnie Beutler"
-				, "size": 3000
-				, "children": [{
-					"name": "Alvin Schwartz Beutler"
-					, "size": 3000
-					, "children": [{
-						"name": "Alfred Beutler"
-						, "size": 3000
-					}, 
-					{
-						"name": "Rosa Schwartz"
-						, "size": 3000
-					},
-					{
-						"name": "Alvin Schwartz Beutler"
-						, "size": 3000
-					}]
-				},
-				{
-					"name": "Clarissa McAllister"
-					, "size": 3000
-					, "children": [{
-						"name": "Frank Snow McAllister"
-						, "size": 3000
-					}, 
-					{
-						"name": "Clarissa McAllister"
-						, "size": 3000
-					},
-				}, 
-				{
-					"name": "Bonnie Beutler"
-					, "size": 3000
-				}]
-			},
-			{
-				"name": "Robert Baker"
-				, "size": 3000
-			}]
-		},
-		{
-			"name": "Loarraine Ivanov"
-	        , "size": 3000
-	        , "children": [{
-				"name": "Erin Meyers"
-				, "size": 3000
-				, "children": [{
-					"name": "Steven Meyers"
-					, "size": 3000
-				},
-				{
-					"name": "Susan Call"
-					, "size": 3000
-				},
-				{
-					"name": "Erin Meyers"
-					, "size": 3000
-				}]
-			},
-			{
-				"name": "Lorraine Ivanov"
-				, "size": 3000
-			}]
-		}]
-	}
-
 	var testFamily = [
    {
       "personId":"KWZK-SJF",
@@ -90,7 +14,9 @@ angular.module('app')
       "marriagePlace":"Fleming, Kentucky, United States",
       "marriageDate":"14 December 1848",
       "ascendancyNumber":"321",
-      "descendancyNumber":"320-S"
+      "descendancyNumber":"320-S",
+      "splitAscendancyNumber":"321",
+      "generation":9
    },
    {
       "personId":"KWZK-SJ5",
@@ -104,7 +30,9 @@ angular.module('app')
       "marriagePlace":"Lawrence, Kentucky, United States",
       "marriageDate":"5 March 1834",
       "ascendancyNumber":"323",
-      "descendancyNumber":"322-S"
+      "descendancyNumber":"322-S",
+      "splitAscendancyNumber":"323",
+      "generation":9
    },
    {
       "personId":"KWZK-SNK",
@@ -118,7 +46,9 @@ angular.module('app')
       "marriagePlace":"Fleming, Kentucky",
       "marriageDate":"1873",
       "ascendancyNumber":"161",
-      "descendancyNumber":"160-S"
+      "descendancyNumber":"160-S",
+      "splitAscendancyNumber":"161",
+      "generation":8
    },
    {
       "personId":"KWZK-SNB",
@@ -129,7 +59,9 @@ angular.module('app')
       "birthPlace":"Dartmouth, Bristol, Massachusetts, United States",
       "marriagePlace":"Hocking, Athens, Ohio, United States",
       "marriageDate":"18 August 1846",
-      "ascendancyNumber":"325"
+      "ascendancyNumber":"325",
+      "splitAscendancyNumber":"325",
+      "generation":9
    },
    {
       "personId":"KWZK-3SM",
@@ -143,7 +75,9 @@ angular.module('app')
       "marriagePlace":"Knox, Kentucky, United States",
       "marriageDate":"23 December 1849",
       "ascendancyNumber":"327",
-      "descendancyNumber":"326-S"
+      "descendancyNumber":"326-S",
+      "splitAscendancyNumber":"327",
+      "generation":9
    },
    {
       "personId":"KWZK-SNV",
@@ -157,7 +91,9 @@ angular.module('app')
       "marriagePlace":"Otwell, Pike, Indiana, United States",
       "marriageDate":"4 May 1870 / 1871",
       "ascendancyNumber":"163",
-      "descendancyNumber":"326.02"
+      "descendancyNumber":"326.02",
+      "splitAscendancyNumber":"163",
+      "generation":8
    },
    {
       "personId":"KWZK-SNZ",
@@ -171,7 +107,9 @@ angular.module('app')
       "marriagePlace":"Maxwell, Lincoln, Nebraska, United States",
       "marriageDate":"1906",
       "ascendancyNumber":"81",
-      "descendancyNumber":"160.02-S"
+      "descendancyNumber":"80-S",
+      "splitAscendancyNumber":"81",
+      "generation":7
    },
    {
       "personId":"KWZK-SNP",
@@ -183,7 +121,9 @@ angular.module('app')
       "deathDate":"1910",
       "deathPlace":"Farmington Township, Republic, Kansas, United States",
       "ascendancyNumber":"165",
-      "descendancyNumber":"164-S"
+      "descendancyNumber":"164-S",
+      "splitAscendancyNumber":"165",
+      "generation":8
    },
    {
       "personId":"KWZK-SNR",
@@ -195,7 +135,9 @@ angular.module('app')
       "marriagePlace":"Schuyler, Missouri, United States",
       "marriageDate":"25 February 1874",
       "ascendancyNumber":"167",
-      "descendancyNumber":"166-S"
+      "descendancyNumber":"166-S",
+      "splitAscendancyNumber":"167",
+      "generation":8
    },
    {
       "personId":"KWZK-SN6",
@@ -206,7 +148,9 @@ angular.module('app')
       "birthPlace":"Kansas, United States",
       "deathDate":"November 1983",
       "ascendancyNumber":"83",
-      "descendancyNumber":"166.02"
+      "descendancyNumber":"166.02",
+      "splitAscendancyNumber":"83",
+      "generation":7
    },
    {
       "personId":"KWZK-SNC",
@@ -219,7 +163,9 @@ angular.module('app')
       "marriagePlace":"North Platte, Lincoln, Nebraska, United States",
       "marriageDate":"15 November 1930",
       "ascendancyNumber":"41",
-      "descendancyNumber":"82.01"
+      "descendancyNumber":"82.01",
+      "splitAscendancyNumber":"41",
+      "generation":6
    },
    {
       "personId":"KWZK-SN4",
@@ -231,7 +177,9 @@ angular.module('app')
       "deathDate":"6 June 2010",
       "deathPlace":"Portland, Multnomah, Oregon, United States",
       "ascendancyNumber":"21",
-      "descendancyNumber":"20-S"
+      "descendancyNumber":"20-S",
+      "splitAscendancyNumber":"21",
+      "generation":5
    },
    {
       "personId":"KWZK-96R",
@@ -239,7 +187,9 @@ angular.module('app')
       "gender":"Female",
       "lifespan":"Deceased",
       "ascendancyNumber":"177",
-      "descendancyNumber":"176-S"
+      "descendancyNumber":"176-S",
+      "splitAscendancyNumber":"177",
+      "generation":8
    },
    {
       "personId":"KWZK-9HY",
@@ -253,7 +203,9 @@ angular.module('app')
       "marriagePlace":"Comberton, Cambridgeshire, England",
       "marriageDate":"12 October 1831",
       "ascendancyNumber":"357",
-      "descendancyNumber":"356-S"
+      "descendancyNumber":"356-S",
+      "splitAscendancyNumber":"357",
+      "generation":9
    },
    {
       "personId":"KWZK-9WN",
@@ -267,7 +219,9 @@ angular.module('app')
       "marriagePlace":"Eynesbury, Huntingdonshire, England",
       "marriageDate":"3 September 1838",
       "ascendancyNumber":"359",
-      "descendancyNumber":"358-S"
+      "descendancyNumber":"358-S",
+      "splitAscendancyNumber":"359",
+      "generation":9
    },
    {
       "personId":"KWZK-97B",
@@ -280,7 +234,9 @@ angular.module('app')
       "marriagePlace":"Eynesbury, Huntingdonshire, England",
       "marriageDate":"6 September 1857",
       "ascendancyNumber":"179",
-      "descendancyNumber":"358.01"
+      "descendancyNumber":"358.01",
+      "splitAscendancyNumber":"179",
+      "generation":8
    },
    {
       "personId":"KWZK-975",
@@ -291,7 +247,9 @@ angular.module('app')
       "birthPlace":"Willard, Box Elder, Utah, United States",
       "deathDate":"2 April 1915",
       "deathPlace":"Rigby, Jefferson, Idaho, United States",
-      "ascendancyNumber":"89"
+      "ascendancyNumber":"89",
+      "splitAscendancyNumber":"89",
+      "generation":7
    },
    {
       "personId":"KWZK-SMC",
@@ -305,7 +263,9 @@ angular.module('app')
       "marriagePlace":"Leesville, Guthrie Township, Lawrence, Indiana, United States",
       "marriageDate":"1 June 1828",
       "ascendancyNumber":"361",
-      "descendancyNumber":"360-S"
+      "descendancyNumber":"360-S",
+      "splitAscendancyNumber":"361",
+      "generation":9
    },
    {
       "personId":"KWZK-9JZ",
@@ -319,7 +279,9 @@ angular.module('app')
       "marriagePlace":"Goosnargh, Lancashire, England",
       "marriageDate":"27 September 1820",
       "ascendancyNumber":"363",
-      "descendancyNumber":"362-S"
+      "descendancyNumber":"362-S",
+      "splitAscendancyNumber":"363",
+      "generation":9
    },
    {
       "personId":"KWZK-9XT",
@@ -331,7 +293,9 @@ angular.module('app')
       "deathDate":"20 May 1921",
       "deathPlace":"Menan, Jefferson, Idaho, United States",
       "ascendancyNumber":"181",
-      "descendancyNumber":"180-S"
+      "descendancyNumber":"360.01-S",
+      "splitAscendancyNumber":"181",
+      "generation":8
    },
    {
       "personId":"KWZK-95W",
@@ -339,7 +303,9 @@ angular.module('app')
       "gender":"Female",
       "lifespan":"Deceased",
       "ascendancyNumber":"91",
-      "descendancyNumber":"180.06-S"
+      "descendancyNumber":"90-S",
+      "splitAscendancyNumber":"91",
+      "generation":7
    },
    {
       "personId":"KWZK-97R",
@@ -351,7 +317,9 @@ angular.module('app')
       "deathDate":"6 December 1995",
       "deathPlace":"Idaho Falls, Bonneville, Idaho, United States",
       "ascendancyNumber":"45",
-      "descendancyNumber":"90.01"
+      "descendancyNumber":"90.01",
+      "splitAscendancyNumber":"45",
+      "generation":6
    },
    {
       "personId":"KWZV-T77",
@@ -359,7 +327,9 @@ angular.module('app')
       "gender":"Female",
       "lifespan":"Living",
       "ascendancyNumber":"23",
-      "descendancyNumber":"46.01"
+      "descendancyNumber":"22-S",
+      "splitAscendancyNumber":"23",
+      "generation":5
    },
    {
       "personId":"KWZV-R39",
@@ -369,7 +339,9 @@ angular.module('app')
       "birthDate":"7 June 1964",
       "birthPlace":"Salt Lake City, Salt Lake, Utah, United States",
       "ascendancyNumber":"11",
-      "descendancyNumber":"22.01"
+      "descendancyNumber":"22.01",
+      "splitAscendancyNumber":"11",
+      "generation":4
    },
    {
       "personId":"KWZV-RMV",
@@ -379,7 +351,9 @@ angular.module('app')
       "birthDate":"15 June 1988",
       "birthPlace":"Provo, Utah, Utah, United States",
       "ascendancyNumber":"5",
-      "descendancyNumber":"10.01"
+      "descendancyNumber":"10.01",
+      "splitAscendancyNumber":"5",
+      "generation":3
    },
    {
       "personId":"KWZV-TDY",
@@ -391,7 +365,9 @@ angular.module('app')
       "marriagePlace":"Trubschachen, Bern, Switzerland",
       "marriageDate":"1796",
       "ascendancyNumber":"449",
-      "descendancyNumber":"448-S"
+      "descendancyNumber":"448-S",
+      "splitAscendancyNumber":"449",
+      "generation":9
    },
    {
       "personId":"KWZV-TD7",
@@ -405,7 +381,9 @@ angular.module('app')
       "marriagePlace":"Röthenbach im Emmental, Bern, Switzerland",
       "marriageDate":"6 May 1823",
       "ascendancyNumber":"225",
-      "descendancyNumber":"224-S"
+      "descendancyNumber":"224-S",
+      "splitAscendancyNumber":"225",
+      "generation":8
    },
    {
       "personId":"KWZV-TDL",
@@ -419,7 +397,9 @@ angular.module('app')
       "marriagePlace":"Rüegsau, Bern, Switzerland",
       "marriageDate":"20 August 1813",
       "ascendancyNumber":"453",
-      "descendancyNumber":"452-S"
+      "descendancyNumber":"452-S",
+      "splitAscendancyNumber":"453",
+      "generation":9
    },
    {
       "personId":"KWZV-TD2",
@@ -433,7 +413,9 @@ angular.module('app')
       "marriagePlace":"Trubschachen, Bern, Switzerland",
       "marriageDate":"about 1808",
       "ascendancyNumber":"455",
-      "descendancyNumber":"454-S"
+      "descendancyNumber":"454-S",
+      "splitAscendancyNumber":"455",
+      "generation":9
    },
    {
       "personId":"KWZV-T8G",
@@ -447,7 +429,9 @@ angular.module('app')
       "marriagePlace":"Rüegsau, Bern, Switzerland",
       "marriageDate":"13 January 1837",
       "ascendancyNumber":"227",
-      "descendancyNumber":"226-S"
+      "descendancyNumber":"452.01-S",
+      "splitAscendancyNumber":"227",
+      "generation":8
    },
    {
       "personId":"KWZV-T8X",
@@ -461,7 +445,9 @@ angular.module('app')
       "marriagePlace":"Trub, Bern, Switzerland",
       "marriageDate":"18 March 1859",
       "ascendancyNumber":"113",
-      "descendancyNumber":"226.01"
+      "descendancyNumber":"226.01",
+      "splitAscendancyNumber":"113",
+      "generation":7
    },
    {
       "personId":"KWZV-T8D",
@@ -472,7 +458,9 @@ angular.module('app')
       "birthPlace":"Buchholterberg, Bern, Switzerland",
       "deathDate":"9 November 1953",
       "ascendancyNumber":"57",
-      "descendancyNumber":"56-S"
+      "descendancyNumber":"56-S",
+      "splitAscendancyNumber":"57",
+      "generation":6
    },
    {
       "personId":"KWZV-T6M",
@@ -482,7 +470,9 @@ angular.module('app')
       "marriagePlace":"Bern, Switzerland",
       "marriageDate":"about 1764",
       "ascendancyNumber":"465",
-      "descendancyNumber":"464-S"
+      "descendancyNumber":"464-S",
+      "splitAscendancyNumber":"465",
+      "generation":9
    },
    {
       "personId":"KWZV-TDZ",
@@ -493,7 +483,9 @@ angular.module('app')
       "birthPlace":"Muntelier, Fribourg, Switzerland",
       "deathDate":"22 November 1866",
       "ascendancyNumber":"233",
-      "descendancyNumber":"232-S"
+      "descendancyNumber":"232-S",
+      "splitAscendancyNumber":"233",
+      "generation":8
    },
    {
       "personId":"KWZV-T68",
@@ -505,7 +497,9 @@ angular.module('app')
       "marriagePlace":"Münsingen, Bern, Switzerland",
       "marriageDate":"8 October 1779",
       "ascendancyNumber":"469",
-      "descendancyNumber":"468-S"
+      "descendancyNumber":"468-S",
+      "splitAscendancyNumber":"469",
+      "generation":9
    },
    {
       "personId":"KWZV-T6D",
@@ -517,7 +511,9 @@ angular.module('app')
       "deathDate":"10 September 1832",
       "marriageDate":"17 January 1794",
       "ascendancyNumber":"471",
-      "descendancyNumber":"470-S"
+      "descendancyNumber":"470-S",
+      "splitAscendancyNumber":"471",
+      "generation":9
    },
    {
       "personId":"KWZV-TD6",
@@ -530,7 +526,9 @@ angular.module('app')
       "marriagePlace":"Walkringen, Bern, Switzerland",
       "marriageDate":"25 May 1824",
       "ascendancyNumber":"235",
-      "descendancyNumber":"470.01"
+      "descendancyNumber":"234-S",
+      "splitAscendancyNumber":"235",
+      "generation":8
    },
    {
       "personId":"KWZV-TD9",
@@ -544,7 +542,9 @@ angular.module('app')
       "marriagePlace":"Grosshöchstetten, Bern, Switzerland",
       "marriageDate":"18 July 1862",
       "ascendancyNumber":"117",
-      "descendancyNumber":"234.01"
+      "descendancyNumber":"234.01",
+      "splitAscendancyNumber":"117",
+      "generation":7
    },
    {
       "personId":"KWZV-T62",
@@ -556,7 +556,9 @@ angular.module('app')
       "deathDate":"15 July 1818",
       "deathPlace":"Schangnau, Bern, Switzerland",
       "ascendancyNumber":"473",
-      "descendancyNumber":"472-S"
+      "descendancyNumber":"472-S",
+      "splitAscendancyNumber":"473",
+      "generation":9
    },
    {
       "personId":"KWZV-T6L",
@@ -567,7 +569,9 @@ angular.module('app')
       "birthPlace":"Hasle bei Burgdorf, Bern, Switzerland",
       "deathDate":"1 March 1834",
       "ascendancyNumber":"475",
-      "descendancyNumber":"474-S"
+      "descendancyNumber":"474-S",
+      "splitAscendancyNumber":"475",
+      "generation":9
    },
    {
       "personId":"KWZV-TDJ",
@@ -581,7 +585,9 @@ angular.module('app')
       "marriagePlace":"Schangnau, Bern, Switzerland",
       "marriageDate":"12 November 1813",
       "ascendancyNumber":"237",
-      "descendancyNumber":"236-S"
+      "descendancyNumber":"474.01",
+      "splitAscendancyNumber":"237",
+      "generation":8
    },
    {
       "personId":"KWZV-T6N",
@@ -593,7 +599,9 @@ angular.module('app')
       "deathDate":"5 May 1813",
       "marriageDate":"7 January 1781",
       "ascendancyNumber":"477",
-      "descendancyNumber":"476-S"
+      "descendancyNumber":"476-S",
+      "splitAscendancyNumber":"477",
+      "generation":9
    },
    {
       "personId":"KWZV-T66",
@@ -606,7 +614,9 @@ angular.module('app')
       "marriagePlace":"Urtenen, Bern, Switzerland",
       "marriageDate":"14 March 1783",
       "ascendancyNumber":"479",
-      "descendancyNumber":"478-S"
+      "descendancyNumber":"478-S",
+      "splitAscendancyNumber":"479",
+      "generation":9
    },
    {
       "personId":"KWZV-TDX",
@@ -619,7 +629,9 @@ angular.module('app')
       "marriagePlace":"Schwarzenegg, Unterlangenegg, Bern, Switzerland",
       "marriageDate":"21 November 1818",
       "ascendancyNumber":"239",
-      "descendancyNumber":"478.01"
+      "descendancyNumber":"478.01",
+      "splitAscendancyNumber":"239",
+      "generation":8
    },
    {
       "personId":"KWZV-TD3",
@@ -633,7 +645,9 @@ angular.module('app')
       "marriagePlace":"Thun, Bern, Switzerland",
       "marriageDate":"13 May 1848",
       "ascendancyNumber":"119",
-      "descendancyNumber":"238.01"
+      "descendancyNumber":"238.01",
+      "splitAscendancyNumber":"119",
+      "generation":7
    },
    {
       "personId":"KWZV-T8R",
@@ -647,7 +661,9 @@ angular.module('app')
       "marriagePlace":"Thun, Bern, Switzerland",
       "marriageDate":"21 October 1882",
       "ascendancyNumber":"59",
-      "descendancyNumber":"118.01"
+      "descendancyNumber":"118.01",
+      "splitAscendancyNumber":"59",
+      "generation":6
    },
    {
       "personId":"KWZV-T82",
@@ -659,7 +675,9 @@ angular.module('app')
       "deathDate":"10 August 1986",
       "deathPlace":"Oklahoma City, Oklahoma, Oklahoma, United States",
       "ascendancyNumber":"29",
-      "descendancyNumber":"58.01"
+      "descendancyNumber":"58.01",
+      "splitAscendancyNumber":"29",
+      "generation":5
    },
    {
       "personId":"KWZK-MMC",
@@ -668,7 +686,9 @@ angular.module('app')
       "lifespan":"Deceased",
       "birthPlace":"Argyll, Scotland",
       "ascendancyNumber":"481",
-      "descendancyNumber":"480-S"
+      "descendancyNumber":"480-S",
+      "splitAscendancyNumber":"481",
+      "generation":9
    },
    {
       "personId":"KWZK-MMZ",
@@ -681,7 +701,9 @@ angular.module('app')
       "marriagePlace":"West Greenock, Renfrewshire, Scotland",
       "marriageDate":"17 November 1795",
       "ascendancyNumber":"483",
-      "descendancyNumber":"482-S"
+      "descendancyNumber":"482-S",
+      "splitAscendancyNumber":"483",
+      "generation":9
    },
    {
       "personId":"KWZV-111",
@@ -695,7 +717,9 @@ angular.module('app')
       "marriagePlace":"Greenock, Renfrewshire, Scotland",
       "marriageDate":"29 March 1819",
       "ascendancyNumber":"241",
-      "descendancyNumber":"482.01"
+      "descendancyNumber":"240-S",
+      "splitAscendancyNumber":"241",
+      "generation":8
    },
    {
       "personId":"KWZK-MJ5",
@@ -703,7 +727,9 @@ angular.module('app')
       "gender":"Female",
       "lifespan":"Deceased",
       "ascendancyNumber":"121",
-      "descendancyNumber":"242.01"
+      "descendancyNumber":"120-S",
+      "splitAscendancyNumber":"121",
+      "generation":7
    },
    {
       "personId":"KWZK-MMK",
@@ -715,7 +741,9 @@ angular.module('app')
       "deathDate":"18 April 1810",
       "deathPlace":"Hartford, Hartford, Connecticut, United States",
       "ascendancyNumber":"491",
-      "descendancyNumber":"490-S"
+      "descendancyNumber":"490-S",
+      "splitAscendancyNumber":"491",
+      "generation":9
    },
    {
       "personId":"KWZK-MMS",
@@ -727,7 +755,9 @@ angular.module('app')
       "deathDate":"12 October 1846",
       "deathPlace":"Walnut Grove, Knox, Illinois, United States",
       "ascendancyNumber":"245",
-      "descendancyNumber":"490.01"
+      "descendancyNumber":"490.01",
+      "splitAscendancyNumber":"245",
+      "generation":8
    },
    {
       "personId":"KWZK-MM5",
@@ -739,7 +769,9 @@ angular.module('app')
       "marriagePlace":"Northiam, East Sussex, England",
       "marriageDate":"29 January 1788",
       "ascendancyNumber":"493",
-      "descendancyNumber":"492-S"
+      "descendancyNumber":"492-S",
+      "splitAscendancyNumber":"493",
+      "generation":9
    },
    {
       "personId":"KWZK-MM2",
@@ -751,7 +783,9 @@ angular.module('app')
       "marriagePlace":"Beckley, Sussex, England",
       "marriageDate":"before 1793",
       "ascendancyNumber":"495",
-      "descendancyNumber":"494-S"
+      "descendancyNumber":"494-S",
+      "splitAscendancyNumber":"495",
+      "generation":9
    },
    {
       "personId":"KWZK-MMQ",
@@ -763,7 +797,9 @@ angular.module('app')
       "deathDate":"6 November 1874",
       "deathPlace":"South Hall Greenwood, Middlesex, District of Uxbridge, England",
       "ascendancyNumber":"247",
-      "descendancyNumber":"494.01"
+      "descendancyNumber":"494.01",
+      "splitAscendancyNumber":"247",
+      "generation":8
    },
    {
       "personId":"KWZV-11Y",
@@ -777,7 +813,9 @@ angular.module('app')
       "marriagePlace":"Salt Lake City, Salt Lake, Utah Territory, United States",
       "marriageDate":"9 October 1853",
       "ascendancyNumber":"123",
-      "descendancyNumber":"122-S"
+      "descendancyNumber":"246.01",
+      "splitAscendancyNumber":"123",
+      "generation":7
    },
    {
       "personId":"KWZV-11G",
@@ -791,7 +829,9 @@ angular.module('app')
       "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
       "marriageDate":"12 June 1871",
       "ascendancyNumber":"61",
-      "descendancyNumber":"122.01"
+      "descendancyNumber":"122.01",
+      "splitAscendancyNumber":"61",
+      "generation":6
    },
    {
       "personId":"KWZV-1F5",
@@ -799,7 +839,9 @@ angular.module('app')
       "gender":"Female",
       "lifespan":"Living",
       "ascendancyNumber":"15",
-      "descendancyNumber":"30.01"
+      "descendancyNumber":"30.01",
+      "splitAscendancyNumber":"15",
+      "generation":4
    },
    {
       "personId":"KWZV-YJQ",
@@ -808,7 +850,9 @@ angular.module('app')
       "lifespan":"Living",
       "birthPlace":"Provo, Utah, Utah, United States",
       "ascendancyNumber":"7",
-      "descendancyNumber":"14.01"
+      "descendancyNumber":"14.01",
+      "splitAscendancyNumber":"7",
+      "generation":3
    },
    {
       "personId":"KWZV-TYP",
@@ -818,7 +862,8 @@ angular.module('app')
       "birthDate":"16 September 1992",
       "birthPlace":"Van Nuys, Los Angeles, California, United States",
       "ascendancyNumber":"3",
-      "descendancyNumber":"6.01"
+      "descendancyNumber":"6.01",
+      "splitAscendancyNumber":"3"
    },
    {
       "personId":"KWZK-SJX",
@@ -858,7 +903,9 @@ angular.module('app')
             "marriagePlace":"Fleming, Kentucky",
             "marriageDate":"1873",
             "descendancyNumber":"320.01",
-            "ascendancyNumber":"160"
+            "ascendancyNumber":"160",
+            "splitAscendancyNumber":"160",
+            "generation":8
          },
          {
             "personId":"KWZK-SNK",
@@ -873,7 +920,9 @@ angular.module('app')
             "marriageDate":"1873",
             "descendancyNumber":"320.01-S"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"320",
+      "generation":9
    },
    {
       "personId":"KWZK-SNJ",
@@ -887,95 +936,9 @@ angular.module('app')
       "marriagePlace":"Fleming, Kentucky",
       "marriageDate":"1873",
       "descendancyNumber":"320.01",
-      "ascendancyNumber":"160"
-   },
-   {
-      "personId":"KWZK-SN8",
-      "name":"S. J. Tilden Meyers",
-      "gender":"Male",
-      "lifespan":"1876-1959",
-      "birthDate":"17 September 1876",
-      "birthPlace":"Kentucky, United States",
-      "deathDate":"20 November 1959",
-      "marriagePlace":"Maxwell, Lincoln, Nebraska, United States",
-      "marriageDate":"1906",
-      "ascendancyNumber":"80",
-      "children":[
-         {
-            "personId":"KWZK-SNZ",
-            "name":"Mertie (Merty) Smith",
-            "gender":"Female",
-            "lifespan":"1882-1949",
-            "birthDate":"2 September 1882",
-            "birthPlace":"Otwell, Pike, Indiana, United States",
-            "deathDate":"28 February 1949",
-            "deathPlace":"North Platte, Lincoln, Nebraska, United States",
-            "marriagePlace":"Maxwell, Lincoln, Nebraska, United States",
-            "marriageDate":"1906",
-            "descendancyNumber":"80-S"
-         },
-         {
-            "personId":"KWZK-SNX",
-            "name":"Guy Meyers",
-            "gender":"Male",
-            "lifespan":"1907-1957",
-            "birthDate":"1907",
-            "birthPlace":"North Platte, Lincoln, Nebraska, United States",
-            "deathDate":"1957",
-            "deathPlace":"North Platte, Lincoln, Nebraska, United States",
-            "descendancyNumber":"80.01"
-         },
-         {
-            "personId":"KWZK-SNH",
-            "name":"Richard George Meyers",
-            "gender":"Male",
-            "lifespan":"1908-1996",
-            "birthDate":"11 September 1908",
-            "birthPlace":"Maxwell, Lincoln, Nebraska, United States",
-            "deathDate":"14 December 1996",
-            "marriagePlace":"North Platte, Lincoln, Nebraska, United States",
-            "marriageDate":"15 November 1930",
-            "descendancyNumber":"82.01-S",
-            "ascendancyNumber":"40"
-         },
-         {
-            "personId":"KWZK-SNC",
-            "name":"Lottie Leone Senior",
-            "gender":"Female",
-            "lifespan":"1911-2001",
-            "birthDate":"3 May 1911",
-            "deathDate":"30 May 2001",
-            "deathPlace":"Oregon Township, Washington, Iowa, United States",
-            "marriagePlace":"North Platte, Lincoln, Nebraska, United States",
-            "marriageDate":"15 November 1930",
-            "descendancyNumber":"80.02-S"
-         }
-      ],
-      "descendancyNumber":"160.02"
-   },
-   {
-      "personId":"KWZK-SNX",
-      "name":"Guy Meyers",
-      "gender":"Male",
-      "lifespan":"1907-1957",
-      "birthDate":"1907",
-      "birthPlace":"North Platte, Lincoln, Nebraska, United States",
-      "deathDate":"1957",
-      "deathPlace":"North Platte, Lincoln, Nebraska, United States",
-      "descendancyNumber":"80.01"
-   },
-   {
-      "personId":"KWZK-SNH",
-      "name":"Richard George Meyers",
-      "gender":"Male",
-      "lifespan":"1908-1996",
-      "birthDate":"11 September 1908",
-      "birthPlace":"Maxwell, Lincoln, Nebraska, United States",
-      "deathDate":"14 December 1996",
-      "marriagePlace":"North Platte, Lincoln, Nebraska, United States",
-      "marriageDate":"15 November 1930",
-      "descendancyNumber":"82.01-S",
-      "ascendancyNumber":"40"
+      "ascendancyNumber":"160",
+      "splitAscendancyNumber":"160",
+      "generation":8
    },
    {
       "personId":"KWZK-SJV",
@@ -1010,7 +973,9 @@ angular.module('app')
             "lifespan":"1851-Deceased",
             "birthDate":"1851",
             "birthPlace":"Morehead, Rowan, Kentucky, United States",
-            "descendancyNumber":"322.01-S"
+            "descendancyNumber":"322.01-S",
+            "splitDescendancyNumber":"322.01",
+            "generation":8
          },
          {
             "personId":"KWZK-SNK",
@@ -1023,7 +988,9 @@ angular.module('app')
             "deathPlace":"Vinita, Craig, Oklahoma, United States",
             "descendancyNumber":"322.01"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"322",
+      "generation":9
    },
    {
       "personId":"KWZK-SJ2",
@@ -1032,7 +999,239 @@ angular.module('app')
       "lifespan":"1851-Deceased",
       "birthDate":"1851",
       "birthPlace":"Morehead, Rowan, Kentucky, United States",
-      "descendancyNumber":"322.01-S"
+      "descendancyNumber":"322.01-S",
+      "splitDescendancyNumber":"322.01",
+      "generation":8
+   },
+   {
+      "personId":"KWZK-SJW",
+      "name":"William Smith",
+      "gender":"Male",
+      "lifespan":"1817-1885",
+      "birthDate":"15 June 1817",
+      "birthPlace":"Guernsey, Ohio, United States",
+      "deathDate":"24 August 1885",
+      "deathPlace":"Jefferson Township, Pike, Indiana, United States",
+      "marriagePlace":"Hocking, Athens, Ohio, United States",
+      "marriageDate":"18 August 1846",
+      "ascendancyNumber":"324",
+      "children":[
+         {
+            "personId":"KWZK-SKW",
+            "name":"Emma Randall",
+            "gender":"Female",
+            "lifespan":"1817-1846",
+            "birthDate":"1817",
+            "birthPlace":"Ohio, United States",
+            "deathDate":"8 March 1846",
+            "deathPlace":"Vinton, Vinton, Ohio, United States",
+            "marriagePlace":"Ohio, United States",
+            "marriageDate":"18 November 1841",
+            "descendancyNumber":"324-S",
+            "splitDescendancyNumber":"324",
+            "generation":8
+         },
+         {
+            "personId":"KWZK-SVY",
+            "name":"William Smith",
+            "gender":"Male",
+            "lifespan":"1840-1847",
+            "birthDate":"1840",
+            "deathDate":"1847",
+            "deathPlace":"Ohio, United States",
+            "descendancyNumber":"324.01",
+            "splitDescendancyNumber":"324.01",
+            "generation":8
+         },
+         {
+            "personId":"KWZK-SVB",
+            "name":"Elizabeth K Smith",
+            "gender":"Female",
+            "lifespan":"1842-Deceased",
+            "birthDate":"1842",
+            "birthPlace":"Ohio, United States",
+            "descendancyNumber":"324.02",
+            "splitDescendancyNumber":"324.02",
+            "generation":8
+         },
+         {
+            "personId":"KWZK-SKM",
+            "name":"Emma C. Smith",
+            "gender":"Female",
+            "lifespan":"1842-Deceased",
+            "birthDate":"1842",
+            "birthPlace":"Ohio, United States",
+            "descendancyNumber":"324.03",
+            "splitDescendancyNumber":"324.03",
+            "generation":8
+         },
+         {
+            "personId":"KWZK-SK9",
+            "name":"Isaac Monroe Smith",
+            "gender":"Male",
+            "lifespan":"1844-1902",
+            "birthDate":"1844",
+            "birthPlace":"Vinton, Ohio, United States",
+            "deathDate":"1902",
+            "deathPlace":"Union Township, Morgan, Ohio, United States",
+            "descendancyNumber":"324.04",
+            "splitDescendancyNumber":"324.04",
+            "generation":8
+         }
+      ],
+      "splitAscendancyNumber":"324",
+      "generation":9
+   },
+   {
+      "personId":"KWZK-SKW",
+      "name":"Emma Randall",
+      "gender":"Female",
+      "lifespan":"1817-1846",
+      "birthDate":"1817",
+      "birthPlace":"Ohio, United States",
+      "deathDate":"8 March 1846",
+      "deathPlace":"Vinton, Vinton, Ohio, United States",
+      "marriagePlace":"Ohio, United States",
+      "marriageDate":"18 November 1841",
+      "descendancyNumber":"324-S",
+      "splitDescendancyNumber":"324",
+      "generation":8
+   },
+   {
+      "personId":"KWZK-SVY",
+      "name":"William Smith",
+      "gender":"Male",
+      "lifespan":"1840-1847",
+      "birthDate":"1840",
+      "deathDate":"1847",
+      "deathPlace":"Ohio, United States",
+      "descendancyNumber":"324.01",
+      "splitDescendancyNumber":"324.01",
+      "generation":8
+   },
+   {
+      "personId":"KWZK-SVB",
+      "name":"Elizabeth K Smith",
+      "gender":"Female",
+      "lifespan":"1842-Deceased",
+      "birthDate":"1842",
+      "birthPlace":"Ohio, United States",
+      "descendancyNumber":"324.02",
+      "splitDescendancyNumber":"324.02",
+      "generation":8
+   },
+   {
+      "personId":"KWZK-SKM",
+      "name":"Emma C. Smith",
+      "gender":"Female",
+      "lifespan":"1842-Deceased",
+      "birthDate":"1842",
+      "birthPlace":"Ohio, United States",
+      "descendancyNumber":"324.03",
+      "splitDescendancyNumber":"324.03",
+      "generation":8
+   },
+   {
+      "personId":"KWZK-SK9",
+      "name":"Isaac Monroe Smith",
+      "gender":"Male",
+      "lifespan":"1844-1902",
+      "birthDate":"1844",
+      "birthPlace":"Vinton, Ohio, United States",
+      "deathDate":"1902",
+      "deathPlace":"Union Township, Morgan, Ohio, United States",
+      "descendancyNumber":"324.04",
+      "splitDescendancyNumber":"324.04",
+      "generation":8
+   },
+   {
+      "personId":"KWZK-SJ6",
+      "name":"Hattie Meyers",
+      "gender":"Female",
+      "lifespan":"1874-1962",
+      "birthDate":"13 April 1874",
+      "birthPlace":"Rowan, Kentucky, United States",
+      "deathDate":"10 August 1962",
+      "descendancyNumber":"160.01",
+      "splitDescendancyNumber":"160.01",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-SN8",
+      "name":"S. J. Tilden Meyers",
+      "gender":"Male",
+      "lifespan":"1876-1959",
+      "birthDate":"17 September 1876",
+      "birthPlace":"Kentucky, United States",
+      "deathDate":"20 November 1959",
+      "marriagePlace":"Maxwell, Lincoln, Nebraska, United States",
+      "marriageDate":"1906",
+      "descendancyNumber":"162.06-S",
+      "ascendancyNumber":"80",
+      "splitAscendancyNumber":"80",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-SJZ",
+      "name":"Dolphin Percy Meyers",
+      "gender":"Male",
+      "lifespan":"1878-1974",
+      "birthDate":"25 May 1878",
+      "birthPlace":"Hillsboro, Fleming, Kentucky, United States",
+      "deathDate":"12 April 1974",
+      "deathPlace":"Twin Falls, Twin Falls, Idaho, United States",
+      "descendancyNumber":"160.03",
+      "splitDescendancyNumber":"160.03",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-SJC",
+      "name":"Pearl M. Meyers",
+      "gender":"Female",
+      "lifespan":"1881-1973",
+      "birthDate":"26 May 1881",
+      "birthPlace":"Stapleton, Logan, Nebraska, United States",
+      "deathDate":"January 1973",
+      "descendancyNumber":"160.04",
+      "splitDescendancyNumber":"160.04",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-SJH",
+      "name":"Kate Meyers",
+      "gender":"Female",
+      "lifespan":"1884-1972",
+      "birthDate":"22 January 1884",
+      "birthPlace":"Kentucky, United States",
+      "deathDate":"20 November 1972",
+      "deathPlace":"San Jose, Santa Clara, California, United States",
+      "descendancyNumber":"160.05",
+      "splitDescendancyNumber":"160.05",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-SJ8",
+      "name":"Omar Meyers",
+      "gender":"Male",
+      "lifespan":"1886-1974",
+      "birthDate":"5 September 1886",
+      "birthPlace":"Danville, Vermilion, Illinois, United States",
+      "deathDate":"14 February 1974",
+      "descendancyNumber":"160.06",
+      "splitDescendancyNumber":"160.06",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-SJD",
+      "name":"Edna Meyers",
+      "gender":"Female",
+      "lifespan":"1896-1902",
+      "birthDate":"5 May 1896",
+      "birthPlace":"Illinois, United States",
+      "deathDate":"12 January 1902",
+      "descendancyNumber":"160.07",
+      "splitDescendancyNumber":"160.07",
+      "generation":7
    },
    {
       "personId":"KWZK-SNN",
@@ -1069,7 +1268,9 @@ angular.module('app')
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "deathDate":"30 October 1933",
             "marriageDate":"13 June 1893",
-            "descendancyNumber":"162.01"
+            "descendancyNumber":"162.01",
+            "splitDescendancyNumber":"162.01",
+            "generation":7
          },
          {
             "personId":"KWZK-SVJ",
@@ -1079,7 +1280,9 @@ angular.module('app')
             "birthDate":"1876",
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "marriageDate":"13 June 1893",
-            "descendancyNumber":"162.01-S"
+            "descendancyNumber":"162.01-S",
+            "splitDescendancyNumber":"162.01",
+            "generation":7
          },
          {
             "personId":"KWZK-SJM",
@@ -1089,7 +1292,9 @@ angular.module('app')
             "birthDate":"21 November 1873",
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "deathDate":"17 January 1876",
-            "descendancyNumber":"162.02"
+            "descendancyNumber":"162.02",
+            "splitDescendancyNumber":"162.02",
+            "generation":7
          },
          {
             "personId":"KWZK-SVN",
@@ -1099,7 +1304,9 @@ angular.module('app')
             "birthDate":"1873",
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "marriageDate":"12 August 1895",
-            "descendancyNumber":"162.03-S"
+            "descendancyNumber":"162.03-S",
+            "splitDescendancyNumber":"162.03",
+            "generation":7
          },
          {
             "personId":"KWZK-SN1",
@@ -1110,7 +1317,9 @@ angular.module('app')
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "deathDate":"30 May 1934",
             "marriageDate":"12 August 1895",
-            "descendancyNumber":"162.03"
+            "descendancyNumber":"162.03",
+            "splitDescendancyNumber":"162.03",
+            "generation":7
          },
          {
             "personId":"KWZK-SVR",
@@ -1120,7 +1329,9 @@ angular.module('app')
             "birthDate":"1875",
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "marriageDate":"31 January 1900",
-            "descendancyNumber":"162.04-S"
+            "descendancyNumber":"162.04-S",
+            "splitDescendancyNumber":"162.04",
+            "generation":7
          },
          {
             "personId":"KWZK-SJ7",
@@ -1131,7 +1342,9 @@ angular.module('app')
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "deathDate":"8 December 1918",
             "marriageDate":"31 January 1900",
-            "descendancyNumber":"162.04"
+            "descendancyNumber":"162.04",
+            "splitDescendancyNumber":"162.04",
+            "generation":7
          },
          {
             "personId":"KWZK-SJS",
@@ -1143,7 +1356,9 @@ angular.module('app')
             "deathDate":"27 June 1841",
             "deathPlace":"North Platte, Lincoln, Nebraska, United States",
             "marriageDate":"4 May 1904",
-            "descendancyNumber":"162.05"
+            "descendancyNumber":"162.05",
+            "splitDescendancyNumber":"162.05",
+            "generation":7
          },
          {
             "personId":"KWZK-SVL",
@@ -1154,7 +1369,9 @@ angular.module('app')
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "deathDate":"3 August 1920",
             "marriageDate":"4 May 1904",
-            "descendancyNumber":"162.05-S"
+            "descendancyNumber":"162.05-S",
+            "splitDescendancyNumber":"162.05",
+            "generation":7
          },
          {
             "personId":"KWZK-SN8",
@@ -1189,7 +1406,9 @@ angular.module('app')
             "birthDate":"1878",
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "marriageDate":"4 May 1904",
-            "descendancyNumber":"162.07-S"
+            "descendancyNumber":"162.07-S",
+            "splitDescendancyNumber":"162.07",
+            "generation":7
          },
          {
             "personId":"KWZK-SJ3",
@@ -1200,7 +1419,9 @@ angular.module('app')
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "deathDate":"19 January 1958",
             "marriageDate":"4 May 1904",
-            "descendancyNumber":"162.07"
+            "descendancyNumber":"162.07",
+            "splitDescendancyNumber":"162.07",
+            "generation":7
          },
          {
             "personId":"KWZK-SJ4",
@@ -1211,7 +1432,9 @@ angular.module('app')
             "birthPlace":"Otwell, Pike, Indiana, United States",
             "deathDate":"4 May 1974",
             "deathPlace":"North Platte, Lincoln, Nebraska, United States",
-            "descendancyNumber":"162.08"
+            "descendancyNumber":"162.08",
+            "splitDescendancyNumber":"162.08",
+            "generation":7
          },
          {
             "personId":"KWZK-SVT",
@@ -1222,7 +1445,9 @@ angular.module('app')
             "birthPlace":"Garfield Township, Frontier, Nebraska, United States",
             "deathDate":"22 April 1980",
             "marriageDate":"24 May 1912",
-            "descendancyNumber":"162.09-S"
+            "descendancyNumber":"162.09-S",
+            "splitDescendancyNumber":"162.09",
+            "generation":7
          },
          {
             "personId":"KWZK-SJQ",
@@ -1233,7 +1458,9 @@ angular.module('app')
             "birthPlace":"Garfield Township, Frontier, Nebraska, United States",
             "deathDate":"31 October 1964",
             "marriageDate":"24 May 1912",
-            "descendancyNumber":"162.09"
+            "descendancyNumber":"162.09",
+            "splitDescendancyNumber":"162.09",
+            "generation":7
          },
          {
             "personId":"KWZK-SNY",
@@ -1244,7 +1471,9 @@ angular.module('app')
             "birthPlace":"Garfield Township, Frontier, Nebraska, United States",
             "deathDate":"6 April 1958",
             "marriageDate":"20 July 1915",
-            "descendancyNumber":"162.10"
+            "descendancyNumber":"162.10",
+            "splitDescendancyNumber":"162.10",
+            "generation":7
          },
          {
             "personId":"KWZK-SV7",
@@ -1254,10 +1483,14 @@ angular.module('app')
             "birthDate":"1898",
             "birthPlace":"Garfield Township, Frontier, Nebraska, United States",
             "marriageDate":"20 July 1915",
-            "descendancyNumber":"162.10-S"
+            "descendancyNumber":"162.10-S",
+            "splitDescendancyNumber":"162.10",
+            "generation":7
          }
       ],
-      "descendancyNumber":"326.02-S"
+      "descendancyNumber":"326.02-S",
+      "splitAscendancyNumber":"162",
+      "generation":8
    },
    {
       "personId":"KWZK-SJ9",
@@ -1268,7 +1501,9 @@ angular.module('app')
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "deathDate":"30 October 1933",
       "marriageDate":"13 June 1893",
-      "descendancyNumber":"162.01"
+      "descendancyNumber":"162.01",
+      "splitDescendancyNumber":"162.01",
+      "generation":7
    },
    {
       "personId":"KWZK-SVJ",
@@ -1278,7 +1513,9 @@ angular.module('app')
       "birthDate":"1876",
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "marriageDate":"13 June 1893",
-      "descendancyNumber":"162.01-S"
+      "descendancyNumber":"162.01-S",
+      "splitDescendancyNumber":"162.01",
+      "generation":7
    },
    {
       "personId":"KWZK-SJM",
@@ -1288,7 +1525,9 @@ angular.module('app')
       "birthDate":"21 November 1873",
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "deathDate":"17 January 1876",
-      "descendancyNumber":"162.02"
+      "descendancyNumber":"162.02",
+      "splitDescendancyNumber":"162.02",
+      "generation":7
    },
    {
       "personId":"KWZK-SVN",
@@ -1298,7 +1537,9 @@ angular.module('app')
       "birthDate":"1873",
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "marriageDate":"12 August 1895",
-      "descendancyNumber":"162.03-S"
+      "descendancyNumber":"162.03-S",
+      "splitDescendancyNumber":"162.03",
+      "generation":7
    },
    {
       "personId":"KWZK-SN1",
@@ -1309,7 +1550,9 @@ angular.module('app')
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "deathDate":"30 May 1934",
       "marriageDate":"12 August 1895",
-      "descendancyNumber":"162.03"
+      "descendancyNumber":"162.03",
+      "splitDescendancyNumber":"162.03",
+      "generation":7
    },
    {
       "personId":"KWZK-SVR",
@@ -1319,7 +1562,9 @@ angular.module('app')
       "birthDate":"1875",
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "marriageDate":"31 January 1900",
-      "descendancyNumber":"162.04-S"
+      "descendancyNumber":"162.04-S",
+      "splitDescendancyNumber":"162.04",
+      "generation":7
    },
    {
       "personId":"KWZK-SJ7",
@@ -1330,7 +1575,9 @@ angular.module('app')
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "deathDate":"8 December 1918",
       "marriageDate":"31 January 1900",
-      "descendancyNumber":"162.04"
+      "descendancyNumber":"162.04",
+      "splitDescendancyNumber":"162.04",
+      "generation":7
    },
    {
       "personId":"KWZK-SJS",
@@ -1342,7 +1589,9 @@ angular.module('app')
       "deathDate":"27 June 1841",
       "deathPlace":"North Platte, Lincoln, Nebraska, United States",
       "marriageDate":"4 May 1904",
-      "descendancyNumber":"162.05"
+      "descendancyNumber":"162.05",
+      "splitDescendancyNumber":"162.05",
+      "generation":7
    },
    {
       "personId":"KWZK-SVL",
@@ -1353,7 +1602,9 @@ angular.module('app')
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "deathDate":"3 August 1920",
       "marriageDate":"4 May 1904",
-      "descendancyNumber":"162.05-S"
+      "descendancyNumber":"162.05-S",
+      "splitDescendancyNumber":"162.05",
+      "generation":7
    },
    {
       "personId":"KWZK-SV2",
@@ -1363,7 +1614,9 @@ angular.module('app')
       "birthDate":"1878",
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "marriageDate":"4 May 1904",
-      "descendancyNumber":"162.07-S"
+      "descendancyNumber":"162.07-S",
+      "splitDescendancyNumber":"162.07",
+      "generation":7
    },
    {
       "personId":"KWZK-SJ3",
@@ -1374,7 +1627,9 @@ angular.module('app')
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "deathDate":"19 January 1958",
       "marriageDate":"4 May 1904",
-      "descendancyNumber":"162.07"
+      "descendancyNumber":"162.07",
+      "splitDescendancyNumber":"162.07",
+      "generation":7
    },
    {
       "personId":"KWZK-SJ4",
@@ -1385,7 +1640,9 @@ angular.module('app')
       "birthPlace":"Otwell, Pike, Indiana, United States",
       "deathDate":"4 May 1974",
       "deathPlace":"North Platte, Lincoln, Nebraska, United States",
-      "descendancyNumber":"162.08"
+      "descendancyNumber":"162.08",
+      "splitDescendancyNumber":"162.08",
+      "generation":7
    },
    {
       "personId":"KWZK-SVT",
@@ -1396,7 +1653,9 @@ angular.module('app')
       "birthPlace":"Garfield Township, Frontier, Nebraska, United States",
       "deathDate":"22 April 1980",
       "marriageDate":"24 May 1912",
-      "descendancyNumber":"162.09-S"
+      "descendancyNumber":"162.09-S",
+      "splitDescendancyNumber":"162.09",
+      "generation":7
    },
    {
       "personId":"KWZK-SJQ",
@@ -1407,7 +1666,9 @@ angular.module('app')
       "birthPlace":"Garfield Township, Frontier, Nebraska, United States",
       "deathDate":"31 October 1964",
       "marriageDate":"24 May 1912",
-      "descendancyNumber":"162.09"
+      "descendancyNumber":"162.09",
+      "splitDescendancyNumber":"162.09",
+      "generation":7
    },
    {
       "personId":"KWZK-SNY",
@@ -1418,7 +1679,9 @@ angular.module('app')
       "birthPlace":"Garfield Township, Frontier, Nebraska, United States",
       "deathDate":"6 April 1958",
       "marriageDate":"20 July 1915",
-      "descendancyNumber":"162.10"
+      "descendancyNumber":"162.10",
+      "splitDescendancyNumber":"162.10",
+      "generation":7
    },
    {
       "personId":"KWZK-SV7",
@@ -1428,188 +1691,37 @@ angular.module('app')
       "birthDate":"1898",
       "birthPlace":"Garfield Township, Frontier, Nebraska, United States",
       "marriageDate":"20 July 1915",
-      "descendancyNumber":"162.10-S"
+      "descendancyNumber":"162.10-S",
+      "splitDescendancyNumber":"162.10",
+      "generation":7
    },
    {
-      "personId":"KWZK-SJ6",
-      "name":"Hattie Meyers",
-      "gender":"Female",
-      "lifespan":"1874-1962",
-      "birthDate":"13 April 1874",
-      "birthPlace":"Rowan, Kentucky, United States",
-      "deathDate":"10 August 1962",
-      "descendancyNumber":"160.01"
-   },
-   {
-      "personId":"KWZK-SJZ",
-      "name":"Dolphin Percy Meyers",
+      "personId":"KWZK-SNX",
+      "name":"Guy Meyers",
       "gender":"Male",
-      "lifespan":"1878-1974",
-      "birthDate":"25 May 1878",
-      "birthPlace":"Hillsboro, Fleming, Kentucky, United States",
-      "deathDate":"12 April 1974",
-      "deathPlace":"Twin Falls, Twin Falls, Idaho, United States",
-      "descendancyNumber":"160.03"
+      "lifespan":"1907-1957",
+      "birthDate":"1907",
+      "birthPlace":"North Platte, Lincoln, Nebraska, United States",
+      "deathDate":"1957",
+      "deathPlace":"North Platte, Lincoln, Nebraska, United States",
+      "descendancyNumber":"80.01",
+      "splitDescendancyNumber":"80.01",
+      "generation":6
    },
    {
-      "personId":"KWZK-SJC",
-      "name":"Pearl M. Meyers",
-      "gender":"Female",
-      "lifespan":"1881-1973",
-      "birthDate":"26 May 1881",
-      "birthPlace":"Stapleton, Logan, Nebraska, United States",
-      "deathDate":"January 1973",
-      "descendancyNumber":"160.04"
-   },
-   {
-      "personId":"KWZK-SJH",
-      "name":"Kate Meyers",
-      "gender":"Female",
-      "lifespan":"1884-1972",
-      "birthDate":"22 January 1884",
-      "birthPlace":"Kentucky, United States",
-      "deathDate":"20 November 1972",
-      "deathPlace":"San Jose, Santa Clara, California, United States",
-      "descendancyNumber":"160.05"
-   },
-   {
-      "personId":"KWZK-SJ8",
-      "name":"Omar Meyers",
+      "personId":"KWZK-SNH",
+      "name":"Richard George Meyers",
       "gender":"Male",
-      "lifespan":"1886-1974",
-      "birthDate":"5 September 1886",
-      "birthPlace":"Danville, Vermilion, Illinois, United States",
-      "deathDate":"14 February 1974",
-      "descendancyNumber":"160.06"
-   },
-   {
-      "personId":"KWZK-SJD",
-      "name":"Edna Meyers",
-      "gender":"Female",
-      "lifespan":"1896-1902",
-      "birthDate":"5 May 1896",
-      "birthPlace":"Illinois, United States",
-      "deathDate":"12 January 1902",
-      "descendancyNumber":"160.07"
-   },
-   {
-      "personId":"KWZK-SJW",
-      "name":"William Smith",
-      "gender":"Male",
-      "lifespan":"1817-1885",
-      "birthDate":"15 June 1817",
-      "birthPlace":"Guernsey, Ohio, United States",
-      "deathDate":"24 August 1885",
-      "deathPlace":"Jefferson Township, Pike, Indiana, United States",
-      "marriagePlace":"Hocking, Athens, Ohio, United States",
-      "marriageDate":"18 August 1846",
-      "ascendancyNumber":"324",
-      "children":[
-         {
-            "personId":"KWZK-SKW",
-            "name":"Emma Randall",
-            "gender":"Female",
-            "lifespan":"1817-1846",
-            "birthDate":"1817",
-            "birthPlace":"Ohio, United States",
-            "deathDate":"8 March 1846",
-            "deathPlace":"Vinton, Vinton, Ohio, United States",
-            "marriagePlace":"Ohio, United States",
-            "marriageDate":"18 November 1841",
-            "descendancyNumber":"324-S"
-         },
-         {
-            "personId":"KWZK-SVY",
-            "name":"William Smith",
-            "gender":"Male",
-            "lifespan":"1840-1847",
-            "birthDate":"1840",
-            "deathDate":"1847",
-            "deathPlace":"Ohio, United States",
-            "descendancyNumber":"324.01"
-         },
-         {
-            "personId":"KWZK-SVB",
-            "name":"Elizabeth K Smith",
-            "gender":"Female",
-            "lifespan":"1842-Deceased",
-            "birthDate":"1842",
-            "birthPlace":"Ohio, United States",
-            "descendancyNumber":"324.02"
-         },
-         {
-            "personId":"KWZK-SKM",
-            "name":"Emma C. Smith",
-            "gender":"Female",
-            "lifespan":"1842-Deceased",
-            "birthDate":"1842",
-            "birthPlace":"Ohio, United States",
-            "descendancyNumber":"324.03"
-         },
-         {
-            "personId":"KWZK-SK9",
-            "name":"Isaac Monroe Smith",
-            "gender":"Male",
-            "lifespan":"1844-1902",
-            "birthDate":"1844",
-            "birthPlace":"Vinton, Ohio, United States",
-            "deathDate":"1902",
-            "deathPlace":"Union Township, Morgan, Ohio, United States",
-            "descendancyNumber":"324.04"
-         }
-      ]
-   },
-   {
-      "personId":"KWZK-SKW",
-      "name":"Emma Randall",
-      "gender":"Female",
-      "lifespan":"1817-1846",
-      "birthDate":"1817",
-      "birthPlace":"Ohio, United States",
-      "deathDate":"8 March 1846",
-      "deathPlace":"Vinton, Vinton, Ohio, United States",
-      "marriagePlace":"Ohio, United States",
-      "marriageDate":"18 November 1841",
-      "descendancyNumber":"324-S"
-   },
-   {
-      "personId":"KWZK-SVY",
-      "name":"William Smith",
-      "gender":"Male",
-      "lifespan":"1840-1847",
-      "birthDate":"1840",
-      "deathDate":"1847",
-      "deathPlace":"Ohio, United States",
-      "descendancyNumber":"324.01"
-   },
-   {
-      "personId":"KWZK-SVB",
-      "name":"Elizabeth K Smith",
-      "gender":"Female",
-      "lifespan":"1842-Deceased",
-      "birthDate":"1842",
-      "birthPlace":"Ohio, United States",
-      "descendancyNumber":"324.02"
-   },
-   {
-      "personId":"KWZK-SKM",
-      "name":"Emma C. Smith",
-      "gender":"Female",
-      "lifespan":"1842-Deceased",
-      "birthDate":"1842",
-      "birthPlace":"Ohio, United States",
-      "descendancyNumber":"324.03"
-   },
-   {
-      "personId":"KWZK-SK9",
-      "name":"Isaac Monroe Smith",
-      "gender":"Male",
-      "lifespan":"1844-1902",
-      "birthDate":"1844",
-      "birthPlace":"Vinton, Ohio, United States",
-      "deathDate":"1902",
-      "deathPlace":"Union Township, Morgan, Ohio, United States",
-      "descendancyNumber":"324.04"
+      "lifespan":"1908-1996",
+      "birthDate":"11 September 1908",
+      "birthPlace":"Maxwell, Lincoln, Nebraska, United States",
+      "deathDate":"14 December 1996",
+      "marriagePlace":"North Platte, Lincoln, Nebraska, United States",
+      "marriageDate":"15 November 1930",
+      "descendancyNumber":"82.01-S",
+      "ascendancyNumber":"40",
+      "splitAscendancyNumber":"40",
+      "generation":6
    },
    {
       "personId":"KWZK-3VX",
@@ -1641,7 +1753,9 @@ angular.module('app')
             "birthDate":"13 September 1880",
             "birthPlace":"Rooks, Kansas, United States",
             "deathDate":"16 May 1950",
-            "descendancyNumber":"164.01"
+            "descendancyNumber":"164.01",
+            "splitDescendancyNumber":"164.01",
+            "generation":7
          },
          {
             "personId":"KWZK-SJL",
@@ -1650,7 +1764,9 @@ angular.module('app')
             "lifespan":"1884-Deceased",
             "birthDate":"1884",
             "birthPlace":"Kansas, United States",
-            "descendancyNumber":"164.02"
+            "descendancyNumber":"164.02",
+            "splitDescendancyNumber":"164.02",
+            "generation":7
          },
          {
             "personId":"KWZK-SND",
@@ -1662,7 +1778,9 @@ angular.module('app')
             "deathDate":"22 April 1960",
             "deathPlace":"Banks, Washington, Oregon, United States",
             "descendancyNumber":"166.02-S",
-            "ascendancyNumber":"82"
+            "ascendancyNumber":"82",
+            "splitAscendancyNumber":"82",
+            "generation":7
          },
          {
             "personId":"KWZK-SN6",
@@ -1674,7 +1792,9 @@ angular.module('app')
             "deathDate":"November 1983",
             "descendancyNumber":"164.03-S"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"164",
+      "generation":8
    },
    {
       "personId":"KWZK-SJP",
@@ -1684,7 +1804,9 @@ angular.module('app')
       "birthDate":"13 September 1880",
       "birthPlace":"Rooks, Kansas, United States",
       "deathDate":"16 May 1950",
-      "descendancyNumber":"164.01"
+      "descendancyNumber":"164.01",
+      "splitDescendancyNumber":"164.01",
+      "generation":7
    },
    {
       "personId":"KWZK-SJL",
@@ -1693,7 +1815,9 @@ angular.module('app')
       "lifespan":"1884-Deceased",
       "birthDate":"1884",
       "birthPlace":"Kansas, United States",
-      "descendancyNumber":"164.02"
+      "descendancyNumber":"164.02",
+      "splitDescendancyNumber":"164.02",
+      "generation":7
    },
    {
       "personId":"KWZK-SND",
@@ -1705,7 +1829,9 @@ angular.module('app')
       "deathDate":"22 April 1960",
       "deathPlace":"Banks, Washington, Oregon, United States",
       "descendancyNumber":"166.02-S",
-      "ascendancyNumber":"82"
+      "ascendancyNumber":"82",
+      "splitAscendancyNumber":"82",
+      "generation":7
    },
    {
       "personId":"KWZK-SNW",
@@ -1717,7 +1843,9 @@ angular.module('app')
       "deathDate":"27 January 2013",
       "deathPlace":"Portland, Multnomah, Oregon, United States",
       "descendancyNumber":"40.01",
-      "ascendancyNumber":"20"
+      "ascendancyNumber":"20",
+      "splitAscendancyNumber":"20",
+      "generation":5
    },
    {
       "personId":"KWZK-398",
@@ -1754,7 +1882,9 @@ angular.module('app')
             "birthPlace":"Knox, Kentucky, United States",
             "deathDate":"17 June 1920",
             "deathPlace":"Clackamas, Oregon, United States",
-            "descendancyNumber":"326.01"
+            "descendancyNumber":"326.01",
+            "splitDescendancyNumber":"326.01",
+            "generation":8
          },
          {
             "personId":"KWZK-SNN",
@@ -1793,7 +1923,9 @@ angular.module('app')
             "deathPlace":"Ericson, Wheeler, Nebraska, United States",
             "marriagePlace":"Otwell, Pike, Indiana, United States",
             "marriageDate":"4 May 1870 / 1871",
-            "descendancyNumber":"326.03-S"
+            "descendancyNumber":"326.03-S",
+            "splitDescendancyNumber":"326.03",
+            "generation":8
          },
          {
             "personId":"KWZK-39D",
@@ -1806,7 +1938,9 @@ angular.module('app')
             "deathPlace":"North Platte, Lincoln, Nebraska, United States",
             "marriagePlace":"Otwell, Pike, Indiana, United States",
             "marriageDate":"4 May 1870 / 1871",
-            "descendancyNumber":"326.03"
+            "descendancyNumber":"326.03",
+            "splitDescendancyNumber":"326.03",
+            "generation":8
          },
          {
             "personId":"KWZK-39L",
@@ -1817,7 +1951,9 @@ angular.module('app')
             "birthPlace":"Knox, Kentucky, United States",
             "deathDate":"25 December 1934",
             "deathPlace":"Caldwell, Canyon, Idaho, United States",
-            "descendancyNumber":"326.04"
+            "descendancyNumber":"326.04",
+            "splitDescendancyNumber":"326.04",
+            "generation":8
          },
          {
             "personId":"KWZK-39F",
@@ -1826,7 +1962,9 @@ angular.module('app')
             "lifespan":"1856-Deceased",
             "birthDate":"19 March 1856",
             "birthPlace":"Knox, Kentucky, United States",
-            "descendancyNumber":"326.05"
+            "descendancyNumber":"326.05",
+            "splitDescendancyNumber":"326.05",
+            "generation":8
          },
          {
             "personId":"KWZK-391",
@@ -1835,7 +1973,9 @@ angular.module('app')
             "lifespan":"1857-Deceased",
             "birthDate":"17 November 1857",
             "birthPlace":"Knox, Kentucky, United States",
-            "descendancyNumber":"326.06"
+            "descendancyNumber":"326.06",
+            "splitDescendancyNumber":"326.06",
+            "generation":8
          },
          {
             "personId":"KWZK-39J",
@@ -1844,7 +1984,9 @@ angular.module('app')
             "lifespan":"1861-Deceased",
             "birthDate":"20 July 1861",
             "birthPlace":"Knox, Kentucky, United States",
-            "descendancyNumber":"326.07"
+            "descendancyNumber":"326.07",
+            "splitDescendancyNumber":"326.07",
+            "generation":8
          },
          {
             "personId":"KWZK-395",
@@ -1853,7 +1995,9 @@ angular.module('app')
             "lifespan":"1863-Deceased",
             "birthDate":"25 September 1863",
             "birthPlace":"Pike, Indiana, United States",
-            "descendancyNumber":"326.08"
+            "descendancyNumber":"326.08",
+            "splitDescendancyNumber":"326.08",
+            "generation":8
          },
          {
             "personId":"KWZK-39X",
@@ -1862,7 +2006,9 @@ angular.module('app')
             "lifespan":"1865-Deceased",
             "birthDate":"17 March 1865",
             "birthPlace":"Pike, Indiana, United States",
-            "descendancyNumber":"326.09"
+            "descendancyNumber":"326.09",
+            "splitDescendancyNumber":"326.09",
+            "generation":8
          },
          {
             "personId":"KWZK-3S3",
@@ -1872,7 +2018,9 @@ angular.module('app')
             "birthDate":"1867",
             "birthPlace":"Indiana, United States",
             "deathDate":"19 September 1945",
-            "descendancyNumber":"326.10"
+            "descendancyNumber":"326.10",
+            "splitDescendancyNumber":"326.10",
+            "generation":8
          },
          {
             "personId":"KWZK-392",
@@ -1880,9 +2028,13 @@ angular.module('app')
             "gender":"unknown",
             "lifespan":"1871-Deceased",
             "birthDate":"4 September 1871",
-            "descendancyNumber":"326.11"
+            "descendancyNumber":"326.11",
+            "splitDescendancyNumber":"326.11",
+            "generation":8
          }
-      ]
+      ],
+      "splitAscendancyNumber":"326",
+      "generation":9
    },
    {
       "personId":"KWZK-39G",
@@ -1893,7 +2045,9 @@ angular.module('app')
       "birthPlace":"Knox, Kentucky, United States",
       "deathDate":"17 June 1920",
       "deathPlace":"Clackamas, Oregon, United States",
-      "descendancyNumber":"326.01"
+      "descendancyNumber":"326.01",
+      "splitDescendancyNumber":"326.01",
+      "generation":8
    },
    {
       "personId":"KWZK-3S7",
@@ -1906,7 +2060,9 @@ angular.module('app')
       "deathPlace":"Ericson, Wheeler, Nebraska, United States",
       "marriagePlace":"Otwell, Pike, Indiana, United States",
       "marriageDate":"4 May 1870 / 1871",
-      "descendancyNumber":"326.03-S"
+      "descendancyNumber":"326.03-S",
+      "splitDescendancyNumber":"326.03",
+      "generation":8
    },
    {
       "personId":"KWZK-39D",
@@ -1919,7 +2075,9 @@ angular.module('app')
       "deathPlace":"North Platte, Lincoln, Nebraska, United States",
       "marriagePlace":"Otwell, Pike, Indiana, United States",
       "marriageDate":"4 May 1870 / 1871",
-      "descendancyNumber":"326.03"
+      "descendancyNumber":"326.03",
+      "splitDescendancyNumber":"326.03",
+      "generation":8
    },
    {
       "personId":"KWZK-39L",
@@ -1930,7 +2088,9 @@ angular.module('app')
       "birthPlace":"Knox, Kentucky, United States",
       "deathDate":"25 December 1934",
       "deathPlace":"Caldwell, Canyon, Idaho, United States",
-      "descendancyNumber":"326.04"
+      "descendancyNumber":"326.04",
+      "splitDescendancyNumber":"326.04",
+      "generation":8
    },
    {
       "personId":"KWZK-39F",
@@ -1939,7 +2099,9 @@ angular.module('app')
       "lifespan":"1856-Deceased",
       "birthDate":"19 March 1856",
       "birthPlace":"Knox, Kentucky, United States",
-      "descendancyNumber":"326.05"
+      "descendancyNumber":"326.05",
+      "splitDescendancyNumber":"326.05",
+      "generation":8
    },
    {
       "personId":"KWZK-391",
@@ -1948,7 +2110,9 @@ angular.module('app')
       "lifespan":"1857-Deceased",
       "birthDate":"17 November 1857",
       "birthPlace":"Knox, Kentucky, United States",
-      "descendancyNumber":"326.06"
+      "descendancyNumber":"326.06",
+      "splitDescendancyNumber":"326.06",
+      "generation":8
    },
    {
       "personId":"KWZK-39J",
@@ -1957,7 +2121,9 @@ angular.module('app')
       "lifespan":"1861-Deceased",
       "birthDate":"20 July 1861",
       "birthPlace":"Knox, Kentucky, United States",
-      "descendancyNumber":"326.07"
+      "descendancyNumber":"326.07",
+      "splitDescendancyNumber":"326.07",
+      "generation":8
    },
    {
       "personId":"KWZK-395",
@@ -1966,7 +2132,9 @@ angular.module('app')
       "lifespan":"1863-Deceased",
       "birthDate":"25 September 1863",
       "birthPlace":"Pike, Indiana, United States",
-      "descendancyNumber":"326.08"
+      "descendancyNumber":"326.08",
+      "splitDescendancyNumber":"326.08",
+      "generation":8
    },
    {
       "personId":"KWZK-39X",
@@ -1975,7 +2143,9 @@ angular.module('app')
       "lifespan":"1865-Deceased",
       "birthDate":"17 March 1865",
       "birthPlace":"Pike, Indiana, United States",
-      "descendancyNumber":"326.09"
+      "descendancyNumber":"326.09",
+      "splitDescendancyNumber":"326.09",
+      "generation":8
    },
    {
       "personId":"KWZK-3S3",
@@ -1985,7 +2155,9 @@ angular.module('app')
       "birthDate":"1867",
       "birthPlace":"Indiana, United States",
       "deathDate":"19 September 1945",
-      "descendancyNumber":"326.10"
+      "descendancyNumber":"326.10",
+      "splitDescendancyNumber":"326.10",
+      "generation":8
    },
    {
       "personId":"KWZK-392",
@@ -1993,17 +2165,9 @@ angular.module('app')
       "gender":"unknown",
       "lifespan":"1871-Deceased",
       "birthDate":"4 September 1871",
-      "descendancyNumber":"326.11"
-   },
-   {
-      "personId":"KWZV-R95",
-      "name":"Steven Meyers",
-      "gender":"Male",
-      "lifespan":"1961-Living",
-      "birthDate":"11 August 1961",
-      "birthPlace":"Eugene, Lane, Oregon, United States",
-      "descendancyNumber":"22.01-S",
-      "ascendancyNumber":"10"
+      "descendancyNumber":"326.11",
+      "splitDescendancyNumber":"326.11",
+      "generation":8
    },
    {
       "personId":"KWZK-SN2",
@@ -2016,7 +2180,9 @@ angular.module('app')
       "deathPlace":"Grandview, Yakima, Washington, United States",
       "marriagePlace":"Skamania, Skamania, Washington, United States",
       "marriageDate":"14 October 1959",
-      "descendancyNumber":"82.02"
+      "descendancyNumber":"82.02",
+      "splitDescendancyNumber":"82.02",
+      "generation":6
    },
    {
       "personId":"KWZK-SJG",
@@ -2028,7 +2194,9 @@ angular.module('app')
       "deathPlace":"Prosser, Benton, Washington, United States",
       "marriagePlace":"Skamania, Skamania, Washington, United States",
       "marriageDate":"14 October 1959",
-      "descendancyNumber":"82.02-S"
+      "descendancyNumber":"82.02-S",
+      "splitDescendancyNumber":"82.02",
+      "generation":6
    },
    {
       "personId":"KWZK-SNT",
@@ -2061,7 +2229,9 @@ angular.module('app')
             "birthDate":"22 September 1876",
             "birthPlace":"Davis, Iowa, United States",
             "deathDate":"26 December 1949",
-            "descendancyNumber":"166.01"
+            "descendancyNumber":"166.01",
+            "splitDescendancyNumber":"166.01",
+            "generation":7
          },
          {
             "personId":"KWZK-SND",
@@ -2091,9 +2261,13 @@ angular.module('app')
             "lifespan":"1891-Deceased",
             "birthDate":"26 March 1891",
             "birthPlace":"Davis, Iowa, United States",
-            "descendancyNumber":"166.03"
+            "descendancyNumber":"166.03",
+            "splitDescendancyNumber":"166.03",
+            "generation":7
          }
-      ]
+      ],
+      "splitAscendancyNumber":"166",
+      "generation":8
    },
    {
       "personId":"KWZK-SV9",
@@ -2103,7 +2277,9 @@ angular.module('app')
       "birthDate":"22 September 1876",
       "birthPlace":"Davis, Iowa, United States",
       "deathDate":"26 December 1949",
-      "descendancyNumber":"166.01"
+      "descendancyNumber":"166.01",
+      "splitDescendancyNumber":"166.01",
+      "generation":7
    },
    {
       "personId":"KWZK-SJB",
@@ -2112,7 +2288,41 @@ angular.module('app')
       "lifespan":"1891-Deceased",
       "birthDate":"26 March 1891",
       "birthPlace":"Davis, Iowa, United States",
-      "descendancyNumber":"166.03"
+      "descendancyNumber":"166.03",
+      "splitDescendancyNumber":"166.03",
+      "generation":7
+   },
+   {
+      "personId":"KWZV-R95",
+      "name":"Steven Meyers",
+      "gender":"Male",
+      "lifespan":"1961-Living",
+      "birthDate":"11 August 1961",
+      "birthPlace":"Eugene, Lane, Oregon, United States",
+      "ascendancyNumber":"10",
+      "children":[
+         {
+            "personId":"KWZV-R39",
+            "name":"Susan Call",
+            "gender":"Female",
+            "lifespan":"1964-Living",
+            "birthDate":"7 June 1964",
+            "birthPlace":"Salt Lake City, Salt Lake, Utah, United States",
+            "descendancyNumber":"10-S"
+         },
+         {
+            "personId":"KWZV-RMV",
+            "name":"Erin Meyers",
+            "gender":"Female",
+            "lifespan":"1988-Living",
+            "birthDate":"15 June 1988",
+            "birthPlace":"Provo, Utah, Utah, United States",
+            "descendancyNumber":"10.01"
+         }
+      ],
+      "descendancyNumber":"22.01-S",
+      "splitAscendancyNumber":"10",
+      "generation":4
    },
    {
       "personId":"KWZK-9W8",
@@ -2144,7 +2354,9 @@ angular.module('app')
             "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
             "marriageDate":"24 April 1918",
             "descendancyNumber":"176.01",
-            "ascendancyNumber":"88"
+            "ascendancyNumber":"88",
+            "splitAscendancyNumber":"88",
+            "generation":7
          },
          {
             "personId":"KWZK-9WX",
@@ -2157,9 +2369,13 @@ angular.module('app')
             "deathPlace":"Rigby, Jefferson, Idaho, United States",
             "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
             "marriageDate":"24 April 1918",
-            "descendancyNumber":"88-S"
+            "descendancyNumber":"88-S",
+            "splitDescendancyNumber":"88",
+            "generation":6
          }
-      ]
+      ],
+      "splitAscendancyNumber":"176",
+      "generation":8
    },
    {
       "personId":"KWZK-97Y",
@@ -2173,7 +2389,9 @@ angular.module('app')
       "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
       "marriageDate":"24 April 1918",
       "descendancyNumber":"176.01",
-      "ascendancyNumber":"88"
+      "ascendancyNumber":"88",
+      "splitAscendancyNumber":"88",
+      "generation":7
    },
    {
       "personId":"KWZK-9WX",
@@ -2186,7 +2404,65 @@ angular.module('app')
       "deathPlace":"Rigby, Jefferson, Idaho, United States",
       "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
       "marriageDate":"24 April 1918",
-      "descendancyNumber":"88-S"
+      "descendancyNumber":"88-S",
+      "splitDescendancyNumber":"88",
+      "generation":6
+   },
+   {
+      "personId":"KWZK-9HT",
+      "name":"Henry Facer",
+      "gender":"Male",
+      "lifespan":"1811-1836",
+      "birthDate":"15 June 1811",
+      "birthPlace":"Colmworth, Bedford, England",
+      "deathDate":"19 September 1836",
+      "deathPlace":"Comberton, Cambridgeshire, England",
+      "marriagePlace":"Comberton, Cambridgeshire, England",
+      "marriageDate":"12 October 1831",
+      "ascendancyNumber":"356",
+      "children":[
+         {
+            "personId":"KWZK-9HY",
+            "name":"Mary Elizabeth Jarvis",
+            "gender":"Female",
+            "lifespan":"1810-1896",
+            "birthDate":"31 August 1810",
+            "birthPlace":"Buckworth, Huntingdonshire, England",
+            "deathDate":"10 October 1896",
+            "deathPlace":"Willard, Box Elder, Utah, United States",
+            "marriagePlace":"Comberton, Cambridgeshire, England",
+            "marriageDate":"12 October 1831",
+            "descendancyNumber":"356-S"
+         },
+         {
+            "personId":"KWZK-9WH",
+            "name":"George Henry Facer",
+            "gender":"Male",
+            "lifespan":"1834-1903",
+            "birthDate":"4 July 1834",
+            "birthPlace":"Eynesbury, Huntingdonshire, England",
+            "deathDate":"22 February 1903",
+            "deathPlace":"Willard, Box Elder, Utah, United States",
+            "descendancyNumber":"358.01-S",
+            "ascendancyNumber":"178",
+            "splitAscendancyNumber":"178",
+            "generation":8
+         },
+         {
+            "personId":"KWZK-9CS",
+            "name":"Eliza Smith",
+            "gender":"Female",
+            "lifespan":"1843-1865",
+            "birthDate":"2 August 1843",
+            "birthPlace":"Buckden, Huntingdonshire, England",
+            "deathDate":"23 July 1865",
+            "descendancyNumber":"178-S",
+            "splitDescendancyNumber":"178",
+            "generation":7
+         }
+      ],
+      "splitAscendancyNumber":"356",
+      "generation":9
    },
    {
       "personId":"KWZK-9WH",
@@ -2197,22 +2473,10 @@ angular.module('app')
       "birthPlace":"Eynesbury, Huntingdonshire, England",
       "deathDate":"22 February 1903",
       "deathPlace":"Willard, Box Elder, Utah, United States",
-      "marriagePlace":"Eynesbury, Huntingdonshire, England",
-      "marriageDate":"6 September 1857",
+      "descendancyNumber":"358.01-S",
       "ascendancyNumber":"178",
-      "children":[
-         {
-            "personId":"KWZK-9CS",
-            "name":"Eliza Smith",
-            "gender":"Female",
-            "lifespan":"1843-1865",
-            "birthDate":"2 August 1843",
-            "birthPlace":"Buckden, Huntingdonshire, England",
-            "deathDate":"23 July 1865",
-            "descendancyNumber":"356.01-S"
-         }
-      ],
-      "descendancyNumber":"356.01"
+      "splitAscendancyNumber":"178",
+      "generation":8
    },
    {
       "personId":"KWZK-9CS",
@@ -2222,7 +2486,9 @@ angular.module('app')
       "birthDate":"2 August 1843",
       "birthPlace":"Buckden, Huntingdonshire, England",
       "deathDate":"23 July 1865",
-      "descendancyNumber":"356.01-S"
+      "descendancyNumber":"178-S",
+      "splitDescendancyNumber":"178",
+      "generation":7
    },
    {
       "personId":"KWZK-9W5",
@@ -2274,56 +2540,9 @@ angular.module('app')
             "marriageDate":"6 September 1857",
             "descendancyNumber":"358.01"
          }
-      ]
-   },
-   {
-      "personId":"KWZK-9HT",
-      "name":"Henry Facer",
-      "gender":"Male",
-      "lifespan":"1811-1836",
-      "birthDate":"15 June 1811",
-      "birthPlace":"Colmworth, Bedford, England",
-      "deathDate":"19 September 1836",
-      "deathPlace":"Comberton, Cambridgeshire, England",
-      "marriagePlace":"Comberton, Cambridgeshire, England",
-      "marriageDate":"12 October 1831",
-      "ascendancyNumber":"356",
-      "children":[
-         {
-            "personId":"KWZK-9HY",
-            "name":"Mary Elizabeth Jarvis",
-            "gender":"Female",
-            "lifespan":"1810-1896",
-            "birthDate":"31 August 1810",
-            "birthPlace":"Buckworth, Huntingdonshire, England",
-            "deathDate":"10 October 1896",
-            "deathPlace":"Willard, Box Elder, Utah, United States",
-            "marriagePlace":"Comberton, Cambridgeshire, England",
-            "marriageDate":"12 October 1831",
-            "descendancyNumber":"356-S"
-         },
-         {
-            "personId":"KWZK-9WH",
-            "name":"George Henry Facer",
-            "gender":"Male",
-            "lifespan":"1834-1903",
-            "birthDate":"4 July 1834",
-            "birthPlace":"Eynesbury, Huntingdonshire, England",
-            "deathDate":"22 February 1903",
-            "deathPlace":"Willard, Box Elder, Utah, United States",
-            "descendancyNumber":"356.01"
-         },
-         {
-            "personId":"KWZK-9CS",
-            "name":"Eliza Smith",
-            "gender":"Female",
-            "lifespan":"1843-1865",
-            "birthDate":"2 August 1843",
-            "birthPlace":"Buckden, Huntingdonshire, England",
-            "deathDate":"23 July 1865",
-            "descendancyNumber":"356.01-S"
-         }
-      ]
+      ],
+      "splitAscendancyNumber":"358",
+      "generation":9
    },
    {
       "personId":"KWZK-97P",
@@ -2358,7 +2577,9 @@ angular.module('app')
             "deathPlace":"Nampa, Canyon, Idaho, United States",
             "marriagePlace":"Rigby, Jefferson, Idaho, United States",
             "marriageDate":"1 May 1947",
-            "descendancyNumber":"44.01-S"
+            "descendancyNumber":"44.01-S",
+            "splitDescendancyNumber":"44.01",
+            "generation":5
          },
          {
             "personId":"KWZK-97T",
@@ -2371,7 +2592,9 @@ angular.module('app')
             "deathPlace":"Salt Lake City, Salt Lake, Utah, United States",
             "marriagePlace":"Rigby, Jefferson, Idaho, United States",
             "marriageDate":"1 May 1947",
-            "descendancyNumber":"44.01"
+            "descendancyNumber":"44.01",
+            "splitDescendancyNumber":"44.01",
+            "generation":5
          },
          {
             "personId":"KWZV-T3N",
@@ -2379,7 +2602,9 @@ angular.module('app')
             "gender":"Male",
             "lifespan":"Living",
             "descendancyNumber":"46.01-S",
-            "ascendancyNumber":"22"
+            "ascendancyNumber":"22",
+            "splitAscendancyNumber":"22",
+            "generation":5
          },
          {
             "personId":"KWZV-T77",
@@ -2389,7 +2614,9 @@ angular.module('app')
             "descendancyNumber":"44.02-S"
          }
       ],
-      "descendancyNumber":"90.01-S"
+      "descendancyNumber":"90.01-S",
+      "splitAscendancyNumber":"44",
+      "generation":6
    },
    {
       "personId":"KWZK-9WD",
@@ -2402,7 +2629,9 @@ angular.module('app')
       "deathPlace":"Nampa, Canyon, Idaho, United States",
       "marriagePlace":"Rigby, Jefferson, Idaho, United States",
       "marriageDate":"1 May 1947",
-      "descendancyNumber":"44.01-S"
+      "descendancyNumber":"44.01-S",
+      "splitDescendancyNumber":"44.01",
+      "generation":5
    },
    {
       "personId":"KWZK-97T",
@@ -2415,7 +2644,9 @@ angular.module('app')
       "deathPlace":"Salt Lake City, Salt Lake, Utah, United States",
       "marriagePlace":"Rigby, Jefferson, Idaho, United States",
       "marriageDate":"1 May 1947",
-      "descendancyNumber":"44.01"
+      "descendancyNumber":"44.01",
+      "splitDescendancyNumber":"44.01",
+      "generation":5
    },
    {
       "personId":"KWZV-T3N",
@@ -2423,7 +2654,393 @@ angular.module('app')
       "gender":"Male",
       "lifespan":"Living",
       "descendancyNumber":"46.01-S",
-      "ascendancyNumber":"22"
+      "ascendancyNumber":"22",
+      "splitAscendancyNumber":"22",
+      "generation":5
+   },
+   {
+      "personId":"KWZK-SMV",
+      "name":"John Rawlston Poole",
+      "gender":"Male",
+      "lifespan":"1829-1894",
+      "birthDate":"13 May 1829",
+      "birthPlace":"Leesville, Lawrence, Indiana, United States",
+      "deathDate":"16 September 1894",
+      "deathPlace":"Idaho Falls, Bonneville, Idaho, United States",
+      "ascendancyNumber":"180",
+      "children":[
+         {
+            "personId":"KWZK-9XT",
+            "name":"Jennette Bleasdale",
+            "gender":"Female",
+            "lifespan":"1826-1921",
+            "birthDate":"10 February 1826",
+            "birthPlace":"Thornley, Lancashire, England",
+            "deathDate":"20 May 1921",
+            "deathPlace":"Menan, Jefferson, Idaho, United States",
+            "descendancyNumber":"180-S"
+         },
+         {
+            "personId":"KWZK-9J9",
+            "name":"Mary Elizabeth Poole",
+            "gender":"Female",
+            "lifespan":"1849-1850",
+            "birthDate":"September 1849",
+            "birthPlace":"Farmington, Van Buren, Iowa, United States",
+            "deathDate":"9 June 1850",
+            "deathPlace":"United States",
+            "descendancyNumber":"180.01",
+            "splitDescendancyNumber":"180.01",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9NN",
+            "name":"Joseph Ewalt Poole",
+            "gender":"Male",
+            "lifespan":"1851-1851",
+            "birthDate":"24 February 1851",
+            "birthPlace":"Centerville, Davis, Utah, United States",
+            "deathDate":"24 February 1851",
+            "deathPlace":"Centerville, Davis, Utah, United States",
+            "descendancyNumber":"180.02",
+            "splitDescendancyNumber":"180.02",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9NW",
+            "name":"John Bleasdale Poole",
+            "gender":"Male",
+            "lifespan":"1854-1854",
+            "birthDate":"1854",
+            "birthPlace":"Centerville, Davis, Utah, United States",
+            "deathDate":"24 October 1854",
+            "deathPlace":"Centerville, Davis, Utah, United States",
+            "descendancyNumber":"180.03",
+            "splitDescendancyNumber":"180.03",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9N5",
+            "name":"Rebecca Margaret Poole",
+            "gender":"Female",
+            "lifespan":"1855-1935",
+            "birthDate":"29 August 1855",
+            "birthPlace":"Ogden, Weber, Utah Territory, United States",
+            "deathDate":"11 January 1935",
+            "deathPlace":"Rexburg, Madison, Idaho, United States",
+            "descendancyNumber":"180.04",
+            "splitDescendancyNumber":"180.04",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9FY",
+            "name":"Hiram Poole",
+            "gender":"Male",
+            "lifespan":"1856-Deceased",
+            "birthDate":"1856",
+            "birthPlace":"Utah Territory, United States",
+            "descendancyNumber":"180.05",
+            "splitDescendancyNumber":"180.05",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9XX",
+            "name":"William Micajah Poole",
+            "gender":"Male",
+            "lifespan":"1858-1955",
+            "birthDate":"17 January 1858",
+            "birthPlace":"Ogden, Weber, Utah, United States",
+            "deathDate":"10 January 1955",
+            "deathPlace":"Blackfoot, Bingham, Idaho, United States",
+            "descendancyNumber":"180.06",
+            "ascendancyNumber":"90",
+            "splitAscendancyNumber":"90",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-95W",
+            "name":"Lillias Barbour Clark",
+            "gender":"Female",
+            "lifespan":"Deceased",
+            "descendancyNumber":"180.06-S"
+         },
+         {
+            "personId":"KWZK-9NJ",
+            "name":"Jeanette Alice Poole",
+            "gender":"Female",
+            "lifespan":"1860-1953",
+            "birthDate":"23 May 1860",
+            "birthPlace":"Ogden, Weber, Utah, United States",
+            "deathDate":"7 August 1953",
+            "deathPlace":"Denver, Denver, Colorado, United States",
+            "descendancyNumber":"180.07",
+            "splitDescendancyNumber":"180.07",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9N3",
+            "name":"Susanna Rosetta Poole",
+            "gender":"Female",
+            "lifespan":"1862-1949",
+            "birthDate":"4 July 1862",
+            "birthPlace":"Ogden, Weber, Utah, United States",
+            "deathDate":"19 February 1949",
+            "deathPlace":"Menan, Jefferson, Idaho, United States",
+            "descendancyNumber":"180.08",
+            "splitDescendancyNumber":"180.08",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9N8",
+            "name":"Reuben Mack Poole",
+            "gender":"Male",
+            "lifespan":"1864-1940",
+            "birthDate":"25 November 1864",
+            "birthPlace":"Ogden, Weber, Utah Territory, United States",
+            "deathDate":"5 May 1940",
+            "deathPlace":"Menan, Jefferson, Idaho, United States",
+            "descendancyNumber":"180.09",
+            "splitDescendancyNumber":"180.09",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9N7",
+            "name":"Walter J. Poole",
+            "gender":"Male",
+            "lifespan":"1866-Deceased",
+            "birthDate":"1866",
+            "birthPlace":"Utah Territory, United States",
+            "descendancyNumber":"180.10",
+            "splitDescendancyNumber":"180.10",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9NF",
+            "name":"Emily Poole",
+            "gender":"Female",
+            "lifespan":"1867-Deceased",
+            "birthDate":"1867",
+            "birthPlace":"Utah Territory, United States",
+            "descendancyNumber":"180.11",
+            "splitDescendancyNumber":"180.11",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9NK",
+            "name":"Christena Jane Poole",
+            "gender":"Female",
+            "lifespan":"1868-1956",
+            "birthDate":"16 January 1868",
+            "birthPlace":"Ogden, Weber, Utah, United States",
+            "deathDate":"13 August 1956",
+            "deathPlace":"Rigby, Jefferson, Idaho, United States",
+            "descendancyNumber":"180.12",
+            "splitDescendancyNumber":"180.12",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9NG",
+            "name":"Milburn Benton Poole",
+            "gender":"Male",
+            "lifespan":"1871-1960",
+            "birthDate":"24 February 1871",
+            "birthPlace":"Ogden, Weber, Utah, United States",
+            "deathDate":"12 January 1960",
+            "deathPlace":"Rigby, Jefferson, Idaho, United States",
+            "descendancyNumber":"180.13",
+            "splitDescendancyNumber":"180.13",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-9NR",
+            "name":"Ewatt Poole",
+            "gender":"Male",
+            "lifespan":"1874-Deceased",
+            "birthDate":"1874",
+            "birthPlace":"Utah Territory, United States",
+            "descendancyNumber":"180.14",
+            "splitDescendancyNumber":"180.14",
+            "generation":7
+         }
+      ],
+      "descendancyNumber":"360.01",
+      "splitAscendancyNumber":"180",
+      "generation":8
+   },
+   {
+      "personId":"KWZK-9J9",
+      "name":"Mary Elizabeth Poole",
+      "gender":"Female",
+      "lifespan":"1849-1850",
+      "birthDate":"September 1849",
+      "birthPlace":"Farmington, Van Buren, Iowa, United States",
+      "deathDate":"9 June 1850",
+      "deathPlace":"United States",
+      "descendancyNumber":"180.01",
+      "splitDescendancyNumber":"180.01",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9NN",
+      "name":"Joseph Ewalt Poole",
+      "gender":"Male",
+      "lifespan":"1851-1851",
+      "birthDate":"24 February 1851",
+      "birthPlace":"Centerville, Davis, Utah, United States",
+      "deathDate":"24 February 1851",
+      "deathPlace":"Centerville, Davis, Utah, United States",
+      "descendancyNumber":"180.02",
+      "splitDescendancyNumber":"180.02",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9NW",
+      "name":"John Bleasdale Poole",
+      "gender":"Male",
+      "lifespan":"1854-1854",
+      "birthDate":"1854",
+      "birthPlace":"Centerville, Davis, Utah, United States",
+      "deathDate":"24 October 1854",
+      "deathPlace":"Centerville, Davis, Utah, United States",
+      "descendancyNumber":"180.03",
+      "splitDescendancyNumber":"180.03",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9N5",
+      "name":"Rebecca Margaret Poole",
+      "gender":"Female",
+      "lifespan":"1855-1935",
+      "birthDate":"29 August 1855",
+      "birthPlace":"Ogden, Weber, Utah Territory, United States",
+      "deathDate":"11 January 1935",
+      "deathPlace":"Rexburg, Madison, Idaho, United States",
+      "descendancyNumber":"180.04",
+      "splitDescendancyNumber":"180.04",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9FY",
+      "name":"Hiram Poole",
+      "gender":"Male",
+      "lifespan":"1856-Deceased",
+      "birthDate":"1856",
+      "birthPlace":"Utah Territory, United States",
+      "descendancyNumber":"180.05",
+      "splitDescendancyNumber":"180.05",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9XX",
+      "name":"William Micajah Poole",
+      "gender":"Male",
+      "lifespan":"1858-1955",
+      "birthDate":"17 January 1858",
+      "birthPlace":"Ogden, Weber, Utah, United States",
+      "deathDate":"10 January 1955",
+      "deathPlace":"Blackfoot, Bingham, Idaho, United States",
+      "descendancyNumber":"180.06",
+      "ascendancyNumber":"90",
+      "splitAscendancyNumber":"90",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9NJ",
+      "name":"Jeanette Alice Poole",
+      "gender":"Female",
+      "lifespan":"1860-1953",
+      "birthDate":"23 May 1860",
+      "birthPlace":"Ogden, Weber, Utah, United States",
+      "deathDate":"7 August 1953",
+      "deathPlace":"Denver, Denver, Colorado, United States",
+      "descendancyNumber":"180.07",
+      "splitDescendancyNumber":"180.07",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9N3",
+      "name":"Susanna Rosetta Poole",
+      "gender":"Female",
+      "lifespan":"1862-1949",
+      "birthDate":"4 July 1862",
+      "birthPlace":"Ogden, Weber, Utah, United States",
+      "deathDate":"19 February 1949",
+      "deathPlace":"Menan, Jefferson, Idaho, United States",
+      "descendancyNumber":"180.08",
+      "splitDescendancyNumber":"180.08",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9N8",
+      "name":"Reuben Mack Poole",
+      "gender":"Male",
+      "lifespan":"1864-1940",
+      "birthDate":"25 November 1864",
+      "birthPlace":"Ogden, Weber, Utah Territory, United States",
+      "deathDate":"5 May 1940",
+      "deathPlace":"Menan, Jefferson, Idaho, United States",
+      "descendancyNumber":"180.09",
+      "splitDescendancyNumber":"180.09",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9N7",
+      "name":"Walter J. Poole",
+      "gender":"Male",
+      "lifespan":"1866-Deceased",
+      "birthDate":"1866",
+      "birthPlace":"Utah Territory, United States",
+      "descendancyNumber":"180.10",
+      "splitDescendancyNumber":"180.10",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9NF",
+      "name":"Emily Poole",
+      "gender":"Female",
+      "lifespan":"1867-Deceased",
+      "birthDate":"1867",
+      "birthPlace":"Utah Territory, United States",
+      "descendancyNumber":"180.11",
+      "splitDescendancyNumber":"180.11",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9NK",
+      "name":"Christena Jane Poole",
+      "gender":"Female",
+      "lifespan":"1868-1956",
+      "birthDate":"16 January 1868",
+      "birthPlace":"Ogden, Weber, Utah, United States",
+      "deathDate":"13 August 1956",
+      "deathPlace":"Rigby, Jefferson, Idaho, United States",
+      "descendancyNumber":"180.12",
+      "splitDescendancyNumber":"180.12",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9NG",
+      "name":"Milburn Benton Poole",
+      "gender":"Male",
+      "lifespan":"1871-1960",
+      "birthDate":"24 February 1871",
+      "birthPlace":"Ogden, Weber, Utah, United States",
+      "deathDate":"12 January 1960",
+      "deathPlace":"Rigby, Jefferson, Idaho, United States",
+      "descendancyNumber":"180.13",
+      "splitDescendancyNumber":"180.13",
+      "generation":7
+   },
+   {
+      "personId":"KWZK-9NR",
+      "name":"Ewatt Poole",
+      "gender":"Male",
+      "lifespan":"1874-Deceased",
+      "birthDate":"1874",
+      "birthPlace":"Utah Territory, United States",
+      "descendancyNumber":"180.14",
+      "splitDescendancyNumber":"180.14",
+      "generation":7
    },
    {
       "personId":"KWZK-9JC",
@@ -2460,8 +3077,7 @@ angular.module('app')
             "birthPlace":"Leesville, Lawrence, Indiana, United States",
             "deathDate":"16 September 1894",
             "deathPlace":"Idaho Falls, Bonneville, Idaho, United States",
-            "descendancyNumber":"360.01",
-            "ascendancyNumber":"180"
+            "descendancyNumber":"362.01-S"
          },
          {
             "personId":"KWZK-9XT",
@@ -2474,19 +3090,9 @@ angular.module('app')
             "deathPlace":"Menan, Jefferson, Idaho, United States",
             "descendancyNumber":"362.01"
          }
-      ]
-   },
-   {
-      "personId":"KWZK-SMV",
-      "name":"John Rawlston Poole",
-      "gender":"Male",
-      "lifespan":"1829-1894",
-      "birthDate":"13 May 1829",
-      "birthPlace":"Leesville, Lawrence, Indiana, United States",
-      "deathDate":"16 September 1894",
-      "deathPlace":"Idaho Falls, Bonneville, Idaho, United States",
-      "descendancyNumber":"360.01",
-      "ascendancyNumber":"180"
+      ],
+      "splitAscendancyNumber":"362",
+      "generation":9
    },
    {
       "personId":"KWZK-SMZ",
@@ -2547,7 +3153,9 @@ angular.module('app')
             "deathPlace":"Clatsop, Oregon, United States",
             "marriagePlace":"Leesville, Lawrence, Indiana, United States",
             "marriageDate":"8 May 1867",
-            "descendancyNumber":"360.02"
+            "descendancyNumber":"360.02",
+            "splitDescendancyNumber":"360.02",
+            "generation":8
          },
          {
             "personId":"KWZK-SS7",
@@ -2560,7 +3168,9 @@ angular.module('app')
             "deathPlace":"Clatsop, Oregon, United States",
             "marriagePlace":"Leesville, Lawrence, Indiana, United States",
             "marriageDate":"8 May 1867",
-            "descendancyNumber":"360.02-S"
+            "descendancyNumber":"360.02-S",
+            "splitDescendancyNumber":"360.02",
+            "generation":8
          },
          {
             "personId":"KWZK-SM8",
@@ -2573,7 +3183,9 @@ angular.module('app')
             "deathPlace":"West Liberty, Muscatine, Iowa, United States",
             "marriagePlace":"Ohio, United States",
             "marriageDate":"February 1868",
-            "descendancyNumber":"360.03"
+            "descendancyNumber":"360.03",
+            "splitDescendancyNumber":"360.03",
+            "generation":8
          },
          {
             "personId":"KWZK-S9M",
@@ -2586,7 +3198,9 @@ angular.module('app')
             "deathPlace":"West Liberty, Muscatine, Iowa, United States",
             "marriagePlace":"Ohio, United States",
             "marriageDate":"February 1868",
-            "descendancyNumber":"360.03-S"
+            "descendancyNumber":"360.03-S",
+            "splitDescendancyNumber":"360.03",
+            "generation":8
          },
          {
             "personId":"KWZK-SM6",
@@ -2599,7 +3213,9 @@ angular.module('app')
             "deathPlace":"Muscatine, Iowa, United States",
             "marriagePlace":"Muscatine, Iowa, United States",
             "marriageDate":"29 November 1855",
-            "descendancyNumber":"360.04"
+            "descendancyNumber":"360.04",
+            "splitDescendancyNumber":"360.04",
+            "generation":8
          },
          {
             "personId":"KWZK-S9V",
@@ -2612,7 +3228,9 @@ angular.module('app')
             "deathPlace":"Muscatine, Muscatine, Iowa, United States",
             "marriagePlace":"Muscatine, Iowa, United States",
             "marriageDate":"29 November 1855",
-            "descendancyNumber":"360.04-S"
+            "descendancyNumber":"360.04-S",
+            "splitDescendancyNumber":"360.04",
+            "generation":8
          },
          {
             "personId":"KWZK-SM2",
@@ -2623,7 +3241,9 @@ angular.module('app')
             "birthPlace":"Farmington, Van Buren, Iowa, United States",
             "deathDate":"30 May 1918",
             "deathPlace":"Clarkston, Asotin, Washington, United States",
-            "descendancyNumber":"360.05"
+            "descendancyNumber":"360.05",
+            "splitDescendancyNumber":"360.05",
+            "generation":8
          },
          {
             "personId":"KWZK-SMX",
@@ -2636,7 +3256,9 @@ angular.module('app')
             "deathPlace":"Lee Township, Franklin, Iowa, United States",
             "marriagePlace":"Primrose, Lee, Iowa, United States",
             "marriageDate":"21 February 1867",
-            "descendancyNumber":"360.06"
+            "descendancyNumber":"360.06",
+            "splitDescendancyNumber":"360.06",
+            "generation":8
          },
          {
             "personId":"KWZK-SSM",
@@ -2649,7 +3271,9 @@ angular.module('app')
             "deathPlace":"Lee, Iowa, United States",
             "marriagePlace":"Primrose, Lee, Iowa, United States",
             "marriageDate":"21 February 1867",
-            "descendancyNumber":"360.06-S"
+            "descendancyNumber":"360.06-S",
+            "splitDescendancyNumber":"360.06",
+            "generation":8
          },
          {
             "personId":"KWZK-SMN",
@@ -2660,7 +3284,9 @@ angular.module('app')
             "birthPlace":"Farmington, Van Buren, Iowa, United States",
             "deathDate":"13 October 1842",
             "deathPlace":"Farmington, Van Buren, Iowa, United States",
-            "descendancyNumber":"360.07"
+            "descendancyNumber":"360.07",
+            "splitDescendancyNumber":"360.07",
+            "generation":8
          },
          {
             "personId":"KWZK-SMJ",
@@ -2671,7 +3297,9 @@ angular.module('app')
             "birthPlace":"Farmington, Van Buren, Iowa, United States",
             "deathDate":"5 September 1863",
             "deathPlace":"West Liberty, Muscatine, Iowa, United States",
-            "descendancyNumber":"360.08"
+            "descendancyNumber":"360.08",
+            "splitDescendancyNumber":"360.08",
+            "generation":8
          },
          {
             "personId":"KWZK-S9Z",
@@ -2683,7 +3311,9 @@ angular.module('app')
             "deathDate":"13 May 1916",
             "deathPlace":"Medford, Grant, Oklahoma, United States",
             "marriageDate":"13 October 1864",
-            "descendancyNumber":"360.09-S"
+            "descendancyNumber":"360.09-S",
+            "splitDescendancyNumber":"360.09",
+            "generation":8
          },
          {
             "personId":"KWZK-SMD",
@@ -2695,7 +3325,9 @@ angular.module('app')
             "deathDate":"21 July 1936",
             "deathPlace":"Cleo Springs, Major, Oklahoma, United States",
             "marriageDate":"13 October 1864",
-            "descendancyNumber":"360.09"
+            "descendancyNumber":"360.09",
+            "splitDescendancyNumber":"360.09",
+            "generation":8
          },
          {
             "personId":"KWZK-SMK",
@@ -2708,7 +3340,9 @@ angular.module('app')
             "deathPlace":"Farmington, Van Buren, Iowa, United States",
             "marriagePlace":"Iowa, United States",
             "marriageDate":"28 April 1881",
-            "descendancyNumber":"360.10"
+            "descendancyNumber":"360.10",
+            "splitDescendancyNumber":"360.10",
+            "generation":8
          },
          {
             "personId":"KWZK-S36",
@@ -2721,9 +3355,13 @@ angular.module('app')
             "deathPlace":"Farmington, Van Buren, Iowa, United States",
             "marriagePlace":"Iowa, United States",
             "marriageDate":"28 April 1881",
-            "descendancyNumber":"360.10-S"
+            "descendancyNumber":"360.10-S",
+            "splitDescendancyNumber":"360.10",
+            "generation":8
          }
-      ]
+      ],
+      "splitAscendancyNumber":"360",
+      "generation":9
    },
    {
       "personId":"KWZK-SMF",
@@ -2736,7 +3374,9 @@ angular.module('app')
       "deathPlace":"Clatsop, Oregon, United States",
       "marriagePlace":"Leesville, Lawrence, Indiana, United States",
       "marriageDate":"8 May 1867",
-      "descendancyNumber":"360.02"
+      "descendancyNumber":"360.02",
+      "splitDescendancyNumber":"360.02",
+      "generation":8
    },
    {
       "personId":"KWZK-SS7",
@@ -2749,7 +3389,9 @@ angular.module('app')
       "deathPlace":"Clatsop, Oregon, United States",
       "marriagePlace":"Leesville, Lawrence, Indiana, United States",
       "marriageDate":"8 May 1867",
-      "descendancyNumber":"360.02-S"
+      "descendancyNumber":"360.02-S",
+      "splitDescendancyNumber":"360.02",
+      "generation":8
    },
    {
       "personId":"KWZK-SM8",
@@ -2762,7 +3404,9 @@ angular.module('app')
       "deathPlace":"West Liberty, Muscatine, Iowa, United States",
       "marriagePlace":"Ohio, United States",
       "marriageDate":"February 1868",
-      "descendancyNumber":"360.03"
+      "descendancyNumber":"360.03",
+      "splitDescendancyNumber":"360.03",
+      "generation":8
    },
    {
       "personId":"KWZK-S9M",
@@ -2775,7 +3419,9 @@ angular.module('app')
       "deathPlace":"West Liberty, Muscatine, Iowa, United States",
       "marriagePlace":"Ohio, United States",
       "marriageDate":"February 1868",
-      "descendancyNumber":"360.03-S"
+      "descendancyNumber":"360.03-S",
+      "splitDescendancyNumber":"360.03",
+      "generation":8
    },
    {
       "personId":"KWZK-SM6",
@@ -2788,7 +3434,9 @@ angular.module('app')
       "deathPlace":"Muscatine, Iowa, United States",
       "marriagePlace":"Muscatine, Iowa, United States",
       "marriageDate":"29 November 1855",
-      "descendancyNumber":"360.04"
+      "descendancyNumber":"360.04",
+      "splitDescendancyNumber":"360.04",
+      "generation":8
    },
    {
       "personId":"KWZK-S9V",
@@ -2801,7 +3449,9 @@ angular.module('app')
       "deathPlace":"Muscatine, Muscatine, Iowa, United States",
       "marriagePlace":"Muscatine, Iowa, United States",
       "marriageDate":"29 November 1855",
-      "descendancyNumber":"360.04-S"
+      "descendancyNumber":"360.04-S",
+      "splitDescendancyNumber":"360.04",
+      "generation":8
    },
    {
       "personId":"KWZK-SM2",
@@ -2812,7 +3462,9 @@ angular.module('app')
       "birthPlace":"Farmington, Van Buren, Iowa, United States",
       "deathDate":"30 May 1918",
       "deathPlace":"Clarkston, Asotin, Washington, United States",
-      "descendancyNumber":"360.05"
+      "descendancyNumber":"360.05",
+      "splitDescendancyNumber":"360.05",
+      "generation":8
    },
    {
       "personId":"KWZK-SMX",
@@ -2825,7 +3477,9 @@ angular.module('app')
       "deathPlace":"Lee Township, Franklin, Iowa, United States",
       "marriagePlace":"Primrose, Lee, Iowa, United States",
       "marriageDate":"21 February 1867",
-      "descendancyNumber":"360.06"
+      "descendancyNumber":"360.06",
+      "splitDescendancyNumber":"360.06",
+      "generation":8
    },
    {
       "personId":"KWZK-SSM",
@@ -2838,7 +3492,9 @@ angular.module('app')
       "deathPlace":"Lee, Iowa, United States",
       "marriagePlace":"Primrose, Lee, Iowa, United States",
       "marriageDate":"21 February 1867",
-      "descendancyNumber":"360.06-S"
+      "descendancyNumber":"360.06-S",
+      "splitDescendancyNumber":"360.06",
+      "generation":8
    },
    {
       "personId":"KWZK-SMN",
@@ -2849,7 +3505,9 @@ angular.module('app')
       "birthPlace":"Farmington, Van Buren, Iowa, United States",
       "deathDate":"13 October 1842",
       "deathPlace":"Farmington, Van Buren, Iowa, United States",
-      "descendancyNumber":"360.07"
+      "descendancyNumber":"360.07",
+      "splitDescendancyNumber":"360.07",
+      "generation":8
    },
    {
       "personId":"KWZK-SMJ",
@@ -2860,7 +3518,9 @@ angular.module('app')
       "birthPlace":"Farmington, Van Buren, Iowa, United States",
       "deathDate":"5 September 1863",
       "deathPlace":"West Liberty, Muscatine, Iowa, United States",
-      "descendancyNumber":"360.08"
+      "descendancyNumber":"360.08",
+      "splitDescendancyNumber":"360.08",
+      "generation":8
    },
    {
       "personId":"KWZK-S9Z",
@@ -2872,7 +3532,9 @@ angular.module('app')
       "deathDate":"13 May 1916",
       "deathPlace":"Medford, Grant, Oklahoma, United States",
       "marriageDate":"13 October 1864",
-      "descendancyNumber":"360.09-S"
+      "descendancyNumber":"360.09-S",
+      "splitDescendancyNumber":"360.09",
+      "generation":8
    },
    {
       "personId":"KWZK-SMD",
@@ -2884,7 +3546,9 @@ angular.module('app')
       "deathDate":"21 July 1936",
       "deathPlace":"Cleo Springs, Major, Oklahoma, United States",
       "marriageDate":"13 October 1864",
-      "descendancyNumber":"360.09"
+      "descendancyNumber":"360.09",
+      "splitDescendancyNumber":"360.09",
+      "generation":8
    },
    {
       "personId":"KWZK-SMK",
@@ -2897,7 +3561,9 @@ angular.module('app')
       "deathPlace":"Farmington, Van Buren, Iowa, United States",
       "marriagePlace":"Iowa, United States",
       "marriageDate":"28 April 1881",
-      "descendancyNumber":"360.10"
+      "descendancyNumber":"360.10",
+      "splitDescendancyNumber":"360.10",
+      "generation":8
    },
    {
       "personId":"KWZK-S36",
@@ -2910,50 +3576,9 @@ angular.module('app')
       "deathPlace":"Farmington, Van Buren, Iowa, United States",
       "marriagePlace":"Iowa, United States",
       "marriageDate":"28 April 1881",
-      "descendancyNumber":"360.10-S"
-   },
-   {
-      "personId":"KWZK-9XX",
-      "name":"William Micajah Poole",
-      "gender":"Male",
-      "lifespan":"1858-1955",
-      "birthDate":"17 January 1858",
-      "birthPlace":"Ogden, Weber, Utah, United States",
-      "deathDate":"10 January 1955",
-      "deathPlace":"Blackfoot, Bingham, Idaho, United States",
-      "ascendancyNumber":"90",
-      "children":[
-         {
-            "personId":"KWZK-95W",
-            "name":"Lillias Barbour Clark",
-            "gender":"Female",
-            "lifespan":"Deceased",
-            "descendancyNumber":"90-S"
-         },
-         {
-            "personId":"KWZK-97P",
-            "name":"Allan Willard Call",
-            "gender":"Male",
-            "lifespan":"1904-1996",
-            "birthDate":"29 April 1904",
-            "birthPlace":"Rigby, Jefferson, Idaho, United States",
-            "deathDate":"18 November 1996",
-            "deathPlace":"Rigby, Jefferson, Idaho, United States",
-            "descendancyNumber":"90.01-S"
-         },
-         {
-            "personId":"KWZK-97R",
-            "name":"Lillias Poole",
-            "gender":"Female",
-            "lifespan":"1903-1995",
-            "birthDate":"2 April 1903",
-            "birthPlace":"Annis, Jefferson, Idaho, United States",
-            "deathDate":"6 December 1995",
-            "deathPlace":"Idaho Falls, Bonneville, Idaho, United States",
-            "descendancyNumber":"90.01"
-         }
-      ],
-      "descendancyNumber":"180.06"
+      "descendancyNumber":"360.10-S",
+      "splitDescendancyNumber":"360.10",
+      "generation":8
    },
    {
       "personId":"KWZV-TTK",
@@ -2980,142 +3605,9 @@ angular.module('app')
             "lifespan":"Living",
             "descendancyNumber":"46.01"
          }
-      ]
-   },
-   {
-      "personId":"KWZK-9J9",
-      "name":"Mary Elizabeth Poole",
-      "gender":"Female",
-      "lifespan":"1849-1850",
-      "birthDate":"September 1849",
-      "birthPlace":"Farmington, Van Buren, Iowa, United States",
-      "deathDate":"9 June 1850",
-      "deathPlace":"United States",
-      "descendancyNumber":"180.01"
-   },
-   {
-      "personId":"KWZK-9NN",
-      "name":"Joseph Ewalt Poole",
-      "gender":"Male",
-      "lifespan":"1851-1851",
-      "birthDate":"24 February 1851",
-      "birthPlace":"Centerville, Davis, Utah, United States",
-      "deathDate":"24 February 1851",
-      "deathPlace":"Centerville, Davis, Utah, United States",
-      "descendancyNumber":"180.02"
-   },
-   {
-      "personId":"KWZK-9NW",
-      "name":"John Bleasdale Poole",
-      "gender":"Male",
-      "lifespan":"1854-1854",
-      "birthDate":"1854",
-      "birthPlace":"Centerville, Davis, Utah, United States",
-      "deathDate":"24 October 1854",
-      "deathPlace":"Centerville, Davis, Utah, United States",
-      "descendancyNumber":"180.03"
-   },
-   {
-      "personId":"KWZK-9N5",
-      "name":"Rebecca Margaret Poole",
-      "gender":"Female",
-      "lifespan":"1855-1935",
-      "birthDate":"29 August 1855",
-      "birthPlace":"Ogden, Weber, Utah Territory, United States",
-      "deathDate":"11 January 1935",
-      "deathPlace":"Rexburg, Madison, Idaho, United States",
-      "descendancyNumber":"180.04"
-   },
-   {
-      "personId":"KWZK-9FY",
-      "name":"Hiram Poole",
-      "gender":"Male",
-      "lifespan":"1856-Deceased",
-      "birthDate":"1856",
-      "birthPlace":"Utah Territory, United States",
-      "descendancyNumber":"180.05"
-   },
-   {
-      "personId":"KWZK-9NJ",
-      "name":"Jeanette Alice Poole",
-      "gender":"Female",
-      "lifespan":"1860-1953",
-      "birthDate":"23 May 1860",
-      "birthPlace":"Ogden, Weber, Utah, United States",
-      "deathDate":"7 August 1953",
-      "deathPlace":"Denver, Denver, Colorado, United States",
-      "descendancyNumber":"180.07"
-   },
-   {
-      "personId":"KWZK-9N3",
-      "name":"Susanna Rosetta Poole",
-      "gender":"Female",
-      "lifespan":"1862-1949",
-      "birthDate":"4 July 1862",
-      "birthPlace":"Ogden, Weber, Utah, United States",
-      "deathDate":"19 February 1949",
-      "deathPlace":"Menan, Jefferson, Idaho, United States",
-      "descendancyNumber":"180.08"
-   },
-   {
-      "personId":"KWZK-9N8",
-      "name":"Reuben Mack Poole",
-      "gender":"Male",
-      "lifespan":"1864-1940",
-      "birthDate":"25 November 1864",
-      "birthPlace":"Ogden, Weber, Utah Territory, United States",
-      "deathDate":"5 May 1940",
-      "deathPlace":"Menan, Jefferson, Idaho, United States",
-      "descendancyNumber":"180.09"
-   },
-   {
-      "personId":"KWZK-9N7",
-      "name":"Walter J. Poole",
-      "gender":"Male",
-      "lifespan":"1866-Deceased",
-      "birthDate":"1866",
-      "birthPlace":"Utah Territory, United States",
-      "descendancyNumber":"180.10"
-   },
-   {
-      "personId":"KWZK-9NF",
-      "name":"Emily Poole",
-      "gender":"Female",
-      "lifespan":"1867-Deceased",
-      "birthDate":"1867",
-      "birthPlace":"Utah Territory, United States",
-      "descendancyNumber":"180.11"
-   },
-   {
-      "personId":"KWZK-9NK",
-      "name":"Christena Jane Poole",
-      "gender":"Female",
-      "lifespan":"1868-1956",
-      "birthDate":"16 January 1868",
-      "birthPlace":"Ogden, Weber, Utah, United States",
-      "deathDate":"13 August 1956",
-      "deathPlace":"Rigby, Jefferson, Idaho, United States",
-      "descendancyNumber":"180.12"
-   },
-   {
-      "personId":"KWZK-9NG",
-      "name":"Milburn Benton Poole",
-      "gender":"Male",
-      "lifespan":"1871-1960",
-      "birthDate":"24 February 1871",
-      "birthPlace":"Ogden, Weber, Utah, United States",
-      "deathDate":"12 January 1960",
-      "deathPlace":"Rigby, Jefferson, Idaho, United States",
-      "descendancyNumber":"180.13"
-   },
-   {
-      "personId":"KWZK-9NR",
-      "name":"Ewatt Poole",
-      "gender":"Male",
-      "lifespan":"1874-Deceased",
-      "birthDate":"1874",
-      "birthPlace":"Utah Territory, United States",
-      "descendancyNumber":"180.14"
+      ],
+      "splitAscendancyNumber":"46",
+      "generation":6
    },
    {
       "personId":"KWZ6-15X",
@@ -3135,70 +3627,8 @@ angular.module('app')
             "descendancyNumber":"2-S"
          }
       ],
-      "descendancyNumber":"6.01-S"
-   },
-   {
-      "personId":"KWZV-T8L",
-      "name":"Peter Beutler",
-      "gender":"Male",
-      "lifespan":"1830-1893",
-      "birthDate":"24 May 1830",
-      "birthPlace":"Lauperswil, Bern, Switzerland",
-      "deathDate":"30 November 1893",
-      "deathPlace":"Paris, Bear Lake, Idaho, United States",
-      "marriagePlace":"Trub, Bern, Switzerland",
-      "marriageDate":"18 March 1859",
-      "ascendancyNumber":"112",
-      "children":[
-         {
-            "personId":"KWZV-T8X",
-            "name":"Maria Aeschlimann",
-            "gender":"Female",
-            "lifespan":"1837-1898",
-            "birthDate":"12 May 1837",
-            "birthPlace":"Rüegsau, Bern, Switzerland",
-            "deathDate":"7 February 1898",
-            "deathPlace":"Logan, Cache, Utah, United States",
-            "marriagePlace":"Trub, Bern, Switzerland",
-            "marriageDate":"18 March 1859",
-            "descendancyNumber":"112-S"
-         },
-         {
-            "personId":"KWZV-T8J",
-            "name":"Gottfried Beutler",
-            "gender":"Male",
-            "lifespan":"1860-1923",
-            "birthDate":"23 January 1860",
-            "birthPlace":"Rüderswil, Bern, Switzerland",
-            "deathDate":"9 December 1923",
-            "deathPlace":"Logan, Cache, Utah, United States",
-            "descendancyNumber":"112.01",
-            "ascendancyNumber":"56"
-         },
-         {
-            "personId":"KWZV-T8D",
-            "name":"Marianne Beutler",
-            "gender":"Female",
-            "lifespan":"1859-1953",
-            "birthDate":"9 October 1859",
-            "birthPlace":"Buchholterberg, Bern, Switzerland",
-            "deathDate":"9 November 1953",
-            "descendancyNumber":"112.01-S"
-         }
-      ],
-      "descendancyNumber":"226.01-S"
-   },
-   {
-      "personId":"KWZV-T8J",
-      "name":"Gottfried Beutler",
-      "gender":"Male",
-      "lifespan":"1860-1923",
-      "birthDate":"23 January 1860",
-      "birthPlace":"Rüderswil, Bern, Switzerland",
-      "deathDate":"9 December 1923",
-      "deathPlace":"Logan, Cache, Utah, United States",
-      "descendancyNumber":"112.01",
-      "ascendancyNumber":"56"
+      "descendancyNumber":"6.01-S",
+      "splitAscendancyNumber":"2"
    },
    {
       "personId":"KWZV-YXJ",
@@ -3235,7 +3665,9 @@ angular.module('app')
             "descendancyNumber":"6.01-S"
          }
       ],
-      "descendancyNumber":"14.01-S"
+      "descendancyNumber":"14.01-S",
+      "splitAscendancyNumber":"6",
+      "generation":3
    },
    {
       "personId":"KWZV-TD5",
@@ -3272,7 +3704,9 @@ angular.module('app')
             "marriagePlace":"Röthenbach im Emmental, Bern, Switzerland",
             "marriageDate":"6 May 1823",
             "descendancyNumber":"448.01",
-            "ascendancyNumber":"224"
+            "ascendancyNumber":"224",
+            "splitAscendancyNumber":"224",
+            "generation":8
          },
          {
             "personId":"KWZV-TD7",
@@ -3287,7 +3721,9 @@ angular.module('app')
             "marriageDate":"6 May 1823",
             "descendancyNumber":"448.01-S"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"448",
+      "generation":9
    },
    {
       "personId":"KWZV-TDS",
@@ -3301,61 +3737,39 @@ angular.module('app')
       "marriagePlace":"Röthenbach im Emmental, Bern, Switzerland",
       "marriageDate":"6 May 1823",
       "descendancyNumber":"448.01",
-      "ascendancyNumber":"224"
+      "ascendancyNumber":"224",
+      "splitAscendancyNumber":"224",
+      "generation":8
    },
    {
-      "personId":"KWZV-TDV",
-      "name":"Johannes Aeschlimann",
+      "personId":"KWZV-T8L",
+      "name":"Peter Beutler",
       "gender":"Male",
-      "lifespan":"1789-1848",
-      "birthDate":"8 February 1789",
-      "birthPlace":"of Ruegsau, Bern, Switzerland",
-      "deathDate":"29 January 1848",
-      "marriagePlace":"Rüegsau, Bern, Switzerland",
-      "marriageDate":"20 August 1813",
-      "ascendancyNumber":"452",
-      "children":[
-         {
-            "personId":"KWZV-TDL",
-            "name":"Maria Magdalena Buerki",
-            "gender":"Female",
-            "lifespan":"1797-1827",
-            "birthDate":"20 August 1797",
-            "birthPlace":"Worb, Bern, Switzerland",
-            "deathDate":"24 August 1827",
-            "deathPlace":"Switzerland",
-            "marriagePlace":"Rüegsau, Bern, Switzerland",
-            "marriageDate":"20 August 1813",
-            "descendancyNumber":"452-S"
-         },
-         {
-            "personId":"KWZV-T8P",
-            "name":"Johannes Aeschlimann",
-            "gender":"Male",
-            "lifespan":"1814-1886",
-            "birthDate":"31 July 1814",
-            "birthPlace":"Biglen, Bern, Switzerland",
-            "deathDate":"3 March 1886",
-            "deathPlace":"Switzerland",
-            "marriagePlace":"Rüegsau, Bern, Switzerland",
-            "marriageDate":"13 January 1837",
-            "descendancyNumber":"454.01-S",
-            "ascendancyNumber":"226"
-         },
-         {
-            "personId":"KWZV-T8G",
-            "name":"Magdalena Zuercher",
-            "gender":"Female",
-            "lifespan":"1809-1854",
-            "birthDate":"3 November 1809",
-            "birthPlace":"Trubschachen, Bern, Switzerland",
-            "deathDate":"7 December 1854",
-            "deathPlace":"Rüegsau, Bern, Switzerland",
-            "marriagePlace":"Rüegsau, Bern, Switzerland",
-            "marriageDate":"13 January 1837",
-            "descendancyNumber":"452.01-S"
-         }
-      ]
+      "lifespan":"1830-1893",
+      "birthDate":"24 May 1830",
+      "birthPlace":"Lauperswil, Bern, Switzerland",
+      "deathDate":"30 November 1893",
+      "deathPlace":"Paris, Bear Lake, Idaho, United States",
+      "marriagePlace":"Trub, Bern, Switzerland",
+      "marriageDate":"18 March 1859",
+      "descendancyNumber":"226.01-S",
+      "ascendancyNumber":"112",
+      "splitAscendancyNumber":"112",
+      "generation":7
+   },
+   {
+      "personId":"KWZV-T8J",
+      "name":"Gottfried Beutler",
+      "gender":"Male",
+      "lifespan":"1860-1923",
+      "birthDate":"23 January 1860",
+      "birthPlace":"Rüderswil, Bern, Switzerland",
+      "deathDate":"9 December 1923",
+      "deathPlace":"Logan, Cache, Utah, United States",
+      "descendancyNumber":"112.01",
+      "ascendancyNumber":"56",
+      "splitAscendancyNumber":"56",
+      "generation":6
    },
    {
       "personId":"KWZV-T8P",
@@ -3368,31 +3782,51 @@ angular.module('app')
       "deathPlace":"Switzerland",
       "marriagePlace":"Rüegsau, Bern, Switzerland",
       "marriageDate":"13 January 1837",
-      "descendancyNumber":"454.01-S",
-      "ascendancyNumber":"226"
-   },
-   {
-      "personId":"KWZV-T8F",
-      "name":"Alfred Beutler",
-      "gender":"Male",
-      "lifespan":"1887-1971",
-      "birthDate":"24 April 1887",
-      "birthPlace":"Allmendingen, Thun, Bern, Switzerland",
-      "deathDate":"18 February 1971",
-      "deathPlace":"North Logan, Cache, Utah, USA",
-      "descendancyNumber":"58.01-S",
-      "ascendancyNumber":"28"
-   },
-   {
-      "personId":"KWZV-T88",
-      "name":"Alvin Schwartz Beutler",
-      "gender":"Male",
-      "lifespan":"1916-2011",
-      "birthDate":"18 July 1916",
-      "birthPlace":"North Logan, Cache, Utah, United States",
-      "deathDate":"20 July 2011",
-      "descendancyNumber":"30.01-S",
-      "ascendancyNumber":"14"
+      "ascendancyNumber":"226",
+      "children":[
+         {
+            "personId":"KWZV-T8G",
+            "name":"Magdalena Zuercher",
+            "gender":"Female",
+            "lifespan":"1809-1854",
+            "birthDate":"3 November 1809",
+            "birthPlace":"Trubschachen, Bern, Switzerland",
+            "deathDate":"7 December 1854",
+            "deathPlace":"Rüegsau, Bern, Switzerland",
+            "marriagePlace":"Rüegsau, Bern, Switzerland",
+            "marriageDate":"13 January 1837",
+            "descendancyNumber":"226-S"
+         },
+         {
+            "personId":"KWZV-T8L",
+            "name":"Peter Beutler",
+            "gender":"Male",
+            "lifespan":"1830-1893",
+            "birthDate":"24 May 1830",
+            "birthPlace":"Lauperswil, Bern, Switzerland",
+            "deathDate":"30 November 1893",
+            "deathPlace":"Paris, Bear Lake, Idaho, United States",
+            "marriagePlace":"Trub, Bern, Switzerland",
+            "marriageDate":"18 March 1859",
+            "descendancyNumber":"226.01-S"
+         },
+         {
+            "personId":"KWZV-T8X",
+            "name":"Maria Aeschlimann",
+            "gender":"Female",
+            "lifespan":"1837-1898",
+            "birthDate":"12 May 1837",
+            "birthPlace":"Rüegsau, Bern, Switzerland",
+            "deathDate":"7 February 1898",
+            "deathPlace":"Logan, Cache, Utah, United States",
+            "marriagePlace":"Trub, Bern, Switzerland",
+            "marriageDate":"18 March 1859",
+            "descendancyNumber":"226.01"
+         }
+      ],
+      "descendancyNumber":"452.01",
+      "splitAscendancyNumber":"226",
+      "generation":8
    },
    {
       "personId":"KWZV-TDK",
@@ -3446,141 +3880,91 @@ angular.module('app')
             "marriageDate":"13 January 1837",
             "descendancyNumber":"454.01"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"454",
+      "generation":9
    },
    {
-      "personId":"KWZV-T8Y",
-      "name":"Samuel Mausli",
+      "personId":"KWZV-T8F",
+      "name":"Alfred Beutler",
       "gender":"Male",
-      "lifespan":"1826-1886",
-      "birthDate":"3 October 1826",
-      "birthPlace":"Grosshöchstetten, Bern, Switzerland",
-      "deathDate":"7 July 1886",
-      "deathPlace":"Bern, Bern, Switzerland",
-      "marriagePlace":"Grosshöchstetten, Bern, Switzerland",
-      "marriageDate":"18 July 1862",
-      "ascendancyNumber":"116",
+      "lifespan":"1887-1971",
+      "birthDate":"24 April 1887",
+      "birthPlace":"Allmendingen, Thun, Bern, Switzerland",
+      "deathDate":"18 February 1971",
+      "deathPlace":"North Logan, Cache, Utah, USA",
+      "descendancyNumber":"58.01-S",
+      "ascendancyNumber":"28",
+      "splitAscendancyNumber":"28",
+      "generation":5
+   },
+   {
+      "personId":"KWZV-T88",
+      "name":"Alvin Schwartz Beutler",
+      "gender":"Male",
+      "lifespan":"1916-2011",
+      "birthDate":"18 July 1916",
+      "birthPlace":"North Logan, Cache, Utah, United States",
+      "deathDate":"20 July 2011",
+      "descendancyNumber":"30.01-S",
+      "ascendancyNumber":"14",
+      "splitAscendancyNumber":"14",
+      "generation":4
+   },
+   {
+      "personId":"KWZV-TDV",
+      "name":"Johannes Aeschlimann",
+      "gender":"Male",
+      "lifespan":"1789-1848",
+      "birthDate":"8 February 1789",
+      "birthPlace":"of Ruegsau, Bern, Switzerland",
+      "deathDate":"29 January 1848",
+      "marriagePlace":"Rüegsau, Bern, Switzerland",
+      "marriageDate":"20 August 1813",
+      "ascendancyNumber":"452",
       "children":[
          {
-            "personId":"KWZV-TD9",
-            "name":"Anna Katharina Schwartz",
+            "personId":"KWZV-TDL",
+            "name":"Maria Magdalena Buerki",
             "gender":"Female",
-            "lifespan":"1836-1905",
-            "birthDate":"27 April 1836",
-            "birthPlace":"Schangnau, Bern, Switzerland",
-            "deathDate":"25 April 1905",
-            "deathPlace":"Bern, Switzerland",
-            "marriagePlace":"Grosshöchstetten, Bern, Switzerland",
-            "marriageDate":"18 July 1862",
-            "descendancyNumber":"116-S"
+            "lifespan":"1797-1827",
+            "birthDate":"20 August 1797",
+            "birthPlace":"Worb, Bern, Switzerland",
+            "deathDate":"24 August 1827",
+            "deathPlace":"Switzerland",
+            "marriagePlace":"Rüegsau, Bern, Switzerland",
+            "marriageDate":"20 August 1813",
+            "descendancyNumber":"452-S"
          },
          {
-            "personId":"KWZV-T85",
-            "name":"Gottlieb Schwartz",
+            "personId":"KWZV-T8P",
+            "name":"Johannes Aeschlimann",
             "gender":"Male",
-            "lifespan":"1859-1925",
-            "birthDate":"20 January 1859",
-            "birthPlace":"Schangnau, Bern, Switzerland",
-            "deathDate":"18 August 1925",
-            "deathPlace":"Logan, Cache, Utah, United States",
-            "marriagePlace":"Thun, Bern, Switzerland",
-            "marriageDate":"21 October 1882",
-            "descendancyNumber":"118.01-S",
-            "ascendancyNumber":"58"
+            "lifespan":"1814-1886",
+            "birthDate":"31 July 1814",
+            "birthPlace":"Biglen, Bern, Switzerland",
+            "deathDate":"3 March 1886",
+            "deathPlace":"Switzerland",
+            "marriagePlace":"Rüegsau, Bern, Switzerland",
+            "marriageDate":"13 January 1837",
+            "descendancyNumber":"452.01"
          },
          {
-            "personId":"KWZV-T8R",
-            "name":"Rosina Bieri",
+            "personId":"KWZV-T8G",
+            "name":"Magdalena Zuercher",
             "gender":"Female",
-            "lifespan":"1862-1896",
-            "birthDate":"23 July 1862",
-            "birthPlace":"Schwarzenegg, Unterlangenegg, Bern, Switzerland",
-            "deathDate":"8 December 1896",
-            "deathPlace":"Logan, Cache, Utah, United States",
-            "marriagePlace":"Thun, Bern, Switzerland",
-            "marriageDate":"21 October 1882",
-            "descendancyNumber":"116.01-S"
+            "lifespan":"1809-1854",
+            "birthDate":"3 November 1809",
+            "birthPlace":"Trubschachen, Bern, Switzerland",
+            "deathDate":"7 December 1854",
+            "deathPlace":"Rüegsau, Bern, Switzerland",
+            "marriagePlace":"Rüegsau, Bern, Switzerland",
+            "marriageDate":"13 January 1837",
+            "descendancyNumber":"452.01-S"
          }
       ],
-      "descendancyNumber":"234.01-S"
-   },
-   {
-      "personId":"KWZV-T85",
-      "name":"Gottlieb Schwartz",
-      "gender":"Male",
-      "lifespan":"1859-1925",
-      "birthDate":"20 January 1859",
-      "birthPlace":"Schangnau, Bern, Switzerland",
-      "deathDate":"18 August 1925",
-      "deathPlace":"Logan, Cache, Utah, United States",
-      "marriagePlace":"Thun, Bern, Switzerland",
-      "marriageDate":"21 October 1882",
-      "descendancyNumber":"118.01-S",
-      "ascendancyNumber":"58"
-   },
-   {
-      "personId":"KWZV-T6C",
-      "name":"Peter Schwartz",
-      "gender":"Male",
-      "lifespan":"1750-Deceased",
-      "birthDate":"6 December 1750",
-      "birthPlace":"Biglen, Bern, Switzerland",
-      "marriagePlace":"Münsingen, Bern, Switzerland",
-      "marriageDate":"8 October 1779",
-      "ascendancyNumber":"468",
-      "children":[
-         {
-            "personId":"KWZV-T68",
-            "name":"Anna Moser",
-            "gender":"Female",
-            "lifespan":"1755-Deceased",
-            "birthDate":"1755",
-            "birthPlace":"Biglen, Bern, Switzerland",
-            "marriagePlace":"Münsingen, Bern, Switzerland",
-            "marriageDate":"8 October 1779",
-            "descendancyNumber":"468-S"
-         },
-         {
-            "personId":"KWZV-TDD",
-            "name":"Jacob Schwartz",
-            "gender":"Male",
-            "lifespan":"1798-1854",
-            "birthDate":"25 February 1798",
-            "birthPlace":"Biglen, Bern, Switzerland",
-            "deathDate":"24 November 1854",
-            "deathPlace":"Bern, Switzerland",
-            "marriagePlace":"Walkringen, Bern, Switzerland",
-            "marriageDate":"25 May 1824",
-            "descendancyNumber":"470.01-S",
-            "ascendancyNumber":"234"
-         },
-         {
-            "personId":"KWZV-TD6",
-            "name":"Anna Tanner",
-            "gender":"Female",
-            "lifespan":"1798-1867",
-            "birthDate":"14 December 1798",
-            "birthPlace":"Walkringen, Bern, Switzerland",
-            "deathDate":"1867",
-            "marriagePlace":"Walkringen, Bern, Switzerland",
-            "marriageDate":"25 May 1824",
-            "descendancyNumber":"468.01-S"
-         }
-      ]
-   },
-   {
-      "personId":"KWZV-TDD",
-      "name":"Jacob Schwartz",
-      "gender":"Male",
-      "lifespan":"1798-1854",
-      "birthDate":"25 February 1798",
-      "birthPlace":"Biglen, Bern, Switzerland",
-      "deathDate":"24 November 1854",
-      "deathPlace":"Bern, Switzerland",
-      "marriagePlace":"Walkringen, Bern, Switzerland",
-      "marriageDate":"25 May 1824",
-      "descendancyNumber":"470.01-S",
-      "ascendancyNumber":"234"
+      "splitAscendancyNumber":"452",
+      "generation":9
    },
    {
       "personId":"KWZV-T69",
@@ -3610,7 +3994,9 @@ angular.module('app')
             "birthDate":"20 October 1780",
             "birthPlace":"Grosshöchstetten, Bern, Switzerland",
             "descendancyNumber":"464.01",
-            "ascendancyNumber":"232"
+            "ascendancyNumber":"232",
+            "splitAscendancyNumber":"232",
+            "generation":8
          },
          {
             "personId":"KWZV-TDZ",
@@ -3622,7 +4008,9 @@ angular.module('app')
             "deathDate":"22 November 1866",
             "descendancyNumber":"464.01-S"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"464",
+      "generation":9
    },
    {
       "personId":"KWZV-TDW",
@@ -3632,7 +4020,41 @@ angular.module('app')
       "birthDate":"20 October 1780",
       "birthPlace":"Grosshöchstetten, Bern, Switzerland",
       "descendancyNumber":"464.01",
-      "ascendancyNumber":"232"
+      "ascendancyNumber":"232",
+      "splitAscendancyNumber":"232",
+      "generation":8
+   },
+   {
+      "personId":"KWZV-T8Y",
+      "name":"Samuel Mausli",
+      "gender":"Male",
+      "lifespan":"1826-1886",
+      "birthDate":"3 October 1826",
+      "birthPlace":"Grosshöchstetten, Bern, Switzerland",
+      "deathDate":"7 July 1886",
+      "deathPlace":"Bern, Bern, Switzerland",
+      "marriagePlace":"Grosshöchstetten, Bern, Switzerland",
+      "marriageDate":"18 July 1862",
+      "descendancyNumber":"234.01-S",
+      "ascendancyNumber":"116",
+      "splitAscendancyNumber":"116",
+      "generation":7
+   },
+   {
+      "personId":"KWZV-T85",
+      "name":"Gottlieb Schwartz",
+      "gender":"Male",
+      "lifespan":"1859-1925",
+      "birthDate":"20 January 1859",
+      "birthPlace":"Schangnau, Bern, Switzerland",
+      "deathDate":"18 August 1925",
+      "deathPlace":"Logan, Cache, Utah, United States",
+      "marriagePlace":"Thun, Bern, Switzerland",
+      "marriageDate":"21 October 1882",
+      "descendancyNumber":"118.01-S",
+      "ascendancyNumber":"58",
+      "splitAscendancyNumber":"58",
+      "generation":6
    },
    {
       "personId":"KWZV-T6Z",
@@ -3667,7 +4089,10 @@ angular.module('app')
             "deathPlace":"Bern, Switzerland",
             "marriagePlace":"Walkringen, Bern, Switzerland",
             "marriageDate":"25 May 1824",
-            "descendancyNumber":"470.01-S"
+            "descendancyNumber":"468.01",
+            "ascendancyNumber":"234",
+            "splitAscendancyNumber":"234",
+            "generation":8
          },
          {
             "personId":"KWZV-TD6",
@@ -3681,124 +4106,76 @@ angular.module('app')
             "marriageDate":"25 May 1824",
             "descendancyNumber":"470.01"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"470",
+      "generation":9
    },
    {
-      "personId":"KWZV-T6K",
-      "name":"Hans Jacob Egli",
+      "personId":"KWZV-TDD",
+      "name":"Jacob Schwartz",
       "gender":"Male",
-      "lifespan":"1755-Deceased",
-      "birthDate":"28 February 1755",
-      "birthPlace":"Switzerland",
-      "ascendancyNumber":"474",
+      "lifespan":"1798-1854",
+      "birthDate":"25 February 1798",
+      "birthPlace":"Biglen, Bern, Switzerland",
+      "deathDate":"24 November 1854",
+      "deathPlace":"Bern, Switzerland",
+      "marriagePlace":"Walkringen, Bern, Switzerland",
+      "marriageDate":"25 May 1824",
+      "descendancyNumber":"468.01",
+      "ascendancyNumber":"234",
+      "splitAscendancyNumber":"234",
+      "generation":8
+   },
+   {
+      "personId":"KWZV-T6C",
+      "name":"Peter Schwartz",
+      "gender":"Male",
+      "lifespan":"1750-Deceased",
+      "birthDate":"6 December 1750",
+      "birthPlace":"Biglen, Bern, Switzerland",
+      "marriagePlace":"Münsingen, Bern, Switzerland",
+      "marriageDate":"8 October 1779",
+      "ascendancyNumber":"468",
       "children":[
          {
-            "personId":"KWZV-T6L",
-            "name":"Christina Schweizer",
+            "personId":"KWZV-T68",
+            "name":"Anna Moser",
             "gender":"Female",
-            "lifespan":"1764-1834",
-            "birthDate":"1 September 1764",
-            "birthPlace":"Hasle bei Burgdorf, Bern, Switzerland",
-            "deathDate":"1 March 1834",
-            "descendancyNumber":"474-S"
+            "lifespan":"1755-Deceased",
+            "birthDate":"1755",
+            "birthPlace":"Biglen, Bern, Switzerland",
+            "marriagePlace":"Münsingen, Bern, Switzerland",
+            "marriageDate":"8 October 1779",
+            "descendancyNumber":"468-S"
          },
          {
-            "personId":"KWZV-TDN",
-            "name":"Peter Bieri",
+            "personId":"KWZV-TDD",
+            "name":"Jacob Schwartz",
             "gender":"Male",
-            "lifespan":"1778-1858",
-            "birthDate":"22 February 1778",
-            "birthPlace":"Schangnau, Bern, Switzerland",
-            "deathDate":"7 December 1858",
-            "deathPlace":"Schangnau, Bern, Switzerland",
-            "marriagePlace":"Schangnau, Bern, Switzerland",
-            "marriageDate":"12 November 1813",
-            "descendancyNumber":"472.01",
-            "ascendancyNumber":"236"
+            "lifespan":"1798-1854",
+            "birthDate":"25 February 1798",
+            "birthPlace":"Biglen, Bern, Switzerland",
+            "deathDate":"24 November 1854",
+            "deathPlace":"Bern, Switzerland",
+            "marriagePlace":"Walkringen, Bern, Switzerland",
+            "marriageDate":"25 May 1824",
+            "descendancyNumber":"468.01"
          },
          {
-            "personId":"KWZV-TDJ",
-            "name":"Christina Egli",
+            "personId":"KWZV-TD6",
+            "name":"Anna Tanner",
             "gender":"Female",
-            "lifespan":"1791-1850",
-            "birthDate":"11 September 1791",
-            "birthPlace":"Schangnau, Bern, Switzerland",
-            "deathDate":"19 September 1850",
-            "deathPlace":"Schangnau, Bern, Switzerland",
-            "marriagePlace":"Schangnau, Bern, Switzerland",
-            "marriageDate":"12 November 1813",
-            "descendancyNumber":"474.01"
-         }
-      ]
-   },
-   {
-      "personId":"KWZV-TDN",
-      "name":"Peter Bieri",
-      "gender":"Male",
-      "lifespan":"1778-1858",
-      "birthDate":"22 February 1778",
-      "birthPlace":"Schangnau, Bern, Switzerland",
-      "deathDate":"7 December 1858",
-      "deathPlace":"Schangnau, Bern, Switzerland",
-      "marriagePlace":"Schangnau, Bern, Switzerland",
-      "marriageDate":"12 November 1813",
-      "descendancyNumber":"472.01",
-      "ascendancyNumber":"236"
-   },
-   {
-      "personId":"KWZV-TDQ",
-      "name":"Abraham Bieri",
-      "gender":"Male",
-      "lifespan":"1823-1873",
-      "birthDate":"29 October 1823",
-      "birthPlace":"Schangnau, Bern, Switzerland",
-      "deathDate":"1 May 1873",
-      "deathPlace":"Schangnau, Bern, Switzerland",
-      "marriagePlace":"Thun, Bern, Switzerland",
-      "marriageDate":"13 May 1848",
-      "ascendancyNumber":"118",
-      "children":[
-         {
-            "personId":"KWZV-TD3",
-            "name":"Maria Zuercher",
-            "gender":"Female",
-            "lifespan":"1823-1883",
-            "birthDate":"20 July 1823",
-            "birthPlace":"Rüderswil, Bern, Switzerland",
-            "deathDate":"2 February 1883",
-            "deathPlace":"Schwarzenegg, Unterlangenegg, Bern, Switzerland",
-            "marriagePlace":"Thun, Bern, Switzerland",
-            "marriageDate":"13 May 1848",
-            "descendancyNumber":"118-S"
-         },
-         {
-            "personId":"KWZV-T85",
-            "name":"Gottlieb Schwartz",
-            "gender":"Male",
-            "lifespan":"1859-1925",
-            "birthDate":"20 January 1859",
-            "birthPlace":"Schangnau, Bern, Switzerland",
-            "deathDate":"18 August 1925",
-            "deathPlace":"Logan, Cache, Utah, United States",
-            "marriagePlace":"Thun, Bern, Switzerland",
-            "marriageDate":"21 October 1882",
-            "descendancyNumber":"118.01-S"
-         },
-         {
-            "personId":"KWZV-T8R",
-            "name":"Rosina Bieri",
-            "gender":"Female",
-            "lifespan":"1862-1896",
-            "birthDate":"23 July 1862",
-            "birthPlace":"Schwarzenegg, Unterlangenegg, Bern, Switzerland",
-            "deathDate":"8 December 1896",
-            "deathPlace":"Logan, Cache, Utah, United States",
-            "marriagePlace":"Thun, Bern, Switzerland",
-            "marriageDate":"21 October 1882",
-            "descendancyNumber":"118.01"
+            "lifespan":"1798-1867",
+            "birthDate":"14 December 1798",
+            "birthPlace":"Walkringen, Bern, Switzerland",
+            "deathDate":"1867",
+            "marriagePlace":"Walkringen, Bern, Switzerland",
+            "marriageDate":"25 May 1824",
+            "descendancyNumber":"468.01-S"
          }
       ],
-      "descendancyNumber":"238.01-S"
+      "splitAscendancyNumber":"468",
+      "generation":9
    },
    {
       "personId":"KWZV-T6V",
@@ -3832,7 +4209,10 @@ angular.module('app')
             "deathPlace":"Schangnau, Bern, Switzerland",
             "marriagePlace":"Schangnau, Bern, Switzerland",
             "marriageDate":"12 November 1813",
-            "descendancyNumber":"472.01"
+            "descendancyNumber":"474.01-S",
+            "ascendancyNumber":"236",
+            "splitAscendancyNumber":"236",
+            "generation":8
          },
          {
             "personId":"KWZV-TDJ",
@@ -3847,7 +4227,90 @@ angular.module('app')
             "marriageDate":"12 November 1813",
             "descendancyNumber":"472.01-S"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"472",
+      "generation":9
+   },
+   {
+      "personId":"KWZV-TDN",
+      "name":"Peter Bieri",
+      "gender":"Male",
+      "lifespan":"1778-1858",
+      "birthDate":"22 February 1778",
+      "birthPlace":"Schangnau, Bern, Switzerland",
+      "deathDate":"7 December 1858",
+      "deathPlace":"Schangnau, Bern, Switzerland",
+      "marriagePlace":"Schangnau, Bern, Switzerland",
+      "marriageDate":"12 November 1813",
+      "descendancyNumber":"474.01-S",
+      "ascendancyNumber":"236",
+      "splitAscendancyNumber":"236",
+      "generation":8
+   },
+   {
+      "personId":"KWZV-TDQ",
+      "name":"Abraham Bieri",
+      "gender":"Male",
+      "lifespan":"1823-1873",
+      "birthDate":"29 October 1823",
+      "birthPlace":"Schangnau, Bern, Switzerland",
+      "deathDate":"1 May 1873",
+      "deathPlace":"Schangnau, Bern, Switzerland",
+      "marriagePlace":"Thun, Bern, Switzerland",
+      "marriageDate":"13 May 1848",
+      "descendancyNumber":"238.01-S",
+      "ascendancyNumber":"118",
+      "splitAscendancyNumber":"118",
+      "generation":7
+   },
+   {
+      "personId":"KWZV-T6K",
+      "name":"Hans Jacob Egli",
+      "gender":"Male",
+      "lifespan":"1755-Deceased",
+      "birthDate":"28 February 1755",
+      "birthPlace":"Switzerland",
+      "ascendancyNumber":"474",
+      "children":[
+         {
+            "personId":"KWZV-T6L",
+            "name":"Christina Schweizer",
+            "gender":"Female",
+            "lifespan":"1764-1834",
+            "birthDate":"1 September 1764",
+            "birthPlace":"Hasle bei Burgdorf, Bern, Switzerland",
+            "deathDate":"1 March 1834",
+            "descendancyNumber":"474-S"
+         },
+         {
+            "personId":"KWZV-TDN",
+            "name":"Peter Bieri",
+            "gender":"Male",
+            "lifespan":"1778-1858",
+            "birthDate":"22 February 1778",
+            "birthPlace":"Schangnau, Bern, Switzerland",
+            "deathDate":"7 December 1858",
+            "deathPlace":"Schangnau, Bern, Switzerland",
+            "marriagePlace":"Schangnau, Bern, Switzerland",
+            "marriageDate":"12 November 1813",
+            "descendancyNumber":"474.01-S"
+         },
+         {
+            "personId":"KWZV-TDJ",
+            "name":"Christina Egli",
+            "gender":"Female",
+            "lifespan":"1791-1850",
+            "birthDate":"11 September 1791",
+            "birthPlace":"Schangnau, Bern, Switzerland",
+            "deathDate":"19 September 1850",
+            "deathPlace":"Schangnau, Bern, Switzerland",
+            "marriagePlace":"Schangnau, Bern, Switzerland",
+            "marriageDate":"12 November 1813",
+            "descendancyNumber":"474.01"
+         }
+      ],
+      "splitAscendancyNumber":"474",
+      "generation":9
    },
    {
       "personId":"KWZV-TDF",
@@ -3900,7 +4363,9 @@ angular.module('app')
             "descendancyNumber":"238.01"
          }
       ],
-      "descendancyNumber":"478.01-S"
+      "descendancyNumber":"478.01-S",
+      "splitAscendancyNumber":"238",
+      "generation":8
    },
    {
       "personId":"KWZV-T6F",
@@ -3948,7 +4413,9 @@ angular.module('app')
             "marriageDate":"21 November 1818",
             "descendancyNumber":"476.01-S"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"476",
+      "generation":9
    },
    {
       "personId":"KWZV-T6X",
@@ -3998,7 +4465,59 @@ angular.module('app')
             "marriageDate":"21 November 1818",
             "descendancyNumber":"478.01"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"478",
+      "generation":9
+   },
+   {
+      "personId":"KWZK-MM9",
+      "name":"Robert Stein Haig",
+      "gender":"Male",
+      "lifespan":"1804-1876",
+      "birthDate":"2 August 1804",
+      "birthPlace":"St. Andrews, Fifeshire, Scotland",
+      "deathDate":"1876",
+      "deathPlace":"Utica, Oneida, New York, United States",
+      "ascendancyNumber":"242",
+      "children":[
+         {
+            "personId":"KWZV-11R",
+            "name":"Charles Houston Maxwell McAlister",
+            "gender":"Male",
+            "lifespan":"1827-1898",
+            "birthDate":"17 February 1827",
+            "birthPlace":"Renfrewshire, Scotland",
+            "deathDate":"25 January 1898",
+            "deathPlace":"Logan, Cache, Utah, United States",
+            "descendancyNumber":"240.01",
+            "ascendancyNumber":"120",
+            "splitAscendancyNumber":"120",
+            "generation":7
+         },
+         {
+            "personId":"KWZK-MJ5",
+            "name":"Mary Haig",
+            "gender":"Female",
+            "lifespan":"Deceased",
+            "descendancyNumber":"242.01"
+         }
+      ],
+      "splitAscendancyNumber":"242",
+      "generation":8
+   },
+   {
+      "personId":"KWZV-11R",
+      "name":"Charles Houston Maxwell McAlister",
+      "gender":"Male",
+      "lifespan":"1827-1898",
+      "birthDate":"17 February 1827",
+      "birthPlace":"Renfrewshire, Scotland",
+      "deathDate":"25 January 1898",
+      "deathPlace":"Logan, Cache, Utah, United States",
+      "descendancyNumber":"240.01",
+      "ascendancyNumber":"120",
+      "splitAscendancyNumber":"120",
+      "generation":7
    },
    {
       "personId":"KWZK-MM4",
@@ -4029,7 +4548,9 @@ angular.module('app')
             "marriagePlace":"Greenock, Renfrewshire, Scotland",
             "marriageDate":"29 March 1819",
             "descendancyNumber":"482.01-S",
-            "ascendancyNumber":"240"
+            "ascendancyNumber":"240",
+            "splitAscendancyNumber":"240",
+            "generation":8
          },
          {
             "personId":"KWZV-111",
@@ -4044,7 +4565,9 @@ angular.module('app')
             "marriageDate":"29 March 1819",
             "descendancyNumber":"480.01-S"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"480",
+      "generation":9
    },
    {
       "personId":"KWZV-11B",
@@ -4058,99 +4581,9 @@ angular.module('app')
       "marriagePlace":"Greenock, Renfrewshire, Scotland",
       "marriageDate":"29 March 1819",
       "descendancyNumber":"482.01-S",
-      "ascendancyNumber":"240"
-   },
-   {
-      "personId":"KWZV-11R",
-      "name":"Charles Houston Maxwell McAlister",
-      "gender":"Male",
-      "lifespan":"1827-1898",
-      "birthDate":"17 February 1827",
-      "birthPlace":"Renfrewshire, Scotland",
-      "deathDate":"25 January 1898",
-      "deathPlace":"Logan, Cache, Utah, United States",
-      "descendancyNumber":"242.01-S",
-      "ascendancyNumber":"120"
-   },
-   {
-      "personId":"KWZV-11P",
-      "name":"John Archibald McAlister",
-      "gender":"Male",
-      "lifespan":"1851-1932",
-      "birthDate":"22 August 1851",
-      "birthPlace":"Newcastle upon Tyne, Northumberland, England",
-      "deathDate":"29 November 1932",
-      "deathPlace":"Los Angeles, Los Angeles, California, United States",
-      "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
-      "marriageDate":"12 June 1871",
-      "descendancyNumber":"122.01-S",
-      "ascendancyNumber":"60"
-   },
-   {
-      "personId":"KWZK-MMV",
-      "name":"Jacob Pettibone Jr",
-      "gender":"Male",
-      "lifespan":"1751-1807",
-      "birthDate":"20 December 1751",
-      "birthPlace":"Simsbury, Hartford, Connecticut, United States",
-      "deathDate":"18 October 1807",
-      "deathPlace":"Simsbury, Hartford, Connecticut, United States",
-      "ascendancyNumber":"490",
-      "children":[
-         {
-            "personId":"KWZK-MMK",
-            "name":"Rosetta Amanda Barber",
-            "gender":"Female",
-            "lifespan":"1758-1810",
-            "birthDate":"15 May 1758",
-            "birthPlace":"Simsbury, Hartford, CT",
-            "deathDate":"18 April 1810",
-            "deathPlace":"Hartford, Hartford, Connecticut, United States",
-            "descendancyNumber":"490-S"
-         },
-         {
-            "personId":"KWZK-MMS",
-            "name":"Rosetta Lenora Pettibone",
-            "gender":"Female",
-            "lifespan":"1778-1846",
-            "birthDate":"22 October 1778",
-            "birthPlace":"Simsbury, Hartford, Connecticut, United States",
-            "deathDate":"12 October 1846",
-            "deathPlace":"Walnut Grove, Knox, Illinois, United States",
-            "descendancyNumber":"490.01"
-         }
-      ]
-   },
-   {
-      "personId":"KWZK-MM9",
-      "name":"Robert Stein Haig",
-      "gender":"Male",
-      "lifespan":"1804-1876",
-      "birthDate":"2 August 1804",
-      "birthPlace":"St. Andrews, Fifeshire, Scotland",
-      "deathDate":"1876",
-      "deathPlace":"Utica, Oneida, New York, United States",
-      "ascendancyNumber":"242",
-      "children":[
-         {
-            "personId":"KWZV-11R",
-            "name":"Charles Houston Maxwell McAlister",
-            "gender":"Male",
-            "lifespan":"1827-1898",
-            "birthDate":"17 February 1827",
-            "birthPlace":"Renfrewshire, Scotland",
-            "deathDate":"25 January 1898",
-            "deathPlace":"Logan, Cache, Utah, United States",
-            "descendancyNumber":"242.01-S"
-         },
-         {
-            "personId":"KWZK-MJ5",
-            "name":"Mary Haig",
-            "gender":"Female",
-            "lifespan":"Deceased",
-            "descendancyNumber":"242.01"
-         }
-      ]
+      "ascendancyNumber":"240",
+      "splitAscendancyNumber":"240",
+      "generation":8
    },
    {
       "personId":"KWZK-MM8",
@@ -4202,57 +4635,105 @@ angular.module('app')
             "marriageDate":"29 March 1819",
             "descendancyNumber":"482.01"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"482",
+      "generation":9
    },
    {
-      "personId":"KWZK-MMW",
-      "name":"Abraham Horton",
+      "personId":"KWZV-11P",
+      "name":"John Archibald McAlister",
       "gender":"Male",
-      "lifespan":"1795-1834",
-      "birthDate":"18 February 1795",
-      "birthPlace":"Sandhurst, Kent, England",
-      "deathDate":"14 February 1834",
-      "ascendancyNumber":"246",
+      "lifespan":"1851-1932",
+      "birthDate":"22 August 1851",
+      "birthPlace":"Newcastle upon Tyne, Northumberland, England",
+      "deathDate":"29 November 1932",
+      "deathPlace":"Los Angeles, Los Angeles, California, United States",
+      "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
+      "marriageDate":"12 June 1871",
+      "ascendancyNumber":"60",
       "children":[
          {
-            "personId":"KWZK-MMQ",
-            "name":"Sarah Forman",
+            "personId":"KWZV-11G",
+            "name":"Clarissa Caroline Snow",
             "gender":"Female",
-            "lifespan":"1793-1874",
-            "birthDate":"1793",
-            "birthPlace":"Beckley, Sussex, England",
-            "deathDate":"6 November 1874",
-            "deathPlace":"South Hall Greenwood, Middlesex, District of Uxbridge, England",
-            "descendancyNumber":"246-S"
+            "lifespan":"1854-1917",
+            "birthDate":"10 July 1854",
+            "birthPlace":"Salt Lake City, Salt Lake, Utah, United States",
+            "deathDate":"15 October 1917",
+            "deathPlace":"Salt Lake City, Salt Lake, Utah, United States",
+            "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
+            "marriageDate":"12 June 1871",
+            "descendancyNumber":"60-S"
          },
          {
-            "personId":"KWZK-MMM",
-            "name":"Lorenzo Snow",
+            "personId":"KWZV-1GQ",
+            "name":"Frank Snow McAlister",
             "gender":"Male",
-            "lifespan":"1814-1901",
-            "birthDate":"3 April 1814",
-            "birthPlace":"Mantua, Portage, Ohio",
-            "deathDate":"10 October 1901",
-            "marriagePlace":"Salt Lake City, Salt Lake, Utah Territory, United States",
-            "marriageDate":"9 October 1853",
-            "descendancyNumber":"246.01-S",
-            "ascendancyNumber":"122"
-         },
-         {
-            "personId":"KWZV-11Y",
-            "name":"Caroline Horton",
-            "gender":"Female",
-            "lifespan":"1824-1857",
-            "birthDate":"25 December 1824",
-            "birthPlace":"Sandhurst, Kent, England",
-            "deathDate":"21 February 1857",
-            "deathPlace":"Brigham City, Box Elder, Utah, United States",
-            "marriagePlace":"Salt Lake City, Salt Lake, Utah Territory, United States",
-            "marriageDate":"9 October 1853",
-            "descendancyNumber":"246.01"
+            "lifespan":"1913-1913",
+            "birthDate":"17 February 1913",
+            "birthPlace":"Logan, Cache, Utah, United States",
+            "deathDate":"19 February 1913",
+            "deathPlace":"Utah, United States",
+            "descendancyNumber":"60.01",
+            "ascendancyNumber":"30",
+            "splitAscendancyNumber":"30",
+            "generation":5
          }
       ],
-      "descendancyNumber":"494.01-S"
+      "descendancyNumber":"122.01-S",
+      "splitAscendancyNumber":"60",
+      "generation":6
+   },
+   {
+      "personId":"KWZV-1GQ",
+      "name":"Frank Snow McAlister",
+      "gender":"Male",
+      "lifespan":"1913-1913",
+      "birthDate":"17 February 1913",
+      "birthPlace":"Logan, Cache, Utah, United States",
+      "deathDate":"19 February 1913",
+      "deathPlace":"Utah, United States",
+      "descendancyNumber":"60.01",
+      "ascendancyNumber":"30",
+      "splitAscendancyNumber":"30",
+      "generation":5
+   },
+   {
+      "personId":"KWZK-MMV",
+      "name":"Jacob Pettibone Jr",
+      "gender":"Male",
+      "lifespan":"1751-1807",
+      "birthDate":"20 December 1751",
+      "birthPlace":"Simsbury, Hartford, Connecticut, United States",
+      "deathDate":"18 October 1807",
+      "deathPlace":"Simsbury, Hartford, Connecticut, United States",
+      "ascendancyNumber":"490",
+      "children":[
+         {
+            "personId":"KWZK-MMK",
+            "name":"Rosetta Amanda Barber",
+            "gender":"Female",
+            "lifespan":"1758-1810",
+            "birthDate":"15 May 1758",
+            "birthPlace":"Simsbury, Hartford, CT",
+            "deathDate":"18 April 1810",
+            "deathPlace":"Hartford, Hartford, Connecticut, United States",
+            "descendancyNumber":"490-S"
+         },
+         {
+            "personId":"KWZK-MMS",
+            "name":"Rosetta Lenora Pettibone",
+            "gender":"Female",
+            "lifespan":"1778-1846",
+            "birthDate":"22 October 1778",
+            "birthPlace":"Simsbury, Hartford, Connecticut, United States",
+            "deathDate":"12 October 1846",
+            "deathPlace":"Walnut Grove, Knox, Illinois, United States",
+            "descendancyNumber":"490.01"
+         }
+      ],
+      "splitAscendancyNumber":"490",
+      "generation":9
    },
    {
       "personId":"KWZK-MMM",
@@ -4264,8 +4745,51 @@ angular.module('app')
       "deathDate":"10 October 1901",
       "marriagePlace":"Salt Lake City, Salt Lake, Utah Territory, United States",
       "marriageDate":"9 October 1853",
+      "ascendancyNumber":"122",
+      "children":[
+         {
+            "personId":"KWZV-11Y",
+            "name":"Caroline Horton",
+            "gender":"Female",
+            "lifespan":"1824-1857",
+            "birthDate":"25 December 1824",
+            "birthPlace":"Sandhurst, Kent, England",
+            "deathDate":"21 February 1857",
+            "deathPlace":"Brigham City, Box Elder, Utah, United States",
+            "marriagePlace":"Salt Lake City, Salt Lake, Utah Territory, United States",
+            "marriageDate":"9 October 1853",
+            "descendancyNumber":"122-S"
+         },
+         {
+            "personId":"KWZV-11P",
+            "name":"John Archibald McAlister",
+            "gender":"Male",
+            "lifespan":"1851-1932",
+            "birthDate":"22 August 1851",
+            "birthPlace":"Newcastle upon Tyne, Northumberland, England",
+            "deathDate":"29 November 1932",
+            "deathPlace":"Los Angeles, Los Angeles, California, United States",
+            "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
+            "marriageDate":"12 June 1871",
+            "descendancyNumber":"122.01-S"
+         },
+         {
+            "personId":"KWZV-11G",
+            "name":"Clarissa Caroline Snow",
+            "gender":"Female",
+            "lifespan":"1854-1917",
+            "birthDate":"10 July 1854",
+            "birthPlace":"Salt Lake City, Salt Lake, Utah, United States",
+            "deathDate":"15 October 1917",
+            "deathPlace":"Salt Lake City, Salt Lake, Utah, United States",
+            "marriagePlace":"Salt Lake City, Salt Lake, Utah, United States",
+            "marriageDate":"12 June 1871",
+            "descendancyNumber":"122.01"
+         }
+      ],
       "descendancyNumber":"246.01-S",
-      "ascendancyNumber":"122"
+      "splitAscendancyNumber":"122",
+      "generation":7
    },
    {
       "personId":"KWZK-MMP",
@@ -4297,7 +4821,10 @@ angular.module('app')
             "birthDate":"18 February 1795",
             "birthPlace":"Sandhurst, Kent, England",
             "deathDate":"14 February 1834",
-            "descendancyNumber":"492.01"
+            "descendancyNumber":"494.01-S",
+            "ascendancyNumber":"246",
+            "splitAscendancyNumber":"246",
+            "generation":8
          },
          {
             "personId":"KWZK-MMQ",
@@ -4310,38 +4837,22 @@ angular.module('app')
             "deathPlace":"South Hall Greenwood, Middlesex, District of Uxbridge, England",
             "descendancyNumber":"492.01-S"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"492",
+      "generation":9
    },
    {
-      "personId":"KWZV-1GQ",
-      "name":"Frank Snow McAlister",
+      "personId":"KWZK-MMW",
+      "name":"Abraham Horton",
       "gender":"Male",
-      "lifespan":"1913-1913",
-      "birthDate":"17 February 1913",
-      "birthPlace":"Logan, Cache, Utah, United States",
-      "deathDate":"19 February 1913",
-      "deathPlace":"Utah, United States",
-      "ascendancyNumber":"30",
-      "children":[
-         {
-            "personId":"KWZV-T88",
-            "name":"Alvin Schwartz Beutler",
-            "gender":"Male",
-            "lifespan":"1916-2011",
-            "birthDate":"18 July 1916",
-            "birthPlace":"North Logan, Cache, Utah, United States",
-            "deathDate":"20 July 2011",
-            "descendancyNumber":"30.01-S"
-         },
-         {
-            "personId":"KWZV-1F5",
-            "name":"Clarissa McAlister",
-            "gender":"Female",
-            "lifespan":"Living",
-            "descendancyNumber":"30.01"
-         }
-      ],
-      "descendancyNumber":"60.01"
+      "lifespan":"1795-1834",
+      "birthDate":"18 February 1795",
+      "birthPlace":"Sandhurst, Kent, England",
+      "deathDate":"14 February 1834",
+      "descendancyNumber":"494.01-S",
+      "ascendancyNumber":"246",
+      "splitAscendancyNumber":"246",
+      "generation":8
    },
    {
       "personId":"KWZK-MMN",
@@ -4386,16 +4897,16 @@ angular.module('app')
             "deathPlace":"South Hall Greenwood, Middlesex, District of Uxbridge, England",
             "descendancyNumber":"494.01"
          }
-      ]
+      ],
+      "splitAscendancyNumber":"494",
+      "generation":9
    }
 ];
-
-	// var ascendancyNums = _.pluck( testFamily, 'ascendancyNumber');
-	// var toNumAscNums = [];
 
 	var ascendancy = [];
 	var orderedAscendancy = [];
 	
+	//turn ascendancy number into a number instead of a string.
 	testFamily.forEach(function( person ) {
 		if (person.hasOwnProperty('ascendancyNumber')) {
 				person.ascendancyNumber = parseFloat(person.ascendancyNumber);
@@ -4403,27 +4914,146 @@ angular.module('app')
 		}
 	});
 
+	//puts array in order by ascendancy number.
 	orderedAscendancy = _.sortBy(ascendancy, 'ascendancyNumber');
 
+	// splits up the descendancy number, and makes it into an array with 2 or 3 values depending on if there is an S or not.
+	orderedAscendancy.forEach( function( person ) {
+		if (person.hasOwnProperty('descendancyNumber')) {
+			var splitOnDot = person.descendancyNumber.split("."); // Case: "10.01" becomes ["10", "01"]
+			var splitOnDash = [];
+			if (splitOnDot.length > 1) {	// Cases: ["10", "01"], ["10", "01-S"]		
+				if (splitOnDot[1].indexOf("S") === -1) { //If no S
+					splitOnDot[0] = parseInt(splitOnDot[0]); //change to integer
+					// splitOnDot[1] = parseInt(splitOnDot[1]); //change to integer
+					person.descendancyNumber = splitOnDot; //assign the value back to it's original key.
+				} else {
+					splitOnDash = splitOnDot[1].split("-"); //Cases: ["10", "01-3"] becomes 
+					splitOnDot[0] = parseInt(splitOnDot[0]); //change both to integers
+					splitOnDot[1] = splitOnDash[0]; //assign the numbers right of the . back to the main array.
+					// splitOnDot[1] = parseInt(splitOnDash[0]); //change to integer	
+					splitOnDot[2] = splitOnDash[1]; //assign the S back as the third value in the array.
+					person.descendancyNumber = splitOnDot; //assign the value back to it's original key.				
+				}
+			} else {
+				// Case: ['1-S']	
+				splitOnDash = person.descendancyNumber.split("-");
+			}
+		}
+	})
 
 	console.log("ordered Ascendancy", orderedAscendancy);
 
 
-	var arrayOfFamilies = [];
 
-	orderedAscendancy.forEach(function( person ) {
-		var family = [];
-		if (person.hasOwnProperty('children')) {
-				person.children.forEach(function( child ) {
-					family.push(child);
-				})
+// now that I have split the descendancy numbers up, I can find all descendancy numbers that match an 
+// ascendancy number, and create family groups out of that.  The only problem now, is identifying this persons spouse.
+// I should be able to do that by going into the persons childrens array and identifying that person..
+
+	
+
+
+
+
+
+var familyObject = {
+	  name: 'flare' 
+	, parent: [
+		{
+			  name: 'adsas'
+			, ascNum: 'asdasda'
+			, decNum: 'dasfasd'
+			, personId: 'fbodb' 
+			, parent: [
+				{
+					name: 'asdasdasad'
+					, parent: [
+						{
+​
+						}
+					]
+				}
+			]
 		}
-		family.push(person);
-		arrayOfFamilies.push(family);
-	})
+	]
+}
+​
+function buildData( rootPerson,  ) {
+	// add person to familyObject
+	var family = [];
+	var parent1;
+	var parent2;
+	rootPerson.parents = [];
+	family.push( rootPerson );
+	// loop through all the json data, find parents
+	testFamily.forEach( function( fullDataPerson ) {
+		if (rootPerson.descendancyNumber[0] === fullDataPerson.ascendancyNumber) {
+			family.rootPerson.parents.push( fullDataPerson );
+			parent1 = fullDataPerson;
+		}
+	}) 
 
-	// console.log( "ascendancy Nums", orderedAscNums );
-	console.log("Arry of Fams", arrayOfFamilies);
+	if ( rootPerson.hasOwnProperty('children')) {
+		rootPerson.children.forEach( function( child ) {
+			if (child.descendancyNumber.length === 2) {
+				child.spouse = true;
+				parent2 = child;
+			} 
+			family.push( child )
+		})
+	}
+
+	buildData( parent1 );
+	buildData( parent2 );
+
+}
+	// add parents to parent array
+	// doShit( parent )
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// var peoplePushedAlready = [];
+	// var arrayOfFamilies = [];
+	
+	// orderedAscendancy.forEach( function( person ) {
+		
+	// 	var family = [];
+	// 	peoplePushedAlready.push(person.ascendancyNumber);
+	// 	family.push( person );
+
+	// 	orderedAscendancy.forEach( function( familyPerson ) {
+	// 		if ( person.ascendancyNumber === familyPerson.descendancyNumber[0]) {
+	// 			if (peoplePushedAlready.familyPerson.ascendancyNumber)
+	// 			family.push( familyPerson );
+	// 		}
+	// 	})
+	// })
+
+	// var arrayOfFamilies = [];
+	// //pushes all children into a "family" array, and then that array into an array of families.
+	// orderedAscendancy.forEach(function( person ) {
+	// 	var family = [];
+	// 	if (person.hasOwnProperty('children')) {
+	// 			person.children.forEach(function( child ) {
+	// 				family.push(child);
+	// 			})
+	// 	}
+	// 	family.push(person);
+	// 	arrayOfFamilies.push(family);
+	// })
+
+	// // console.log( "ascendancy Nums", orderedAscNums );
+	// console.log("Arry of Fams", arrayOfFamilies);
 
 
 });

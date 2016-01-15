@@ -8,11 +8,11 @@ angular.module('app')
         , link (scope, elem, attrs) {
 			
 			var margin = 20
-			, diameter = 960;
+			, diameter = 550;
 
 			var color = d3.scale.linear()
 				.domain([-1, 5])
-				.range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+				.range(["hsl(200,80%,80%)", "hsl(190,30%,40%)"])
 				.interpolate(d3.interpolateHcl);
 
 			var pack = d3.layout.pack()
@@ -26,7 +26,7 @@ angular.module('app')
 				.append("g")
 				.attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-			d3.json("flare.json", function(error, root) {
+			d3.json("./dist/html/familyZoomChart/flare.json", function(error, root) {
 				if (error) throw error;
 
 				var focus = root,

@@ -6,19 +6,22 @@ angular.module('app').directive('birthMonth', () => {
         controller: 'birthMonthCtrl',
         link(scope, elem, attrs) {
 
-			var dataset = {
-			  January: [12, 10, 10, 19, 10],
-			  February: [11, 15, 19, 10, 10],
-			  March: [10, 0, 10, 10, 18],
-			  April: [10, 15, 10, 10, 10],
-			  May: [10, 15, 11, 102, 19],
-			};
+			var dataset = scope.chartData;
+			// var dataset = {
+			//   January: [12, 0, 0, 0, 0],
+			//   February: [10, 10, 10, 10, 10],
+			//   March: [10, 0, 10, 10, 18],
+			//   April: [10, 15, 10, 10, 10],
+			//   May: [10, 15, 11, 102, 19],
+			// };
 
             var width = 860,
                 height = 900,
-                cwidth = 60;
+                cwidth = 30;
 
-            var color = d3.scale.category20();
+			console.log("d3.scale", d3.scale);
+			var color = d3.scale.ordinal()
+    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
             var pie = d3.layout.pie()
                 .sort(null);
@@ -33,6 +36,7 @@ angular.module('app').directive('birthMonth', () => {
 
 
             var gs = svg.selectAll("g").data(d3.values(dataset)).enter().append("g");
+
             var path = gs.selectAll("path")
                 .data(function(d) {
                     return pie(d);
@@ -51,7 +55,7 @@ angular.module('app').directive('birthMonth', () => {
 				.on("mouseleave", lighten);
 
 			d3.selectAll("path")
-				.style("opacity", 0.2);
+				.style("opacity", 0.4);
 
 			function darken() {
 				d3.select(this)

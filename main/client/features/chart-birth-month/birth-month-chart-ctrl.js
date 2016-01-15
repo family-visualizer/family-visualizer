@@ -4321,7 +4321,7 @@ function addBirthMonthToRelative(bigDataArray) {
     for (var i = 0; i < bigDataArray.length; i++) {
         if (bigDataArray[i].birthDate) {
             var birthDateArray = bigDataArray[i].birthDate.split(' ');
-            console.log("this is birthDateArray", birthDateArray);
+
             if (birthDateArray.length === 3) {
                 var birthMonth = birthDateArray[1].toLowerCase();
             } else if (birthDateArray.length === 2) {
@@ -4331,7 +4331,7 @@ function addBirthMonthToRelative(bigDataArray) {
             }
         }
         bigDataArray[i]["birthMonth"] = birthMonth;
-		console.log("this is bigDataArray[61]", bigDataArray[61]);
+
     }
     addGenerationNumberToRelative(bigDataArray);
 }
@@ -4387,6 +4387,30 @@ let chartData = {
 	generation5: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	generation6: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	generation7: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+};
+
+var compareMonthArray = [ 'january'
+						, 'february'
+						, 'march'
+						, 'april'
+						, 'may'
+						, 'june'
+						, 'july'
+						, 'august'
+						, 'september'
+						, 'october'
+						, 'november'
+						, 'december'];
+
+function addMonthsToChartData(bigDataArray, chartData, compareMonthArray) {
+	for(var i = 0; i < bigDataArray.length; i++) {
+		if(bigDataArray[i].birthMonth !== "not available" && bigDataArray[i].generation) {
+			chartData["generation" + bigDataArray[i].generation.toString()]
+				 	[compareMonthArray.indexOf(bigDataArray[i].birthMonth)]++;
+		}
+	}
+	console.log("this is chartData", chartData);
+	return chartData;
 }
 
 // function addMonthsToChartData(bigDataArray, chartData) {
@@ -4423,7 +4447,7 @@ let chartData = {
 // }
 
 addBirthMonthToRelative(data);
-$scope.chartData = addMonthsToChartData(dataArrayChangeThis, chartData);
+$scope.chartData = addMonthsToChartData(dataArrayChangeThis, chartData, compareMonthArray);
 
 
 

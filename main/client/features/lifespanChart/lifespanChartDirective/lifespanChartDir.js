@@ -68,13 +68,8 @@ angular.module('app').directive('lifespanChart', () => {
 				.append("div")
 				.attr("class", "statName")
 				.text(function (d) {return d.name;});
-				
-			// d3.select(".lifespanStats")
-			// 	.selectAll("p")
-			// 	.data(stats)
-			// 	.enter()
-				
-				statsElements.append("div")
+
+				statsElements.append("p")
 				.attr("class", "stat")
 				.text(function (d) {return d.value;});
 
@@ -429,10 +424,10 @@ angular.module('app').directive('lifespanChart', () => {
 				.selectAll("p")
 				.data(statsStructure)
 				// .append("p")
-				.attr("class", "stat")
-				.text(function (d) {
-					console.log("title test", d.name);
-					return d.name;})
+				// .text(function (d) {
+				// 	console.log("title test", d.name);
+				// 	return d.name;})
+				// .attr("class", "stat")
 				// .append("p")
 				.text(function (d) {
 					console.log("stat test", d.value);

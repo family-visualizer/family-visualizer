@@ -385,15 +385,15 @@ angular.module('app').directive('lifespanChart', () => {
 				console.log("slider value", sliderValue);
 				
 				
-				getStats(family.cleanData, sliderValue);
+				getStats(family.cleanData, sliderValue, scope.gender);
 				buildStats(scope.stats);
 				changeGraph(family.cleanData);
 				// updateStats(family);
 
 			}
 			
-			function getStats (family, sliderValue) {
-				scope.getStats(family, sliderValue);
+			function getStats (family, sliderValue, gender) {
+				scope.getStats(family, sliderValue, gender);
 				
 				console.log("scope.stats", scope.stats);
 	
@@ -461,7 +461,9 @@ angular.module('app').directive('lifespanChart', () => {
 				.on("click", function (d, i) {
 					scope.gender = d;
 					console.log("scope.gender", scope.gender);
-					clearGraph();	
+					clearGraph();
+					getStats(family.cleanData, sliderValue, scope.gender);
+					buildStats(scope.stats);
 					changeGraph();
 					});
 			

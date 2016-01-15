@@ -19,8 +19,8 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 
 	// $scope.cleanData = [];
 
-	$scope.getStats = function (family, sliderValue) {
-		$scope.stats = lifespanService.getStats(family, sliderValue);
+	$scope.getStats = function (family, sliderValue, gender) {
+		$scope.stats = lifespanService.getStats(family, sliderValue, gender);
 		console.log("stats:", $scope.stats);	
 	};
 	

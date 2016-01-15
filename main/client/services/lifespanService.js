@@ -27,14 +27,23 @@ function lifespanService($q, $http) {
 
 	// create new stats
 		
-	this.getStats = function (familyArray, sliderValue) {
+	this.getStats = function (familyArray, sliderValue, gender) {
+		console.log("gender", gender);
 		var includedStatsPeople = [];
 		var avgLifespanArray = [];
 		var avgLifespan;
 		var maxLifespan;
 		var minLifespan;
-
-		familyArray.forEach(function (person) {
+		var arrayToCheck = familyArray;
+		
+		if (gender === "Female") {
+			console.log("female");
+			arrayToCheck =  _.filter(familyArray, (person) => person.gender === "Female");
+		} else if (gender === "Male") {
+			arrayToCheck =  _.filter(familyArray, (person) => person.gender === "Male");
+		}
+		
+		arrayToCheck.forEach(function (person) {
 			person.lifespanArray = person.lifespan.split("-");
 			person.lifespanArray[0] = Number(person.lifespanArray[0]);
 			person.lifespanArray[1] = Number(person.lifespanArray[1]);

@@ -5,6 +5,18 @@ angular.module('app').directive('lifespanChart', () => {
         , templateUrl: './dist/html/lifespanChart/lifespanChartDirective/lifespanChartTemp.html'
         , controller: 'lifespanChartCtrl'
         , link(scope, elem, attrs) {
+			
+		// 	var chart = $(".chart"),
+		// 	aspect = chart.width() / chart.height(),
+		// 	container = chart.parent();
+		// $(window).on("resize", function() {
+		// 	var targetWidth = container.width();
+		// 	chart.attr("width", targetWidth);
+		// 	chart.attr("height", Math.round(targetWidth / aspect));
+		// }).trigger("resize");
+
+			
+			
 			var family;
 			
 			function updateFamily (familyObject) {
@@ -15,18 +27,17 @@ angular.module('app').directive('lifespanChart', () => {
 			
 			updateFamily(scope.testFamily);
 
-			console.log("family", family);
-
-			// console.log("clean data", scope.cleanData);
 
 			var height = 400;
-			var width = 645;
+			var width = 700;
 			
 			var svg = d3.select(".chart")
 				.append("svg")
 				.attr({
 					height: height
 					, width: width
+					// , viewBox: "0 0 600 200"
+					// , preserveAspectRatio: "xMinYMid"
 				});
 
 			
@@ -38,7 +49,7 @@ angular.module('app').directive('lifespanChart', () => {
 
 			var xscale = d3.scale.linear()
 				.domain([family.minYear - 1, family.maxYear + 1])
-				.range([padding + 40, width - padding])
+				.range([padding + 55, width - padding])
 				.clamp(true);
 
 			var yscale = d3.scale.linear()
@@ -98,11 +109,6 @@ angular.module('app').directive('lifespanChart', () => {
 					}
 					, cy: function (data) {
 						return yscale(data.generation);
-						// if (data.ascendancyNumber) {
-						// 	return yscale(data.ascendancyNumber);
-						// } else {
-						// 	return yscale(data.descendancyNumber);
-						// }
 					},
 					class: 'personCircle'
 
@@ -133,26 +139,19 @@ angular.module('app').directive('lifespanChart', () => {
 
 
 
-
+//1743
 
 			function animateIn(data) {
-				console.log('function running');
 				svg.selectAll("circle")
 					.data(family.cleanData)
 					.transition("draw")
-					.delay(function (data) {
-						console.log("delay:", (data.lifespanArray[0] / family.maxYear) * 1000);
-						return rscale((data.lifespanArray[0] / family.maxYear) * 1000);
+					.delay(function (data, i) {
+						// return (data.lifespanArray[0] + ((i+50) * 1000));
+						return i * 15;
+
 					})
 					.duration(function (data) {
-						return rscale(data.lifespanTotal * 500);
-					})
-					.filter(function (data) {
-						if (scope.gender !== "Both") {
-							return data.gender === scope.gender;
-						} else {
-							return data;
-						}
+						return (data.lifespanTotal * 20);
 					})
 					.attr({
 						r: function (data) {
@@ -165,29 +164,44 @@ angular.module('app').directive('lifespanChart', () => {
 							
 							return yscale(data.generation);
 							
-							// if (data.ascendancyNumber) {
-							// 	return yscale(data.ascendancyNumber);
-							// } else {
-							// 	return yscale(data.descendancyNumber);
-							// }
 						}
 						, class: function (data) {
 							return data.ascendancyNumber;
 						}
 						, fill: function (data) {
-							if (data.ascendancyNumber % 2 === 0) {
-								return "rgb(51, 51, 255)";
+							if (data.gender === "Female") {
+								return "#ed1e79";
 							} else {
-								return "rgb(255, 0, 102)";
+								return "#00aeef";
 							}
 						}
 						, stroke: "black"
 						, opacity: .5
 					})
-					.transition("hide")
-					.delay(10000)
+					.call(endall);
+			}
+
+
+			animateIn(family.cleanData);
+			
+			function endall(transition, callback) {
+				console.log("endall running"); 
+				var n = 0; 
+				transition 
+					.each(function() { ++n; }) 
+					.each("end", function() {
+						 if (!--n) animateOut.apply(this, arguments); }); 
+  			} 
+			
+			
+			function animateOut(data) {
+				svg.selectAll("circle")
+					.data(family.cleanData)
+					.transition("draw")
+					.delay(300)
 					.duration(function (data) {
-						return rscale(data.lifespanTotal * 500);
+						return 2000;
+						// return (data.lifespanTotal * 20);
 					})
 					.attr({
 						r: 0
@@ -198,17 +212,10 @@ angular.module('app').directive('lifespanChart', () => {
 							
 							return yscale(data.generation);
 							
-							// if (data.ascendancyNumber) {
-							// 	return yscale(data.ascendancyNumber);
-							// } else {
-							// 	return yscale(data.descendancyNumber);
-							// }
 						}
-
-					});
+						});
 			}
-
-			// animateIn();
+		
 
 			var startingValue = family.minYear - 1;
 
@@ -238,13 +245,14 @@ angular.module('app').directive('lifespanChart', () => {
 			 svg.append("text")
 				.attr("transform", "translate("+ width / 2 + "," + (height - 45) + ")")
 				.style("text-anchor", "middle")
+				.attr("class", "axisLabel")
 				.text("Birth Year");
 		
 		
 			//Y Axis
 			svg.append("g")
 				.attr("class", "axisLine lifespanYAxis")
-				.attr("transform", "translate(45,0)")
+				.attr("transform", "translate(60,0)")
 				.call(d3.svg.axis()
 					.scale(yscale)
 					.orient("left")
@@ -258,6 +266,7 @@ angular.module('app').directive('lifespanChart', () => {
 				.attr("x", -((height -75) / 2))
 				.attr("dy", "1em")
 				.style("text-anchor", "middle")
+				.attr("class", "axisLabel")
 				.text("Generation");
 
 		
@@ -271,19 +280,16 @@ angular.module('app').directive('lifespanChart', () => {
 
 			slider.select(".background")
 				.attr("transform", "translate(0," + (height - 30) + ")");
-				// .attr("height", 10);
 
 			var handle = slider.append("g")
 				.attr("class", "handle");
 
-			
 				
 			handle.append("path")
 				.attr("transform", "translate(0," + (height - 30) + ")")
 				.attr("d", "M 0 -15 V 15");
 				
 				
-
 			handle.append('text')
 				.text(startingValue)
 				.attr("class", "yearScroll")
@@ -320,13 +326,7 @@ angular.module('app').directive('lifespanChart', () => {
 							return xscale(data.lifespanArray[0]);
 						}
 						, cy: function (data) {
-							
 							return yscale(data.generation);
-							// if (data.ascendancyNumber) {
-							// 	return yscale(data.ascendancyNumber);
-							// } else {
-							// 	return yscale(data.descendancyNumber);
-							// }
 						}
 			});
 			}
@@ -354,11 +354,6 @@ angular.module('app').directive('lifespanChart', () => {
 						}
 						, cy: function (data) {
 							return yscale(data.generation);
-							// if (data.ascendancyNumber) {
-							// 	return yscale(data.ascendancyNumber);
-							// } else {
-							// 	return yscale(data.descendancyNumber);
-							// }
 						}
 						, fill: function (data) {
 							
@@ -392,31 +387,18 @@ angular.module('app').directive('lifespanChart', () => {
 						}
 						, cy: function (data) {
 							return yscale(data.generation);
-							// if (data.ascendancyNumber) {
-							// 	return yscale(data.ascendancyNumber);
-							// } else {
-							// 	return yscale(data.descendancyNumber);
-							// }
 						}
 					});
 			}
 
 
-			// function updateStats () {
-			// 	svg.selectAll("stat")
-			// 		.filter(function (data) {
-			// 			return data.lifespanArray[0] <= sliderValue;
-			// 		})
-			// 		.attr({
-			// 			display: "flex"
-			// 		});
-			// }
-			
-
 			function brushed() {
 
 
 				var value = brush.extent()[0];
+				
+				// var value = brush.extent(family.maxYear, family.maxYear);
+				
 
 				if (d3.event.sourceEvent) { // not a programmatic event
 					console.log("is this running?");
@@ -430,26 +412,21 @@ angular.module('app').directive('lifespanChart', () => {
 				handle.select('text').text(Math.floor(value));
 
 				sliderValue = (Math.floor(value));
-				console.log("slider value", sliderValue);
 				
 				
 				getStats(family.cleanData, sliderValue, scope.gender);
 				buildStats(scope.stats);
 				changeGraph(family.cleanData);
-				// updateStats(family);
 
 			}
 			
 			function getStats (family, sliderValue, gender) {
 				scope.getStats(family, sliderValue, gender);
-				
-				console.log("scope.stats", scope.stats);
 	
 			}
 			
 			function buildStats (stats) {
-				console.log("building stats", stats);
-				
+
 				var statsStructure = 
 				[{
 					name: "Average Lifespan",
@@ -464,19 +441,10 @@ angular.module('app').directive('lifespanChart', () => {
 					value: stats.minLifespan
 				}];
 						
-		console.log("stat struct", statsStructure);
-
-		
 
 				d3.select(".lifespanStats")
 				.selectAll("p")
 				.data(statsStructure)
-				// .append("p")
-				// .text(function (d) {
-				// 	console.log("title test", d.name);
-				// 	return d.name;})
-				// .attr("class", "stat")
-				// .append("p")
 				.text(function (d) {
 					console.log("stat test", d.value);
 					return d.value;})
@@ -516,11 +484,7 @@ angular.module('app').directive('lifespanChart', () => {
 					});
 			
 			
-			
-			
-			
-			
-			
+
 			
 		}
 	};

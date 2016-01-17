@@ -4,10 +4,6 @@ $scope.totalBirthsPerMonth = birthMonthService.totalBirthsPerMonth;
 
 $scope.totalBirthsPerGeneration = birthMonthService.totalBirthsPerGeneration;
 
-$scope.januaryIsChecked = false;
-$scope.februaryIsChecked = false;
-$scope.marchIsChecked = false;
-$scope.aprilIsChecked = false;
 
 $scope.janChecked = function() {
 	if(!$scope.januaryIsChecked) {
@@ -34,7 +30,6 @@ $scope.marChecked = function() {
 }
 
 $scope.aprChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.aprilIsChecked) {
 		$scope.aprilIsChecked = true;
 	} else {
@@ -43,7 +38,6 @@ $scope.aprChecked = function() {
 }
 
 $scope.mayChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.mayIsChecked) {
 		$scope.mayIsChecked = true;
 	} else {
@@ -52,7 +46,6 @@ $scope.mayChecked = function() {
 }
 
 $scope.junChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.juneIsChecked) {
 		$scope.juneIsChecked = true;
 	} else {
@@ -61,7 +54,6 @@ $scope.junChecked = function() {
 }
 
 $scope.julChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.julyIsChecked) {
 		$scope.julyIsChecked = true;
 	} else {
@@ -70,7 +62,6 @@ $scope.julChecked = function() {
 }
 
 $scope.augChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.augustIsChecked) {
 		$scope.augustIsChecked = true;
 	} else {
@@ -79,7 +70,6 @@ $scope.augChecked = function() {
 }
 
 $scope.sepChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.septemberIsChecked) {
 		$scope.septemberIsChecked = true;
 	} else {
@@ -88,7 +78,6 @@ $scope.sepChecked = function() {
 }
 
 $scope.octChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.octoberIsChecked) {
 		$scope.octoberIsChecked = true;
 	} else {
@@ -97,7 +86,6 @@ $scope.octChecked = function() {
 }
 
 $scope.novChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.novemberIsChecked) {
 		$scope.novemberIsChecked = true;
 	} else {
@@ -106,7 +94,6 @@ $scope.novChecked = function() {
 }
 
 $scope.decChecked = function() {
-	console.log("JLKSJLKJLKJ DAD DAD DAD");
 	if(!$scope.decemberIsChecked) {
 		$scope.decemberIsChecked = true;
 	} else {
@@ -115,4 +102,64 @@ $scope.decChecked = function() {
 }
 
 
+
+
+
+//GENERATION FUNCTIONS
+//GENERATION FUNCTIONS
+//GENERATION FUNCTIONS
+$scope.gen1Checked = function() {
+	if(!$scope.gen1IsChecked) {
+		$scope.gen1IsChecked = true;
+	} else {
+		$scope.gen1IsChecked = false;
+	}
+}
+$scope.gen2Checked = function() {
+	if(!$scope.gen2IsChecked) {
+		$scope.gen2IsChecked = true;
+	} else {
+		$scope.gen2IsChecked = false;
+	}
+}
+
+$scope.gen3Checked = function() {
+	if(!$scope.gen3IsChecked) {
+		$scope.gen3IsChecked = true;
+	} else {
+		$scope.gen3IsChecked = false;
+	}
+}
+
+$scope.gen4Checked = function() {
+	if(!$scope.gen4IsChecked) {
+		$scope.gen4IsChecked = true;
+	} else {
+		$scope.gen4IsChecked = false;
+	}
+}
+
+$scope.gen5Checked = function() {
+	if(!$scope.gen5IsChecked) {
+		$scope.gen5IsChecked = true;
+	} else {
+		$scope.gen5IsChecked = false;
+	}
+}
+
+$scope.gen6Checked = function() {
+	if(!$scope.gen6IsChecked) {
+		$scope.gen6IsChecked = true;
+	} else {
+		$scope.gen6IsChecked = false;
+	}
+}
+
+$scope.gen7Checked = function() {
+	if(!$scope.gen7IsChecked) {
+		$scope.gen7IsChecked = true;
+	} else {
+		$scope.gen7IsChecked = false;
+	}
+}
 })

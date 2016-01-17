@@ -16,17 +16,17 @@
 
 
 <div id="gen-checks">
-<input type="checkbox" id="gen1"> Generation 1 <br>
-<input type="checkbox" id="gen2"> Generation 2 <br>
-<input type="checkbox" id="gen3"> Generation 3 <br>
-<input type="checkbox" id="gen4"> Generation 4 <br>
-<input type="checkbox" id="gen5"> Generation 5 <br>
-<input type="checkbox" id="gen6"> Generation 6 <br>
-<input type="checkbox" id="gen7"> Generation 7 <br>
-<input type="checkbox" id="gen8"> Generation 8 <br>
+<input ng-click="gen1Checked()" type="checkbox" id="gen1"> Generation 1 <br>
+<input ng-click="gen2Checked()" type="checkbox" id="gen2"> Generation 2 <br>
+<input ng-click="gen3Checked()" type="checkbox" id="gen3"> Generation 3 <br>
+<input ng-click="gen4Checked()" type="checkbox" id="gen4"> Generation 4 <br>
+<input ng-click="gen5Checked()" type="checkbox" id="gen5"> Generation 5 <br>
+<input ng-click="gen6Checked()" type="checkbox" id="gen6"> Generation 6 <br>
+<input ng-click="gen7Checked()" type="checkbox" id="gen7"> Generation 7 <br>
+<input ng-click="gen8Checked()" type="checkbox" id="gen8"> Generation 8 <br>
 </div>
 
-<div id="totals">
+<div id="month-totals">
 	<div ng-show="januaryIsChecked"> January Births {{totalBirthsPerMonth.january}}</div>
 	<div ng-show="februaryIsChecked"> February Births {{totalBirthsPerMonth.february}}</div>
 	<div ng-show="marchIsChecked"> March Births {{totalBirthsPerMonth.march}}</div>
@@ -39,9 +39,14 @@
 	<div ng-show="octoberIsChecked"> October Births {{totalBirthsPerMonth.october}}</div>
 	<div ng-show="novemberIsChecked"> November Births {{totalBirthsPerMonth.november}}</div>
 	<div ng-show="decemberIsChecked"> December Births {{totalBirthsPerMonth.december}}</div>
-
-
 </div>
-{{totalBirthsPerMonth}}
 
-{{totalBirthsPerGeneration}}
+<div id="generation-totals">
+	<div ng-show="gen1IsChecked"> Generation 1 Births {{totalBirthsPerGeneration.generation1}}</div>
+	<div ng-show="gen2IsChecked"> Generation 2 Births {{totalBirthsPerGeneration.generation2}}</div>
+	<div ng-show="gen3IsChecked"> Generation 3 Births {{totalBirthsPerGeneration.generation3}}</div>
+	<div ng-show="gen4IsChecked"> Geneartion 4 Births {{totalBirthsPerGeneration.generation4}}</div>
+	<div ng-show="gen5IsChecked"> Generation 5 Births {{totalBirthsPerGeneration.generation5}}</div>
+	<div ng-show="gen6IsChecked"> Generation 6 Births {{totalBirthsPerGeneration.generation6}}</div>
+	<div ng-show="gen7IsChecked"> Generation 7 Births {{totalBirthsPerGeneration.generation7}}</div>
+</div>

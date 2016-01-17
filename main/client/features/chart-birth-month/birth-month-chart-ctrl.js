@@ -1,5 +1,6 @@
-angular.module('app').controller('birthMonthCtrl', function($scope, $rootScope) {
+angular.module('app').controller('birthMonthCtrl', function($scope, $rootScope, birthMonthService) {
 
+// $scope.test = totalBirthsPerMonth;
 var data = [
    {
       "personId":"KWZK-SJF",

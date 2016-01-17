@@ -6,8 +6,11 @@ angular.module('app').directive('birthMonth', birthMonthService => {
         controller: 'birthMonthCtrl',
         link(scope, elem, attrs) {
 
-            var dataset = scope.chartData;
-			console.log('this is dataset', dataset);
+
+			var dataset = birthMonthService.dataset;
+
+
+			console.log('XXXthis is dataset', dataset);
             // var dataset = {
             //   January: [12, 0, 0, 0, 0],
             //   February: [10, 10, 10, 10, 10],
@@ -16,18 +19,18 @@ angular.module('app').directive('birthMonth', birthMonthService => {
             //   May: [10, 15, 11, 102, 19],
             // };
 			var totalBirthsPerMonthPreObject = {
-				january: 0,
-				february: 0,
-				march: 0,
-				april: 0,
-				may: 0,
-				june: 0,
-				july: 0,
-				august: 0,
-				september: 0,
-				october: 0,
-				november: 0,
-				december: 0
+				  january: 0
+				, february: 0
+				, march: 0
+				, april: 0
+				, may: 0
+				, june: 0
+				, july: 0
+				, august: 0
+				, september: 0
+				, october: 0
+				, november: 0
+				, december: 0
 			};
 
 			var bigDog = 0;
@@ -74,7 +77,8 @@ angular.module('app').directive('birthMonth', birthMonthService => {
                 .attr("width", width)
                 .attr("height", height)
                 .append("g")
-                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+				.attr("class", "graph-main")
 
 
             var gs = svg.selectAll("g").data(d3.values(dataset)).enter().append("g").attr("class", function(d, i) {return "genClass" + i; });
@@ -105,6 +109,15 @@ angular.module('app').directive('birthMonth', birthMonthService => {
             // 		.style("opacity", 1)
             // 		console.log("it's working, it's working");
             // 	})
+
+			path.classed("main", true);
+
+			//MONTH SELECTORS MONTH SELECTORS MONTH SELECTORS
+			//MONTH SELECTORS MONTH SELECTORS MONTH SELECTORS
+			//MONTH SELECTORS MONTH SELECTORS MONTH SELECTORS
+			//MONTH SELECTORS MONTH SELECTORS MONTH SELECTORS
+			//MONTH SELECTORS MONTH SELECTORS MONTH SELECTORS
+
 			var   janSelector = false
 				, febSelector = false
 				, marSelector = false
@@ -184,164 +197,350 @@ angular.module('app').directive('birthMonth', birthMonthService => {
 
             function selectMonthJan(i) {
                 if (!janSelector) {
-                    svg.selectAll('.class' + i).classed("selected", true)
-                        .style("opacity", 1);
+                    svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+                        // .style("opacity", 1);
                     janSelector = true;
                 } else {
-                    svg.selectAll('.class' + i).classed("selected", true)
-                        .style("opacity", 0.2);
+                    svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+                        // .style("opacity", 0.2);
                     janSelector = false;
                 }
             }
 
 			function selectMonthFeb(i) {
 				if (!febSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					febSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					febSelector = false;
 				}
 			}
 
 			function selectMonthMar(i) {
 				if (!marSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					marSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					marSelector = false;
 				}
 			}
 
 			function selectMonthApr(i) {
 				if (!aprSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					aprSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					aprSelector = false;
 				}
 			}
 			function selectMonthMay(i) {
 				if (!maySelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					maySelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					maySelector = false;
 				}
 			}
 			function selectMonthJun(i) {
 				if (!junSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					junSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					junSelector = false;
 				}
 			}
 
 			function selectMonthJul(i) {
 				if (!julSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					julSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					julSelector = false;
 				}
 			}
 
 			function selectMonthAug(i) {
 				if (!augSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					augSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					augSelector = false;
 				}
 			}
 
 			function selectMonthSep(i) {
 				if (!sepSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					sepSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					sepSelector = false;
 				}
 			}
 
 			function selectMonthOct(i) {
 				if (!octSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					octSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					octSelector = false;
 				}
 			}
 
 			function selectMonthNov(i) {
 				if (!novSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					novSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					novSelector = false;
 				}
 			}
 
 			function selectMonthDec(i) {
 				if (!decSelector) {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 1);
+					svg.selectAll('.class' + i).classed("selected", true).classed("main", false)
+						// .style("opacity", 1);
 					decSelector = true;
 				} else {
-					svg.selectAll('.class' + i).classed("selected", true)
-						.style("opacity", 0.2);
+					svg.selectAll('.class' + i).classed("selected", false).classed("main", true)
+						// .style("opacity", 0.2);
 					decSelector = false;
 				}
 			}
 
-            d3.selectAll("path")
-                .on("mouseover", darken)
-                .on("mouseleave", lighten);
+            // d3.selectAll("path")
+            //     .on("mouseover", darken)
+            //     .on("mouseleave", lighten);
 
-            d3.selectAll("path")
-                .style("opacity", 0.2);
+            // d3.selectAll("path")
+            //     .style("opacity", 0.2);
+			//
+            // function darken() {
+            //     d3.select(this)
+            //         .style("opacity", 1);
+            // };
+			//
+            // function lighten() {
+            //     d3.select(this)
+            //         .style("opacity", 0.2);
+            // }
 
-            function darken() {
-                d3.select(this)
-                    .style("opacity", 1);
-            };
 
-            function lighten() {
-                d3.select(this)
-                    .style("opacity", 0.2);
-            }
+			//GENERATION SELECTORS
+			//GENERATION SELECTORS
+			//GENERATION SELECTORS
+			//GENERATION SELECTORS
+			//GENERATION SELECTORS
 
-			d3.select(".genClass0")
+			var   genSelector0 = false
+				, genSelector1 = false
+				, genSelector2 = false
+				, genSelector3 = false
+				, genSelector4 = false
+				, genSelector5 = false
+				, genSelector6 = false
+				, genSelector7 = false;
+
+			d3.select("#gen1")
+                .on('change', function(d, i) {
+                    selectGeneration0(0);
+                })
+
+			function selectGeneration0(i) {
+
+				if (!genSelector0) {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", true)
+						.classed("main", false)
+					genSelector0 = true;
+				} else {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", false)
+						.classed("main", true)
+					genSelector0 = false;
+				}
+			}
+
+			d3.select("#gen2")
+                .on('change', function(d, i) {
+                    selectGeneration1(1);
+                })
+
+			function selectGeneration1(i) {
+				if (!genSelector1) {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", true)
+						.classed("main", false)
+					genSelector1 = true;
+				} else {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", false)
+						.classed("main", true)
+					genSelector1 = false;
+				}
+			}
+
+
+			d3.select("#gen3")
+                .on('change', function(d, i) {
+                    selectGeneration2(2);
+                })
+
+			function selectGeneration2(i) {
+				if (!genSelector2) {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", true)
+						.classed("main", false)
+					genSelector2 = true;
+				} else {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", false)
+						.classed("main", true)
+					genSelector2 = false;
+				}
+			}
+
+			d3.select("#gen4")
+                .on('change', function(d, i) {
+                    selectGeneration3(3);
+                })
+
+			function selectGeneration3(i) {
+				if (!genSelector3) {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", true)
+						.classed("main", false)
+					genSelector3 = true;
+				} else {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", false)
+						.classed("main", true)
+					genSelector3 = false;
+				}
+			}
+
+			d3.select("#gen5")
+                .on('change', function(d, i) {
+                    selectGeneration4(4);
+                })
+
+			function selectGeneration4(i) {
+				if (!genSelector4) {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", true)
+						.classed("main", false)
+					genSelector4 = true;
+				} else {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", false)
+						.classed("main", true)
+					genSelector4 = false;
+				}
+			}
+
+			d3.select("#gen6")
+                .on('change', function(d, i) {
+                    selectGeneration5(5);
+                })
+
+			function selectGeneration5(i) {
+				if (!genSelector5) {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", true)
+						.classed("main", false)
+					genSelector5 = true;
+				} else {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", false)
+						.classed("main", true)
+					genSelector5 = false;
+				}
+			}
+
+			d3.select("#gen7")
+                .on('change', function(d, i) {
+                    selectGeneration6(6);
+                })
+
+			function selectGeneration6(i) {
+				if (!genSelector6) {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", true)
+						.classed("main", false)
+					genSelector6 = true;
+				} else {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", false)
+						.classed("main", true)
+					genSelector6 = false;
+				}
+			}
+
+			d3.select("#gen8")
+                .on('change', function(d, i) {
+                    selectGeneration7(7);
+                })
+
+			function selectGeneration7(i) {
+				if (!genSelector7) {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", true)
+						.classed("main", false)
+					genSelector7 = true;
+				} else {
+					svg.selectAll('.genClass' + i)
+						.selectAll("path")
+						.classed("selected", false)
+						.classed("main", true)
+					genSelector7 = false;
+				}
+			}
+
+
 
         }
     }

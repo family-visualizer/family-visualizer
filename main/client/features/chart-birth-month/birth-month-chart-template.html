@@ -1,17 +1,17 @@
 <div id="month-checks">
 <br>
-<input type="checkbox" id="january"> January <br>
-<input type="checkbox" id="february"> February <br>
-<input type="checkbox" id="march"> March <br>
-<input type="checkbox" id="april"> April <br>
-<input type="checkbox" id="may"> May <br>
-<input type="checkbox" id="june"> June <br>
-<input type="checkbox" id="july"> July <br>
-<input type="checkbox" id="august"> August <br>
-<input type="checkbox" id="september"> September <br>
-<input type="checkbox" id="october"> October <br>
-<input type="checkbox" id="november"> November <br>
-<input type="checkbox" id="december"> December <br>
+<input ng-click="janChecked()"  type="checkbox" id="january"> January  <br>
+<input ng-click="febChecked()" type="checkbox" id="february"> February <br>
+<input ng-click="marChecked()"type="checkbox" id="march"> March <br>
+<input ng-click="aprChecked()" type="checkbox" id="april"> April <br>
+<input ng-click="mayChecked()" type="checkbox" id="may"> May <br>
+<input ng-click="junChecked()" type="checkbox" id="june"> June <br>
+<input ng-click="julChecked()" type="checkbox" id="july"> July <br>
+<input ng-click="augChecked()" type="checkbox" id="august"> August <br>
+<input ng-click="sepChecked()" type="checkbox" id="september"> September <br>
+<input ng-click="octChecked()" type="checkbox" id="october"> October <br>
+<input ng-click="novChecked()" type="checkbox" id="november"> November <br>
+<input  ng-click="decChecked()" type="checkbox" id="december"> December <br>
 </div>
 
 
@@ -25,3 +25,23 @@
 <input type="checkbox" id="gen7"> Generation 7 <br>
 <input type="checkbox" id="gen8"> Generation 8 <br>
 </div>
+
+<div id="totals">
+	<div ng-show="januaryIsChecked"> January Births {{totalBirthsPerMonth.january}}</div>
+	<div ng-show="februaryIsChecked"> February Births {{totalBirthsPerMonth.february}}</div>
+	<div ng-show="marchIsChecked"> March Births {{totalBirthsPerMonth.march}}</div>
+	<div ng-show="aprilIsChecked"> April Births {{totalBirthsPerMonth.april}}</div>
+	<div ng-show="mayIsChecked"> May Births {{totalBirthsPerMonth.may}}</div>
+	<div ng-show="juneIsChecked"> June Births {{totalBirthsPerMonth.june}}</div>
+	<div ng-show="julyIsChecked"> July Births {{totalBirthsPerMonth.july}}</div>
+	<div ng-show="augustIsChecked"> August Births {{totalBirthsPerMonth.august}}</div>
+	<div ng-show="septemberIsChecked"> September Births {{totalBirthsPerMonth.september}}</div>
+	<div ng-show="octoberIsChecked"> October Births {{totalBirthsPerMonth.october}}</div>
+	<div ng-show="novemberIsChecked"> November Births {{totalBirthsPerMonth.november}}</div>
+	<div ng-show="decemberIsChecked"> December Births {{totalBirthsPerMonth.december}}</div>
+
+
+</div>
+{{totalBirthsPerMonth}}
+
+{{totalBirthsPerGeneration}}

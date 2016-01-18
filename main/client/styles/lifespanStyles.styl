@@ -1,40 +1,178 @@
-.lifespanContainer
+// .chart 
+// 	height 400px
+// 	width 600px
+
+// .chartSize
+// 	width 100%
+// 	height 100%
+
+.lifespanContainerTop
 	display flex
 	flex-direction row
-	justify-content	center
-	margin 20px 0px 20px 0px
+	justify-content space-around
+	align-items center
+	// margin 20px 0px 20px 0px
+	height: 100%;
+	width: 100%;
 	
 
+.lifespanChartTitle
+	text-align center
+	margin-bottom 10px
+	font-size 30px
+	font-weight bold
+	width 100%
 
-.axis {
-  fill: black;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
+.lifespanChartLeft
+	display flex
+	flex-direction column
+	justify-content	space-around
+	align-items flex-start
+	margin 20px
+	
 
-.axis .halo {
-  stroke: black;
-  stroke-width: 4px;
-  stroke-linecap: round;
-}
+.lifespanChartRightOutside
+	display flex
+	flex-direction column
+	align-items center
+	// border 1px solid black
+	border-radius 3px
+	height 100%
+	margin 20px
+	background-color #f89e31
+	width 222px
+
+.lifespanChartRightTop
+	background-color white
+	width 90%
+	margin 10px
+	border-radius 3px
+
+.lifespanChartRightBottom
+	background-color white
+	width 90%
+	margin 10px
+	border-radius 3px
+
+.lifespanSideTitle 
+	font-size 20px
+	font-weight bold
+	margin-bottom 10px
+	text-align center
+
+.lifespanChartSide div 
+	padding-left: 20px
+	padding-right: 20px
+	display flex
+	flex-direction column
+	justify-content space-around
+	align-items space-around
+	text-align center
+	margin-bottom 20px
+
+.lifespanStats 
+	display flex
+	flex-direction column
+	align-items center
+
+.statName
+	font-weight bold
+	
+	
+.stat 
+	font-weight normal
+	height 25px
+	text-align center
+	margin-top 10px
+	font-size 25px
+
+.handle
+	cursor: pointer	
+
+
 
 .slider .handle path {
-  stroke: green;
-  stroke-width: 3px;
-  stroke-linecap: round;
+//   stroke: #0072bc;
+//   stroke-width: 3px;
   pointer-events: none;
 }
 
+
 .slider .handle text {
-  fill: green;
+  fill: black;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
 }
 
-.lifespan .axis line {
-    width: 5px;
-    fill: black;
-    stroke: green;
-    shape-rendering: crispEdges;
+.lifespanYAxis path {
+	// display: none;
 }
+
+.lifespanXAxis g text 
+	font-size .7em
+
+.lifespanYAxis g text
+	font-size .7em
+
+.axisLine path
+	stroke black
+	stroke-width 1px
+	fill none
+	
+.personCircle:hover
+	opacity 1
+
+#lifespanTooltip {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 300;
+			margin: 0;
+			padding: 10px;
+			color: white;
+			font-size: 12px;
+			text-align: center;
+			background-color: rgba(0, 0, 0, 0.75);
+			opacity: 0;
+			pointer-events: none;
+		}
+		
+.radioButtonForm
+	display flex
+	flex-direction row
+	justify-content center
+
+.radioButtonForm label
+	margin-right 10px
+	margin-left 10px
+	margin-bottom 10px
+	text-align center
+
+.axisLabel
+	font-weight bold
+
+.lifespanContainerBottom
+	display flex
+	flex-direction column
+	justify-content center
+	align-content center
+	padding 20px
+	background-color #0072bc
+	color white	
+
+.lifespanContainerBottom h2
+	text-align center
+
+.lifespanContainerBottom li 
+	font-size 20px
+	margin 20px
+
+
+.lifespanChartDescription
+	display flex
+	flex-direction column
+	align-items center

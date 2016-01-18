@@ -38,11 +38,35 @@ function routing($stateProvider, $urlRouterProvider) {
 		.state('lifespan', {
 			url: '/lifespan'
 			, templateUrl: './dist/html/lifespanChart/lifespanChartView.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+			}
 		})
 		.state('alive', {
 			  url: '/living'
 			, templateUrl: './dist/html/alivePerYearView/alivePerYearTmpl.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+			}
+		})
+		.state('names', {
+			url: '/names'
+			, templateUrl: './dist/html/namesChart/namesChartView.html'
+		})
+
+		.state('birthMonth', {
+			url: '/birthmonth'
+			, templateUrl: './dist/html/birthMonthView/birthMonthView.html'
+		})
+		.state('thumbnailView', {
+			url: '/thumbnailhome'
+			, templateUrl: './dist/html/thumbnail-home-view/thumbnail-home.html'
 		});
-		
 
 }

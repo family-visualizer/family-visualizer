@@ -55,31 +55,45 @@ function splitDescNum( ascendancyArray ) {
 
 splitDescNum( orderedAscendancy );
 
-
-
 	console.log("ordered Ascendancy", orderedAscendancy);
 
 
-function buildData( rootPerson, rootPersonArray ) {
+function buildData( checkPerson, rootPersonArray ) {
 	// add person to familyObject
 	// var singleFamily = [];
 	var parent1;
 	var rootPersonSpouse;
+	var rootPerson;
+
+	// check to see if we are dealing with a husband wife combo as the starting points of the array.
+	if ( checkPerson.ascendancyNumber == 2 ) {
+		rootPerson = _.find(family, ( husband ) => husband.ascendancyNumber === 3)
+	} else {
+		rootPerson = checkPerson;
+	}
+	console.log("rootperson", rootPerson);
+
+	// create parents array.
 	rootPerson.parents = [];
 
 	// loop through all the json data, find dad.
-	var rootsDad = _.find(family, ( person ) => rootPerson.descendancyNumber && rootPerson.descendancyNumber[0] === person.ascendancyNumber)
+	var rootsDad = _.find(family, ( dad ) => rootPerson.descendancyNumber && rootPerson.descendancyNumber[0] === dad.ascendancyNumber)
 	
 	// loops through rootPersons children. Find their spouse, and children, and create their nuclear family.
-	if ( rootPerson.hasOwnProperty('children')) {
-		splitDescNum( rootPerson.children );
+	if (rootPerson.hasOwnProperty('children')) {
+		// splitDescNum( rootPerson.children );
 		rootPerson.children.forEach( function( child ) {
-			if (child.descendancyNumber.length === 2 && child.descendancyNumber.indexOf('S') > -1) {
-				child.spouse = true;
-				rootPersonSpouse = _.find(family, ( spouse ) => spouse.personId === child.personId);
-			} else {
-				rootPersonArray.push( child )
-			}
+			// if (child.descendancyNumber.length === 2 && child.descendancyNumber.indexOf('S') > -1) {
+			// if (child.descendancyNumber.indexOf('S') > -1) {
+			// 	var splitDash = child.descendancyNumber.split('-');
+			// 	if (splitDash[0].indexOf('.') === -1) {
+			// 		rootPersonSpouse = _.find(family, ( spouse ) => spouse.personId === child.personId);
+			// 		rootPersonSpouse.spouse = true;
+			// 		rootPersonArray.push( rootPersonSpouse);
+			// 	}
+			// } else {
+				rootPersonArray.push( child );
+			// }
 		});
 	}
 
@@ -96,6 +110,17 @@ function buildData( rootPerson, rootPersonArray ) {
 
 }
 
+	// var rootPerson;
+
+	// // check to see if we are dealing with a husband wife combo as the starting points of the array.
+	// if ( orderedAscendancy[0].ascendancyNumber === 2 ) {
+	// 	console.log('first test', orderedAscendancy[0]);
+	// 	rootPerson = _.find(family, ( husband ) => husband.ascendancyNumber === 3)
+	// 	console.log('second test', rootPerson);
+	// } else {
+	// 	rootPerson = orderedAscendancy[0];
+	// }
+
 	var nestedFamily = {
 		name: 'flare'
 		, parents: [
@@ -103,13 +128,18 @@ function buildData( rootPerson, rootPersonArray ) {
 		]
 	}
 
-	nestedFamily.parents[0].parents = [];
+	// nestedFamily.parents[0].parents = [];
 
 buildData(nestedFamily.parents[0], nestedFamily.parents);
-console.log(nestedFamily);
+console.log("nested Fam", nestedFamily);
 
 
-
+//LORAINE IS LISTED WITH A DESCENDANCY NUMBER OF 6.01-S AND THIS IS MESSING EVERYTING UP!!!!!
+//LORRAINE HAS NO FATHER!!!!! THIS IS WHY SHE HAS NO DESCENDANCY NUMBER CONNECTING HER WITH HER PARENTS!!
+//I WILL HAVE TO WRITE CODE TO CHECK TO SEE IF THE DECSENDANCY NUMBER IS A SPOUSE AND THEN IF THE 
+//DESCENDENCY NUMBER IS THE SAME AS THEIRS IN THE FLATTENED ARRAY, THE RECURSION NEEDS TO END,
+//I NEED TO WRITE CODE TO CHECK TO SEE IF THE FIRST PERSON IN THE ORDERED ASCENDANCY LIST IS FEMALE
+//AND IF SHE IS A WIFE, THEN I NEED to SWITCH ASCENDANCY NUMBER WIHT HER HUSBAND.
 
 
 

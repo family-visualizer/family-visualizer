@@ -42,6 +42,10 @@ function routing($stateProvider, $urlRouterProvider) {
 		.state('birthMonth', {
 			url: '/birthmonth'
 			, templateUrl: './dist/html/birthMonthView/birthMonthView.html'
+		})
+		.state('thumbnailView', {
+			url: '/thumbnailhome'
+			, templateUrl: './dist/html/thumbnail-home-view/thumbnail-home.html'
 		});
 
 }

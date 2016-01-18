@@ -1,37 +1,30 @@
-angular.module('app').controller('lifespanChartCtrl', function ($scope, familyService, authService, lifespanService) {
+angular.module('app').controller('namesChartCtrl', function ($scope, familyService, authService, namesService) {
 
-	//x, y, radius
 
-	//year, order, age
 
-	$scope.dataset = [
-		[5, 20, 5],
-		[480, 90, 30],
-		[250, 50, 2],
-		[100, 33, 159],
-		[330, 95, 47],
-		[410, 12, 27],
-		[475, 44, 84],
-		[25, 67, 37],
-		[85, 21, 60],
-		[220, 88, 250]
-	];
+	// $scope.getStats = function (family, sliderValue, gender) {
+	// 	$scope.stats = lifespanService.getStats(family, sliderValue, gender);
+	// 	console.log("stats:", $scope.stats);	
+	// };
+	
 
-	// $scope.cleanData = [];
+	
+	// $scope.gender = "Both";
+	
+	// $scope.cleanData = function (familyData) {
+	// 	return lifespanService.getCleanData(familyData);	
+	// };
 
-	$scope.getStats = function (family, sliderValue, gender) {
-		$scope.stats = lifespanService.getStats(family, sliderValue, gender);
-		console.log("stats:", $scope.stats);	
+
+	$scope.getNames = function (familyData) {
+		return namesService.getNames(familyData);
 	};
 	
-
+	$scope.countNames = function (familyData) {
+		return namesService.countNames(familyData);
+	}
 	
-	$scope.gender = "Both";
 	
-	$scope.cleanData = function (familyData) {
-		return lifespanService.getCleanData(familyData);	
-	};
-
 	$scope.testFamily = [
 		
    {

@@ -9,8 +9,8 @@ function familyService($q, $http, familyDataUtilsService) {
 		return self.ancestry;
 	};
 
-	
 
+	
 	//Here we make the API call for direct ancestors and save their information.
 	this.getAncestryAndChildren = (personId, accessToken) => {
 		var defer = $q.defer();
@@ -32,9 +32,17 @@ function familyService($q, $http, familyDataUtilsService) {
 					});
 				});
 				self.ancestry = ancestry;
-
+				
+				console.log("ancestryCAll", ancestry);
+				
 				var totalParentResultsReceived = 0;
-				var allTheDads = _.filter(self.ancestry, (person) => person.ascendancyNumber > 1 && person.ascendancyNumber < 512 && person.ascendancyNumber % 2 === 0)
+				var allTheDads = _.filter(self.ancestry, (person) => person.ascendancyNumber > 1 && person.ascendancyNumber < 512 && person.ascendancyNumber % 2 === 0);
+				var theWomen = _.filter(self.ancestry, (person) => person.ascendancyNumber > 1 && person.ascendancyNumber < 512 && person.ascendancyNumber % 2 !== 0);
+				
+				theWomen.forEach(function (woman) {
+					ancestryAndChildren.push(woman);
+				});	
+				
 				var totalExpectedCalls = allTheDads.length;
 				
 				console.log("Total expected children calls: " + totalExpectedCalls);
@@ -85,6 +93,7 @@ function familyService($q, $http, familyDataUtilsService) {
 							});
 							ancestryAndChildren.push(parent);
 							self.ancestryAndChildren = ancestryAndChildren;
+							console.log("ancestry&children:", ancestryAndChildren);
 							totalParentResultsReceived++;
 							console.log("Child query received : " + totalParentResultsReceived);
 							if(totalParentResultsReceived === totalExpectedCalls){
@@ -106,8 +115,6 @@ function familyService($q, $http, familyDataUtilsService) {
 		} 
 		
 		//TODO else resovle ancestry
-
-		console.log('self.Ancestry in Service', self.ancestryAndChildren);
 		return defer.promise;
 	};
 

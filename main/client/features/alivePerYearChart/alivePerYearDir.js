@@ -17,8 +17,8 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 				item.date = new Date(item.date);
 			});
 
-			var margin = { top: 10, right: 10, bottom: 100, left: 40 },
-				margin2 = { top: 430, right: 10, bottom: 20, left: 40 },
+			var margin = { top: 10, right: 10, bottom: 100, left: 100 },
+				margin2 = { top: 430, right: 10, bottom: 20, left: 100 },
 				width = 960 - margin.left - margin.right,
 				height = 500 - margin.top - margin.bottom,
 				height2 = 500 - margin2.top - margin2.bottom;

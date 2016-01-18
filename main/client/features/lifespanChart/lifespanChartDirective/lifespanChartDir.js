@@ -4,6 +4,9 @@ angular.module('app').directive('lifespanChart', () => {
 		restrict: 'EA'
         , templateUrl: './dist/html/lifespanChart/lifespanChartDirective/lifespanChartTemp.html'
         , controller: 'lifespanChartCtrl'
+		, scope: {
+			testFamily: "="
+		}
         , link(scope, elem, attrs) {
 			
 		// 	var chart = $(".chart"),
@@ -16,14 +19,13 @@ angular.module('app').directive('lifespanChart', () => {
 		// }).trigger("resize");
 
 			
-			
 			var family;
 			
 			function updateFamily (familyObject) {
-				console.log("updateFamily is running!");
 				family = scope.cleanData(familyObject);
 				return family;	
 			};
+			
 			
 			updateFamily(scope.testFamily);
 
@@ -184,7 +186,6 @@ angular.module('app').directive('lifespanChart', () => {
 			animateIn(family.cleanData);
 			
 			function endall(transition, callback) {
-				console.log("endall running"); 
 				var n = 0; 
 				transition 
 					.each(function() { ++n; }) 
@@ -401,7 +402,6 @@ angular.module('app').directive('lifespanChart', () => {
 				
 
 				if (d3.event.sourceEvent) { // not a programmatic event
-					console.log("is this running?");
 					handle.select('text');
 					d3.select('stat');
 					value = xscale.invert(d3.mouse(this)[0]);
@@ -446,7 +446,6 @@ angular.module('app').directive('lifespanChart', () => {
 				.selectAll("p")
 				.data(statsStructure)
 				.text(function (d) {
-					console.log("stat test", d.value);
 					return d.value;})
 				.attr("class", "stat");
 			}
@@ -476,7 +475,6 @@ angular.module('app').directive('lifespanChart', () => {
 				.property("checked", function (d, i) { return d === radioValue; })
 				.on("click", function (d, i) {
 					scope.gender = d;
-					console.log("scope.gender", scope.gender);
 					clearGraph();
 					getStats(family.cleanData, sliderValue, scope.gender);
 					buildStats(scope.stats);

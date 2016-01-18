@@ -38,6 +38,12 @@ function routing($stateProvider, $urlRouterProvider) {
 		.state('lifespan', {
 			url: '/lifespan'
 			, templateUrl: './dist/html/lifespanChart/lifespanChartView.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+			}
 		})
 
 		.state('names', {

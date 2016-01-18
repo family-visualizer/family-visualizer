@@ -71,9 +71,9 @@ function lifespanService($q, $http) {
 		});
 
 		var stats = {
-			maxLifespan: maxLifespan,
-			minLifespan: minLifespan,
-			avgLifespan: avgLifespan,
+			  maxLifespan: maxLifespan
+			, minLifespan: minLifespan
+			, avgLifespan: avgLifespan
 		};
 
 		return stats;
@@ -144,19 +144,19 @@ function lifespanService($q, $http) {
 
 
 		var myData = {
-			cleanData: cleanData,
-			lifespanYears: lifespanYears,
-			lifespanTotalsArray: lifespanTotalsArray,
-			personNumbers: personNumbers,
-			sortedLifespanYears: sortedLifespanYears,
-			maxYear: maxYear,
-			minYear: minYear,
-			maxLifespan: maxLifespan,
-			minLifespan: minLifespan,
-			avgLifespan: avgLifespan,
-			sortedPersonNumbers: sortedPersonNumbers,
-			maxPersonNumber: maxPersonNumber,
-			minPersonNumber: minPersonNumber
+			  cleanData: cleanData
+			, lifespanYears: lifespanYears
+			, lifespanTotalsArray: lifespanTotalsArray
+			, personNumbers: personNumbers
+			, sortedLifespanYears: sortedLifespanYears
+			, maxYear: maxYear
+			, minYear: minYear
+			, maxLifespan: maxLifespan
+			, minLifespan: minLifespan
+			, avgLifespan: avgLifespan
+			, sortedPersonNumbers: sortedPersonNumbers
+			, maxPersonNumber: maxPersonNumber
+			, minPersonNumber: minPersonNumber
 		};
 		console.log("my data", myData);
 		return myData;

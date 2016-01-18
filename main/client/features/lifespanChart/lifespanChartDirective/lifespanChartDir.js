@@ -61,18 +61,18 @@ angular.module('app').directive('lifespanChart', () => {
 			getStats(family.cleanData, family.maxYear);
 			
 			var stats =
-				 [{
+				  [{
 					name: "Average Lifespan",
 					value: scope.stats.avgLifespan
-				},
-				{
+				  }
+				, {
 					name: "Longest Lifespan",
 					value: scope.stats.maxLifespan
-				},
-				{
+				}
+				, {
 					name: "Shortest Lifespan",
 					value: scope.stats.minLifespan
-				}];
+				  }];
 		
 			
 			var statsElements = d3.select(".lifespanStats")
@@ -428,18 +428,18 @@ angular.module('app').directive('lifespanChart', () => {
 			function buildStats (stats) {
 
 				var statsStructure = 
-				[{
+				  [{
 					name: "Average Lifespan",
 					value: stats.avgLifespan
-				},
-				{
+				   }
+				 , {
 					name: "Longest Lifespan",
 					value: stats.maxLifespan
-				},
-				{
+				   }
+				 , {
 					name: "Shortest Lifespan",
 					value: stats.minLifespan
-				}];
+				  }];
 						
 
 				d3.select(".lifespanStats")

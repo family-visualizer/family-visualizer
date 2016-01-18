@@ -4951,12 +4951,16 @@ angular.module('app').service('alivePerYearService', function () {
 	this.minAndMax = this.findMinAndMax(this.famSearchDataset);
 
 	this.mainData = [];
-
+	
+	
+	
 	this.addToMainData = function (minAndMaxObj) {
 		for (var i = minAndMaxObj.min; i < minAndMaxObj.max; i++) {
 			this.mainData.push({
-				date: i,
-				alive: 0
+				  date: i
+				, alive: 0
+				, male: 0
+				, female: 0
 			})
 		}
 	}
@@ -4971,6 +4975,9 @@ angular.module('app').service('alivePerYearService', function () {
 				if (bigDataSet[j].minAndMax){
 					if (this.mainData[i].date >= bigDataSet[j].minAndMax[0] && this.mainData[i].date <= bigDataSet[j].minAndMax[1]){
 						this.mainData[i].alive++;
+						if (bigDataSet[j].gender === "Male"){
+							this.mainData[i].male++;
+						} else this.mainData[i].female++;
 					}
 				}
 			}

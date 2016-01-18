@@ -28,8 +28,8 @@ angular.module('app').directive('lifespanChart', () => {
 			updateFamily(scope.testFamily);
 
 
-			var height = 400;
-			var width = 700;
+			var height = 500;
+			var width = 850;
 			
 			var svg = d3.select(".chart")
 				.append("svg")
@@ -102,6 +102,7 @@ angular.module('app').directive('lifespanChart', () => {
 				.data(family.cleanData)
 				.enter()
 				.append("circle")
+				.attr("class", "personCircle")
 				.attr({
 					r: 0
 					, cx: function (data) {
@@ -109,12 +110,10 @@ angular.module('app').directive('lifespanChart', () => {
 					}
 					, cy: function (data) {
 						return yscale(data.generation);
-					},
-					class: 'personCircle'
-
+					}
 				})
 				.on("mouseover", function (d) {
-
+					
 					// move to front
 					// this.parentNode.appendChild(this);
 
@@ -345,6 +344,7 @@ angular.module('app').directive('lifespanChart', () => {
 					.filter(function (data) {
 						return data.lifespanArray[0] <= sliderValue;
 					})
+					.attr("class", "personCircle")
 					.attr({
 						r: function (data) {
 							return rscale(data.lifespanTotal);

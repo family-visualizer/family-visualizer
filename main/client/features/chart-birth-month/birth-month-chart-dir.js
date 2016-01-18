@@ -1,10 +1,10 @@
 angular.module('app').directive('birthMonth', birthMonthService => {
 
     return {
-        restrict: 'EA',
-        templateUrl: './dist/html/chart-birth-month/birth-month-chart-template.html',
-        controller: 'birthMonthCtrl',
-        link(scope, elem, attrs) {
+          restrict: 'EA'
+        , templateUrl: './dist/html/chart-birth-month/birth-month-chart-template.html'
+        , controller: 'birthMonthCtrl'
+        , link(scope, elem, attrs) {
 
             //load in data from Service
             var dataset = birthMonthService.dataset;
@@ -64,18 +64,18 @@ angular.module('app').directive('birthMonth', birthMonthService => {
             //MONTH SELECTORS MONTH SELECTORS MONTH SELECTORS
             //MONTH SELECTORS MONTH SELECTORS MONTH SELECTORS
 
-            var janSelector = false,
-                febSelector = false,
-                marSelector = false,
-                aprSelector = false,
-                maySelector = false,
-                junSelector = false,
-                julSelector = false,
-                augSelector = false,
-                sepSelector = false,
-                octSelector = false,
-                novSelector = false,
-                decSelector = false;
+            var   janSelector = false
+                , febSelector = false
+                , marSelector = false
+                , aprSelector = false
+                , maySelector = false
+                , junSelector = false
+                , julSelector = false
+                , augSelector = false
+                , sepSelector = false
+                , octSelector = false
+                , novSelector = false
+                , decSelector = false;
 
             //Check different Selectors
             d3.select("#january")

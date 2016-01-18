@@ -40,6 +40,7 @@ angular.module('app').directive('linearChart', () => {
             const xAxis = d3.svg.axis()
                 .scale(xScale)
                 .orient("bottom")
+
                 .ticks(0);
 
             // Define Y axis
@@ -87,13 +88,13 @@ angular.module('app').directive('linearChart', () => {
 
             // Add to X axis
             svg.append("g")
-                .attr("class", "x axis")
+                .attr("class", "home-chart-axis")
                 .attr("transform", "translate(0," + (canvas_height - padding) + ")")
                 .call(xAxis);
 
             // Add to Y axis
             svg.append("g")
-                .attr("class", "y axis")
+                .attr("class", "home-chart-axis")
                 .attr("transform", "translate(" + padding + ",0)")
                 .call(yAxis);
 

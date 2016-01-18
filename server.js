@@ -55,7 +55,7 @@ app.get('/auth/familysearch',
 app.get('/auth/familysearch/callback',
 	passport.authenticate('familysearch', { failureRedirect: '/' }),
 	function (req, res) {
-		res.redirect('http://localhost:3000/#/userhome');
+		res.redirect('http://localhost:3000/#/thumbnailhome');
 
 	});
 

@@ -4,20 +4,25 @@ angular.module('app').controller('userHomeCtrl', function ($scope, authService, 
 	var getAuthedUser = function () {
 		authService.getAuthedUser().then(function (data) {
 			$scope.authedUser = data;
-			getAncestryAndChildren();
+			//Using hard-coded data for demo
+			// getAncestryAndChildren();
 		});
 	};
 	getAuthedUser();
 
 	$scope.combinedFamily = [];
 	
-	//Get ancestry and children
+	//We are using hard-coded data for demo
 	
-	var getAncestryAndChildren = function () {
-		familyService.getAncestryAndChildren($scope.authedUser.personId, $scope.authedUser.accessToken).then(function (data) {
-			$scope.family = data;	
-			console.log(data);
-		});
-	};
+	// 	//Get ancestry and children
+	
+	// 	var getAncestryAndChildren = function () {
+	// 		familyService.getAncestryAndChildren($scope.authedUser.personId, $scope.authedUser.accessToken).then(function (data) {
+	// 			$scope.family = data;	
+	// 			console.log(data);
+	// 		});
+	// 	};
+
 
 });
+

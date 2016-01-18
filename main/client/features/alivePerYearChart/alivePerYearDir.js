@@ -1,4 +1,4 @@
-angular.module('app').directive('aliveChartDir', function () {
+angular.module('app').directive('aliveChartDir', function (alivePerYearService) {
 
     return {
           restrict: "E"
@@ -6,8 +6,8 @@ angular.module('app').directive('aliveChartDir', function () {
         , controller: "aliveChartCtrl"
         , link(scope, element, attrs) {
 			
-			
-			
+			// var minAndMax = alivePerYearService.findMinAndMax(alivePerYearService.famSearchDataset);
+			// console.log(minAndMax);
 var data = [
  
   {

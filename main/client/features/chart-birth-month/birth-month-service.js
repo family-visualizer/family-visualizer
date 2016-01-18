@@ -4315,8 +4315,6 @@ function birthMonthService() {
 	   }
 	]
 
-
-
 	this.addBirthMonthToRelative = function(bigDataArray) {
 
 	    var birthMonth;
@@ -4382,13 +4380,13 @@ function birthMonthService() {
 	}
 
 	let chartData = {
-		generation1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		generation2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		generation3: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		generation4: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		generation5: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		generation6: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		generation7: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  generation1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		, generation2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		, generation3: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		, generation4: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		, generation5: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		, generation6: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		, generation7: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	};
 
 	var compareMonthArray = [ 'january'

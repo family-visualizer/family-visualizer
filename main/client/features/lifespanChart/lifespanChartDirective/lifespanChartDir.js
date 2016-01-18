@@ -332,8 +332,7 @@ angular.module('app').directive('lifespanChart', () => {
 			}
 
 			function changeGraph(data) {
-				
-				
+						
 				svg.selectAll("circle")
 					.filter(function (data) {
 						if (scope.gender !== "Both") {

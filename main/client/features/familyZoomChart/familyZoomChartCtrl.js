@@ -71,14 +71,15 @@ function buildData( checkPerson, rootPersonArray ) {
 	} else {
 		rootPerson = checkPerson;
 	}
-	console.log("rootperson", rootPerson);
+	// console.log("rootperson", rootPerson);
 
 	// create parents array.
 	rootPerson.parents = [];
 
 	// loop through all the json data, find dad.
 	var rootsDad = _.find(family, ( dad ) => rootPerson.descendancyNumber && rootPerson.descendancyNumber[0] === dad.ascendancyNumber)
-	
+	// Need to write a check to see if the the rootPerson's Decendancy Number is the same as the same person in the flattened array.  
+	//  If it is, that means that person has no DAD!!!
 	// loops through rootPersons children. Find their spouse, and children, and create their nuclear family.
 	if (rootPerson.hasOwnProperty('children')) {
 		// splitDescNum( rootPerson.children );
@@ -134,8 +135,8 @@ buildData(nestedFamily.parents[0], nestedFamily.parents);
 console.log("nested Fam", nestedFamily);
 
 
-//LORAINE IS LISTED WITH A DESCENDANCY NUMBER OF 6.01-S AND THIS IS MESSING EVERYTING UP!!!!!
-//LORRAINE HAS NO FATHER!!!!! THIS IS WHY SHE HAS NO DESCENDANCY NUMBER CONNECTING HER WITH HER PARENTS!!
+//LORAINE IS LISTED WITH A DESCENDANCY NUMBER OF 6.01-S AND THIS IS MESSING EVERYTING UP!
+//LORRAINE HAS NO FATHER! THIS IS WHY SHE HAS NO DESCENDANCY NUMBER CONNECTING HER WITH HER PARENTS!!
 //I WILL HAVE TO WRITE CODE TO CHECK TO SEE IF THE DECSENDANCY NUMBER IS A SPOUSE AND THEN IF THE 
 //DESCENDENCY NUMBER IS THE SAME AS THEIRS IN THE FLATTENED ARRAY, THE RECURSION NEEDS TO END,
 //I NEED TO WRITE CODE TO CHECK TO SEE IF THE FIRST PERSON IN THE ORDERED ASCENDANCY LIST IS FEMALE

@@ -1,44 +1,159 @@
 {
         "name": "flare"
         , "children": [{
-            "name": "Zachary Baker"
-            , "children": [{
-                "name": "Robert Baker"
-                , "size": 3000
-            },
-            {
-                "name": "Bonnie Beutler"
-                , "children": [{
-                    "name": "Alvin Schwartz Beutler"
-                    , "children": 
-                    [{"name": "Alfred Beutler", "size": 3000}, 
-                    {"name": "Rosa Schwartz", "size": 3000},
-                    {"name": "Alvin Schwartz Beutler", "size": 1500}]
-                },
-                {
-                    "name": "Clarissa McAllister"
-                    , "children": 
-                    [{"name": "Frank Snow McAllister", "size": 3000}, 
-                    {"name": "Clarissa McAllister", "size": 1500}]
-                }, 
-                {
-                    "name": "Bonnie Beutler"
-                    , "size": 3000
-                }]
-            }]
-        },
-        {
             "name": "Loarraine Ivanov"
+            , "gender": "female"
             , "children": [{
                 "name": "Erin Meyers"
+                , "spouse": true
+                , "gender": "female"
                 , "children": 
-                [{"name": "Steven Meyers", "size": 3000},
-                {"name": "Susan Call", "size": 3000},
-                {"name": "Erin Meyers", "size": 1500}]
+                    [{"name": "Steven Meyers", "spouse": true, "gender": "male", "size": 11000},
+                    {"name": "Susan Call"
+                    , "spouse": true
+                    , "gender": "female"
+                    , "children": [
+                        {"name": "Mark Call", "spouse": true, "size": 8000}
+                        , {"name": "Betsy Walter"
+                        , "gender": "female"
+                        , "spouse": true
+                        , "children": [
+                            {"name": "Handle Walter"
+                            , "spouse": true
+                            , "gender": "male"
+                            , "children": [
+                                {"name": "Jake Walter", "spouse": true, "gender": "male", "size": 500}
+                                , {"name": "Fanny Francois", "spouse": true, "gender": "female", "size": 500}
+                                , {"name": "Handle Walter", "spouse": false, "gender": "male", "size": 150}
+                                , {"name": "Georgia Walter", "spouse": false, "gender": "female", "size": 150}
+                                , {"name": "Sarah Walter", "spouse": false, "gender": "female", "size": 150}
+                                , {"name": "Ryan Walter", "spouse": false, "gender": "male", "size": 150}
+                            ]}
+                            , {"name": "Jenny Harper", "spouse": true, "gender": "female", "size": 2000}
+                            , {"name": "Betsy Walter", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Fran Walter", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Gretta Walter", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Jen Walter", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Laura Walter", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Sam Walter", "spouse": false, "gender": "male", "size": 500}
+                            , {"name": "Michael Walter", "spouse": false, "gender": "male", "size": 500}
+                            , {"name": "Mark Walter", "spouse": false, "gender": "male", "size": 500}
+                            , {"name": "John Walter", "spouse": false, "gender": "male", "size": 500}
+                        ]}
+                        , {"name": "Alexis Call", "spouse": false, "gender": "female", "size": 2000}
+                        , {"name": "Susan Call", "spouse": false, "gender": "female", "size": 2000}
+                        , {"name": "Erica Call", "spouse": false, "gender": "female", "size": 2000}
+                    ]},
+                    {"name": "Erin Meyers", "spouse": false, "gender": "female", "size": 2000}] 
             },
             {
-                "name": "Lorraine Ivanov"
-                , "size": 3000
-            }]
+                "name": "John Ivanov"
+                , "spouse": true
+                , "gender": "male"
+                , "children": 
+                    [{"name": "Mark Ivanov"
+                    , "spouse": true
+                    , "gender": "male"
+                    , "children": [
+                        {"name": "Handle Ivanov"
+                        , "spouse": true
+                        , "gender": "male"
+                        , "children": [
+                            {"name": "Bart Ivanov", "spouse": true, "gender": "male", "size": 2000}
+                            , {"name": "loulou Stands"
+                            , "gender": "female"
+                            , "spouse": true
+                            , "children": [
+                                {"name": "Imar Stands", "spouse": true, "gender": "male", "size": 500}
+                                , {"name": "Helga Bander", "spouse": true, "gender": "female", "size": 500}
+                                , {"name": "Frank Stands", "spouse": false, "gender": "male", "size": 150}
+                                , {"name": "Georgia Stands", "spouse": false, "gender": "female", "size": 150}
+                                , {"name": "Sarah Stands", "spouse": false, "gender": "female", "size": 150}
+                                , {"name": "Ryan Stands", "spouse": false, "gender": "male", "size": 150}
+                            ]}
+                            , {"name": "Handle Ivanov", "spouse": false, "gender": "male", "size": 500}
+                            , {"name": "lane Ivanov", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Gray Ivanov", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Mark Ivanov", "spouse": false, "gender": "male", "size": 500}
+                            , {"name": "Jane Ivanov", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Michael Ivanov", "spouse": false, "gender": "male", "size": 500}
+                            , {"name": "Stanford Ivanov", "spouse": false, "gender": "male", "size": 500}
+                        ]}
+                        , {"name": "Gretna Berkeshov"
+                        , "spouse": true
+                        , "gender": "female"
+                        , "children": [
+                            {"name": "Frank Berkeshov"
+                            , "spouse": true
+                            , "gender": "male"
+                            , "children": [
+                                {"name": "Peter Berkeshov", "spouse": true, "gender": "male", "size": 500}
+                                , {"name": "Helga Anders", "spouse": true, "gender": "female", "size": 500}
+                                , {"name": "Frank Berkeshov", "spouse": false, "gender": "male", "size": 150}
+                                , {"name": "Georgia Berkeshov", "spouse": false, "gender": "female", "size": 150}
+                                , {"name": "Sarah Berkeshov", "spouse": false, "gender": "female", "size": 150}
+                                , {"name": "Ryan Berkeshov", "spouse": false, "gender": "male", "size": 150}
+                            ]}
+                            , {"name": "Sharon Bintner"
+                            , "spouse": true
+                            , "gender": "female"
+                            , "children": [
+                                {"name": "Frank Bintner", "spouse": true, "gender": "male", "size": 500}
+                                , {"name": "Martha Flouta", "spouse": true, "gender": "female", "size": 500}
+                                , {"name": "Frank Bintner", "spouse": false, "gender": "male", "size": 150}
+                                , {"name": "Matthew Bintner", "spouse": false, "gender": "male", "size": 150}
+                                , {"name": "Ashley Bintner", "spouse": false, "gender": "female", "size": 150}
+                                , {"name": "Abigail Bintner", "spouse": false, "gender": "female", "size": 150}
+                            ]}
+                            , {"name": "Ann Berkeshov", "spouse": false, "gender": "female", "size": 500}
+                            , {"name": "Alex Berkeshov", "spouse": false, "gender": "male", "size": 500}
+                            , {"name": "Brighton Berkeshov", "spouse": false, "gender": "male", "size": 500}
+                        ]}
+                        , {"name": "Mark Ivanov", "spouse": false, "gender": "male", "size": 2000}
+                        , {"name": "Betsy Ivanov", "spouse": false, "gender": "female", "size": 2000}
+                        , {"name": "Flan Ivanov", "spouse": false, "gender": "female", "size": 2000}
+                        , {"name": "Angol Ivanov", "spouse": false, "gender": "male", "size": 2000}
+                    ]}
+                    , {"name": "Ann Smith"
+                    , "spouse": true
+                    , "gender": "female"
+                    , "children": [
+                        {"name": "Frank Smith"
+                        , "spouse": true
+                        , "gender": "male"
+                        , "children": [
+                            {"name": "Frank Smith Sr", "spouse": true, "gender": "male", "size": 500}
+                            , {"name": "Martha Cobble", "spouse": true, "gender": "female", "size": 500}
+                            , {"name": "Frank Smith", "spouse": false, "gender": "male", "size": 150}
+                            , {"name": "Matthew Smith", "spouse": false, "gender": "male", "size": 150}
+                            , {"name": "Ashley Smith", "spouse": false, "gender": "female", "size": 150}
+                            , {"name": "Abigail Smith", "spouse": false, "gender": "female", "size": 150}
+                        ]}
+                        , {"name": "Carly Halbringer"
+                        , "spouse": true
+                        , "gender": "female"
+                        , "children": [
+                            {"name": "Christian Halbringer", "spouse": true, "gender": "male", "size": 500}
+                            , {"name": "Constance Fall", "spouse": true, "gender": "female", "size": 500}
+                            , {"name": "Carly Halbringer", "spouse": false, "gender": "female", "size": 150}
+                            , {"name": "Christian Halbringer II", "spouse": false, "gender": "male", "size": 150}
+                            , {"name": "Ashley Halbringer", "spouse": false, "gender": "female", "size": 150}
+                            , {"name": "Michael Halbringer", "spouse": false, "gender": "male", "size": 150}
+                            , {"name": "David Halbringer", "spouse": false, "gender": "male", "size": 150}
+                            , {"name": "Connie Halbringer", "spouse": false, "gender": "female", "size": 150}
+                        ]}
+                        , {"name": "Ann Smith", "spouse": false, "gender": "female", "size": 2000}
+                        , {"name": "Megan Smith", "spouse": false, "gender": "female", "size": 2000}
+                        , {"name": "Laura Smith", "spouse": false, "gender": "female", "size": 2000}
+                    ]},
+                    {"name": "John Ivanov", "spouse": false, "gender": "male", "size": 11000}
+                    , {"name": "Phillip Ivanov", "spouse": false, "gender": "male", "size": 11000}
+                    , {"name": "Angol Ivanov", "spouse": false, "gender": "male", "size": 11000}]
+            },
+            {"name": "Lorraine Ivanov", "spouse": false, "gender": "female", "size": 25000}
+            , {"name": "Georgia Ivanov", "spouse": false, "gender": "female", "size": 25000}
+            , {"name": "Holly Ivanov", "spouse": false, "gender": "female", "size": 25000}
+            , {"name": "Francesca Ivanov", "spouse": false, "gender": "female", "size": 25000}
+            , {"name": "Harry Ivanov", "spouse": false, "gender": "male", "size": 25000}]
         }]
     }

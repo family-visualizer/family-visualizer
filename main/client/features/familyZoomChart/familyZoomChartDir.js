@@ -8,7 +8,7 @@ angular.module('app')
         , link (scope, elem, attrs) {
 			
 			var margin = 20
-			, diameter = 550;
+			, diameter = 650;
 
 			var color = d3.scale.linear()
 				.domain([-1, 5])

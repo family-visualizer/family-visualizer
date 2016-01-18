@@ -3,7 +3,7 @@ angular.module('app')
 	
 	$scope.pieChartBox = {
 		  icon: 'images/pieChartIcon.png'
-		, text: 'Your families legacy, intelligently organized and exhibited.'
+		, text: 'Your family\'s legacy, intelligently organized and exhibited.'
 		, class: 'pie-chart'
 	};
 

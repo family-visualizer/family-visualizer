@@ -50,11 +50,14 @@ function routing($stateProvider, $urlRouterProvider) {
 			url: '/names'
 			, templateUrl: './dist/html/namesChart/namesChartView.html'
 		})
-			
+
 		.state('birthMonth', {
 			url: '/birthmonth'
 			, templateUrl: './dist/html/birthMonthView/birthMonthView.html'
-
+		})
+		.state('thumbnailView', {
+			url: '/thumbnailhome'
+			, templateUrl: './dist/html/thumbnail-home-view/thumbnail-home.html'
 		});
 
 }

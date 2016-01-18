@@ -38,6 +38,10 @@ function routing($stateProvider, $urlRouterProvider) {
 		.state('lifespan', {
 			url: '/lifespan'
 			, templateUrl: './dist/html/lifespanChart/lifespanChartView.html'
+		})
+		.state('alive', {
+			  url: '/living'
+			, templateUrl: './dist/html/alivePerYearView/alivePerYearTmpl.html'
 		});
 		
 

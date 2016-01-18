@@ -4908,14 +4908,19 @@ angular.module('app').service('alivePerYearService', function () {
 		var max = 0;
 		for (var i = 0; i < chunkyDataSet.length; i++) {
 			var years = chunkyDataSet[i].lifespan.split("-");
-			years = years.map(function(e){
+
+			years = years.map(function (e) {
 				return Number(e);
 			})
-			
+			if (typeof (years[0]) === 'number' && typeof (years[1]) === 'number') {
+				console.log('trying to add properties');
+				chunkyDataSet[i].minAndMax = years;
+			}
+
 			years.forEach(function (e) {
 
 
-				if (typeof(e) === "number") {
+				if (typeof (e) === "number") {
 
 					allYears.push(e);
 
@@ -4942,27 +4947,47 @@ angular.module('app').service('alivePerYearService', function () {
 		// console.log(maxAndMin);
 		return maxAndMin;
 	}
-	
+
 	this.minAndMax = this.findMinAndMax(this.famSearchDataset);
-	
+
 	this.mainData = [];
-	
-	this.addToMainData = function(minAndMaxObj){
-		for (var i = minAndMaxObj.min; i < minAndMaxObj.max; i++){
+
+	this.addToMainData = function (minAndMaxObj) {
+		for (var i = minAndMaxObj.min; i < minAndMaxObj.max; i++) {
 			this.mainData.push({
-				year: i,
+				date: i,
 				alive: 0
 			})
 		}
 	}
-	
+
 	this.addToMainData(this.minAndMax);
 	console.log("this.maindata", this.mainData);
 	
-	this.countPeopleWhoAreAlive = function(bigDataSet){
+	this.countPeopleWhoAreAlive = function (bigDataSet) {
 		
+		for (var i = 0; i < this.mainData.length; i++){
+			for (var j = 0; j < bigDataSet.length; j++){
+				if (bigDataSet[j].minAndMax){
+					if (this.mainData[i].date >= bigDataSet[j].minAndMax[0] && this.mainData[i].date <= bigDataSet[j].minAndMax[1]){
+						this.mainData[i].alive++;
+					}
+				}
+			}
+		}
+
 	}
 
+	this.countPeopleWhoAreAlive(this.famSearchDataset);
+	
+	this.quoteTheNumbers = function(dataset){
+		dataset = dataset.map(function(e){
+			e.date = e.date.toString();
+			return e.date;
+		})
+	}
+	this.quoteTheNumbers(this.mainData);
+	
 
 
 })

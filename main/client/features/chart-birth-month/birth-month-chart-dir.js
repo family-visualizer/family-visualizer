@@ -9,6 +9,7 @@ angular.module('app').directive('birthMonth', birthMonthService => {
             //load in data from Service
             var dataset = birthMonthService.dataset;
 
+			console.log("dataset", dataset);
             //set height, width, etc
             var width = 720,
                 height = 640,
@@ -23,6 +24,11 @@ angular.module('app').directive('birthMonth', birthMonthService => {
                 .sort(null);
             var arc = d3.svg.arc();
 
+
+			// Define the div for the tooltip
+			var div = d3.select("body").append("div")
+			    .attr("class", "tooltip")
+			    .style("opacity", 0);
             //Create SVG element
             var svg = d3.select("#svg").append("svg")
                 .attr("width", width)
@@ -54,6 +60,7 @@ angular.module('app').directive('birthMonth', birthMonthService => {
                 .attr("d", function(d, i, j) {
                     return arc.innerRadius(10 + cwidth * j).outerRadius(cwidth * (j + 1))(d);
                 });
+
 
 
             path.classed("main", true);
@@ -263,17 +270,35 @@ angular.module('app').directive('birthMonth', birthMonthService => {
             }
 
             d3.selectAll("path")
-                .on("mouseover", darken)
-                .on("mouseleave", lighten);
+                .on("mouseover", function(d, i) {
+					darken(d);
+				})
+                .on("mouseleave", function(d, i) {
+					lighten(d);
+				});
 
-            function darken() {
+            function darken(d, i) {
+				console.log("this is this", this);
                 d3.select(this)
                     .classed("selected", true);
+
+				var x = d3.event.pageX;
+				var y = d3.event.pageY - 40;
+
+				d3.select("#lifespanTooltip")
+					.style("left", x + "px")
+					.style("top", y + "px")
+					.style("opacity", 1)
+					.text(Math.floor(d.value) + " Births");
             };
 
-            function lighten() {
+            function lighten(d, i) {
+
                 d3.select(this)
                     .classed("selected", false);
+
+				d3.select("#lifespanTooltip")
+					.style("opacity", 0);
             }
 
 

@@ -1,5 +1,5 @@
-# FamGraph
-## [View Live] ()
+# FamGraph :bar_chart:
+## [View Live] (www.famgraph.io)
 
 
 #### About the Project
@@ -52,6 +52,3 @@ FamGraph uses the FamilySearch.org API and the D3.js library to create compellin
   * FontAwesome
 
 
-
-### 3. Screenshots
-  * 

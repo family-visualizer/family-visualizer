@@ -52,7 +52,7 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 				.y0(height2)
 				.y1(function (d) { return y2(d.alive); });
 
-			var svg = d3.select("body").append("svg")
+			var svg = d3.select("#lifespan-chart").append("svg")
 				.attr("class", "alivesvg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom);

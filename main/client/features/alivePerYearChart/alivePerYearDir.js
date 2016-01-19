@@ -160,13 +160,14 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 					
                         
 						
-                    });
-					
-					function changeGender(data){
+                 });
+				var colorFill = "orange";	
+				function changeGender(data){
 						console.log('change gender is running');
 						
 						// console.log(data);
 						if (scope.gender === "Female"){
+						colorFill = "pink";
 					area = d3.svg.area()
 				.interpolate("monotone")
 				.x(function (data) { return x(data.date); })
@@ -183,6 +184,7 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 				
 				
 				} else if (scope.gender === "Male"){
+					colorFill = 'steelblue';
 					area = d3.svg.area()
 				.interpolate("monotone")
 				.x(function (data) { return x(data.date); })
@@ -197,6 +199,7 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 				.y1(function (d) { return y2(d.male); });
 				
 				} else {
+					colorFill = 'orange';
 					area = d3.svg.area()
 				.interpolate("monotone")
 				.x(function (data) { return x(data.date); })
@@ -212,10 +215,11 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 				
 				}
 				d3.selectAll(".upperChart")
-
+				.style('fill', colorFill)
 				.attr("d", area);
 					
 					d3.selectAll(".lowerChart")
+				.style('fill', colorFill)
 
 				.attr("d", area2);
 					}

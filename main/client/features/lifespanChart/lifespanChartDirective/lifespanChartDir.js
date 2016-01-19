@@ -85,6 +85,7 @@ angular.module('app').directive('lifespanChart', () => {
 				.attr("class", "statName")
 				.text(function (d) {return d.name;});
 
+
 				statsElements.append("p")
 				.attr("class", "stat")
 				.text(function (d) {return d.value;});

@@ -45,7 +45,16 @@ function routing($stateProvider, $urlRouterProvider) {
 				}
 			}
 		})
-
+		.state('alive', {
+			  url: '/living'
+			, templateUrl: './dist/html/alivePerYearView/alivePerYearTmpl.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+			}
+		})
 		.state('names', {
 			url: '/names'
 			, templateUrl: './dist/html/namesChart/namesChartView.html'

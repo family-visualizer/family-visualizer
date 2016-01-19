@@ -2,41 +2,43 @@
 ## [View Live] ()
 
 
-
 #### About the Project
 
-FamGraph is .....
+FamGraph uses the FamilySearch.org API and the D3.js library to create compelling visualizations of your family history data.
 
-#### Team Members and Responsibility
+#### Team Members
 * [Erin Sheridan] 
-* [Erin Vincent] 
+* [Erin Vincent] (http://www.erinvincent.com)
 * [Luke Schunk] 
 * [Zach Baker] 
 
-### 1. Front-End
-####1.1 Something
-  * something
+### 1. Features
+####1.1 
+  * 
 
-####1.2 something
-  * something
+####1.2 Visualizations
+  * Lifespan
+   *View your family members as circles with size porportional to their lifespan
+   *Hover over a circle to see which family member it represents
+   *Watch the average, longest, and shortest lifespan numbers change as you drag to select a portion of your family
+   *Display data for men, women, or both genders
 
-####1.3 Technologies
-  * HTML/CSS
+
+###2. Technologies
+  * HTML
+  * CSS
   * AngularJS
-  * D3.js
-
-### 2. Back-End
-
-####2.1 Technologies
   * MongoDB
   * Mongolab
   * Node.js
     * Express
     * Mongoose
-    * Passport
+    * Passport - FamilySearch strategy
+  * D3.js
+  *Gulp
+  *Underscore.js
+  *FontAwesome
 
-### 3. Additional Tools
-  * Gulp
 
 ### 4. Screenshots
   * [Home Page] (http://i.imgur.com/RCPq8i4.png)

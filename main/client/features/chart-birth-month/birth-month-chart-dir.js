@@ -61,6 +61,8 @@ angular.module('app').directive('birthMonth', birthMonthService => {
                     return arc.innerRadius(10 + cwidth * j).outerRadius(cwidth * (j + 1))(d);
                 });
 
+			// path.selectAll(".class0")
+			// 	.classed("january");
 
 
             path.classed("main", true);
@@ -271,30 +273,37 @@ angular.module('app').directive('birthMonth', birthMonthService => {
 
             d3.selectAll("path")
                 .on("mouseover", function(d, i) {
-					darken(d);
+					darken(d, this, i);
 				})
                 .on("mouseleave", function(d, i) {
-					lighten(d);
+					lighten(d, this, i);
 				});
 
-            function darken(d, i) {
-				console.log("this is this", this);
-                d3.select(this)
+            function darken(d, test, i) {
+				console.log("this is d", d);
+                d3.select(test)
                     .classed("selected", true);
+
+				var currentMonth = returnMonth(i);
 
 				var x = d3.event.pageX;
 				var y = d3.event.pageY - 40;
+				var z = "Births";
+
+				if(d.value === 1) {
+					z = "Birth"
+				}
 
 				d3.select("#lifespanTooltip")
 					.style("left", x + "px")
 					.style("top", y + "px")
 					.style("opacity", 1)
-					.text(Math.floor(d.value) + " Births");
+					.text(Math.floor(d.value) + " " + z + " in " + currentMonth);
             };
 
-            function lighten(d, i) {
+            function lighten(d, test, i) {
 
-                d3.select(this)
+                d3.select(test)
                     .classed("selected", false);
 
 				d3.select("#lifespanTooltip")
@@ -302,6 +311,26 @@ angular.module('app').directive('birthMonth', birthMonthService => {
             }
 
 
+			function returnMonth(i) {
+				console.log("this is i", i);
+				while(i >= 12) {
+					i = i - 12;
+				}
+				var months = [  "January"
+							  , "February"
+							  , "March"
+							  , "April"
+							  , "May"
+							  , "June"
+							  , "July"
+							  , "August"
+							  , "September"
+							  , "October"
+							  , "November"
+							  , "December"
+						  ];
+				return months[i];
+			}
             //GENERATION SELECTORS
             //GENERATION SELECTORS
             //GENERATION SELECTORS

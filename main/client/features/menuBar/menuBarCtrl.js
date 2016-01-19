@@ -2,7 +2,7 @@ angular.module('app').controller('menuBarCtrl', function ($scope, ngDialog, $sta
 
 	$scope.openLoginModal = function () {
 		ngDialog.open({
-			template: './dist/html/menuBar/loginModalTmp.html'
+			template: './dist/html/menuBar/demoLoginModal.html'
 			, scope: $scope
 		});
     };

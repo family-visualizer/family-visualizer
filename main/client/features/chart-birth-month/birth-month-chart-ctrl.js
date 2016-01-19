@@ -6,6 +6,23 @@ angular.module('app').controller('birthMonthCtrl', function($scope, $rootScope, 
     //Load TotalBirthsPer Generation from Service
     $scope.totalBirthsPerGeneration = birthMonthService.totalBirthsPerGeneration;
 
+	$scope.showMonthChecks = true;
+	$scope.showGenChecks = false;
+	$scope.buttonText = "Generations";
+
+	$scope.toggleChecks = function() {
+
+		if($scope.showMonthChecks) {
+			$scope.showMonthChecks = false;
+			$scope.showGenChecks = true;
+			$scope.buttonText = "Months"
+		} else {
+			$scope.showMonthChecks = true;
+			$scope.showGenChecks = false;
+			$scope.buttonText = "Generations";
+		}
+	}
+
     //MONTH VIEW LOGIC ====================================================
 	//MONTH VIEW LOGIC ====================================================
 	//MONTH VIEW LOGIC ====================================================

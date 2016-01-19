@@ -17,36 +17,34 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 				item.date = new Date(item.date);
 			});
 
-			var margin = { top: 10, right: 10, bottom: 100, left: 100 },
-				margin2 = { top: 430, right: 10, bottom: 20, left: 100 },
-				width = 960 - margin.left - margin.right,
-				height = 500 - margin.top - margin.bottom,
-				height2 = 500 - margin2.top - margin2.bottom;
+			var margin = { top: 10, right: 10, bottom: 100, left: 100 }
+			,   margin2 = { top: 430, right: 10, bottom: 20, left: 100 }
+			,   width = 960 - margin.left - margin.right
+			,	height = 500 - margin.top - margin.bottom
+			,	height2 = 500 - margin2.top - margin2.bottom;
 
 			var parseDate = d3.time.format("%b %Y").parse;
 
-			var x = d3.time.scale().range([0, width]),
-				x2 = d3.time.scale().range([0, width]),
-				y = d3.scale.linear().range([height, 0]),
-				y2 = d3.scale.linear().range([height2, 0]);
+			var    x = d3.time.scale().range([0, width])
+				,  x2 = d3.time.scale().range([0, width])
+				,  y = d3.scale.linear().range([height, 0])
+				,  y2 = d3.scale.linear().range([height2, 0]);
 
-			var xAxis = d3.svg.axis().scale(x).orient("bottom"),
-				xAxis2 = d3.svg.axis().scale(x2).orient("bottom"),
-				yAxis = d3.svg.axis().scale(y).orient("left");
+			var    xAxis = d3.svg.axis().scale(x).orient("bottom")
+				,  xAxis2 = d3.svg.axis().scale(x2).orient("bottom")
+				,  yAxis = d3.svg.axis().scale(y).orient("left");
 
 			var brush = d3.svg.brush()
 				.x(x2)
 				.on("brush", brushed);
 
 			var area = d3.svg.area()
-				// .attr('class', 'topArea')
 				.interpolate("monotone")
 				.x(function (d) { return x(d.date); })
 				.y0(height)
 				.y1(function (d) { return y(d.alive); });
 
 			var area2 = d3.svg.area()
-				// .attr('class', 'bottomArea')
 				.interpolate("monotone")
 				.x(function (d) { return x2(d.date); })
 				.y0(height2)
@@ -132,8 +130,8 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 
 			// Creating radio buttons
 
-            var radioButtons = ["Male", "Female", "Both"],
-                radioValue = "Both";
+            var radioButtons = ["Male", "Female", "Both"]
+              , radioValue = "Both";
 
             // Create the shape selectors
             var form = d3.select(".genderChoice").append("form").attr("class", "aliveGenderBox");
@@ -223,15 +221,6 @@ angular.module('app').directive('aliveChartDir', function (alivePerYearService) 
 
 				.attr("d", area2);
 					}
-					
-				// function changeGender(data, gender){
-				// 	area = d3.svg.area()
-				// // .attr('class', 'topArea')
-				// .interpolate("monotone")
-				// .x(function (d) { return x(data.date); })
-				// .y0(height)
-				// .y1(function (d) { return y(gender); });
-				// }
         }
     }
 

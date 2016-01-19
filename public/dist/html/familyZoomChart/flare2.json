@@ -1,0 +1,68 @@
+{"name": "flare",
+  "children": [
+  {
+    "name": "Zachary Baker",
+    "gender": "male",
+    "spouse": true,
+    "children": [
+        {
+        "name": "Mckinney Baker",
+        "gender": "male",
+        "spouse": true,
+        "children": [
+            {"name": "Owen Baker", "gender": "male", "spouse": true, "size": 15000},
+            {"name": "Linda Ortega", 
+            "gender": "female", 
+            "spouse": true,
+            "children": [
+                {"name": "Phil Ortega","gender": "male","spouse": true, "size": 9001},
+                {"name": "Abigail O'Shanihan","gender": "female","spouse": true, "size": 9001},
+                {"name": "Sally Ortega","gender": "female","spouse": false, "size": 6000},
+                {"name": "Erica Ortega","gender": "female","spouse": false, "size": 6000}
+            ]},
+            {"name": "Mckinney Baker", "gender": "male", "spouse": false, "size": 11000},
+            {"name": "April Baker", "gender": "female", "spouse": false, "size": 11000},
+            {"name": "Rosanna Baker", "gender": "female", "spouse": false, "size": 11000}
+        ]
+      },
+      {
+        "name": "Sarah Sanchez",
+        "gender": "female",
+        "spouse": true,
+        "children": [
+            {"name": "Don Sanchez","gender": "male","spouse": true, "size": 15000},
+            {"name": "Ronda Wright",
+            "gender": "female",
+            "spouse": true,
+            "children": [
+                {"name": "Figueroa Wright",
+                "gender": "male",
+                "spouse": true,
+                "children": [
+                    {"name": "Flannery Wright","gender": "male","spouse": true, "size": 5000},
+                    {"name": "Lynn Head","gender": "female","spouse": true, "size": 2500},
+                    {"name": "Figueroa Wright","gender": "male","spouse": false, "size": 2500},
+                    {"name": "Erin Wright","gender": "female","spouse": false, "size": 2500}]
+                },
+                {"name": "Adrian Walls",
+                "gender": "female",
+                "spouse": true,
+                "children": [
+                    {"name": "Oconnor Walls","gender": "male","spouse": true, "size": 5000},
+                    {"name": "Annie Head","gender": "female","spouse": true, "size": 2500},
+                    {"name": "Adrian Walls","gender": "male","spouse": false, "size": 2500}]
+                },
+                {"name": "Ronda Wright","gender": "female","spouse": false, "size": 6000},
+                {"name": "Abigail Wright","gender": "female","spouse": false, "size": 6000}
+            ]},
+            {"name": "Sarah Sanchez","gender": "female","spouse": false, "size": 11000},
+            {"name": "Pickett Sanchez","gender": "male","spouse": false, "size": 11000},
+            {"name": "Sheppard Sanchez","gender": "male","spouse": false, "size": 11000},
+            {"name": "Candice Sanchez","gender": "female","spouse": false, "size": 11000}
+        ]
+      },
+      {"name": "Zachary Baker","gender": "male","spouse": false, "size": 20000},
+      {"name": "Eloise Baker", "gender": "female", "spouse": false, "size": 20000}]
+  }
+  ]
+}

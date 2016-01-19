@@ -5,14 +5,33 @@ angular.module('app')
           restrict: 'EA'
 		, templateUrl: './dist/html/familyZoomChart/familyZoomChartTmp.html'
         , controller: 'familyZoomChartCtrl'
-        , link (scope, elem, attrs) {
+        , link ( scope, elem, attrs ) {
+        	var svg;
+
+        	scope.changeSide = function( side ) {
+        		maleBoxIsChecked = false;
+        		femaleBoxIsChecked = false;
+
+        		d3.select('#zoom-female')
+        			.property('checked', false);
+
+        		d3.select('#zoom-male')
+        			.property('checked', false);
+
+        		d3.select('.zoom-chart-wrapper svg').remove()
+        		if (side === "male") {
+        			buildGraph("./dist/html/familyZoomChart/flare2.json");
+        		} else {
+        			buildGraph("./dist/html/familyZoomChart/flare.json");
+        		}
+        	}
 			
-			var margin = 20
+			var margin = 30
 			, diameter = 650;
 
 			var color = d3.scale.linear()
 				.domain([-1, 5])
-				.range(["hsl(200,80%,80%)", "hsl(190,30%,40%)"])
+				.range(["hsl(204,80%,80%)", "hsl(204,40%,30%)"])
 				.interpolate(d3.interpolateHcl);
 
 			var pack = d3.layout.pack()
@@ -20,13 +39,18 @@ angular.module('app')
 				.size([diameter - margin, diameter - margin])
 				.value(function(d) { return d.size; })
 
-			var svg = d3.select("body").append("svg")
+		
+
+function buildGraph( url ) {		
+
+	svg = d3.select(".zoom-chart-wrapper").append("svg")
 				.attr("width", diameter)
 				.attr("height", diameter)
+				// .attr("margin-left", 200px)
 				.append("g")
 				.attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-			d3.json("./dist/html/familyZoomChart/flare.json", function(error, root) {
+			d3.json(url, function(error, root) {
 				if (error) throw error;
 
 				var focus = root,
@@ -44,14 +68,14 @@ angular.module('app')
 					.data(nodes)
 					.enter().append("text")
 					.attr("class", "label")
+					.attr("font-size", "1.5em")
 					.style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
 					.style("display", function(d) { return d.parent === root ? "inline" : "none"; })
 					.text(function(d) { return d.name; });
 
 				var node = svg.selectAll("circle,text");
 
-				d3.select("body")
-					.style("background", color(-1))
+				d3.select(".zoom-chart-wrapper")
 					.on("click", function() { zoom(root); });
 
 				zoomTo([root.x, root.y, root.r * 2 + margin]);
@@ -84,8 +108,60 @@ angular.module('app')
 					});
 				}
 			});
+}
+
+buildGraph("./dist/html/familyZoomChart/flare.json");
 
 			d3.select(self.frameElement).style("height", diameter + "px");
+
+			var maleBoxIsChecked = false;
+			var femaleBoxIsChecked = false;
+
+			d3.select("#zoom-male")
+                .on('change', function(d, i) {
+                    svg.selectAll('.node--leaf')
+                    	.style('fill', function(d) {
+                    		if ( !maleBoxIsChecked && d.gender === "male" ) {
+                    			return '#2553f9'
+                    		} else if ( d.gender === "male" ) {
+                				return "white";
+                    		}
+                    		if ( femaleBoxIsChecked && d.gender === "female" ) {
+                    			// return 'rgba(237, 30, 121, 0.9)'
+                    			return '#ef4a6e';
+                    		} else if ( !femaleBoxIsChecked && d.gender === "female" ) {
+                				return "white";
+                    		}
+                    	});
+                		maleBoxIsChecked = !maleBoxIsChecked;
+
+                });
+
+            d3.select("#zoom-female")
+                .on('change', function(d, i) {
+                    svg.selectAll('.node--leaf')
+                    	.style('fill', function(d) {
+                    		if ( !femaleBoxIsChecked && d.gender === "female" ) {
+                    			// return 'rgba(237, 30, 121, 0.9)'
+                    			return '#ef4a6e';
+                    		} else if ( d.gender === "female" ) {
+                				return "white";
+                    		}
+
+                    		if ( maleBoxIsChecked && d.gender === "male" ) {
+                    			return '#2553f9'
+                    		} else if ( !maleBoxIsChecked && d.gender === "male" ) {
+                				return "white";
+                    		}
+                    	});
+                		femaleBoxIsChecked = !femaleBoxIsChecked;
+
+                });
+
+   //          d3.select("#zoom-female")
+   //              .on('change', function(d, i) {
+   //                  selectMonthJan(0);
+   //              })
 		}
 	};
 });

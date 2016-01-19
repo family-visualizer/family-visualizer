@@ -18,10 +18,12 @@ FamGraph uses the FamilySearch.org API and the D3.js library to create compellin
 
 ####1.2 Visualizations
   * Lifespan
-   *View your family members as circles with size porportional to their lifespan
-   *Hover over a circle to see which family member it represents
-   *Watch the average, longest, and shortest lifespan numbers change as you drag to select a portion of your family
-   *Display data for men, women, or both genders
+    * View your family members as circles with size porportional to their lifespan
+    * Hover over a circle to see which family member it represents
+    * Passport - FamilySearch strategy
+    * Watch the average, longest, and shortest lifespan numbers change as you drag to select a portion of your family
+    * Display data for men, women, or both genders
+
 
 
 ###2. Technologies

@@ -13,12 +13,66 @@
 	width 90%
 	margin 0 auto
 	text-align center
+	display flex
+	flex-direction row
+	flex-wrap wrap
 
-.thumbnail-holder p
-	text-decoration none
-	color black
-	font-size .7em
-	text-align left
-	width 320px
-	margin 0 auto
-	line-height 20px
+
+.thumbnail
+	width 380px
+	height 260px
+	background-image url("../../images/graph-image-1.png")
+	background-size cover
+	display inline-block
+	border-radius 10px
+	margin-left 20px
+	margin-right 20px
+	margin-top 20px
+	text-align center
+
+
+.thumbnail1
+	background-image url("../../images/graph-image-1.png")
+	background-size cover
+
+
+.thumbnail2
+	background-image url("../../images/graph-image-2.png")
+	background-size cover
+
+
+.thumbnail3
+	background-image url("../../images/graph-image-3.png")
+	background-size cover
+
+
+.thumbnail4
+	background-image url("../../images/graph-image-4.png")
+	background-size cover
+
+
+
+/* Opacity #2 */
+.thumbnail-pane
+	background-color: #1bb54a
+	width 380px
+	height 260px
+	opacity: 0;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	border-radius 10px
+	position relative
+	display inline-block
+
+.thumbnail-pane:hover {
+	opacity: .85;
+}
+
+.thumbnail-text
+	margin 0
+	margin-top 150
+	color white
+	font-weight bolder
+	font-size 1.3em
+	position absolute
+	top 120px

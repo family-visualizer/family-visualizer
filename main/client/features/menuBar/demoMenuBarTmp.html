@@ -1,12 +1,13 @@
 <div class="menuBar">
 
-	<a href="/#/"> <img class="logo" src="images/famGraphLogoWhite.png"> </a>
+	<a href="/#/" style="cursor: pointer"> <img class="logo" src="images/famGraphLogoWhite.png"> </a>
 
 	<ul class="links">
-		<li> <a href="/#/learnmore">Learn More</a> </li>
-    	<li> <a href="/#/about">About</a> </li>
+		<li> <a href="/#/learnmore" style="cursor: pointer">Learn More</a> </li>
+    	<li> <a href="/#/about" style="cursor: pointer">About</a> </li>
     	<li ng-show="!user"> <a ng-click="openLoginModal(); loginUser()" style="cursor: pointer">Login</a> </li>  
-		<li ng-show="user"> <a href="/#/" ng-click="logoutUser()">Logout</a> </li>  	
+		<li ng-show="user"> <a href="/#/" ng-click="logoutUser()" style="cursor: pointer">Logout</a> </li>  	
+
 	</ul>
 	
 </div>

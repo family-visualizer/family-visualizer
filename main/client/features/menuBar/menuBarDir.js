@@ -1,4 +1,4 @@
-angular.module('app').directive('menuBarDir', function () {
+angular.module('app').directive('menuBarDir', function ($location) {
 
 	return {
 		  restrict: "E"
@@ -6,8 +6,8 @@ angular.module('app').directive('menuBarDir', function () {
 		, controller: "menuBarCtrl"
 		, scope: {
 			user: '='
-			// , onHome: '='
 		}
 	}
+
 
 });

@@ -122,13 +122,13 @@ buildGraph("./dist/html/familyZoomChart/flare.json");
                     svg.selectAll('.node--leaf')
                     	.style('fill', function(d) {
                     		if ( !maleBoxIsChecked && d.gender === "male" ) {
-                    			return '#2553f9'
+                    			return '#a8e0f9'
                     		} else if ( d.gender === "male" ) {
                 				return "white";
                     		}
                     		if ( femaleBoxIsChecked && d.gender === "female" ) {
                     			// return 'rgba(237, 30, 121, 0.9)'
-                    			return '#ef4a6e';
+                    			return '#f8d4e3';
                     		} else if ( !femaleBoxIsChecked && d.gender === "female" ) {
                 				return "white";
                     		}
@@ -143,13 +143,13 @@ buildGraph("./dist/html/familyZoomChart/flare.json");
                     	.style('fill', function(d) {
                     		if ( !femaleBoxIsChecked && d.gender === "female" ) {
                     			// return 'rgba(237, 30, 121, 0.9)'
-                    			return '#ef4a6e';
+                    			return '#f8d4e3';
                     		} else if ( d.gender === "female" ) {
                 				return "white";
                     		}
 
                     		if ( maleBoxIsChecked && d.gender === "male" ) {
-                    			return '#2553f9'
+                    			return '#a8e0f9'
                     		} else if ( !maleBoxIsChecked && d.gender === "male" ) {
                 				return "white";
                     		}

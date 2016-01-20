@@ -33,7 +33,7 @@ app.use(passport.session());
 	
 require('./distserver/config/passport.js')(passport);
 require('./distserver/features/users/users.server.routes.js')(app);
-require('./distserver/features/auth/auth.server.routes.js')(app);
+// require('./distserver/features/auth/auth.server.routes.js')(app);
 
 
 
@@ -61,6 +61,7 @@ app.get('/auth/familysearch/callback',
 
 app.get("/getAuthedUser", function (req, res) {
             res.status(200).json(req.user);
+            console.log(req.user);
 			console.log("here is the profile", req.profile);
 			console.log("here is the access token", req.accessToken);
         });

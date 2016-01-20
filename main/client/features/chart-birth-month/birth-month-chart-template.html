@@ -4,7 +4,8 @@
 		<div id="settings-holder">
 			<div id="top-holder">
 				<h1> Settings </h1>
-				<button ng-click="toggleChecks()"> Toggle To {{buttonText}} </button>
+				<div class="buttonHolder"><button ng-click="toggleChecks()"> Toggle To {{buttonText}} </button></div>
+				
 				<div ng-show="showMonthChecks" id="month-checks">
 					<input ng-click="janChecked()" type="checkbox" id="january"> January
 					<br>

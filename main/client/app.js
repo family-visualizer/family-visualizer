@@ -19,7 +19,7 @@ function routing($stateProvider, $urlRouterProvider) {
 		})
 		.state('about', {
 			url: '/about'
-			, templateUrl: './dist/html/aboutView/about.html'
+			, templateUrl: './dist/html/aboutView/about-view.html'
 			, controller: "resolveCtrl"
 			, resolve: {
 				testFamily: function (hardCodedDataService) {
@@ -43,19 +43,6 @@ function routing($stateProvider, $urlRouterProvider) {
 				}
 			}
         })
-		.state('settings', {
-			url: '/settings'
-			, templateUrl: './dist/html/settingsView/settings.html'
-			, controller: "resolveCtrl"
-			, resolve: {
-				testFamily: function (hardCodedDataService) {
-					return hardCodedDataService.getFamily();
-				}
-				, user(authService) {
-					return authService.getAuthedUser();
-				}
-			}
-		})
 		.state('zoomChart', {
 			url: '/zoomchart'
 			, templateUrl: './dist/html/familyZoomChart/familyZoomChartView.html'
@@ -95,20 +82,6 @@ function routing($stateProvider, $urlRouterProvider) {
 				}
 			}
 		})
-		.state('names', {
-			url: '/names'
-			, templateUrl: './dist/html/namesChart/namesChartView.html'
-			, controller: "resolveCtrl"
-			, resolve: {
-				testFamily: function (hardCodedDataService) {
-					return hardCodedDataService.getFamily();
-				}
-				, user(authService) {
-					return authService.getAuthedUser();
-				}
-			}
-		})
-
 		.state('birthMonth', {
 			url: '/birthmonth'
 			, templateUrl: './dist/html/birthMonthView/birthMonthView.html'

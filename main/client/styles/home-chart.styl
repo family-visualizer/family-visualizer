@@ -39,9 +39,16 @@
 	text-align center
 
 #heading-holder i
+	opacity 0
 	margin-left 40px
 	margin-right 40px
 	margin-top 20px
+	animation-delay 8s
+	-webkit-animation-delay 8s
+	-webkit-animation-name fadein
+	animation-name fadein
+	animation-duration 6s
+	-webkit-animation-duration 6s
 
 #heading-holder hr
 	margin-top 15px
@@ -62,7 +69,7 @@
 	position relative
 	z-index -100
 	position relative
-	opacity .5
+	// opacity .5
 
 .home-page-footer
 	width 100%
@@ -83,17 +90,20 @@
 
 #fade-background
 	width 100%
-	height 58vh
+	height 100%
 	position absolute
 	top 0px
 	right 0px
-	background-color rgba(250, 250, 250, .8)
+	background-color rgba(250, 250, 250, 0)
+	animation-delay 5s
+	-webkit-animation-delay 5s
 	-webkit-animation-name fader
 	animation-name fader
-	animation-duration 3s
-	-webkit-animation-duration 3s
+	animation-duration 20s
+	-webkit-animation-duration 20s
 
 #chart-holder
+	opacity 0
 	border-left 4px solid black
 	border-bottom 4px solid black
 	width 600px
@@ -101,10 +111,12 @@
 	top 80px
 	right 60px
 	position absolute
+	animation-delay 5s
+	-webkit-animation-delay 5s
 	-webkit-animation-name fadein
 	animation-name fadein
-	animation-duration 6s
-	-webkit-animation-duration 6s
+	animation-duration 20s
+	-webkit-animation-duration 20s
 
 #home-page-chart
 	width 300px
@@ -116,26 +128,52 @@
 	    0%
 			background-color: rgba(250, 250, 250, 0)
 
-	    100%
+		25%
 			background-color: rgba(250, 250, 250, .8)
 
+	    50%
+			background-color: rgba(250, 250, 250, .9)
+
+		75%
+			background-color: rgba(250, 250, 250, .8)
+
+		100%
+			background-color: rgba(250, 250, 250, 0)
 
 /* Standard syntax */
 @keyframes fader
-	    0%
+		0%
 			background-color: rgba(250, 250, 250, 0)
 
-	    100%
+		25%
 			background-color: rgba(250, 250, 250, .8)
+
+		50%
+			background-color: rgba(250, 250, 250, .9)
+
+		75%
+			background-color: rgba(250, 250, 250, .8)
+
+		100%
+			background-color: rgba(250, 250, 250, 0)
 
 
 
 @-webkit-keyframes fadein
-	    0%
+		0%
 			opacity: 0
 
-	    100%
+		25%
 			opacity: 1
+
+		50%
+			opacity: 1
+
+		75%
+			opacity: 0.8
+
+		100%
+			opacity: 0
 
 
 /* Standard syntax */
@@ -143,5 +181,14 @@
 		0%
 			opacity: 0
 
-		100%
+		25%
 			opacity: 1
+
+		50%
+			opacity: 1
+
+		75%
+			opacity: 0.8
+
+		100%
+			opacity: 0

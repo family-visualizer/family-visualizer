@@ -10,6 +10,5 @@ angular.module('app').controller('menuBarCtrl', function ($scope, ngDialog, $sta
 	$scope.closeAll = function () {
 		ngDialog.closeAll();
 	};
-
 });
 

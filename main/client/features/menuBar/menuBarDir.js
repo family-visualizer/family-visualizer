@@ -6,6 +6,7 @@ angular.module('app').directive('menuBarDir', function () {
 		, controller: "menuBarCtrl"
 		, scope: {
 			user: '='
+			// , onHome: '='
 		}
 	}
 

@@ -8,7 +8,7 @@ angular.module('app').directive('lifespanChart', () => {
 			testFamily: "="
 		}
         , link(scope, elem, attrs) {
-			
+
 		// 	var chart = $(".chart"),
 		// 	aspect = chart.width() / chart.height(),
 		// 	container = chart.parent();
@@ -18,21 +18,21 @@ angular.module('app').directive('lifespanChart', () => {
 		// 	chart.attr("height", Math.round(targetWidth / aspect));
 		// }).trigger("resize");
 
-			
+
 			var family;
-			
+
 			function updateFamily (familyObject) {
 				family = scope.cleanData(familyObject);
-				return family;	
+				return family;
 			};
-			
-			
+
+
 			updateFamily(scope.testFamily);
 
 
 			var height = 500;
 			var width = 850;
-			
+
 			var svg = d3.select(".chart")
 				.append("svg")
 				.attr({
@@ -42,12 +42,12 @@ angular.module('app').directive('lifespanChart', () => {
 					// , preserveAspectRatio: "xMinYMid"
 				});
 
-			
+
 			var rscale = d3.scale.linear()
 				.domain([family.minLifespan, family.maxLifespan])
 				.range([5, 30]);
 
-			var padding = rscale(family.maxLifespan) + 10;	
+			var padding = rscale(family.maxLifespan) + 10;
 
 			var xscale = d3.scale.linear()
 				.domain([family.minYear - 1, family.maxYear + 1])
@@ -58,10 +58,10 @@ angular.module('app').directive('lifespanChart', () => {
 				.domain([family.minPersonNumber, family.maxPersonNumber])
 				.range([(height - 100) - padding, padding]);
 
-			
+
 
 			getStats(family.cleanData, family.maxYear);
-			
+
 			var stats =
 				  [{
 					name: "Average Lifespan",
@@ -75,8 +75,8 @@ angular.module('app').directive('lifespanChart', () => {
 					name: "Shortest Lifespan",
 					value: scope.stats.minLifespan
 				  }];
-		
-			
+
+
 			var statsElements = d3.select(".lifespanStats")
 				.selectAll("div")
 				.data(stats)
@@ -85,11 +85,12 @@ angular.module('app').directive('lifespanChart', () => {
 				.attr("class", "statName")
 				.text(function (d) {return d.name;});
 
+
 				statsElements.append("p")
 				.attr("class", "stat")
 				.text(function (d) {return d.value;});
 
-	
+
 
 
 
@@ -115,7 +116,7 @@ angular.module('app').directive('lifespanChart', () => {
 					}
 				})
 				.on("mouseover", function (d) {
-					
+
 					// move to front
 					// this.parentNode.appendChild(this);
 
@@ -129,7 +130,7 @@ angular.module('app').directive('lifespanChart', () => {
 						.style("opacity", 1)
 						.text(d.name + ", age " + d.lifespanTotal);
 				})
-				.on("mouseout", function (d) {	
+				.on("mouseout", function (d) {
 					//Hide the tooltip
 					d3.select("#lifespanTooltip")
 						.style("opacity", 0);
@@ -162,9 +163,9 @@ angular.module('app').directive('lifespanChart', () => {
 							return xscale(data.lifespanArray[0]);
 						}
 						, cy: function (data) {
-							
+
 							return yscale(data.generation);
-							
+
 						}
 						, class: function (data) {
 							return data.ascendancyNumber;
@@ -184,16 +185,16 @@ angular.module('app').directive('lifespanChart', () => {
 
 
 			animateIn(family.cleanData);
-			
+
 			function endall(transition, callback) {
-				var n = 0; 
-				transition 
-					.each(function() { ++n; }) 
+				var n = 0;
+				transition
+					.each(function() { ++n; })
 					.each("end", function() {
-						 if (!--n) animateOut.apply(this, arguments); }); 
-  			} 
-			
-			
+						 if (!--n) animateOut.apply(this, arguments); });
+  			}
+
+
 			function animateOut(data) {
 				svg.selectAll("circle")
 					.data(family.cleanData)
@@ -209,17 +210,17 @@ angular.module('app').directive('lifespanChart', () => {
 							return xscale(data.lifespanArray[0]);
 						}
 						, cy: function (data) {
-							
+
 							return yscale(data.generation);
-							
+
 						}
 						});
 			}
-		
+
 
 			var startingValue = family.minYear - 1;
 
-	
+
 
 			// defines brush
 			var brush = d3.svg.brush()
@@ -230,8 +231,8 @@ angular.module('app').directive('lifespanChart', () => {
 			svg.append("g")
 				.attr("transform", "translate(0," + height + ")");
 
-				
-			//X Axis	
+
+			//X Axis
 			svg.append("g")
 				.attr("class", "axisLine lifespanXAxis")
 				.attr("transform", "translate(0," + (height - 100) + ")")
@@ -241,14 +242,14 @@ angular.module('app').directive('lifespanChart', () => {
 					.tickFormat(function (d) { return d; })
 					.tickPadding(10))
 				.select(".domain");
-			
+
 			 svg.append("text")
 				.attr("transform", "translate("+ width / 2 + "," + (height - 45) + ")")
 				.style("text-anchor", "middle")
 				.attr("class", "axisLabel")
 				.text("Birth Year");
-		
-		
+
+
 			//Y Axis
 			svg.append("g")
 				.attr("class", "axisLine lifespanYAxis")
@@ -259,7 +260,7 @@ angular.module('app').directive('lifespanChart', () => {
 					.tickFormat(d3.format("d"))
 					.tickPadding(10))
 				.select(".domain");
-		
+
 			 svg.append("text")
 				.attr("transform", "rotate(-90)")
 				.attr("y", 0)
@@ -269,7 +270,7 @@ angular.module('app').directive('lifespanChart', () => {
 				.attr("class", "axisLabel")
 				.text("Generation");
 
-		
+
 
 			var slider = svg.append("g")
 				.attr("class", "slider")
@@ -284,12 +285,12 @@ angular.module('app').directive('lifespanChart', () => {
 			var handle = slider.append("g")
 				.attr("class", "handle");
 
-				
+
 			handle.append("path")
 				.attr("transform", "translate(0," + (height - 30) + ")")
 				.attr("d", "M 0 -15 V 15");
-				
-				
+
+
 			handle.append('text')
 				.text(startingValue)
 				.attr("class", "yearScroll")
@@ -302,7 +303,7 @@ angular.module('app').directive('lifespanChart', () => {
 				.attr("class", "handle")
 				.text(function (d) {return '\uf060';})
 				.attr("transform", "translate(" + (-50) + " ," + (height - 10) + ")");
-				
+
 			handle.append("text")
 				.attr("text-anchor", "end")
 				.attr("font-family", "FontAwesome")
@@ -310,7 +311,7 @@ angular.module('app').directive('lifespanChart', () => {
 				.attr("class", "handle")
 				.text(function (d) {return '\uf061';})
 				.attr("transform", "translate(" + (35) + " ," + (height - 10) + ")");
-				
+
 			slider
 				.call(brush.event);
 
@@ -332,8 +333,6 @@ angular.module('app').directive('lifespanChart', () => {
 			}
 
 			function changeGraph(data) {
-				
-				
 				svg.selectAll("circle")
 					.filter(function (data) {
 						if (scope.gender !== "Both") {
@@ -357,7 +356,7 @@ angular.module('app').directive('lifespanChart', () => {
 							return yscale(data.generation);
 						}
 						, fill: function (data) {
-							
+
 							if (data.gender === "Female") {
 								return "#ed1e79";
 							} else {
@@ -366,9 +365,8 @@ angular.module('app').directive('lifespanChart', () => {
 						}
 						, stroke: "black"
 						, opacity: .5
-
 					});
-			
+
 
 				svg.selectAll("circle")
 					.filter(function (data) {
@@ -397,9 +395,9 @@ angular.module('app').directive('lifespanChart', () => {
 
 
 				var value = brush.extent()[0];
-				
+
 				// var value = brush.extent(family.maxYear, family.maxYear);
-				
+
 
 				if (d3.event.sourceEvent) { // not a programmatic event
 					handle.select('text');
@@ -412,22 +410,22 @@ angular.module('app').directive('lifespanChart', () => {
 				handle.select('text').text(Math.floor(value));
 
 				sliderValue = (Math.floor(value));
-				
-				
+
+
 				getStats(family.cleanData, sliderValue, scope.gender);
 				buildStats(scope.stats);
 				changeGraph(family.cleanData);
 
 			}
-			
+
 			function getStats (family, sliderValue, gender) {
 				scope.getStats(family, sliderValue, gender);
-	
+
 			}
-			
+
 			function buildStats (stats) {
 
-				var statsStructure = 
+				var statsStructure =
 				  [{
 					name: "Average Lifespan",
 					value: stats.avgLifespan
@@ -440,7 +438,7 @@ angular.module('app').directive('lifespanChart', () => {
 					name: "Shortest Lifespan",
 					value: stats.minLifespan
 				  }];
-						
+
 
 				d3.select(".lifespanStats")
 				.selectAll("p")
@@ -449,8 +447,8 @@ angular.module('app').directive('lifespanChart', () => {
 					return d.value;})
 				.attr("class", "stat");
 			}
-			
-			
+
+
 			// Creating radio buttons
 
 			var radioButtons = ["Male", "Female", "Both"],
@@ -469,7 +467,7 @@ angular.module('app').directive('lifespanChart', () => {
 					type: "radio",
 					class: "shape",
 					name: "gender",
-					value: function (d, i) { 
+					value: function (d, i) {
 						return scope.gender = d; }
 				})
 				.property("checked", function (d, i) { return d === radioValue; })
@@ -480,10 +478,10 @@ angular.module('app').directive('lifespanChart', () => {
 					buildStats(scope.stats);
 					changeGraph();
 					});
-			
-			
 
-			
+
+
+
 		}
 	};
 });

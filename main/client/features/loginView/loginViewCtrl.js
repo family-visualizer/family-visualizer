@@ -15,7 +15,7 @@ angular.module('app')
 
 	$scope.gearBox = {
 		  icon: 'images/gearIcon.png'
-		, text: 'Change settings to view interactive charts based on preferences, statistics, gender, and more.'
+		, text: 'Change settings on interactive charts to customize what you see.'
 		, class: 'gear-icon'
 	};
 

@@ -19,6 +19,7 @@ angular.module('app').directive('linearChart', () => {
 
 			// var ww = document.getElementById("chart-holder");
             // Setup settings for graphic
+			console.log("this is ww", ww);
             var canvas_width = ww;
             var canvas_height = 250;
             var padding = 30; // for chart edges

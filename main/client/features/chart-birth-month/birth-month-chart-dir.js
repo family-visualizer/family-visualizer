@@ -9,6 +9,7 @@ angular.module('app').directive('birthMonth', birthMonthService => {
             //load in data from Service
             var dataset = birthMonthService.dataset;
 
+			console.log("dataset", dataset);
             //set height, width, etc
             var width = 720,
                 height = 640,
@@ -23,6 +24,11 @@ angular.module('app').directive('birthMonth', birthMonthService => {
                 .sort(null);
             var arc = d3.svg.arc();
 
+
+			// Define the div for the tooltip
+			var div = d3.select("body").append("div")
+			    .attr("class", "tooltip")
+			    .style("opacity", 0);
             //Create SVG element
             var svg = d3.select("#svg").append("svg")
                 .attr("width", width)
@@ -54,6 +60,9 @@ angular.module('app').directive('birthMonth', birthMonthService => {
                 .attr("d", function(d, i, j) {
                     return arc.innerRadius(10 + cwidth * j).outerRadius(cwidth * (j + 1))(d);
                 });
+
+			// path.selectAll(".class0")
+			// 	.classed("january");
 
 
             path.classed("main", true);
@@ -263,20 +272,65 @@ angular.module('app').directive('birthMonth', birthMonthService => {
             }
 
             d3.selectAll("path")
-                .on("mouseover", darken)
-                .on("mouseleave", lighten);
+                .on("mouseover", function(d, i) {
+					darken(d, this, i);
+				})
+                .on("mouseleave", function(d, i) {
+					lighten(d, this, i);
+				});
 
-            function darken() {
-                d3.select(this)
+            function darken(d, test, i) {
+				console.log("this is d", d);
+                d3.select(test)
                     .classed("selected", true);
+
+				var currentMonth = returnMonth(i);
+
+				var x = d3.event.pageX;
+				var y = d3.event.pageY - 40;
+				var z = "Births";
+
+				if(d.value === 1) {
+					z = "Birth"
+				}
+
+				d3.select("#lifespanTooltip")
+					.style("left", x + "px")
+					.style("top", y + "px")
+					.style("opacity", 1)
+					.text(Math.floor(d.value) + " " + z + " in " + currentMonth);
             };
 
-            function lighten() {
-                d3.select(this)
+            function lighten(d, test, i) {
+
+                d3.select(test)
                     .classed("selected", false);
+
+				d3.select("#lifespanTooltip")
+					.style("opacity", 0);
             }
 
 
+			function returnMonth(i) {
+				console.log("this is i", i);
+				while(i >= 12) {
+					i = i - 12;
+				}
+				var months = [  "January"
+							  , "February"
+							  , "March"
+							  , "April"
+							  , "May"
+							  , "June"
+							  , "July"
+							  , "August"
+							  , "September"
+							  , "October"
+							  , "November"
+							  , "December"
+						  ];
+				return months[i];
+			}
             //GENERATION SELECTORS
             //GENERATION SELECTORS
             //GENERATION SELECTORS

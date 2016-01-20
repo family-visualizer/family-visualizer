@@ -6,4 +6,10 @@ module.exports = function (app) {
             res.status(200).json(req.user);
         });
 
+    app.route("/logout")
+        .get(function (req, res) {
+			req.logout();
+			req.session.destroy();
+			res.redirect('/');
+        });
 };

@@ -1,0 +1,79 @@
+.node 
+  cursor pointer
+
+
+.node:hover 
+  stroke #000
+  stroke-width 1.5px
+
+
+.node--leaf 
+  fill white
+
+
+.label 
+  font 11px "Helvetica Neue", Helvetica, Arial, sans-serif
+  text-anchor middle
+  text-shadow 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff
+
+
+.label, .node--root, .node--leaf 
+  pointer-events none
+  
+.zoom-chart-settings-wrapper
+	margin 50px 0 0 70px
+	font-size 1.1em
+	float left
+	width 35%
+	border 1px solid gray
+	border-radius 3px
+	height 490px
+	padding 15px
+	
+	h2
+		font-weight 500
+		padding-left 15px
+		font-size 1.4em
+		line-height .5em
+		
+	h3
+		font-weight 300
+		padding-left 20px
+		font-size 1.3em
+		line-height .4em
+	
+	table 
+		padding-left 40px
+
+#zoom-hr
+	width 90%
+	margin 0 auto
+	margin-bottom 20px
+
+.zoom-chart-settings button {
+    cursor pointer
+    margin-left 40px
+    font-size 1.0rem
+    padding .75rem 1.5rem
+    display block
+    background-color #1bb54a
+    border 1px solid transparent
+    color #ffffff
+    font-weight 300
+    -webkit-border-radius 3px
+    border-radius 3px
+    -webkit-transition all 0.3s ease-in-out
+    -moz-transition all 0.3s ease-in-out
+    transition all 0.3s ease-in-out
+}
+
+.zoom-chart-settings button:hover {
+  background-color: #ffffff;
+  color: #1bb54a;
+  border-color: #1bb54a;
+}
+
+.zoom-chart-wrapper
+	float right
+	width 55%
+

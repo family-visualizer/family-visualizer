@@ -1,7 +1,4 @@
 angular.module('app').controller('menuBarCtrl', function ($scope, ngDialog, $state, $location, authService) {
-	
-	
-
 
 	$scope.openLoginModal = function () {	
 		ngDialog.open({
@@ -13,8 +10,6 @@ angular.module('app').controller('menuBarCtrl', function ($scope, ngDialog, $sta
 	$scope.closeAll = function () {
 		ngDialog.closeAll();
 	};
-
-	
 
 	$scope.loginUser = function () {
 		authService.loginUser();

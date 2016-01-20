@@ -7,7 +7,6 @@ angular.module('app').directive('linearChart', () => {
         , link (scope, elem, attrs) {
             var dataset = [];
 
-			var ww = document.getElementById("chart-holder").client;
             // Setup data
             var numDataPoints = 20; // Number of dummy data points
             var maxRange = Math.random() * 1000; // Max range of new values

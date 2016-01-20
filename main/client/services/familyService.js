@@ -2,7 +2,6 @@ angular.module('app').service('familyService', ['$q', '$http', 'familyDataUtilsS
 
 function familyService($q, $http, familyDataUtilsService) {
 
-
 //***********************Using hard-coded data until app is certified********************
 
 	// var ancestry = [];
@@ -122,12 +121,6 @@ function familyService($q, $http, familyDataUtilsService) {
 	// 	//TODO else resovle ancestry
 	// 	return defer.promise;
 	// };
-
-
-
-
-
-
 
 
 	// //Helper function that makes the API call for direct ancestors

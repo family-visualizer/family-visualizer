@@ -11,29 +11,50 @@ function routing($stateProvider, $urlRouterProvider) {
 			url: '/'
 			, templateUrl: './dist/html/loginView/loginView.html'
 			, controller: 'loginViewCtrl'
+			, resolve: {
+				user(authService) {
+					return authService.getAuthedUser();
+				}
+			}
 		})
 		.state('about', {
 			url: '/about'
 			, templateUrl: './dist/html/aboutView/about-view.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+				, user(authService) {
+					return authService.getAuthedUser();
+				}
+			}
 		})
-
-        .state('learnMore', {
+        .state('learnMore', {   
               url: '/learnmore'
             , templateUrl: './dist/html/learnMoreView/learnMore.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+				, user(authService) {
+					return authService.getAuthedUser();
+				}
+			}
         })
-        .state('userHome', {
-              url: '/userhome'
-            , templateUrl: './dist/html/userHomeView/userHome.html'
-			, controller: 'userHomeCtrl'
-        })
-
-		.state('gallery', {
-			url: '/gallery'
-			, templateUrl: './dist/html/userHomeView/gallery.html'
-		})
-		.state('settings', {
-			url: '/settings'
-			, templateUrl: './dist/html/userHomeView/settings.html'
+		.state('zoomChart', {
+			url: '/zoomchart'
+			, templateUrl: './dist/html/familyZoomChart/familyZoomChartView.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+				, user(authService) {
+					return authService.getAuthedUser();
+				}
+			}
 		})
 		.state('lifespan', {
 			url: '/lifespan'
@@ -42,6 +63,9 @@ function routing($stateProvider, $urlRouterProvider) {
 			, resolve: {
 				testFamily: function (hardCodedDataService) {
 					return hardCodedDataService.getFamily();
+				}
+				, user(authService) {
+					return authService.getAuthedUser();
 				}
 			}
 		})
@@ -53,20 +77,38 @@ function routing($stateProvider, $urlRouterProvider) {
 				testFamily: function (hardCodedDataService) {
 					return hardCodedDataService.getFamily();
 				}
+				, user(authService) {
+					return authService.getAuthedUser();
+				}
 			}
 		})
-		.state('names', {
-			url: '/names'
-			, templateUrl: './dist/html/namesChart/namesChartView.html'
-		})
-
 		.state('birthMonth', {
 			url: '/birthmonth'
 			, templateUrl: './dist/html/birthMonthView/birthMonthView.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+				, user(authService) {
+					return authService.getAuthedUser();
+				}
+			}
 		})
 		.state('thumbnailView', {
 			url: '/thumbnailhome'
 			, templateUrl: './dist/html/thumbnail-home-view/thumbnail-home.html'
+			, controller: "resolveCtrl"
+			, resolve: {
+				testFamily: function (hardCodedDataService) {
+					return hardCodedDataService.getFamily();
+				}
+				, user(authService) {
+					return authService.getAuthedUser();
+				}
+			}
 		});
 
 }
+
+

@@ -4,6 +4,9 @@ angular.module('app').directive('menuBarDir', function () {
 		  restrict: "E"
 		, templateUrl: "./dist/html/menuBar/MenuBarTmp.html"
 		, controller: "menuBarCtrl"
+		, scope: {
+			user: '='
+		}
 	}
 
 });

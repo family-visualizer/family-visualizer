@@ -1,4 +1,6 @@
-angular.module('app').controller('userHomeCtrl', function ($scope, authService, familyService) {
+angular.module('app').controller('userHomeCtrl', function ($scope, authService, familyService, user) {
+
+	$scope.user = user;
 
 	//Get authed user
 	var getAuthedUser = function () {

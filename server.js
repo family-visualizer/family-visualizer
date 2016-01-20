@@ -33,7 +33,7 @@ app.use(passport.session());
 	
 require('./distserver/config/passport.js')(passport);
 require('./distserver/features/users/users.server.routes.js')(app);
-// require('./distserver/features/auth/auth.server.routes.js')(app);
+require('./distserver/features/auth/auth.server.routes.js')(app);
 
 
 

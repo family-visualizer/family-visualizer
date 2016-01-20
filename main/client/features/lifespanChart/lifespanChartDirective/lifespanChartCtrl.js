@@ -17,7 +17,7 @@ angular.module('app').controller('lifespanChartCtrl', function ($scope, familySe
 	// var getAuthedUser = function () {
 	// 	authService.getAuthedUser().then(function (data) {
 	// 		$scope.authedUser = data;
-	// 		getAncestryAndChildren();
+	// 		// getAncestryAndChildren();
 	// 	});
 	// };
 	// getAuthedUser();

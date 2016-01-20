@@ -7,6 +7,7 @@ angular.module('app').directive('linearChart', () => {
         , link (scope, elem, attrs) {
             var dataset = [];
 
+			var ww = document.getElementById("my-h3").clientWidth;
             // Setup data
             var numDataPoints = 20; // Number of dummy data points
             var maxRange = Math.random() * 1000; // Max range of new values
@@ -16,8 +17,9 @@ angular.module('app').directive('linearChart', () => {
                 dataset.push([newNumber1, newNumber2]); // Add new number to array
             }
 
+			// var ww = document.getElementById("chart-holder");
             // Setup settings for graphic
-            var canvas_width = 600;
+            var canvas_width = ww;
             var canvas_height = 250;
             var padding = 30; // for chart edges
 

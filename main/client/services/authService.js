@@ -16,9 +16,6 @@ self.userLoggedIn = loggedIn;
 		});
 	};
 
-
-
-
 	this.loginUser = function () {
 		loggedIn = true;
 	};

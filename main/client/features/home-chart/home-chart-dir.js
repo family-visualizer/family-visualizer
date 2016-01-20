@@ -16,6 +16,7 @@ angular.module('app').directive('linearChart', () => {
                 dataset.push([newNumber1, newNumber2]); // Add new number to array
             }
 
+			// var ww = document.getElementById("chart-holder");
             // Setup settings for graphic
             var canvas_width = 600;
             var canvas_height = 250;

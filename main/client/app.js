@@ -14,7 +14,7 @@ function routing($stateProvider, $urlRouterProvider) {
 		})
 		.state('about', {
 			url: '/about'
-			, templateUrl: './dist/html/aboutView/about.html'
+			, templateUrl: './dist/html/aboutView/about-view.html'
 		})
 
         .state('learnMore', {

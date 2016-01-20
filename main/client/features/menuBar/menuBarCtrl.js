@@ -1,11 +1,8 @@
 angular.module('app').controller('menuBarCtrl', function ($scope, ngDialog, $state, $location, authService) {
-	
-	
-
 
 	$scope.openLoginModal = function () {	
 		ngDialog.open({
-			template: './dist/html/menuBar/demoLoginModal.html'
+			template: './dist/html/menuBar/loginModalTmp.html'
 			, scope: $scope
 		});
     };
@@ -13,8 +10,6 @@ angular.module('app').controller('menuBarCtrl', function ($scope, ngDialog, $sta
 	$scope.closeAll = function () {
 		ngDialog.closeAll();
 	};
-
-	
 
 	$scope.loginUser = function () {
 		authService.loginUser();
@@ -31,7 +26,7 @@ angular.module('app').controller('menuBarCtrl', function ($scope, ngDialog, $sta
 		$scope.user = authService.returnUser();
 	};
 
-	$scope.getUser();
+	// $scope.getUser();
 		
 });
 

@@ -10,8 +10,7 @@ var port = process.env.PORT || 3000;
 var mongoose = require('./distserver/config/mongoose');
 var keys = require('./distserver/config/keys.js');
 
-
-var express = require('express')
+var express = require('express') 
 	, session = require('express-session')
 	, app = express()
 	, bodyParser = require('body-parser')
@@ -62,6 +61,7 @@ app.get('/auth/familysearch/callback',
 
 app.get("/getAuthedUser", function (req, res) {
             res.status(200).json(req.user);
+            console.log(req.user);
 			console.log("here is the profile", req.profile);
 			console.log("here is the access token", req.accessToken);
         });

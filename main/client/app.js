@@ -43,29 +43,6 @@ function routing($stateProvider, $urlRouterProvider) {
 				}
 			}
         })
-        .state('userHome', {
-              url: '/userhome'
-            , templateUrl: './dist/html/userHomeView/userHome.html'
-			, controller: 'userHomeCtrl'
-			, resolve: {
-				user(authService) {
-					return authService.getAuthedUser();
-				}
-			}
-        })
-		.state('gallery', {
-			url: '/gallery'
-			, templateUrl: './dist/html/galleryView/gallery.html'
-			, controller: "resolveCtrl"
-			, resolve: {
-				testFamily: function (hardCodedDataService) {
-					return hardCodedDataService.getFamily();
-				}
-				, user(authService) {
-					return authService.getAuthedUser();
-				}
-			}
-		})
 		.state('settings', {
 			url: '/settings'
 			, templateUrl: './dist/html/settingsView/settings.html'

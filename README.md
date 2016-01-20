@@ -1,4 +1,4 @@
-# FamGraph
+# FamGraph  :family: :deciduous_tree: :bar_chart:
 ## [View Live] ()
 
 
@@ -51,7 +51,3 @@ FamGraph uses the FamilySearch.org API and the D3.js library to create compellin
   * Underscore.js
   * FontAwesome
 
-
-
-### 3. Screenshots
-  * 

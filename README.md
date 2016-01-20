@@ -7,10 +7,10 @@
 FamGraph uses the FamilySearch.org API and the D3.js library to create compelling visualizations of your family history data.
 
 #### Team Members
-* [Erin Sheridan] 
+* [Erin Sheridan] (http://www.erinsheridandesigns.com)
 * [Erin Vincent] (http://www.erinvincent.com)
 * [Luke Schunk] (https://github.com/lukeschunk)
-* [Zach Baker] 
+* [Zach Baker] (https://github.com/ZacharyBaker)
 
 ### 1. Features
 

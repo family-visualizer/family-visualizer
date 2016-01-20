@@ -1,5 +1,7 @@
 angular.module('app')
-.controller('loginViewCtrl', function( $scope ) {
+.controller('loginViewCtrl', function( $scope, user ) {
+
+	$scope.user = user;
 	
 	$scope.pieChartBox = {
 		  icon: 'images/pieChartIcon.png'

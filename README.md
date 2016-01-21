@@ -56,5 +56,5 @@ FamGraph uses the FamilySearch.org API and the D3.js library to create compellin
   * Gulp
   * Stylus
   * Underscore.js
-  * FontAwesome
+  * Font Awesome
 

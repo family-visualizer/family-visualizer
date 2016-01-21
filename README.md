@@ -42,6 +42,8 @@ FamGraph uses the FamilySearch.org API and the D3.js library to create compellin
 
 
 ###2. Technologies
+  * D3.js
+  * ES2015
   * HTML
   * CSS
   * AngularJS
@@ -51,8 +53,8 @@ FamGraph uses the FamilySearch.org API and the D3.js library to create compellin
   * Express
   * Mongoose
   * Passport - FamilySearch strategy
-  * D3.js
   * Gulp
+  * Stylus
   * Underscore.js
   * FontAwesome
 

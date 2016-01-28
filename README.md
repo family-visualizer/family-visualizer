@@ -8,7 +8,7 @@ FamGraph uses the FamilySearch.org API and the D3.js library to create compellin
 
 #### Team Members
 * [Erin Sheridan] (http://www.erinsheridandesigns.com)
-* [Erin Vincent] (http://www.erinvincent.com)
+* [Erin Vincent] (http://www.erinmvincent.com)
 * [Luke Schunk] (https://github.com/lukeschunk)
 * [Zach Baker] (https://github.com/ZacharyBaker)
 

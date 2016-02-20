@@ -1,5 +1,5 @@
 # FamGraph  :family: :deciduous_tree: :bar_chart:
-## [View Live] (http://www.famgraph.io)
+## [View Live] (http://famgraph.io)
 
 
 #### About the Project
